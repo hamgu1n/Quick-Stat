@@ -1,0 +1,120 @@
+---
+title: "Coefficient of Determination"
+unit: 5
+chapter: 11
+slug: "11-2-coefficient-of-determination"
+---
+
+## Section 11.2 – The Coefficient of Determination
+
+The least squares regression line gives us the best linear prediction of $Y$ from $X$. But how good is that prediction, really? The **coefficient of determination**, denoted $R^2$ (or $r^2$ in simple linear regression), measures exactly this — the proportion of the total variability in $Y$ that is explained by the linear relationship with $X$.
+
+### What Is $R^2$?
+
+The idea behind $R^2$ is to compare two scenarios:
+
+1. **No model**: our best prediction of $Y$ is simply its mean $\bar{y}$. The total variability in $Y$ around this baseline is called the **total sum of squares (SST)**:
+
+$$
+\text{SST} = \sum_{i=1}^{n}(y_i - \bar{y})^2
+$$
+
+2. **With the regression model**: our prediction is $\hat{y}_i$. The remaining variability — the variability *not* explained by the model — is the **residual sum of squares (SSE)**:
+
+$$
+\text{SSE} = \sum_{i=1}^{n}(y_i - \hat{y}_i)^2
+$$
+
+The coefficient of determination is:
+
+$$
+R^2 = 1 - \frac{\text{SSE}}{\text{SST}} = \frac{\text{SST} - \text{SSE}}{\text{SST}}
+$$
+
+In simple linear regression, $R^2 = r^2$ — the square of the Pearson correlation coefficient. So if $r = 0.9$, then $R^2 = 0.81$, meaning 81% of the variability in $Y$ is explained by its linear relationship with $X$.
+
+$R^2$ ranges from 0 to 1. An $R^2$ of 0 means the model explains none of the variability (the regression line is no better than just using $\bar{y}$). An $R^2$ of 1 means the model explains all the variability (every point falls exactly on the line).
+
+<div className="example">
+**Example 11.2.1 – Calculating $R^2$**
+
+A regression model predicting exam scores from study hours has SST = 1,200 and SSE = 240.
+
+1. Calculate $R^2$.
+2. Interpret this value in context.
+3. What is the Pearson correlation $r$? (Assume a positive relationship.)
+</div>
+
+<div className="example">
+**Example 11.2.2 – Interpreting $R^2$**
+
+A regression of monthly advertising spend ($x$) on sales revenue ($y$) for a small chain of coffee shops yields $r = 0.73$.
+
+1. Calculate $R^2$.
+2. Interpret $R^2$ in a sentence.
+3. What accounts for the remaining variability in sales that is *not* explained by advertising spend?
+</div>
+
+### $R^2$ Does Not Tell the Whole Story
+
+A high $R^2$ sounds reassuring, but it does not guarantee the regression model is appropriate. Several cautions apply:
+
+**A high $R^2$ does not prove causation.** As we emphasized in Chapter 10, a strong linear relationship may be driven by lurking variables.
+
+**A high $R^2$ does not mean the model fits well.** If the true relationship is curved, fitting a straight line may still produce a high $R^2$ while systematically mispredicting across the range of $X$. This is why we examine residual plots (Section 11.3).
+
+**A low $R^2$ does not make a model useless.** In complex fields like psychology or economics, $R^2$ values of 0.10 to 0.30 are common and the model may still be meaningful — especially if the slope is statistically significant and the relationship is theoretically justified.
+
+{/* ```r
+set.seed(45)
+x <- 1:30
+y_linear <- 2 + 0.8 * x + rnorm(30, 0, 2)
+y_curved <- 10 + 0.5 * x^2 + rnorm(30, 0, 10)
+
+par(mfrow = c(1, 2))
+plot(x, y_linear, main = paste("Linear: R² =", round(cor(x, y_linear)^2, 2)),
+     pch = 19, col = "#3b5b8a")
+abline(lm(y_linear ~ x), col = "#1f3c88")
+plot(x, y_curved, main = paste("Curved: R² =", round(cor(x, y_curved)^2, 2)),
+     pch = 19, col = "#3b5b8a")
+abline(lm(y_curved ~ x), col = "#1f3c88")
+``` */}
+
+<div className="example">
+**Example 11.2.3 – High $R^2$, Wrong Model**
+
+A dataset relating age ($x$, in years) to annual salary ($y$, in thousands of dollars) produces a regression line with $R^2 = 0.78$. However, a scatterplot reveals that salary rises steeply from ages 25 to 45, then levels off after 50.
+
+What does this suggest about using a linear model here? Would a high $R^2$ guarantee good predictions across all ages?
+</div>
+
+<div className="example">
+**Example 11.2.4 – Comparing Models**
+
+Two researchers each build a regression model to predict students' GPA from the number of hours they study per week.
+
+- Researcher A's model: $R^2 = 0.65$
+- Researcher B's model: $R^2 = 0.40$
+
+Researcher B argues her model is still useful. Under what circumstances might she be right? What additional information would help you evaluate both models?
+</div>
+
+<div className="example">
+**Example 11.2.5 – Full Calculation**
+
+Using the city temperature and heating oil data from Example 11.1.5, the regression model gives $\hat{y} = 65.2 - 0.929x$.
+
+Given the actual observed values: 45, 40, 38, 32, 28, 24, 20, 17:
+
+1. Compute the predicted values $\hat{y}_i$ for each city.
+2. Compute SSE and SST.
+3. Calculate $R^2$ and interpret it.
+</div>
+
+### Key Points – Coefficient of Determination
+- $R^2$ measures the proportion of variability in $Y$ explained by the linear relationship with $X$
+- $R^2 = 1 - \text{SSE}/\text{SST}$; ranges from 0 to 1; in simple regression, $R^2 = r^2$
+- $R^2 = 1$: perfect fit; $R^2 = 0$: model no better than using $\bar{y}$
+- A high $R^2$ does not imply causation or guarantee the model is appropriate
+- A low $R^2$ does not automatically mean the model is useless — significance and context matter
+- Always examine residual plots alongside $R^2$ to assess whether a linear model is appropriate

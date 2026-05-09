@@ -1,0 +1,92 @@
+---
+title: "Point Estimates"
+unit: 4
+chapter: 7
+slug: "07-1-point-estimates"
+---
+
+# Unit 4 – Statistical Inference
+
+## Section 7.1 – Point Estimates
+
+We have spent the last several chapters learning how to describe data and understand the behavior of sample statistics. Now we turn to the central challenge of statistics: using a sample to draw conclusions about a population. This is called **statistical inference**, and it comes in two main flavors: estimation and hypothesis testing. We begin with estimation.
+
+### What Is a Point Estimate?
+
+A **point estimate** is a single value, calculated from a sample, that we use as our best guess for an unknown population parameter. It is called a "point" estimate because it gives one specific number rather than a range.
+
+The most common point estimates are:
+
+| Population Parameter | Symbol | Sample Statistic (Point Estimate) | Symbol |
+|---|---|---|---|
+| Population mean | $\mu$ | Sample mean | $\bar{x}$ |
+| Population proportion | $p$ | Sample proportion | $\hat{p}$ |
+| Population standard deviation | $\sigma$ | Sample standard deviation | $s$ |
+
+For example, if we want to estimate the average commute time for all workers in a city, we survey 100 workers and calculate their average commute time. That sample mean is our point estimate of $\mu$.
+
+<div className="example">
+**Example 7.1.1 – Identifying Point Estimates**
+
+For each scenario, identify the population parameter being estimated and the point estimate being used:
+
+1. A sample of 200 voters finds that 112 support a ballot measure. We estimate that 56% of all voters support it.
+2. A random sample of 30 coffee drinks from a chain shows a mean sugar content of 38 grams.
+3. A researcher surveys 50 employees and finds the standard deviation of their weekly hours is 6.2 hours.
+</div>
+
+### Properties of Good Estimators
+
+Not every statistic makes a good point estimate. Two properties we want in an estimator are:
+
+**Unbiasedness**: An estimator is **unbiased** if, on average across all possible samples, it equals the true parameter. The sample mean $\bar{x}$ is an unbiased estimator of $\mu$ — as we saw in Section 6.1, the mean of the sampling distribution of $\bar{x}$ equals $\mu$. This is why we divide by $n - 1$ rather than $n$ when computing the sample variance $s^2$ — it makes $s^2$ an unbiased estimator of $\sigma^2$.
+
+**Efficiency**: Among all unbiased estimators, we prefer the one with the smallest variance (the one whose values cluster most tightly around the parameter). A more efficient estimator is less affected by sampling variation.
+
+An important limitation of any point estimate is that it comes with no indication of how accurate it is. A single number gives no sense of the uncertainty involved. This is why we almost always accompany a point estimate with a **margin of error** or a **confidence interval** — the subject of the next section.
+
+<div className="example">
+**Example 7.1.2 – Unbiasedness**
+
+A researcher is deciding whether to use the sample mean or the sample median to estimate the population mean of a symmetric distribution.
+
+Both are unbiased estimators of $\mu$ for a symmetric distribution. What other consideration might guide the choice?
+</div>
+
+<div className="example">
+**Example 7.1.3 – Sample Proportion**
+
+In a survey of 500 college students, 320 report that they prefer online classes over in-person classes.
+
+1. Calculate the sample proportion $\hat{p}$.
+2. What population parameter is $\hat{p}$ estimating?
+3. If another survey of 500 different students were conducted, would you expect to get exactly the same $\hat{p}$? Why or why not?
+</div>
+
+<div className="example">
+**Example 7.1.4 – Limitations of Point Estimates**
+
+A political polling firm surveys 800 likely voters and reports that a candidate has 49% support. A rival poll of 1,200 voters reports 51% support.
+
+Both are point estimates of the true support level. Can both be "correct"? What does this tell us about the need for measures of precision alongside a point estimate?
+</div>
+
+<div className="example">
+**Example 7.1.5 – Calculating Point Estimates**
+
+A nutritionist records the daily caloric intake of 8 randomly selected adults:
+
+$$
+1,850 \quad 2,100 \quad 1,730 \quad 2,450 \quad 1,980 \quad 2,200 \quad 1,650 \quad 2,040
+$$
+
+1. Calculate the sample mean as a point estimate of the population mean daily caloric intake.
+2. Calculate the sample standard deviation as a point estimate of the population standard deviation.
+</div>
+
+### Key Points – Point Estimates
+- A point estimate is a single sample statistic used to estimate an unknown population parameter
+- Common point estimates: $\bar{x}$ estimates $\mu$; $\hat{p}$ estimates $p$; $s$ estimates $\sigma$
+- A good estimator is unbiased (correct on average) and efficient (low variance)
+- Point estimates vary from sample to sample — they are subject to sampling variability
+- A point estimate alone gives no indication of precision; a confidence interval is needed to convey uncertainty

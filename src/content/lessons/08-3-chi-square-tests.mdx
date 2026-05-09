@@ -1,0 +1,120 @@
+---
+title: "Chi-Square Tests"
+unit: 4
+chapter: 8
+slug: "08-3-chi-square-tests"
+---
+
+## Section 8.3 – Chi-Square Tests
+
+The z-tests and t-tests we have studied so far are designed for numerical data, where we are making claims about means. But what about categorical data? How do we test whether two categorical variables are related, or whether a categorical distribution matches a particular pattern? For these questions we turn to the **chi-square test** ($\chi^2$ test), pronounced "ky-square."
+
+### The Chi-Square Distribution
+
+The **chi-square distribution** is a family of right-skewed distributions, each determined by its **degrees of freedom**. Unlike the normal or t-distribution, the chi-square distribution takes only non-negative values. As degrees of freedom increase, the distribution shifts right and becomes more symmetric.
+
+The key idea behind all chi-square tests is comparing **observed counts** (what we actually see in the data) to **expected counts** (what we would expect if the null hypothesis were true).
+
+### Chi-Square Test for Goodness of Fit
+
+The **goodness-of-fit test** asks: does a sample come from a population with a specific categorical distribution? For example, does the distribution of M&M colors in a bag match the percentages advertised by the manufacturer?
+
+The test statistic is:
+
+$$
+\chi^2 = \sum \frac{(O - E)^2}{E}
+$$
+
+where $O$ is the observed count in each category and $E$ is the expected count. The expected count for each category is:
+
+$$
+E = n \times p_0
+$$
+
+where $p_0$ is the hypothesized proportion for that category. The statistic follows a chi-square distribution with $df = k - 1$, where $k$ is the number of categories.
+
+<div className="example">
+**Example 8.3.1 – Goodness-of-Fit Test**
+
+A six-sided die is rolled 120 times. The observed counts for each face are:
+
+| Face | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| Observed | 18 | 22 | 17 | 25 | 19 | 19 |
+
+At $\alpha = 0.05$, test whether the die is fair.
+
+1. State $H_0$ and $H_a$.
+2. Calculate the expected count for each face.
+3. Calculate the $\chi^2$ test statistic.
+4. Find the p-value and state your conclusion.
+</div>
+
+### Chi-Square Test for Independence
+
+The **test for independence** asks: are two categorical variables related, or are they independent of each other? For example, is there a relationship between gender and preferred type of exercise?
+
+We organize the data in a **contingency table** (also called a two-way table) with rows representing categories of one variable and columns representing categories of the other. The expected count for each cell is:
+
+$$
+E_{ij} = \frac{(\text{row total}_i) \times (\text{column total}_j)}{\text{grand total}}
+$$
+
+The test statistic is the same formula as for goodness of fit, summed over all cells. The degrees of freedom are:
+
+$$
+df = (\text{number of rows} - 1) \times (\text{number of columns} - 1)
+$$
+
+{/* ```r
+# Chi-square test for independence
+observed <- matrix(c(40, 60, 35, 65), nrow = 2,
+                   dimnames = list(c("Male", "Female"), c("Prefers Gym", "Prefers Outdoors")))
+chisq.test(observed)
+``` */}
+
+<div className="example">
+**Example 8.3.2 – Chi-Square Test for Independence**
+
+A researcher surveys 200 students to determine if there is a relationship between class year (freshman vs. upperclassman) and whether they use the campus tutoring center.
+
+|  | Uses tutoring | Does not use | Total |
+|---|---|---|---|
+| Freshman | 50 | 30 | 80 |
+| Upperclassman | 40 | 80 | 120 |
+| Total | 90 | 110 | 200 |
+
+At $\alpha = 0.05$, is there a significant relationship between class year and tutoring center use?
+
+1. State $H_0$ and $H_a$.
+2. Calculate all expected counts.
+3. Calculate the $\chi^2$ test statistic.
+4. Find the degrees of freedom and p-value.
+5. State your conclusion in context.
+</div>
+
+<div className="example">
+**Example 8.3.3 – Conditions for the Chi-Square Test**
+
+The chi-square test requires that expected counts be sufficiently large — typically, each expected count should be at least 5. A survey of 30 students asks about their preferred social media platform, with 6 categories.
+
+Why might the chi-square test be unreliable here? What could be done to address this?
+</div>
+
+<div className="example">
+**Example 8.3.4 – Goodness-of-Fit vs. Test for Independence**
+
+For each scenario, identify whether a goodness-of-fit test or a test for independence is appropriate:
+
+1. A professor wants to know if the grade distribution in her class (A, B, C, D, F) matches the historical departmental distribution.
+2. A marketing firm wants to know if age group (18–25, 26–40, 40+) and preferred streaming service (Streaming A, B, C) are related.
+3. A bag of candy is tested to see if the color distribution matches the manufacturer's stated proportions.
+</div>
+
+### Key Points – Chi-Square Tests
+- Chi-square tests are used for categorical data, comparing observed counts to expected counts
+- The test statistic is $\chi^2 = \sum (O - E)^2 / E$; larger values indicate greater departure from $H_0$
+- Goodness-of-fit test: tests whether a single categorical variable matches a specified distribution; $df = k - 1$
+- Test for independence: tests whether two categorical variables are related using a contingency table; $df = (r-1)(c-1)$
+- Expected counts should be at least 5 in each cell for the test to be valid
+- The chi-square distribution is right-skewed and non-negative; p-values are always computed from the right tail

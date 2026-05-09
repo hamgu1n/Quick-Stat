@@ -1,0 +1,115 @@
+---
+title: "Interpreting Correlation Coefficients"
+unit: 5
+chapter: 10
+slug: "10-2-interpreting-correlation"
+---
+
+## Section 10.2 – Interpreting Correlation Coefficients
+
+Computing a correlation coefficient is straightforward; interpreting it correctly is where students often go wrong. In this section we address the most common pitfalls — the difference between association and causation, the effect of outliers, and what it means to test whether a correlation is statistically significant.
+
+### Strength Guidelines
+
+While there are no universal rules, the following guidelines are widely used to describe the strength of a correlation:
+
+| $|r|$ value | Interpretation |
+|---|---|
+| 0.00 – 0.19 | Very weak or no association |
+| 0.20 – 0.39 | Weak association |
+| 0.40 – 0.59 | Moderate association |
+| 0.60 – 0.79 | Strong association |
+| 0.80 – 1.00 | Very strong association |
+
+These are guidelines, not rules. The appropriate threshold for "strong" depends on the field — an $r$ of 0.5 might be impressive in psychology but unacceptably weak in physics.
+
+<div className="example">
+**Example 10.2.1 – Describing a Correlation**
+
+For each correlation coefficient, describe the strength and direction of the relationship:
+
+1. $r = 0.87$ between number of practice problems completed and final exam score.
+2. $r = -0.43$ between daily screen time and academic GPA.
+3. $r = 0.12$ between a student's height and their statistics grade.
+4. $r = -0.91$ between the age of a car and its fuel efficiency.
+</div>
+
+### Correlation Does Not Imply Causation
+
+This is perhaps the most important lesson in all of statistics: **a high correlation between two variables does not mean that one causes the other.** We saw a hint of this in Section 4.4 with the ice cream and drowning example. Here we formalize the idea.
+
+Three possible explanations for an observed correlation between $X$ and $Y$ are:
+
+1. $X$ causes $Y$
+2. $Y$ causes $X$
+3. A third variable $Z$ (a **confounding variable** or **lurking variable**) causes both $X$ and $Y$
+
+The ice cream and drowning example is driven by a lurking variable: hot weather. Hot weather causes people to buy more ice cream *and* causes more people to swim, increasing drowning risk. Ice cream consumption doesn't cause drowning.
+
+Only a properly designed experiment (with randomization and control, as discussed in Chapter 2) can establish causation. A correlation from an observational study, no matter how strong, cannot.
+
+<div className="example">
+**Example 10.2.2 – Causation or Lurking Variable?**
+
+For each observed correlation, propose a possible lurking variable or alternative explanation:
+
+1. Cities with more hospitals tend to have higher death rates.
+2. Countries with more televisions per household tend to have longer life expectancies.
+3. Students who eat breakfast score higher on standardized tests than those who skip breakfast.
+4. The number of firefighters at a fire scene is positively correlated with the amount of damage done.
+</div>
+
+### The Effect of Outliers on Correlation
+
+Pearson's $r$ is sensitive to outliers, as we noted in the previous section. A single unusual point can dramatically increase or decrease $r$, even when the rest of the data show no clear linear pattern. This is one reason why always *looking at the scatterplot* before reporting $r$ is critical. The correlation alone can be deeply misleading.
+
+<div className="example">
+**Example 10.2.3 – Outlier Impact on r**
+
+A researcher computes $r = 0.82$ for a dataset of 20 points. Upon examining the scatterplot, she notices that removing a single outlier reduces $r$ to 0.31.
+
+What does this tell us about the reliability of the original correlation? What should be done before reporting the result?
+</div>
+
+### Testing Whether a Correlation Is Significant
+
+A computed correlation coefficient is a sample statistic — it varies from sample to sample. Just because $r \neq 0$ in our sample doesn't guarantee that the true population correlation $\rho$ (the Greek letter "rho") is nonzero. We can perform a hypothesis test:
+
+$$
+H_0: \rho = 0 \quad \text{(no linear relationship in the population)}
+$$
+$$
+H_a: \rho \neq 0 \quad \text{(or one-sided)}
+$$
+
+The test statistic is:
+
+$$
+t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}}
+$$
+
+which follows a t-distribution with $n - 2$ degrees of freedom under $H_0$. The p-value tells us whether the observed $r$ is large enough, for the given sample size, to be statistically unlikely if there truly is no relationship.
+
+<div className="example">
+**Example 10.2.4 – Testing Correlation Significance**
+
+A sample of $n = 20$ observations yields a Pearson correlation of $r = 0.45$.
+
+1. Calculate the t-test statistic.
+2. With $df = 18$ and $\alpha = 0.05$ (two-tailed), the critical value is approximately 2.101. Is the correlation statistically significant?
+3. What does "statistically significant" mean in this context?
+</div>
+
+<div className="example">
+**Example 10.2.5 – Sample Size and Significance**
+
+Explain why a correlation of $r = 0.30$ might be statistically significant with $n = 100$ but not with $n = 15$, even though the correlation coefficient is the same.
+</div>
+
+### Key Points – Interpreting Correlation Coefficients
+- Strength guidelines: $|r| < 0.20$ weak, $0.40$ – $0.59$ moderate, $\geq 0.80$ very strong (field-dependent)
+- Correlation describes association — it does not establish causation
+- A lurking variable may drive both variables simultaneously, producing correlation without direct causation
+- Always inspect the scatterplot — outliers can dramatically distort $r$
+- Statistical significance of $r$ depends on both the size of $r$ and the sample size $n$
+- A significant correlation with a large sample may still represent a practically unimportant relationship — always consider effect size alongside p-values

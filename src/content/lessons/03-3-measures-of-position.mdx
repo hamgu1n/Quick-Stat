@@ -1,0 +1,121 @@
+---
+title: "Measures of Position"
+unit: 2
+chapter: 3
+slug: "03-3-measures-of-position"
+---
+
+## Section 3.3 – Measures of Position and Outliers
+
+Knowing the center and spread of a dataset is helpful, but sometimes we want to know where a specific value falls *relative to the rest of the data*. Measures of position answer questions like: "Was a score of 78 good or bad on this exam?" or "Is this employee's salary unusually high?" The three most commonly used measures of position are **percentiles**, **quartiles**, and **z-scores**.
+
+### Percentiles and Quartiles
+
+A **percentile** tells you the percentage of observations that fall at or below a given value. For example, if your exam score is at the 80th percentile, it means you scored higher than roughly 80% of students who took the exam. Percentiles are especially common in standardized testing and pediatric growth charts.
+
+**Quartiles** divide a sorted dataset into four equal parts. The **first quartile** ($Q_1$) is the 25th percentile — 25% of the data falls below it. The **second quartile** ($Q_2$) is the median, or the 50th percentile. The **third quartile** ($Q_3$) is the 75th percentile — 75% of the data falls below it. Together, $Q_1$, $Q_2$, and $Q_3$ give a compact summary of where the bulk of the data lives, and they form the foundation of the five-number summary we will explore in the next section.
+
+{/* ```r
+set.seed(7)
+scores <- sort(as.integer(rnorm(20, mean = 75, sd = 10)))
+quantile(scores, probs = c(0.25, 0.50, 0.75))
+``` */}
+
+<div className="example">
+**Example 3.3.1 – Finding Quartiles**
+
+The following are the scores of 9 students on a statistics quiz, sorted in order:
+
+$$
+52, 58, 64, 70, 74, 80, 85, 91, 97
+$$
+
+Find $Q_1$, $Q_2$, and $Q_3$.
+</div>
+
+<div className="example">
+**Example 3.3.2 – Interpreting a Percentile**
+
+A student scores 88 on the SAT math section. The score report says this is the 72nd percentile.
+
+What does this mean in plain language? How many students out of 1,000 test-takers scored lower than this student?
+</div>
+
+### Z-Scores
+
+A **z-score** (also called a standard score) measures how many standard deviations a particular value is from the mean. The formula is:
+
+$$
+z = \frac{x - \bar{x}}{s}
+$$
+
+where $x$ is the individual value, $\bar{x}$ is the mean, and $s$ is the standard deviation.
+
+A z-score of 0 means the value is exactly at the mean. A z-score of 2 means the value is two standard deviations *above* the mean, and a z-score of -1.5 means the value is 1.5 standard deviations *below* the mean. Z-scores allow us to compare values from different distributions — for example, how does a score of 88 in one class compare to a score of 74 in another, if the two classes had different means and spreads?
+
+<div className="example">
+**Example 3.3.3 – Calculating a Z-Score**
+
+A student scored 82 on an exam. The class mean was 75 and the standard deviation was 7.
+
+Calculate the student's z-score and interpret it.
+</div>
+
+<div className="example">
+**Example 3.3.4 – Comparing Across Classes**
+
+In Ms. Rivera's class, the mean exam score is 70 with a standard deviation of 5. In Mr. Patel's class, the mean is 80 with a standard deviation of 10.
+
+- Student A scored 78 in Ms. Rivera's class.
+- Student B scored 92 in Mr. Patel's class.
+
+Who performed better relative to their class?
+</div>
+
+### Outlier Detection Using the IQR Rule
+
+An **outlier** is a value that is unusually far from the rest of the data. Outliers can arise from measurement errors, data entry mistakes, or genuinely unusual observations — and as we saw with the CEO example in the previous section, they can pull the mean dramatically. One formal way to identify outliers is the **IQR rule**.
+
+A value is considered a potential outlier if it falls below the **lower fence** or above the **upper fence**:
+
+$$
+\text{Lower Fence} = Q_1 - 1.5 \times \text{IQR}
+$$
+
+$$
+\text{Upper Fence} = Q_3 + 1.5 \times \text{IQR}
+$$
+
+Any observation outside these fences is flagged as a potential outlier. This rule does not mean the value should be removed — context always matters — but it gives us a consistent, objective starting point for investigation.
+
+{/* ```r
+data_outlier <- c(12, 14, 15, 16, 17, 18, 19, 20, 21, 55)
+Q1 <- quantile(data_outlier, 0.25)
+Q3 <- quantile(data_outlier, 0.75)
+IQR_val <- Q3 - Q1
+lower <- Q1 - 1.5 * IQR_val
+upper <- Q3 + 1.5 * IQR_val
+cat("Lower fence:", lower, "  Upper fence:", upper)
+``` */}
+
+<div className="example">
+**Example 3.3.5 – Applying the IQR Outlier Rule**
+
+A dataset of daily coffee sales (in cups) at a campus café over two weeks is:
+
+$$
+42, 45, 47, 48, 50, 51, 52, 53, 55, 57, 58, 60, 62, 103
+$$
+
+$Q_1 = 48.25$, $Q_3 = 58.25$, $\text{IQR} = 10$
+
+Calculate the upper and lower fences. Is the value 103 a flagged outlier?
+</div>
+
+### Key Points – Measures of Position
+- Percentiles describe where a value ranks relative to the rest of the distribution
+- Quartiles ($Q_1$, $Q_2$, $Q_3$) divide sorted data into four equal parts
+- Z-scores express how many standard deviations a value sits above or below the mean
+- Z-scores allow comparison across distributions with different means and spreads
+- The IQR rule flags potential outliers using fences set at $Q_1 - 1.5 \times \text{IQR}$ and $Q_3 + 1.5 \times \text{IQR}$
+- Flagged outliers should be investigated, not automatically discarded

@@ -1,0 +1,124 @@
+---
+title: "Confidence Intervals for Means and Proportions"
+unit: 4
+chapter: 7
+slug: "07-2-confidence-intervals"
+---
+
+## Section 7.2 – Confidence Intervals for Means and Proportions
+
+A point estimate tells us our best single guess for a population parameter. But a single number can't convey how certain or uncertain we are. A **confidence interval** solves this problem by providing a *range* of plausible values for the parameter, accompanied by a specified level of confidence.
+
+### What Is a Confidence Interval?
+
+A **confidence interval (CI)** is an interval of the form:
+
+$$
+\text{Point Estimate} \pm \text{Margin of Error}
+$$
+
+The **margin of error** quantifies how far the estimate might reasonably be from the true parameter. The width of the interval reflects our uncertainty — a narrower interval means a more precise estimate.
+
+A **95% confidence interval** means that if we were to repeat the sampling process many times and construct a confidence interval each time, approximately 95% of those intervals would contain the true population parameter. It does *not* mean there is a 95% probability that this particular interval contains the parameter — the parameter is fixed; the interval is what varies. This distinction is subtle but important.
+
+### Confidence Interval for a Population Mean (Known $\sigma$)
+
+When the population standard deviation $\sigma$ is known and the sample is large (or the population is normal), we use the **z-interval** for the mean:
+
+$$
+\bar{x} \pm z^* \cdot \frac{\sigma}{\sqrt{n}}
+$$
+
+Here $z^*$ is the **critical value** from the standard normal distribution corresponding to the desired confidence level. Common critical values:
+
+| Confidence Level | $z^*$ |
+|---|---|
+| 90% | 1.645 |
+| 95% | 1.960 |
+| 99% | 2.576 |
+
+<div className="example">
+**Example 7.2.1 – Constructing a z-Interval**
+
+A sample of 64 students has a mean study time of 3.2 hours per day. The population standard deviation is known to be 1.4 hours.
+
+Construct a 95% confidence interval for the true mean daily study time.
+</div>
+
+### Confidence Interval for a Population Mean (Unknown $\sigma$)
+
+In practice, $\sigma$ is almost never known — we estimate it using $s$. When the population standard deviation is unknown, we replace $z^*$ with $t^*$, a critical value from the **t-distribution** with $n - 1$ degrees of freedom:
+
+$$
+\bar{x} \pm t^* \cdot \frac{s}{\sqrt{n}}
+$$
+
+The t-distribution is bell-shaped and symmetric like the normal, but has heavier tails — reflecting the extra uncertainty introduced by estimating $\sigma$ with $s$. As $n$ increases, the t-distribution approaches the normal distribution. We will explore t-based inference in more detail in Section 8.2.
+
+<div className="example">
+**Example 7.2.2 – When to Use z vs. t**
+
+For each scenario, decide whether you would use a z-interval or a t-interval, and explain why:
+
+1. A sample of 40 employees, population standard deviation of salaries is known to be \$8,000.
+2. A sample of 15 patients, population standard deviation of recovery time is unknown.
+3. A sample of 200 adults, population standard deviation is unknown but $n$ is large.
+</div>
+
+### Confidence Interval for a Proportion
+
+To estimate a population proportion $p$, we use the sample proportion $\hat{p} = x/n$ (where $x$ is the count with the characteristic of interest). The confidence interval is:
+
+$$
+\hat{p} \pm z^* \cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$$
+
+The term $\sqrt{\hat{p}(1-\hat{p})/n}$ is the standard error of $\hat{p}$. This formula relies on the CLT and requires that both $n\hat{p} \geq 10$ and $n(1-\hat{p}) \geq 10$.
+
+{/* ```r
+# Simulate confidence interval coverage
+set.seed(30)
+true_p <- 0.4
+n <- 100
+results <- replicate(200, {
+  x <- rbinom(1, n, true_p)
+  phat <- x / n
+  se <- sqrt(phat * (1 - phat) / n)
+  c(phat - 1.96 * se, phat + 1.96 * se)
+})
+coverage <- mean(results[1, ] <= true_p & results[2, ] >= true_p)
+cat("Coverage:", coverage)
+``` */}
+
+<div className="example">
+**Example 7.2.3 – Confidence Interval for a Proportion**
+
+In a survey of 400 registered voters, 228 say they plan to vote in the upcoming election.
+
+Construct a 95% confidence interval for the true proportion of registered voters who plan to vote.
+</div>
+
+<div className="example">
+**Example 7.2.4 – Interpreting a Confidence Interval**
+
+A 95% confidence interval for the mean monthly rent in a city is (1,240 dollars, 1,380 dollars).
+
+1. Interpret this interval in a sentence a non-statistician would understand.
+2. Is the following statement correct? "There is a 95% probability that the true mean rent is between 1,240 and 1,380 dollars." Explain.
+</div>
+
+<div className="example">
+**Example 7.2.5 – Width and Sample Size**
+
+A researcher wants to estimate the mean daily caloric intake of adults with a margin of error of 50 calories at the 95% confidence level. The population standard deviation is known to be 300 calories.
+
+What minimum sample size is needed? *(Hint: set the margin of error equal to $z^* \cdot \sigma / \sqrt{n}$ and solve for $n$.)*
+</div>
+
+### Key Points – Confidence Intervals
+- A confidence interval provides a range of plausible values for a population parameter
+- Form: Point Estimate $\pm$ Margin of Error
+- The confidence level (e.g., 95%) describes the long-run proportion of intervals that capture the true parameter — not the probability for any single interval
+- Use the z-interval when $\sigma$ is known; use the t-interval when $\sigma$ is unknown (replacing $z^*$ with $t^*$)
+- The confidence interval for a proportion uses $\hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n}$; requires $n\hat{p} \geq 10$ and $n(1-\hat{p}) \geq 10$
+- Wider intervals reflect more uncertainty; narrower intervals require larger samples

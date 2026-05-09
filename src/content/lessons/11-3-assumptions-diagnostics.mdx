@@ -1,0 +1,114 @@
+---
+title: "Assumptions and Diagnostics"
+unit: 5
+chapter: 11
+slug: "11-3-assumptions-diagnostics"
+---
+
+## Section 11.3 – Assumptions and Diagnostics
+
+A regression line can be calculated for any two variables, but that doesn't mean the results will be meaningful. Like many statistical procedures, simple linear regression rests on a set of assumptions. When those assumptions are violated, the estimates of the slope and intercept may be unreliable, predictions may be poor, and p-values and confidence intervals may be misleading. In this section we identify the key assumptions and learn how to check them using **diagnostic plots**.
+
+### The Assumptions of Simple Linear Regression
+
+The four main assumptions are often summarized by the acronym **LINE**:
+
+**L – Linearity**: The true relationship between $X$ and $Y$ is linear. If the real relationship is curved, a straight line will systematically over- or under-predict in certain regions.
+
+**I – Independence**: The observations are independent of one another. This is typically satisfied by random sampling. Time series data or clustered data often violate this assumption.
+
+**N – Normality**: The residuals (errors) are normally distributed. This allows us to construct valid confidence intervals and hypothesis tests for the slope. With large samples, this assumption matters less due to the CLT.
+
+**E – Equal variance** (homoscedasticity): The spread of the residuals is constant across all values of $X$. When the spread increases or decreases systematically (called **heteroscedasticity**), standard errors and p-values may be unreliable.
+
+### Checking Assumptions with Residual Plots
+
+The most useful diagnostic tool is the **residual plot** — a scatterplot of the residuals ($e_i = y_i - \hat{y}_i$) on the y-axis versus the fitted values ($\hat{y}_i$) on the x-axis.
+
+A well-behaved residual plot shows:
+- Points scattered randomly around the horizontal line at zero
+- No visible pattern, curve, or trend
+- Roughly constant vertical spread across all fitted values
+
+If the residual plot shows a curve, the linearity assumption is likely violated. If the spread fans out as $\hat{y}$ increases (a "megaphone" shape), the equal-variance assumption is likely violated.
+
+A **normal Q-Q plot** of the residuals checks the normality assumption. If the residuals are normally distributed, the points will fall approximately along a straight diagonal line.
+
+{/* ```r
+set.seed(50)
+x <- runif(40, 1, 10)
+y <- 3 + 2 * x + rnorm(40, 0, 2)
+fit <- lm(y ~ x)
+
+par(mfrow = c(1, 2))
+plot(fit$fitted.values, fit$residuals,
+     main = "Residuals vs. Fitted",
+     xlab = "Fitted Values", ylab = "Residuals",
+     pch = 19, col = "#3b5b8a")
+abline(h = 0, lty = 2, col = "gray")
+
+qqnorm(fit$residuals, main = "Normal Q-Q Plot", col = "#3b5b8a", pch = 19)
+qqline(fit$residuals, col = "#1f3c88")
+``` */}
+
+<div className="example">
+**Example 11.3.1 – Interpreting a Residual Plot**
+
+A residual plot for a regression of house price on square footage shows the residuals spreading out noticeably as the fitted values increase — small houses have tightly clustered residuals, but large houses have very spread-out residuals.
+
+Which assumption is being violated? What does this mean for the reliability of the regression output?
+</div>
+
+<div className="example">
+**Example 11.3.2 – Detecting Nonlinearity**
+
+A researcher fits a linear regression to data on plant growth (y, in cm) and days since planting (x). The residual plot shows a curved pattern: residuals are positive at low and high fitted values, but negative in the middle.
+
+What does this indicate? Would you trust predictions from this linear model?
+</div>
+
+### Influential Points and Leverage
+
+We discussed outliers in the context of scatterplots back in Section 4.4. In regression, certain outliers have an outsized effect on the fitted line. An observation is said to have **high leverage** if its $x$-value is unusually far from $\bar{x}$ — it sits at the edge of the data and has the potential to pull the regression line in its direction. A point is **influential** if removing it substantially changes the estimated slope.
+
+Not every high-leverage point is influential (it might happen to lie close to the overall trend), and not every outlier is high-leverage (it might have an average $x$-value but an unusual $y$-value). Both types deserve attention before finalizing a model.
+
+<div className="example">
+**Example 11.3.3 – Influential Points**
+
+In a study of advertising spend ($x$) and monthly sales ($y$) for 20 small businesses, all companies spend between 500 and 5,000 dollars per month on advertising. One company spends 25,000 dollars and has unusually high sales.
+
+Is this point likely to be high leverage? Is it likely to be influential? What should the researcher consider before including this point in the regression?
+</div>
+
+<div className="example">
+**Example 11.3.4 – Full Diagnostic Checklist**
+
+A regression model is built to predict a student's GPA (y) from hours spent studying per week (x). The researcher provides the following information:
+
+- The residual plot shows a roughly random scatter around zero with no visible pattern.
+- The Q-Q plot of residuals shows points following the diagonal line closely.
+- The sample consists of 45 students selected randomly from the student roster.
+- The standard deviations of the residuals at low, medium, and high fitted values are approximately 0.3, 0.31, and 0.29.
+
+Evaluate each of the four LINE assumptions for this model. Is the linear regression model appropriate?
+</div>
+
+<div className="example">
+**Example 11.3.5 – What to Do When Assumptions Fail**
+
+For each violation, describe a potential remedy:
+
+1. The residual plot shows a curved pattern (nonlinearity).
+2. The residual plot shows a megaphone shape (heteroscedasticity).
+3. The Q-Q plot shows heavy tails in the residuals (non-normality with a small sample).
+4. Observations are clustered within classrooms, violating independence.
+</div>
+
+### Key Points – Assumptions and Diagnostics
+- The LINE assumptions for regression: Linearity, Independence, Normality of residuals, Equal variance (homoscedasticity)
+- Residual plots (residuals vs. fitted values) are the primary tool for checking linearity and equal variance
+- A good residual plot shows random scatter around zero with constant spread
+- The normal Q-Q plot checks the normality of residuals
+- High-leverage points have extreme $x$-values; influential points substantially change the estimated slope when removed
+- Always check assumptions before trusting regression output — a line can be fit to any data, but that doesn't make it appropriate

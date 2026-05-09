@@ -1,0 +1,706 @@
+---
+title: "Plainly Introductory Statistics"
+author: "Haytham Rida Hlioui"
+output:
+  html_document:
+    css: Textbook\academia.css
+---
+
+<!-- cSpell:enable -->
+
+```{r include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+
+theme_textbook <- function(base_size = 12) {
+  theme_minimal(base_size = base_size, base_family = "serif") %+replace%
+    theme(
+      plot.title = element_text(
+        family = "serif",
+        color = "#003366",
+        face = "bold",
+        size = base_size + 4,
+        hjust = 0.5,
+        margin = margin(b = 15)
+      ),
+      axis.title = element_text(color = "#003366", face = "bold"),
+      axis.text = element_text(color = "#333333"),
+      panel.border = element_rect(fill = NA, color = "#cccccc", linewidth = 0.8),
+      panel.background = element_rect(fill = "white"),
+      panel.grid.major = element_line(color = "#f0f0f0", linewidth = 0.4),
+      panel.grid.minor = element_blank(),
+      plot.margin = margin(15, 15, 15, 15)
+    )
+}
+```
+
+# Unit 1 – Data Collection and Experimental Design
+
+## Chapter 1 – Sampling Methods
+
+### Section 1.1 – Populations and Samples
+
+In statistics we are often trying to answer questions about a population. You can think of a population as the target demographic we are interested in. Examples of population include: college students, employees at a company, or children ages 8–12. One of the most crucial aspects of statistics stems from our inability to examine a whole population of thousands of employees, millions of students, or over a billion children. Instead we sample populations, or take a small portion of the population to examine and draw conclusions about.
+
+
+### Section 1.2 - Biased Sampling
+
+Samples can be categorized as **biased** and **unbiased**. A biased sample is a sample where one portion of a population is favored or weighted more than others. Two common examples of biased samples include the **convenience sample** and the **voluntary response sample**. A convenience sample describes a sample of the easiest individuals to obtain, such as your friends, your coworkers, or the first 10 people to walk through a door. As you may notice these samples are by no means random and often contain large quantities of similar people.
+
+*Go more in depth*
+
+A voluntary response sample only includes individuals who choose to include themselves in the study. This can include product surveys or reviews, RateMyProfessor comments, or surveys by companies to receive in store credit. Like a convenience sample, this can often lead to large numbers of the same types of people, for instance more outgoing people, individuals in need of class credits, or people motivated by quick cash.
+
+::: {.example}
+**Example 1.2.1 – Convenience Sample**
+
+Suppose a researcher wants to study students' favorite ice cream flavors. She surveys the first 20 students she meets outside the cafeteria.
+
+Is this a biased or unbiased sample?
+:::
+
+::: {.example}
+**Example 1.2.2 – Voluntary Response Sample**
+
+An online survey asks people to rate a new smartphone model. Only those who are motivated to respond will submit their opinions.
+
+Explain why this may lead to a biased sample.
+:::
+
+### Section 1.3 – Unbiased Sampling
+
+In statistics, a good sample is measured by how representative it is of the general population we are examining. These are called **unbiased samples** and include: **stratified samples**, **systematic samples**, **cluster samples**, and **simple random samples**.
+
+The most common sampling technique is the **simple random sample (SRS)**. An SRS consists of randomly selecting members of a population for your sample, as if picking names out of a hat.
+
+Unlike a simple random sample, that does not require any framework, a **systematic sample** requires a predetermined method for sampling. Examples of a systematic sample include sampling every third person down a list of names, every fifth customer to enter a store, or every tenth house on a street. To reduce bias, the starting point of a sample is randomized.
+
+Another example of an unbiased sample is a **stratified sample**. A stratified sample aims to reflect the demographic structure of a population. For instance, a researcher may want to explore the sleeping habits of students at Roanoke College. Rather than simply selecting 50 students at random, the researcher may emphasize the importance of grade level in the sample. Using previously known demographic breakdowns, the researcher can randomly select a proportional number of students from each grade level.
+
+Similar to stratified sampling, **cluster sampling** divides populations into groups called clusters. However, unlike stratified samples, cluster samples randomly select groups rather than individual observations. For instance, we can divide Roanoke College into clusters using dorm buildings. We can then select our sample by selecting whole dorm rooms, or rather all the students who live in a dorm building. We often use cluster sampling when our population is extremely large or spread out.
+
+*Conclusion*
+
+::: {.example}
+**Example 1.3.1 – Simple Random Sample**
+
+A teacher wants to randomly select 5 students out of a class of 30 for a quiz.
+
+Describe how she could perform a simple random sample.
+:::
+
+::: {.example}
+**Example 1.3.2 – Systematic Sample**
+
+A librarian decides to check every 10th book on the shelf for damage.
+
+Explain why this is a systematic sample.
+:::
+
+::: {.example}
+**Example 1.3.3 – Stratified Sample**
+
+A university wants to survey students about campus dining. There are 100 students in freshman year, 80 in sophomore year, 60 in junior year, and 40 in senior year.
+
+If the researcher randomly selects 10% of students from each class, explain why this is a stratified sample.
+:::
+
+::: {.example}
+**Example 1.3.4 – Cluster Sample**
+
+A city has 50 schools. To study student nutrition, the researcher randomly selects 5 schools and surveys all students in those schools.
+
+Identify why this is a cluster sample.
+:::
+
+::: {.example}
+**Example 1.4.1 – Pick the Sampling Method**
+
+For each scenario, identify the type of sampling method used (e.g., simple random, stratified, cluster, systematic, convenience):
+
+1. A researcher surveys every 10th person who enters a library to ask about their reading habits.
+2. A university divides students by major and randomly selects 10 students from each major to complete a survey.
+3. A health study randomly selects 5 out of 20 classrooms in a school and surveys all students in the selected classrooms.
+4. A pollster surveys friends and family about their favorite TV shows.
+5. A company randomly selects 50 employees from its full employee roster for a survey on job satisfaction.
+6. A researcher sends an online survey and collects responses only from participants who choose to respond.
+
+:::
+
+
+::: {.example}
+**Example 1.4.2 – Biased or Unbiased Sampling**
+
+Determine if the following samples are biased or unbiased:
+1. A survey conducted at a coffee shop asking about students’ caffeine consumption.
+2. A researcher randomly selects 20 students from a school roster to ask about their favorite subject.
+3. Posting an online survey and letting anyone choose to respond about their study habits.
+:::
+
+## Chapter 2 – The Design of Experiments
+
+*Terminology - treatments, response, causation, association*
+
+### Section 2.1 – Observational vs Experimental Studies
+
+In statistics, we collect data through two methods of study. You are most likely familiar with experimental studies like your science experiments, where we explore the effects of a treatment (amount of baking soda) on some kind of response (the strength of a volcanic eruption). Experimental studies are extremely valuable as they allow us to determine cause-and-effect relationships between two variables of interest by controlling conditions.
+
+Unlike experimental studies that can show direct cause-and-effect relationships, **observational studies** focus on associations. An observational study is when researchers observe individuals and measure variables without any influence or direct change in a situation. They simply record findings as they happen. While less powerful in that they cannot establish causation, observational studies thrive when experimental studies are unethical or too large a scale to conduct.
+
+For example, we may want to study the relationship between sleep and academic performance. It would be unethical to tell students to deprive themselves of sleep for days on end. Instead we can survey students on their sleep each day and compare it to their grades over time, without ever directly changing a student's habits.
+
+::: {.example}
+**Example 2.1.1 – Observational vs Experimental Study**
+
+For each scenario, identify whether it is an observational study or an experimental study:
+
+1. A researcher records the sleep habits and grades of high school students without giving any instructions or treatments.
+
+2. A scientist tests the effect of a new fertilizer on plant growth by randomly assigning some plants to receive the fertilizer and some to receive none.
+
+3. A health researcher monitors the diet and cholesterol levels of adults for one year without changing what they eat.
+
+4. A psychologist gives one group of participants a new memory training program and compares their performance to a group that does not receive the program.
+
+:::
+
+### Section 2.2 – Randomization, Control, and Blinding
+
+When designing experiments, it's crucial we adhere to three major principles: **randomization**, **control**, and **blinding**.
+
+**Randomization** is the process of randomly assigning participants or subjects into treatment groups. Randomization of treatment groups ensures that we avoid hidden biases from affecting our results. Additionally, it allows us to balance unknown variables and prevent systematic bias.
+
+Suppose we were interested in testing the effects of a new pain medication. Our sample consists of 50 individuals, 25 males and 25 females. Suppose we chose to split our treatments so that the 25 males received the pain medication and the 25 females received the placebo. For starters, we would lose any information on the effects of the medication on women. Moreover, we would have no real information on the effects it has on men as we have no benchmark to relate to. Instead we should have randomly assigned our treatment groups.
+
+**Control** refers to keeping other variables constant throughout an experiment. This way we can trust that any observed difference is truly from the change in treatment. This is often why experiments contain a **control group**, which does not receive the treatment.
+
+**Blinding** refers to removing a participant's knowledge of their own treatment group. For example, in our earlier example on pain medication: after randomly assigning our treatment groups, if we were to tell our participants if they were given the medication or a placebo, we would surely see a difference in their reactions and survey answers.
+
+The above example is an instance of a **single-blind study**, in which participants are not told of the treatment they are receiving. A **double-blind study** describes when neither the participant nor the researcher is aware of a participant's treatment group. Blinding helps prevent the participant and/or researchers' expectations from influencing the results.
+
+Together, randomization, control, and blinding help to strengthen the validity of an experiment by reducing **confounding** (outside and unwanted) factors.
+
+
+
+::: {.example}
+**Example 2.2.1 – Randomization, Control, and Blinding**
+
+For each study, identify which principles are being applied (randomization, control, blinding, or multiple):
+
+1. In a clinical trial, patients are randomly assigned to receive either a new drug or a placebo, and neither the patients nor the doctors know who receives which treatment.
+2. A taste-test experiment where participants try two brands of juice, but the order is kept the same for everyone.
+3. A medication study where one group receives the drug, while the other group receives no treatment, and researchers record all outcomes.
+4. Participants are randomly assigned to different exercise programs, and all other factors (diet, sleep, environment) are kept the same.
+
+:::
+
+::: {.example}
+**Example 2.2.2 – Identifying a Broken Principle**
+
+Read the scenario and determine which principle of experimental design is being violated.
+
+A researcher is testing a new pain relief drug. The first 25 patients who enter the clinic are given the new drug, and the next 25 patients receive a placebo. The researcher also tells the patients which treatment they are receiving.
+
+Which principle(s) are broken?
+:::
+
+
+# Unit 2 – Descriptive Statistics and Graphical Methods
+
+Data is rarely useful in its raw form. A list of thousands of observations tells us very little about the behavior of a variable. For instance,
+below is a list of students grades on a final exam in an introductory psychology course. How would you explain what is important about this data?
+
+```{r, echo=FALSE}
+set.seed(0)
+as.integer(rnorm(25, mean = 72, sd = 8))
+```
+
+
+Descriptive statistics allow us to "describe" or summarize data in a meaningful way. Often we summarize data by describing the *center* and *spread* of a dataset which we will explore throughout this chapter.
+
+### Section 3.1 – Measures of Central Tendency
+
+The most common summary of a dataset is describing its *center*. The most useful measures of central tendency are the *mean*, *median*, and *mode*.
+Each provides different information, and while some are more commonly used than others, no single measure is universally best.
+
+#### The Mean
+
+The mean, often called the average, is the sum of all observations, divided by the number of observations. We often notate the mean with $\bar{x}$, pronounced "x-bar". You may see the formula for the mean written as:
+
+\[
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
+\]
+
+::: {.example}
+**Example 3.1.1**
+Calculate the mean of the following list of numbers.
+
+$[1, 5, 4, 9, 3, 5, 4, 6]$
+:::
+
+::: {.example}
+**Example 3.1.2**
+What do you expect the mean of the following numbers to be? Calculate the mean and compare.
+
+
+$[0, 0, 0, 0, 0]$
+:::
+
+::: {.example}
+**Example 3.1.3**
+What do you expect the mean of the following numbers to be? Calculate the mean and compare.
+
+$[-20, -10, -5 , 1 , 12]$
+:::
+
+We can visualize the mean, and its drawbacks using a histogram. Consider the graph below where 50 employees were sampled at a company to gauge the average gross-income of employees
+(*Figure 3.1.1*). After calculating the mean we found that the average employee makes roughly $130,000 a year.
+
+```{r echo=FALSE}
+set.seed(122)
+df <- as.integer(rnorm(25, mean = 100000, sd = 15000))
+df <- data.frame(income = df)
+
+ggplot(df, aes(x = income)) +
+  geom_histogram(
+    bins = 8,
+    fill = "#dde6f2",
+    color = "#3b5b8a",
+    alpha = 0.9,
+    linewidth = 0.5
+  ) +
+  scale_x_continuous(labels = scales::comma) +
+  labs(
+    x = "Gross Income of Employees",
+    y = "Frequency",
+    caption = "Figure 3.1.1: Income distribution"
+  ) +
+  theme_textbook()
+```
+
+We then added the CEO of the company as a data point, who has an income of \$10,000,000 a year. This single outlier dramatically changes the distribution, as shown in Figure 3.1.2 below. This drastic change in the distribution is reflected in the new mean, \$479144.7 which we know from earlier is not an accurate representation of the general population.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+df.outlier <- data.frame(income = c(df$income, 10000000))
+
+ggplot(df.outlier, aes(x = income)) +
+  geom_histogram(
+    bins = 12,  # Reduced from 20
+    fill = "#dde6f2",
+    color = "#3b5b8a",
+    alpha = 0.9,
+    linewidth = 0.5
+  ) +
+  labs(
+    x = "Gross Income of Employees Including CEO",
+    y = "Frequency",
+    caption = "Figure 3.1.2: Income Distribution with Outlier"
+  ) +
+  theme_textbook()
+```
+
+This is a large reason why we see in datasets with known outliers we use measures that are
+more robust to data *skewing*, which we explore later in this chapter. All in all, despite this limitation,
+the mean is extremely useful and easy to calculate it.
+
+#### The Median
+
+The median is the middle value of an ordered list. For example the list $[1, 2, 4, 5, 6]$ has a median of $4$. In the case of an even number of entries the median is the average of the two center values.
+
+Below is a list of 5 students study hours:
+
+```{r, echo=FALSE}
+set.seed(1)
+sort(as.integer(rnorm(5, mean = 3, sd = 1)))
+```
+
+The median of the dataset is 3. After sampling another student we now have:
+
+```{r, echo=FALSE}
+set.seed(1)
+sort(as.integer(rnorm(6, mean = 3, sd = 1)))
+```
+
+Since the list now has an even number of data points the median of the dataset is now the average of the two center values, 2.5.
+
+
+```{r echo=FALSE}
+set.seed(1)
+data <- data.frame(
+  scores = rnorm(50, mean = 75, sd = 10)
+)
+
+ggplot(data, aes(x = "", y = scores)) +
+  geom_boxplot(fill = "lightgray", width = 0.3) +
+  stat_summary(
+    fun = median,
+    geom = "point",
+    size = 4
+  ) +
+  labs(
+    title = "Exam Scores",
+    subtitle = "Median highlighted in the boxplot",
+    y = "Score",
+    x = ""
+  ) +
+  theme_textbook()
+
+```
+
+Unlike the mean, who is vulnerable to outliers, the median is considered *robust* against outliers. For example, is a dataset of student attendance over a 2 weeks in a computer science course.
+
+```{r, echo=FALSE}
+set.seed(2)
+sort(c(c(0, 0),as.integer(rnorm(8, mean = 25, sd = 1))))
+```
+
+Comparing the mean and median of the above dataset, we find that the mean is 19.6, while the median is 24. We can see that the mean was "pulled down" by the the two days where 0 students attended the class due to a blizzard. As we will later see, outliers are not necessarily insignificant but can greatly shift the descriptive statistics of a dataset.
+
+The median does have its downsides however, it requires that your list be sorted which can be tedious by hand and computationally tasking for larger datasets.
+
+::: {.example}
+**Example 3.1.4**
+
+A teacher recorded the number of books read by each student in a reading club:
+
+\[
+2, 3, 5, 6, 8
+\]
+
+Find the median number of books read.
+:::
+
+::: {.example}
+**Example 3.1.5**
+
+The following are the ages of participants in a workshop:
+
+\[
+34, 28, 22, 30, 25
+\]
+
+Find the median age.
+:::
+
+::: {.example}
+**Example 3.1.6**
+
+The scores of 6 students on a quiz are:
+
+\[
+12, 18, 15, 20, 10, 14
+\]
+
+Find the median score.
+:::
+
+#### The Mode
+
+The mode is the most frequent value in a list. A dataset may have more than one mode if multiple values have the same frequency, or no mode if all values appear equally. The mode is especially useful for **qualitative data**.
+
+
+::: {.example}
+**Example 3.1.7**
+
+The number of pets owned by 10 students is:
+
+\[
+1, 2, 2, 3, 4, 2, 1, 3, 3, 3
+\]
+
+Find the mode.
+:::
+
+::: {.example}
+**Example 3.1.8**
+
+The following are favorite ice cream flavors chosen by 12 students, coded numerically:
+
+\[
+1, 2, 2, 3, 3, 4, 1, 2, 3, 1, 4, 1
+\]
+
+Find the mode(s).
+:::
+
+::: {.example}
+**Example 3.1.9**
+
+A survey of 15 students’ preferred study time produced these results:
+
+\[
+\text{Morning}, \text{Evening}, \text{Evening}, \text{Afternoon}, \text{Morning}, \text{Evening}, \text{Morning}, \text{Morning}, \text{Afternoon},
+\]
+\[\text{Evening}, \text{Morning}, \text{Evening}, \text{Morning}, \text{Evening}, \text{Evening}
+\]
+
+Find the mode of preferred study time.
+:::
+
+#### Key Points – Measures of Central Tendency
+- Mean: includes all data but sensitive to outliers
+- Median: middle value, robust against outliers
+- Mode: most frequent value, useful for qualitative data
+- Choice depends on data type and presence of outliers
+
+### Section 3.2 – Measures of Dispersion
+
+While measures of central tendency describe the *center* of a dataset, they do not tell us how spread out the data are. Two datasets can have the same mean or median but look completely different in terms of variability.
+
+Measures of dispersion (also called measures of variability or spread) describe how much the observations differ from one another and from the center.
+
+The most commonly used measures of dispersion are:
+
+- **Range**
+- **Variance**
+- **Standard Deviation**
+- **Interquartile Range (IQR)**
+
+---
+
+#### Range
+
+The **range** is the simplest measure of spread. It is calculated as:
+
+\[
+\text{Range} = \text{Maximum} - \text{Minimum}
+\]
+
+::: {.example}
+**Example 3.2.1**
+
+Consider the dataset:
+
+\[
+4, 7, 10, 15, 18
+\]
+
+Minimum = 4
+Maximum = 18
+
+\[
+\text{Range} = 18 - 4 = 14
+\]
+:::
+
+The range tells us the total width of the data. However, it depends only on two values. A single outlier can drastically change the range. Below is a dotplot generated by a dataset exploring a students total weekly screen time over the span of two months.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+data_range <- c(0, 6, 7, 10, 15, 13, 12, 8, 30)
+
+ggplot(data.frame(x = data_range), aes(x = x)) +
+  geom_dotplot(dotsize = 1.2, fill = "#dde6f2", color = "#3b5b8a") +
+  labs(
+    title = "Figure 3.2.1: Visualizing the Range",
+    x = "Values",
+    y = ""
+  ) +
+  theme_textbook()
+```
+
+Looking at the graphic we can see that with a maximum of 30 hours and minimum of 0 hours, the data has a range of 30 hours. However, as we can see from the true distribution of the data that does not describe the dense cluster of hours around 10. This is why we rarely use the range for general discriptive statistics as it tells us very little about the distribution of a dataset.
+
+---
+
+#### Variance and Standard Deviation
+
+The **variance** (often denoted as $\sigma^2$) measures how far each observation is from the mean, on average. As we'll later discuss we do not know the exact variance of any population. As such we calculate the sample variance (denoted as $s^2$) of our dataset using the following formula:
+
+\[
+s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
+\]
+
+Here $n$ is the total number of observations,$x_i$ is each observation value, and $\bar{x}$ is the mean of the dataset.
+
+::: {.example}
+**Example 3.2.2**
+
+Consider the dataset:
+
+\[
+5, 7, 9
+\]
+
+Step 1: Compute the mean.
+
+\[
+\bar{x} = \frac{5 + 7 + 9}{3} = 7
+\]
+
+Step 2: Compute deviations from the mean.
+
+\[
+(5-7)^2 = 4
+\]
+\[
+(7-7)^2 = 0
+\]
+\[
+(9-7)^2 = 4
+\]
+
+Step 3: Divide by \( n - 1 = 2 \)
+
+\[
+s^2 = \frac{4 + 0 + 4}{2} = 4
+\]
+
+Variance = 4
+:::
+
+Variance is always nonnegative, but its units are squared, which can make interpretation less intuitive. As such,
+we may switch to *standard deviation* in certain contexts. The standard deviation is the square root of the variance.
+
+\[
+s = \sqrt{s^2}
+\]
+
+For the previous example:
+
+\[
+s = \sqrt{4} = 2
+\]
+
+Unlike variance, the standard deviation is expressed in the same units as the original data.
+
+A small standard deviation means the data are tightly clustered around the mean.
+A large standard deviation means the data are more spread out.
+
+Below we compare two datasets with the same mean but different spread.
+
+```{r echo=FALSE}
+set.seed(3)
+
+data1 <- rnorm(100, mean = 50, sd = 3)
+data2 <- rnorm(100, mean = 50, sd = 12)
+
+df1 <- data.frame(values = data1, group = "Small Spread")
+df2 <- data.frame(values = data2, group = "Large Spread")
+
+df_combined <- rbind(df1, df2)
+
+ggplot(df_combined, aes(x = values)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 15,
+                 fill = "#dde6f2",
+                 color = "#3b5b8a") +
+  geom_density(color = "#1f3c88", linewidth = 1) +
+  facet_wrap(~group) +
+  labs(
+    title = "Figure 3.2.2: Comparing Standard Deviations",
+    x = "Values",
+    y = "Density"
+  ) +
+  theme_textbook()
+
+
+```
+
+Notice that both distributions are centered near 50, but the first has a much larger spread. Variance and standard deviation are the most used measures of spread to describe a dataset as they tie directly towards normal distributions and are generally robust to outliers.
+
+---
+
+#### Interquartile Range (IQR)
+
+The **interquartile range (IQR)** measures the spread of the middle 50% of the data.
+
+\[
+\text{IQR} = Q_3 - Q_1
+\]
+
+Because the IQR ignores the lowest 25% and highest 25% of the data, it is considered **robust** against outliers.
+
+::: {.example}
+**Example 3.2.3**
+
+Consider the ordered dataset:
+
+\[
+2, 4, 6, 8, 10, 12, 14, 30
+\]
+
+\( Q_1 = 5 \)
+\( Q_3 = 13 \)
+
+\[
+\text{IQR} = 13 - 5 = 8
+\]
+:::
+
+The IQR focuses only on the middle portion of the data.
+
+```{r echo=FALSE}
+data_iqr <- c(2, 4, 6, 8, 10, 12, 14, 30)
+
+ggplot(data.frame(x = "", y = data_iqr), aes(x = x, y = y)) +
+  geom_boxplot(fill = "#dde6f2", color = "#3b5b8a") +
+  coord_flip() +
+  labs(
+    title = "Figure 3.2.3: Boxplot and the IQR",
+    x = "Values",
+    y = ""
+  ) +
+  theme_textbook()
+
+```
+
+The box in the boxplot represents the interquartile range. The line inside the box represents the median.
+
+---
+
+## Key Points – Measures of Dispersion
+
+- Range: simplest measure, sensitive to outliers
+- Variance: average squared deviation from the mean
+- Standard deviation: square root of variance, same units as data
+- IQR: spread of the middle 50%, robust to outliers
+
+Describing a dataset requires both a measure of center and a measure of spread. Together, they provide a much clearer picture of how the data behave.
+
+### Section 3.3 – Measures of Position and Outliers
+### Section 3.4 – Summary Statistics
+
+
+## Chapter 4 – Graphical Methods
+### Section 4.1 – Bar Charts and Pie Charts
+### Section 4.2 – Histograms
+### Section 4.3 – Boxplots and Stem-and-Leaf
+### Section 4.4 – Scatterplots
+
+# Unit 3 – Probability and the Central Limit Theorem
+
+## Chapter 5 – Elementary Probability
+### Section 5.1 – Probability Rules
+### Section 5.2 – Conditional Probability
+### Section 5.3 – Counting Techniques
+
+## Chapter 6 – The Central Limit Theorem
+### Section 6.1 – Sampling Distributions
+### Section 6.2 – Approximations Using CLT
+
+# Unit 4 – Statistical Inference
+
+## Chapter 7 – Estimation and Confidence Intervals
+### Section 7.1 – Point Estimates
+### Section 7.2 – Confidence Intervals for Means and Proportions
+
+## Chapter 8 – Hypothesis Testing
+### Section 8.1 – z-tests
+### Section 8.2 – t-tests
+### Section 8.3 – Chi-square Tests
+
+## Chapter 9 – Analysis of Variance (ANOVA)
+### Section 9.1 – One-way ANOVA
+### Section 9.2 – Interpreting Results
+
+# Unit 5 – Correlation and Regression
+
+## Chapter 10 – Correlation
+### Section 10.1 – Pearson and Spearman Correlation
+### Section 10.2 – Interpreting Correlation Coefficients
+
+## Chapter 11 – Simple Linear Regression
+### Section 11.1 – Least Squares Method
+### Section 11.2 – Coefficient of Determination
+### Section 11.3 – Assumptions and Diagnostics

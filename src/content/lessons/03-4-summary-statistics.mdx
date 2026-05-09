@@ -1,0 +1,105 @@
+---
+title: "Summary Statistics"
+unit: 2
+chapter: 3
+slug: "03-4-summary-statistics"
+---
+
+## Section 3.4 – Summary Statistics
+
+By now we have explored the center of a dataset through the mean, median, and mode, and the spread through the range, variance, standard deviation, and IQR. In practice, we rarely report just one of these values in isolation. Instead, we combine them into a concise summary that gives a balanced picture of the data. This section introduces the **five-number summary** and discusses how center and spread work together to describe a distribution.
+
+### The Five-Number Summary
+
+The **five-number summary** is exactly what it sounds like: five values that together capture the overall shape of a dataset. They are:
+
+1. The **minimum** — the smallest observation
+2. The **first quartile** ($Q_1$) — 25th percentile
+3. The **median** ($Q_2$) — 50th percentile
+4. The **third quartile** ($Q_3$) — 75th percentile
+5. The **maximum** — the largest observation
+
+Together, these five numbers tell us where the data starts and ends, where the middle half lives, and where the center falls. As we will see in Chapter 4, the five-number summary is the foundation of the **boxplot**, one of the most useful graphical tools in descriptive statistics.
+
+{/* ```r
+set.seed(5)
+exam_scores <- as.integer(rnorm(30, mean = 78, sd = 12))
+summary(exam_scores)
+``` */}
+
+<div className="example">
+**Example 3.4.1 – Computing the Five-Number Summary**
+
+The following are the heights (in inches) of 11 players on a basketball team:
+
+$$
+66, 68, 70, 71, 72, 74, 75, 76, 78, 80, 84
+$$
+
+Find the five-number summary.
+</div>
+
+<div className="example">
+**Example 3.4.2 – Reading a Five-Number Summary**
+
+A researcher reports the following five-number summary for the daily number of steps walked by a group of office workers:
+
+- Minimum: 1,200
+- $Q_1$: 4,500
+- Median: 7,100
+- $Q_3$: 9,800
+- Maximum: 18,400
+
+What does this tell us about the distribution? Is the data symmetric or skewed?
+</div>
+
+### Combining Center and Spread
+
+Reporting only a measure of center can be deeply misleading. Consider two classes that both have a mean exam score of 75. In the first class, every student scored between 70 and 80 — the scores are tightly packed. In the second class, scores ranged from 30 to 100 — wildly spread out. The mean alone cannot distinguish these two situations; you also need the spread.
+
+The most common pairings in practice are:
+- **Mean** with **standard deviation**: best for symmetric distributions without strong outliers
+- **Median** with **IQR**: best when the data are skewed or when outliers are present
+
+When a distribution is **symmetric** (roughly mirror-image on both sides), the mean and median will be close to each other, and the standard deviation provides a natural description of spread. When a distribution is **skewed** — pulled in one direction by a long tail — the mean is dragged toward that tail while the median stays closer to the bulk of the data. In that case, the median and IQR paint a more honest picture.
+
+<div className="example">
+**Example 3.4.3 – Choosing the Right Pair**
+
+For each dataset, decide whether you would report the mean + standard deviation or the median + IQR, and explain why.
+
+1. The salaries of 200 employees at a tech company, including a handful of executives earning several million dollars per year.
+2. The quiz scores of a class of 25 students on a 10-point quiz, where most students scored between 7 and 9.
+3. The number of hours per week spent on social media by college students, with a few students reporting 60+ hours per week.
+</div>
+
+<div className="example">
+**Example 3.4.4 – Symmetric vs. Skewed**
+
+Dataset A has the following five-number summary: Min = 40, $Q_1$ = 55, Median = 60, $Q_3$ = 65, Max = 80. The mean is 59.
+
+Dataset B has: Min = 10, $Q_1$ = 55, Median = 62, $Q_3$ = 68, Max = 200. The mean is 74.
+
+For each dataset, identify whether the distribution appears symmetric or skewed, and explain which pair of summary statistics you would report.
+</div>
+
+<div className="example">
+**Example 3.4.5 – Full Summary Report**
+
+Below are the monthly electric bills (in dollars) for 12 households in a neighborhood:
+
+$$
+85, 90, 92, 95, 98, 100, 105, 108, 110, 115, 120, 210
+$$
+
+1. Calculate the mean and standard deviation.
+2. Find the five-number summary.
+3. Does an outlier appear to be present? If so, which measure of center and spread would you prefer to report?
+</div>
+
+### Key Points – Summary Statistics
+- The five-number summary (minimum, $Q_1$, median, $Q_3$, maximum) provides a compact description of a dataset's shape
+- Mean and standard deviation work best together for symmetric distributions without strong outliers
+- Median and IQR work best together for skewed distributions or data with outliers
+- A skewed distribution has a long tail in one direction; the mean is pulled toward that tail while the median stays near the center
+- Always report both a measure of center and a measure of spread — center alone is never sufficient

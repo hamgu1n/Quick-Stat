@@ -8,7 +8,8 @@ function App() {
     <>
       <Routes>
         <Route path="/analyzer" element={<Analyzer />} />
-        <Route path="/textbook" element={<Textbook />} />
+        <Route path="/textbook/" element={<Textbook />} />
+        <Route path="/textbook/:slug" element={<Textbook />} />
       </Routes>
     </>
   );

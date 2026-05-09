@@ -1,0 +1,118 @@
+---
+title: "t-Tests"
+unit: 4
+chapter: 8
+slug: "08-2-t-tests"
+---
+
+## Section 8.2 – t-Tests
+
+In the previous section we used the z-test when the population standard deviation $\sigma$ was known. In practice, $\sigma$ is almost never known — we estimate it using the sample standard deviation $s$. Substituting $s$ for $\sigma$ introduces additional uncertainty, especially for small samples. The **t-test** accounts for this extra uncertainty by using the **t-distribution** instead of the standard normal.
+
+### The t-Distribution
+
+The **t-distribution** is bell-shaped and symmetric, like the standard normal, but with heavier tails. This reflects the added variability that comes from estimating $\sigma$ with $s$. The shape of the t-distribution depends on the **degrees of freedom** ($df$), which for a one-sample t-test equals $n - 1$.
+
+As $df$ increases (i.e., as $n$ grows), the t-distribution becomes increasingly close to the standard normal. By about $df = 30$ or more, the two are nearly identical — which is why the z-test is often a reasonable approximation for large samples even when $\sigma$ is unknown.
+
+### One-Sample t-Test
+
+The test statistic for a one-sample t-test is:
+
+$$
+t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
+$$
+
+This statistic follows a t-distribution with $n - 1$ degrees of freedom under $H_0$. The steps are the same as for the z-test: state hypotheses, calculate the test statistic, find the p-value using the t-distribution, and draw a conclusion.
+
+{/* ```r
+
+# One-sample t-test in R
+
+scores <- c(78, 82, 74, 90, 68, 85, 77, 80, 73, 88)
+t.test(scores, mu = 75)
+
+```*/}
+
+<div className="example">
+**Example 8.2.1 – One-Sample t-Test**
+
+A nutritionist claims that the mean daily sodium intake of adults in a certain city exceeds 2,300 mg (the recommended limit). A random sample of 16 adults shows a mean daily intake of 2,450 mg with a sample standard deviation of 320 mg.
+
+At $\alpha = 0.05$, is there sufficient evidence to support the nutritionist's claim?
+
+1. State $H_0$ and $H_a$.
+2. Calculate the t-test statistic.
+3. Identify the degrees of freedom and find the p-value.
+4. State your conclusion in context.
+</div>
+
+### Two-Sample t-Test
+
+Often we want to compare the means of two independent groups — for example, do male and female students spend different amounts of time studying? The **two-sample t-test** (also called an independent samples t-test) tests:
+
+$$
+H_0: \mu_1 = \mu_2 \quad \text{vs.} \quad H_a: \mu_1 \neq \mu_2 \; (\text{or} < \text{or} >)
+$$
+
+The test statistic is:
+
+$$
+t = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+$$
+
+The degrees of freedom for this test are approximated using the Welch formula (usually computed by software) and need not be memorized.
+
+<div className="example">
+**Example 8.2.2 – Two-Sample t-Test**
+
+A researcher wants to know whether two different study methods lead to different mean test scores. Group 1 (method A, $n_1 = 20$) has a mean score of 82 and standard deviation of 9. Group 2 (method B, $n_2 = 22$) has a mean score of 76 and standard deviation of 11.
+
+At $\alpha = 0.05$, is there a significant difference in mean scores?
+</div>
+
+### Paired t-Test
+
+A **paired t-test** is used when the two samples are not independent — each observation in one group is naturally linked to an observation in the other. Common examples include:
+- Before-and-after measurements on the same individuals
+- Scores of twins (one in each group)
+- Measurements on the same subject under two different conditions
+
+For a paired test, we compute the difference $d_i = x_{1i} - x_{2i}$ for each pair, then apply a one-sample t-test to the differences with $H_0: \mu_d = 0$.
+
+<div className="example">
+**Example 8.2.3 – Paired t-Test**
+
+Eight students took a speed-reading course. Their reading speeds (words per minute) before and after the course are recorded:
+
+| Student | Before | After |
+|---|---|---|
+| 1 | 200 | 230 |
+| 2 | 215 | 240 |
+| 3 | 180 | 195 |
+| 4 | 240 | 265 |
+| 5 | 190 | 210 |
+| 6 | 225 | 250 |
+| 7 | 205 | 220 |
+| 8 | 195 | 215 |
+
+At $\alpha = 0.05$, did the course significantly improve reading speed? Use a paired t-test.
+</div>
+
+<div className="example">
+**Example 8.2.4 – One-Sample vs. Two-Sample vs. Paired**
+
+For each scenario, identify whether you would use a one-sample t-test, a two-sample t-test, or a paired t-test:
+
+1. Testing whether the mean score on a national exam differs from 500 for students at a particular school.
+2. Comparing the mean blood pressure of patients before and after a 3-month exercise program.
+3. Comparing the mean salary of employees at two different companies using separate random samples.
+</div>
+
+### Key Points – t-Tests
+- Use the t-test when $\sigma$ is unknown; the test statistic is $t = (\bar{x} - \mu_0) / (s / \sqrt{n})$ with $df = n - 1$
+- The t-distribution has heavier tails than the normal; it approaches the normal as $df$ increases
+- The two-sample t-test compares means of two independent groups
+- The paired t-test is used when observations are naturally matched; convert to differences and apply a one-sample t-test
+- All t-tests follow the same framework: state hypotheses, compute test statistic, find p-value, draw conclusion
+- As in the z-test, failing to reject $H_0$ does not prove it is true

@@ -1,0 +1,115 @@
+---
+title: "Bar Charts and Pie Charts"
+unit: 2
+chapter: 4
+slug: "04-1-bar-charts-and-pie-charts"
+---
+
+## Section 4.1 – Bar Charts and Pie Charts
+
+Numbers on their own can be hard to absorb. A list of 500 survey responses tells us almost nothing at a glance. This is where graphical methods come in — they transform raw data into a visual form that makes patterns, comparisons, and outliers immediately obvious. In this chapter we explore the most common ways to visualize data, starting with two tools designed specifically for **categorical** (qualitative) data: bar charts and pie charts.
+
+### Bar Charts
+
+A **bar chart** (sometimes called a bar graph) displays the frequency or relative frequency of each category as a rectangular bar. The height of each bar corresponds to how many observations fall into that category. Bar charts work well when you want to compare counts or proportions across several categories — for example, favorite sports among students, the number of customers per store location, or the frequency of different response options on a survey.
+
+One important distinction: bars in a bar chart do not touch each other. This is intentional — it visually reinforces the fact that the categories are *discrete* and separate, not continuous. (We will see in Section 4.2 that histograms, used for numerical data, do have touching bars, and that distinction matters.)
+
+A **relative frequency bar chart** replaces raw counts with proportions (each count divided by the total). This is useful when comparing groups of different sizes, because it puts everyone on the same scale.
+
+{/* ```r
+categories <- c("Chocolate", "Vanilla", "Strawberry", "Mint Chip", "Cookie Dough")
+counts <- c(35, 28, 18, 12, 7)
+df_bar <- data.frame(flavor = categories, freq = counts)
+
+ggplot(df_bar, aes(x = flavor, y = freq)) +
+  geom_bar(stat = "identity", fill = "#dde6f2", color = "#3b5b8a", width = 0.6) +
+  labs(
+    title = "Figure 4.1.1: Favorite Ice Cream Flavors",
+    x = "Flavor",
+    y = "Number of Students"
+  ) +
+  theme_textbook()
+``` */}
+
+<div className="example">
+**Example 4.1.1 – Reading a Bar Chart**
+
+A survey of 100 college students asked about their preferred method of studying. The results were:
+
+| Study Method | Count |
+|---|---|
+| Alone | 45 |
+| With a partner | 28 |
+| In a group | 17 |
+| With music | 10 |
+
+Which method is most preferred? What proportion of students prefer studying alone?
+</div>
+
+<div className="example">
+**Example 4.1.2 – Constructing a Bar Chart**
+
+A coffee shop recorded the number of drinks sold in one day:
+
+- Espresso: 42
+- Latte: 67
+- Cold Brew: 38
+- Tea: 25
+- Hot Chocolate: 18
+
+List the categories in decreasing order of frequency. This arrangement — called a **Pareto chart** — makes it easy to see which categories dominate.
+</div>
+
+### Pie Charts
+
+A **pie chart** represents each category as a slice of a circle, where the size of each slice is proportional to its frequency. The full circle represents 100% of the data. Pie charts are intuitive for showing *part-to-whole relationships* — for example, the share of a budget allocated to each department, or the breakdown of students by major.
+
+To find the angle of each slice, multiply the relative frequency of that category by 360 degrees:
+
+$$
+\text{Angle} = \frac{\text{count}}{\text{total}} \times 360°
+$$
+
+Despite their popularity, pie charts are widely criticized in statistics because humans are poor at comparing the areas or angles of slices, especially when several categories have similar sizes. A bar chart is almost always easier to read accurately. That said, pie charts remain useful when there are only two or three categories with noticeably different proportions.
+
+<div className="example">
+**Example 4.1.3 – From Frequency Table to Pie Chart**
+
+A class of 40 students was asked about their preferred genre of music:
+
+- Pop: 16 students
+- Hip-hop: 12 students
+- Rock: 8 students
+- Classical: 4 students
+
+Calculate the relative frequency (percentage) for each genre. Then calculate the angle of each slice in a pie chart.
+</div>
+
+<div className="example">
+**Example 4.1.4 – Bar Chart vs. Pie Chart**
+
+A student created a pie chart to display the following data on the number of languages spoken by students at a school:
+
+- One language: 320
+- Two languages: 115
+- Three or more languages: 65
+
+A classmate argued that a bar chart would be more effective. Who is right, and why? Are there situations where the pie chart might be preferable?
+</div>
+
+<div className="example">
+**Example 4.1.5 – Relative Frequency Bar Chart**
+
+A researcher surveys two different schools about whether students participate in extracurricular activities. School A has 200 students; 140 participate. School B has 350 students; 210 participate.
+
+Explain why a relative frequency bar chart is more appropriate here than a raw count bar chart.
+</div>
+
+### Key Points – Bar Charts and Pie Charts
+- Bar charts and pie charts are designed for **categorical** (qualitative) data
+- In a bar chart, bar height represents frequency or relative frequency; bars do not touch
+- Arranging bars in decreasing order produces a Pareto chart, which highlights the most common categories
+- Pie charts show part-to-whole relationships; each slice angle equals (count / total) × 360°
+- Bar charts are generally easier to read accurately than pie charts, especially with many similar-sized categories
+- Use relative frequency when comparing groups of different sizes

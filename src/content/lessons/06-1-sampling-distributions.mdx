@@ -1,0 +1,98 @@
+---
+title: "Sampling Distributions"
+unit: 3
+chapter: 6
+slug: "06-1-sampling-distributions"
+---
+
+## Section 6.1 – Sampling Distributions
+
+Suppose you want to know the average GPA of all students at your university. You can't survey every single student, so you take a random sample of 50 students and calculate their average GPA. That average is a **statistic** — a number calculated from your sample. Now imagine taking a different sample of 50 students tomorrow. You'd get a slightly different average. Do it again, and again, and the averages will keep varying. The **sampling distribution** describes the pattern of that variation across all possible samples.
+
+### Parameters vs. Statistics
+
+Before going further, it's important to distinguish two concepts that are easy to confuse:
+
+A **parameter** is a number that describes the entire *population*. It is fixed but usually unknown. For example, the true average GPA of all students at a university is a parameter — often denoted $\mu$ (the population mean).
+
+A **statistic** is a number calculated from a *sample*. It changes from sample to sample. The sample mean $\bar{x}$ is a statistic. We use statistics to *estimate* parameters — and understanding how statistics vary is what sampling distributions are all about.
+
+<div className="example">
+**Example 6.1.1 – Parameter or Statistic?**
+
+For each scenario, identify whether the bolded value is a parameter or a statistic:
+
+1. The **average income of all 320 million Americans** in 2023.
+2. A pollster surveys 1,000 voters and finds that **52% support a candidate**.
+3. A researcher calculates the **mean weight of 40 sampled newborns** in a hospital.
+4. The **true proportion of defective chips** produced by a factory this month.
+</div>
+
+### The Sampling Distribution of the Mean
+
+When we take many random samples of size $n$ from a population and calculate the mean of each sample, those means form their own distribution — the **sampling distribution of the sample mean** $\bar{x}$.
+
+Two key facts govern this distribution:
+
+1. The **mean of the sampling distribution** equals the population mean: $\mu_{\bar{x}} = \mu$. This tells us that $\bar{x}$ is an **unbiased estimator** of $\mu$ — on average, it hits the right target.
+
+2. The **standard deviation of the sampling distribution** (called the **standard error**) is:
+
+$$
+\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+$$
+
+where $\sigma$ is the population standard deviation and $n$ is the sample size.
+
+Notice that as $n$ increases, the standard error *decreases* — larger samples produce sample means that cluster more tightly around the true population mean. This is one of the most important ideas in all of statistics: bigger samples give us more reliable estimates.
+
+{/* ```r
+set.seed(20)
+pop <- rnorm(10000, mean = 70, sd = 15)
+sample_means <- replicate(1000, mean(sample(pop, size = 30)))
+
+ggplot(data.frame(xbar = sample_means), aes(x = xbar)) +
+  geom_histogram(bins = 30, fill = "#dde6f2", color = "#3b5b8a") +
+  labs(
+    title = "Figure 6.1.1: Sampling Distribution of the Mean (n = 30)",
+    x = "Sample Mean",
+    y = "Frequency"
+  ) +
+  theme_textbook()
+``` */}
+
+<div className="example">
+**Example 6.1.2 – Standard Error**
+
+A population of exam scores has a mean of 75 and a standard deviation of 12.
+
+1. What is the standard error of the sample mean when $n = 4$?
+2. What is the standard error when $n = 36$?
+3. What does this tell us about the benefit of larger samples?
+</div>
+
+<div className="example">
+**Example 6.1.3 – Interpreting the Sampling Distribution**
+
+A factory produces light bulbs with a mean lifetime of 1,000 hours and a standard deviation of 80 hours. A quality control inspector randomly samples 25 bulbs.
+
+1. What is the expected value of the sample mean?
+2. What is the standard error of the sample mean?
+3. Would you be surprised if the sample mean was 985 hours? What about 940 hours?
+</div>
+
+<div className="example">
+**Example 6.1.4 – Effect of Sample Size**
+
+A university knows that student debt follows a distribution with mean \$28,000 and standard deviation \$6,000. Samples of sizes 9, 36, and 100 are drawn.
+
+Calculate the standard error for each sample size. What pattern do you notice? By what factor does the standard error decrease when the sample size quadruples?
+</div>
+
+### Key Points – Sampling Distributions
+- A parameter describes a population (fixed, usually unknown); a statistic describes a sample (varies from sample to sample)
+- The sampling distribution of $\bar{x}$ describes how sample means vary across all possible samples of size $n$
+- The mean of the sampling distribution equals the population mean: $\mu_{\bar{x}} = \mu$
+- The standard error is $\sigma_{\bar{x}} = \sigma / \sqrt{n}$ — it decreases as sample size increases
+- Larger samples produce less variable (more reliable) estimates of the population mean
+- Understanding sampling variability is the foundation of all statistical inference

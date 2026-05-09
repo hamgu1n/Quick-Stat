@@ -1,0 +1,92 @@
+---
+title: "CLT Approximations"
+unit: 3
+chapter: 6
+slug: "06-2-clt-approximations"
+---
+
+## Section 6.2 – Approximations Using the Central Limit Theorem
+
+In the previous section we established that the sampling distribution of $\bar{x}$ has mean $\mu$ and standard error $\sigma / \sqrt{n}$. But what *shape* does that distribution have? The answer — one of the most remarkable results in all of statistics — is the **Central Limit Theorem (CLT)**.
+
+### The Central Limit Theorem
+
+**The Central Limit Theorem** states: regardless of the shape of the population distribution, the sampling distribution of the sample mean $\bar{x}$ will be approximately **normal** for sufficiently large sample sizes.
+
+More precisely: if $X_1, X_2, \ldots, X_n$ are independent observations drawn from *any* population with mean $\mu$ and finite standard deviation $\sigma$, then for large $n$:
+
+$$
+\bar{x} \sim N\!\left(\mu,\; \frac{\sigma}{\sqrt{n}}\right)
+$$
+
+The word "approximately" is key. A common rule of thumb is that $n \geq 30$ is usually sufficient for the CLT to apply, though the required sample size depends on how non-normal the original population is. Highly skewed or heavy-tailed populations may need larger samples.
+
+This result is remarkable because it allows us to use the normal distribution as a tool for inference about *any* population — not just normally distributed ones. It is the reason why so many statistical procedures rely on the normal distribution.
+
+{/* ```r
+set.seed(25)
+pop_skewed <- rexp(10000, rate = 0.1)  # skewed population
+
+par(mfrow = c(1, 3))
+for (n in c(2, 10, 30)) {
+  means <- replicate(1000, mean(sample(pop_skewed, size = n)))
+  hist(means, main = paste("n =", n), xlab = "Sample Mean", col = "#dde6f2", border = "#3b5b8a")
+}
+``` */}
+
+<div className="example">
+**Example 6.2.1 – Applying the CLT**
+
+The time (in minutes) that customers wait in line at a bank follows a right-skewed distribution with mean 8 minutes and standard deviation 4 minutes. A sample of 64 customers is selected.
+
+1. What is the shape of the sampling distribution of $\bar{x}$? Why?
+2. What is the mean and standard error of $\bar{x}$?
+3. What is the probability that the sample mean wait time exceeds 9 minutes?
+</div>
+
+### Using the Normal Approximation
+
+Once we know the sampling distribution is approximately normal, we can use what we know about the standard normal distribution to compute probabilities. We convert $\bar{x}$ to a z-score using the standard error:
+
+$$
+z = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}}
+$$
+
+From there, we can use a z-table or software to find probabilities. This is the same z-score formula we saw in Section 3.3, but applied to a sample mean rather than an individual value.
+
+<div className="example">
+**Example 6.2.2 – Probability Using the CLT**
+
+The heights of adult women in the United States are approximately normally distributed with a mean of 64.5 inches and a standard deviation of 2.8 inches. A random sample of 49 women is selected.
+
+1. What is the probability that the sample mean height exceeds 65 inches?
+2. What is the probability that the sample mean is between 64 and 65 inches?
+</div>
+
+<div className="example">
+**Example 6.2.3 – Checking CLT Conditions**
+
+For each scenario, state whether the CLT can be applied to justify using a normal approximation for $\bar{x}$:
+
+1. A sample of 5 observations drawn from a heavily skewed distribution.
+2. A sample of 50 observations drawn from a uniform distribution on [0, 10].
+3. A sample of 25 observations drawn from a normal population.
+4. A sample of 100 observations drawn from a distribution with no finite variance.
+</div>
+
+<div className="example">
+**Example 6.2.4 – CLT in Context**
+
+A warehouse ships packages with a mean weight of 12 pounds and a standard deviation of 3 pounds. A delivery truck is loaded with 36 packages.
+
+1. What is the expected total weight of the shipment? *(Hint: total = $n \times \bar{x}$)*
+2. What is the standard error of the sample mean weight?
+3. What is the probability the average package weight exceeds 13 pounds?
+</div>
+
+### Key Points – CLT Approximations
+- The Central Limit Theorem states that the sampling distribution of $\bar{x}$ is approximately normal for large $n$, regardless of the population's shape
+- The approximation improves as $n$ increases; $n \geq 30$ is a common guideline, but skewed populations may need more
+- The CLT allows us to use normal probability calculations for any population as long as the sample is large enough
+- The standardized sample mean is $z = (\bar{x} - \mu) / (\sigma / \sqrt{n})$
+- The CLT is the foundation for confidence intervals and hypothesis tests, which we explore in Units 4 and beyond

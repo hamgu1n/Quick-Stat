@@ -1,0 +1,110 @@
+---
+title: "Boxplots and Stem-and-Leaf Plots"
+unit: 2
+chapter: 4
+slug: "04-3-boxplots-and-stem-leaf"
+---
+
+## Section 4.3 – Boxplots and Stem-and-Leaf Plots
+
+Histograms are excellent for showing the overall shape of a distribution, but they hide the individual data values. Two other graphical tools — the **boxplot** and the **stem-and-leaf plot** — offer different trade-offs between showing shape and preserving detail.
+
+### Boxplots
+
+A **boxplot** (sometimes called a box-and-whisker plot) is a visual display of the five-number summary we introduced in Section 3.4. The components of a boxplot are:
+
+- A **box** that spans from $Q_1$ to $Q_3$, representing the middle 50% of the data (the IQR)
+- A **line inside the box** at the median ($Q_2$)
+- **Whiskers** that extend from the box out to the smallest and largest non-outlier values
+- **Individual points** plotted beyond the whiskers for any flagged outliers (using the IQR rule from Section 3.3)
+
+Boxplots are particularly powerful for **comparing two or more groups side by side**. When placed next to each other on the same axis, boxplots make it easy to see whether the medians differ, whether one group is more spread out, and whether one group has more outliers.
+
+{/* ```r
+set.seed(11)
+group_a <- rnorm(40, mean = 72, sd = 8)
+group_b <- rnorm(40, mean = 78, sd = 14)
+
+df_box <- data.frame(
+  score = c(group_a, group_b),
+  group = c(rep("Section A", 40), rep("Section B", 40))
+)
+
+ggplot(df_box, aes(x = group, y = score, fill = group)) +
+  geom_boxplot(fill = "#dde6f2", color = "#3b5b8a") +
+  labs(
+    title = "Figure 4.3.1: Exam Scores by Section",
+    x = "Section",
+    y = "Score"
+  ) +
+  theme_textbook()
+``` */}
+
+<div className="example">
+**Example 4.3.1 – Reading a Boxplot**
+
+A boxplot for the number of hours students studied last week shows:
+
+- Minimum: 0, $Q_1$: 3, Median: 6, $Q_3$: 9, Maximum: 14, with one outlier at 25
+
+Interpret this boxplot. What does the position of the median inside the box suggest about the shape of the distribution?
+</div>
+
+<div className="example">
+**Example 4.3.2 – Constructing a Boxplot**
+
+The following are the prices (in dollars) of 11 textbooks at a college bookstore:
+
+$$
+28, 35, 42, 55, 60, 65, 70, 78, 85, 92, 180
+$$
+
+Find the five-number summary. Use the IQR rule to check whether 180 is a flagged outlier. Then describe how the boxplot would look.
+</div>
+
+<div className="example">
+**Example 4.3.3 – Comparing Groups with Boxplots**
+
+Two coffee shops record their daily customer counts over 30 days. Shop A has a median of 120 customers, $Q_1 = 100$, and $Q_3 = 140$. Shop B has a median of 115 customers, $Q_1 = 80$, and $Q_3 = 160$.
+
+Both shops have roughly the same median. What does the IQR tell us about which shop is more consistent day to day?
+</div>
+
+### Stem-and-Leaf Plots
+
+A **stem-and-leaf plot** is a simple way to display the distribution of a small dataset while preserving every individual value. Each observation is split into a **stem** (the leading digit or digits) and a **leaf** (the final digit). The stems are listed in a column on the left, and the corresponding leaves are written to the right.
+
+For example, the value 74 would have a stem of 7 and a leaf of 4. The value 112 could have a stem of 11 and a leaf of 2.
+
+Stem-and-leaf plots are most useful for small datasets (roughly 10 to 50 observations) where you want to see the full distribution *and* retain the original values. They work best for two-digit and three-digit numbers. One clever extension is a **back-to-back stem-and-leaf plot**, which places two groups on either side of a shared set of stems — making comparison as easy as reading a boxplot but with every data value visible.
+
+<div className="example">
+**Example 4.3.4 – Constructing a Stem-and-Leaf Plot**
+
+The following are the quiz scores of 15 students:
+
+$$
+62, 75, 81, 73, 68, 90, 77, 84, 71, 65, 88, 92, 79, 83, 66
+$$
+
+Organize these scores into a stem-and-leaf plot using stems 6, 7, 8, and 9. What does the plot reveal about the shape of the distribution?
+</div>
+
+<div className="example">
+**Example 4.3.5 – Back-to-Back Stem-and-Leaf**
+
+The number of pushups completed by students in two gym classes is recorded below.
+
+Class 1: 18, 22, 25, 27, 30, 31, 33, 35, 38, 40
+Class 2: 20, 23, 24, 26, 28, 29, 32, 34, 36, 41
+
+Create a back-to-back stem-and-leaf plot. Which class appears to have a higher typical number of pushups?
+</div>
+
+### Key Points – Boxplots and Stem-and-Leaf Plots
+- A boxplot displays the five-number summary: minimum, $Q_1$, median, $Q_3$, and maximum
+- The box spans the IQR; the line inside marks the median; whiskers extend to the most extreme non-outlier values
+- Outliers flagged by the IQR rule are shown as individual points beyond the whiskers
+- Boxplots excel at comparing two or more groups side by side
+- A stem-and-leaf plot preserves individual values while showing the distribution — useful for small datasets
+- Back-to-back stem-and-leaf plots compare two groups using a shared set of stems

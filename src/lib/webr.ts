@@ -1,10 +1,10 @@
 import { WebR } from "webr";
 
-const webr = new WebR();
-const initPromise = webr.init();
+export const webr = new WebR();
+export const initWebRPromise = webr.init();
 
 export async function runR(code: string): Promise<string> {
-  await initPromise;
+  await initWebRPromise;
   const result = await webr.evalR(code);
   return (await result.toJs()).values.toString();
 }

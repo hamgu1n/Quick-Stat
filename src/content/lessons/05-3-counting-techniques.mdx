@@ -1,0 +1,101 @@
+---
+title: "Counting Techniques"
+unit: 3
+chapter: 5
+slug: "05-3-counting-techniques"
+---
+
+## Section 5.3 – Counting Techniques
+
+Computing probabilities using the formula $P(A) = \frac{\text{favorable outcomes}}{\text{total outcomes}}$ requires us to count accurately. For simple problems — like drawing a single card or rolling one die — counting by hand is easy. But what about the number of ways to arrange a 10-person committee, or the number of possible lottery tickets? This is where systematic counting techniques become essential.
+
+### The Multiplication Rule of Counting
+
+The **fundamental counting principle** (also called the multiplication rule) states: if one event can occur in $m$ ways and a second independent event can occur in $n$ ways, then together they can occur in $m \times n$ ways. This extends to any number of stages.
+
+$$
+\text{Total outcomes} = n_1 \times n_2 \times \cdots \times n_k
+$$
+
+For example, if a restaurant offers 4 appetizers, 6 main courses, and 3 desserts, the number of possible three-course meals is $4 \times 6 \times 3 = 72$.
+
+<div className="example">
+**Example 5.3.1 – Multiplication Rule**
+
+A student ID consists of 2 letters (A–Z, repeated letters allowed) followed by 3 digits (0–9, repeated digits allowed).
+
+How many unique student IDs are possible?
+</div>
+
+### Permutations
+
+A **permutation** is an arrangement of objects where *order matters*. If you are choosing 3 students from a class of 20 to be president, vice-president, and secretary, the order matters — student A as president and student B as vice-president is different from student B as president and student A as vice-president.
+
+The number of permutations of $n$ objects taken $r$ at a time is:
+
+$$
+P(n, r) = \frac{n!}{(n-r)!}
+$$
+
+where $n!$ (read "n factorial") means $n \times (n-1) \times (n-2) \times \cdots \times 1$.
+
+<div className="example">
+**Example 5.3.2 – Permutations**
+
+A photography club has 8 members. They want to choose a president, a secretary, and a treasurer (three different people, and these are distinct roles).
+
+How many ways can these three positions be filled?
+</div>
+
+<div className="example">
+**Example 5.3.3 – Permutations of All Objects**
+
+How many ways can 5 books be arranged on a shelf?
+</div>
+
+### Combinations
+
+A **combination** is a selection of objects where *order does not matter*. If you are choosing 3 students from a class of 20 to form a committee (no distinct roles), then {A, B, C} and {C, B, A} are the same committee — they count as one.
+
+The number of combinations of $n$ objects taken $r$ at a time is:
+
+$$
+C(n, r) = \binom{n}{r} = \frac{n!}{r!(n-r)!}
+$$
+
+The key distinction: use permutations when the arrangement or assignment of roles matters; use combinations when you are just selecting a group with no regard for order.
+
+{/* ```r
+# Compare permutations and combinations
+n <- 8; r <- 3
+perm <- factorial(n) / factorial(n - r)
+comb <- factorial(n) / (factorial(r) * factorial(n - r))
+cat("Permutations P(8,3):", perm, "\nCombinations C(8,3):", comb)
+``` */}
+
+<div className="example">
+**Example 5.3.4 – Combinations**
+
+A student council has 10 members. A committee of 4 is to be chosen (no special roles).
+
+How many different committees are possible?
+</div>
+
+<div className="example">
+**Example 5.3.5 – Permutation or Combination?**
+
+For each scenario, decide whether to use a permutation or combination, then calculate the answer:
+
+1. A coach must choose 5 players from a roster of 12 to start a basketball game (positions are not assigned — just who starts).
+2. A teacher randomly selects 1st, 2nd, and 3rd place winners from a class science fair with 15 entries.
+3. A committee of 3 is chosen from 7 candidates to serve on a panel where all members have equal status.
+4. A security system requires a 4-digit PIN where no digit is repeated, and the order of digits matters.
+</div>
+
+### Key Points – Counting Techniques
+- The multiplication rule: if event 1 has $n_1$ outcomes and event 2 has $n_2$ outcomes, together they have $n_1 \times n_2$ outcomes
+- Permutations count ordered arrangements: $P(n, r) = n! / (n-r)!$ — use when order matters
+- Combinations count unordered selections: $C(n, r) = n! / (r!(n-r)!)$ — use when order does not matter
+- Every permutation problem can be converted to a combination problem by dividing out the number of orderings: $P(n, r) = C(n, r) \times r!$
+- The factorial $n! = n \times (n-1) \times \cdots \times 1$; by convention, $0! = 1$
+- Counting techniques connect directly to probability: once we can count outcomes, we can compute probabilities for equally likely sample spaces

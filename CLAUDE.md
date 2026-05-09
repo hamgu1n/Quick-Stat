@@ -1,13 +1,51 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # Project: Intro Stats Web App
 
 ## Stack
 
-- React + TypeScript + Vite
-- shadcn/ui (component library)
-- React Router v6 (routing)
-- Zustand (state management)
-- WebR (R in the browser)??
-- MDX (markdown + JSX for lesson content)
+- React 19 + TypeScript 6 + Vite 8
+- shadcn/ui with radix-ui (component library)
+- React Router v7 (`BrowserRouter` + `Routes`)
+- Zustand v5 (state management)
+- WebR v0.5 (R compiled to WASM, runs in browser)
+- Tailwind v4 (no `tailwind.config.js` — uses `@tailwindcss/vite` plugin)
+
+---
+
+## Commands
+
+```bash
+npm run dev      # start dev server
+npm run build    # type-check + production build
+npm run lint     # ESLint
+```
+
+---
+
+## Architecture
+
+### Routing
+`src/main.tsx` wraps the app in `<BrowserRouter>`. Routes are defined in `src/App.tsx`:
+- `/analyzer` → `src/pages/Analyzer.tsx`
+- `/textbook` → `src/pages/Textbook.tsx`
+
+### Data flow (Analyzer)
+`Analyzer` owns `dataset` state (`Dataset | null`). It passes `setDataset` down to `CsvUpload` as `onDatasetLoad`, and passes `dataset` to `DataTable`. State never goes through Zustand for the CSV flow — `datasetStore.ts` exists but is currently unused.
+
+### Key types
+`src/types/dataset.ts`:
+```ts
+type Dataset = { headers: string[]; rows: string[][] }
+```
+
+### WebR
+`src/lib/webr.ts` exports a singleton `webR` instance and an `initPromise`. COOP/COEP headers are required in `vite.config.ts` for WebR's SharedArrayBuffer usage — do not remove them.
+
+### Tailwind / shadcn
+Tailwind v4 is configured entirely in `src/index.css` (no config file). shadcn components live in `src/components/ui/`. The `cn()` utility is in `src/lib/utils.ts`.
 
 ---
 
