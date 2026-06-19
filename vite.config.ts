@@ -10,6 +10,7 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/Quick-Stat/",
   plugins: [
     mdx({
       remarkPlugins: [remarkMath, remarkFrontmatter, remarkMdxFrontmatter],
@@ -21,12 +22,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
-    },
-  },
-  server: {
-    headers: {
-      "Cross-Origin-Opener-Policy": "same-origin",
-      "Cross-Origin-Embedder-Policy": "require-corp",
     },
   },
 });
