@@ -13,11 +13,11 @@ By now we have explored the center of a dataset through the mean, median, and mo
 
 The **five-number summary** is exactly what it sounds like: five values that together capture the overall shape of a dataset. They are:
 
-1. The **minimum** — the smallest observation
-2. The **first quartile** ($Q_1$) — 25th percentile
-3. The **median** ($Q_2$) — 50th percentile
-4. The **third quartile** ($Q_3$) — 75th percentile
-5. The **maximum** — the largest observation
+1. The **minimum**, the smallest observation
+2. The **first quartile** ($Q_1$), 25th percentile
+3. The **median** ($Q_2$), 50th percentile
+4. The **third quartile** ($Q_3$), 75th percentile
+5. The **maximum**, the largest observation
 
 Together, these five numbers tell us where the data starts and ends, where the middle half lives, and where the center falls. As we will see in Chapter 4, the five-number summary is the foundation of the **boxplot**, one of the most useful graphical tools in descriptive statistics.
 
@@ -55,13 +55,17 @@ What does this tell us about the distribution? Is the data symmetric or skewed?
 
 ### Combining Center and Spread
 
-Reporting only a measure of center can be deeply misleading. Consider two classes that both have a mean exam score of 75. In the first class, every student scored between 70 and 80 — the scores are tightly packed. In the second class, scores ranged from 30 to 100 — wildly spread out. The mean alone cannot distinguish these two situations; you also need the spread.
+Reporting only a measure of center can be deeply misleading. Consider two classes that both have a mean exam score of 75. In the first class, every student scored between 70 and 80, the scores are tightly packed. In the second class, scores ranged from 30 to 100, wildly spread out. The mean alone cannot distinguish these two situations; you also need the spread.
 
 The most common pairings in practice are:
 - **Mean** with **standard deviation**: best for symmetric distributions without strong outliers
 - **Median** with **IQR**: best when the data are skewed or when outliers are present
 
-When a distribution is **symmetric** (roughly mirror-image on both sides), the mean and median will be close to each other, and the standard deviation provides a natural description of spread. When a distribution is **skewed** — pulled in one direction by a long tail — the mean is dragged toward that tail while the median stays closer to the bulk of the data. In that case, the median and IQR paint a more honest picture.
+The widget below shows how the mean and median respond differently as a distribution's shape changes. Drag the slider from symmetric toward skewed and notice which statistic stays near the bulk of the data.
+
+<SkewnessWidget />
+
+When a distribution is **symmetric** (roughly mirror-image on both sides), the mean and median will be close to each other, and the standard deviation provides a natural description of spread. When a distribution is **skewed**, pulled in one direction by a long tail, the mean is dragged toward that tail while the median stays closer to the bulk of the data. In that case, the median and IQR paint a more honest picture.
 
 <div className="example">
 **Example 3.4.3 – Choosing the Right Pair**
@@ -102,4 +106,4 @@ $$
 - Mean and standard deviation work best together for symmetric distributions without strong outliers
 - Median and IQR work best together for skewed distributions or data with outliers
 - A skewed distribution has a long tail in one direction; the mean is pulled toward that tail while the median stays near the center
-- Always report both a measure of center and a measure of spread — center alone is never sufficient
+- Always report both a measure of center and a measure of spread, center alone is never sufficient

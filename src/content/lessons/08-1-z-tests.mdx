@@ -7,13 +7,13 @@ slug: "08-1-z-tests"
 
 ## Section 8.1 – z-Tests
 
-Confidence intervals estimate the value of a population parameter. **Hypothesis testing** takes a different approach: we start with a specific claim about a parameter and then use sample data to decide whether the evidence supports or contradicts that claim. In this section we introduce the framework for hypothesis testing and apply it using **z-tests** — tests that rely on the standard normal distribution.
+Confidence intervals estimate the value of a population parameter. **Hypothesis testing** takes a different approach: we start with a specific claim about a parameter and then use sample data to decide whether the evidence supports or contradicts that claim. In this section we introduce the framework for hypothesis testing and apply it using **z-tests**, tests that rely on the standard normal distribution.
 
 ### The Hypothesis Testing Framework
 
 Every hypothesis test begins with two competing hypotheses:
 
-The **null hypothesis** ($H_0$) is the default claim — the one we assume to be true unless there is strong evidence against it. It typically states that there is "no effect," "no difference," or that a parameter equals a specific value.
+The **null hypothesis** ($H_0$) is the default claim, the one we assume to be true unless there is strong evidence against it. It typically states that there is "no effect," "no difference," or that a parameter equals a specific value.
 
 The **alternative hypothesis** ($H_a$ or $H_1$) is the claim we are trying to find evidence _for_. It represents the researcher's suspicion or the claim they want to test.
 
@@ -22,7 +22,7 @@ For example, if a bottling company claims their bottles contain exactly 16 ounce
 - $H_0$: $\mu = 16$ (the machine fills bottles correctly on average)
 - $H_a$: $\mu \neq 16$ (the machine is not filling correctly)
 
-After formulating the hypotheses, we collect data and compute a **test statistic** — a number that measures how far the observed data are from what $H_0$ predicts. We then compare this test statistic to a **critical value** or compute a **p-value** to decide whether to reject $H_0$.
+After formulating the hypotheses, we collect data and compute a **test statistic**, a number that measures how far the observed data are from what $H_0$ predicts. We then compare this test statistic to a **critical value** or compute a **p-value** to decide whether to reject $H_0$.
 
 ### The z-Test for a Mean
 
@@ -36,25 +36,16 @@ where $\mu_0$ is the value claimed in $H_0$. This z-statistic tells us how many 
 
 ### The p-Value
 
-The **p-value** is the probability of observing a test statistic at least as extreme as the one computed, assuming $H_0$ is true. A small p-value means the observed data would be very unlikely if $H_0$ were true — providing evidence against it.
+The **p-value** is the probability of observing a test statistic at least as extreme as the one computed, assuming $H_0$ is true. A small p-value means the observed data would be very unlikely if $H_0$ were true, providing evidence against it.
 
 We compare the p-value to a pre-chosen **significance level** $\alpha$ (commonly 0.05):
 
-- If $p$-value $\leq \alpha$: **Reject $H_0$** — the data provide sufficient evidence against the null
-- If $p$-value $> \alpha$: **Fail to reject $H_0$** — the data do not provide sufficient evidence
+- If $p$-value $\leq \alpha$: **Reject $H_0$**, the data provide sufficient evidence against the null
+- If $p$-value $> \alpha$: **Fail to reject $H_0$**, the data do not provide sufficient evidence
 
-Failing to reject $H_0$ does not mean $H_0$ is true — it simply means we don't have enough evidence to reject it.
+Failing to reject $H_0$ does not mean $H_0$ is true, it simply means we don't have enough evidence to reject it.
 
-{/* ```r
-
-# One-sample z-test
-
-xbar <- 15.8; mu0 <- 16; sigma <- 0.5; n <- 36
-z_stat <- (xbar - mu0) / (sigma / sqrt(n))
-p_val <- 2 * pnorm(-abs(z_stat))
-cat("z =", round(z_stat, 3), " p-value =", round(p_val, 4))
-
-```*/}
+<ZTestWidget />
 
 <div className="example">
 **Example 8.1.1 – Setting Up Hypotheses**
@@ -89,11 +80,13 @@ Explain the difference between a one-tailed and a two-tailed test. In Example 8.
 
 No hypothesis test is infallible. We can make two types of errors:
 
-A **Type I error** occurs when we reject $H_0$ when it is actually true — a false positive. The probability of a Type I error equals the significance level $\alpha$. Lowering $\alpha$ makes it harder to reject $H_0$, reducing Type I error risk.
+A **Type I error** occurs when we reject $H_0$ when it is actually true, a false positive. The probability of a Type I error equals the significance level $\alpha$. Lowering $\alpha$ makes it harder to reject $H_0$, reducing Type I error risk.
 
-A **Type II error** occurs when we fail to reject $H_0$ when it is actually false — a false negative. Its probability is denoted $\beta$. The **power** of a test is $1 - \beta$: the probability of correctly rejecting a false null hypothesis.
+A **Type II error** occurs when we fail to reject $H_0$ when it is actually false, a false negative. Its probability is denoted $\beta$. The **power** of a test is $1 - \beta$: the probability of correctly rejecting a false null hypothesis.
 
 There is always a trade-off: decreasing $\alpha$ (reducing Type I error) increases $\beta$ (increasing Type II error). Larger sample sizes are the most effective way to reduce both.
+
+<TypeErrorPowerWidget />
 
 <div className="example">
 **Example 8.1.4 – Type I and Type II Errors**

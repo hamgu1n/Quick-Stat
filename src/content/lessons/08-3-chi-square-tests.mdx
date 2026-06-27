@@ -66,12 +66,7 @@ $$
 df = (\text{number of rows} - 1) \times (\text{number of columns} - 1)
 $$
 
-{/* ```r
-# Chi-square test for independence
-observed <- matrix(c(40, 60, 35, 65), nrow = 2,
-                   dimnames = list(c("Male", "Female"), c("Prefers Gym", "Prefers Outdoors")))
-chisq.test(observed)
-``` */}
+<ChiSquareWidget />
 
 <div className="example">
 **Example 8.3.2 – Chi-Square Test for Independence**
@@ -96,7 +91,7 @@ At $\alpha = 0.05$, is there a significant relationship between class year and t
 <div className="example">
 **Example 8.3.3 – Conditions for the Chi-Square Test**
 
-The chi-square test requires that expected counts be sufficiently large — typically, each expected count should be at least 5. A survey of 30 students asks about their preferred social media platform, with 6 categories.
+The chi-square test requires that expected counts be sufficiently large, typically, each expected count should be at least 5. A survey of 30 students asks about their preferred social media platform, with 6 categories.
 
 Why might the chi-square test be unreliable here? What could be done to address this?
 </div>

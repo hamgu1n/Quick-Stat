@@ -13,7 +13,7 @@ Knowing the center and spread of a dataset is helpful, but sometimes we want to 
 
 A **percentile** tells you the percentage of observations that fall at or below a given value. For example, if your exam score is at the 80th percentile, it means you scored higher than roughly 80% of students who took the exam. Percentiles are especially common in standardized testing and pediatric growth charts.
 
-**Quartiles** divide a sorted dataset into four equal parts. The **first quartile** ($Q_1$) is the 25th percentile — 25% of the data falls below it. The **second quartile** ($Q_2$) is the median, or the 50th percentile. The **third quartile** ($Q_3$) is the 75th percentile — 75% of the data falls below it. Together, $Q_1$, $Q_2$, and $Q_3$ give a compact summary of where the bulk of the data lives, and they form the foundation of the five-number summary we will explore in the next section.
+**Quartiles** divide a sorted dataset into four equal parts. The **first quartile** ($Q_1$) is the 25th percentile, 25% of the data falls below it. The **second quartile** ($Q_2$) is the median, or the 50th percentile. The **third quartile** ($Q_3$) is the 75th percentile, 75% of the data falls below it. Together, $Q_1$, $Q_2$, and $Q_3$ give a compact summary of where the bulk of the data lives, and they form the foundation of the five-number summary we will explore in the next section.
 
 {/* ```r
 set.seed(7)
@@ -51,7 +51,11 @@ $$
 
 where $x$ is the individual value, $\bar{x}$ is the mean, and $s$ is the standard deviation.
 
-A z-score of 0 means the value is exactly at the mean. A z-score of 2 means the value is two standard deviations *above* the mean, and a z-score of -1.5 means the value is 1.5 standard deviations *below* the mean. Z-scores allow us to compare values from different distributions — for example, how does a score of 88 in one class compare to a score of 74 in another, if the two classes had different means and spreads?
+A z-score of 0 means the value is exactly at the mean. A z-score of 2 means the value is two standard deviations *above* the mean, and a z-score of -1.5 means the value is 1.5 standard deviations *below* the mean. Z-scores allow us to compare values from different distributions, for example, how does a score of 88 in one class compare to a score of 74 in another, if the two classes had different means and spreads?
+
+Use the sliders below to explore how z-scores work. Move x to see where it lands on the distribution and watch the formula update in real time.
+
+<ZScoreWidget />
 
 <div className="example">
 **Example 3.3.3 – Calculating a Z-Score**
@@ -74,7 +78,7 @@ Who performed better relative to their class?
 
 ### Outlier Detection Using the IQR Rule
 
-An **outlier** is a value that is unusually far from the rest of the data. Outliers can arise from measurement errors, data entry mistakes, or genuinely unusual observations — and as we saw with the CEO example in the previous section, they can pull the mean dramatically. One formal way to identify outliers is the **IQR rule**.
+An **outlier** is a value that is unusually far from the rest of the data. Outliers can arise from measurement errors, data entry mistakes, or genuinely unusual observations, and as we saw with the CEO example in the previous section, they can pull the mean dramatically. One formal way to identify outliers is the **IQR rule**.
 
 A value is considered a potential outlier if it falls below the **lower fence** or above the **upper fence**:
 
@@ -86,7 +90,7 @@ $$
 \text{Upper Fence} = Q_3 + 1.5 \times \text{IQR}
 $$
 
-Any observation outside these fences is flagged as a potential outlier. This rule does not mean the value should be removed — context always matters — but it gives us a consistent, objective starting point for investigation.
+Any observation outside these fences is flagged as a potential outlier. This rule does not mean the value should be removed, context always matters, but it gives us a consistent, objective starting point for investigation.
 
 {/* ```r
 data_outlier <- c(12, 14, 15, 16, 17, 18, 19, 20, 21, 55)

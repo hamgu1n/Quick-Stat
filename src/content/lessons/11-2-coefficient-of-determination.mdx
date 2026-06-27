@@ -7,7 +7,7 @@ slug: "11-2-coefficient-of-determination"
 
 ## Section 11.2 – The Coefficient of Determination
 
-The least squares regression line gives us the best linear prediction of $Y$ from $X$. But how good is that prediction, really? The **coefficient of determination**, denoted $R^2$ (or $r^2$ in simple linear regression), measures exactly this — the proportion of the total variability in $Y$ that is explained by the linear relationship with $X$.
+The least squares regression line gives us the best linear prediction of $Y$ from $X$. But how good is that prediction, really? The **coefficient of determination**, denoted $R^2$ (or $r^2$ in simple linear regression), measures exactly this, the proportion of the total variability in $Y$ that is explained by the linear relationship with $X$.
 
 ### What Is $R^2$?
 
@@ -19,7 +19,7 @@ $$
 \text{SST} = \sum_{i=1}^{n}(y_i - \bar{y})^2
 $$
 
-2. **With the regression model**: our prediction is $\hat{y}_i$. The remaining variability — the variability *not* explained by the model — is the **residual sum of squares (SSE)**:
+2. **With the regression model**: our prediction is $\hat{y}_i$. The remaining variability, the variability *not* explained by the model, is the **residual sum of squares (SSE)**:
 
 $$
 \text{SSE} = \sum_{i=1}^{n}(y_i - \hat{y}_i)^2
@@ -31,7 +31,7 @@ $$
 R^2 = 1 - \frac{\text{SSE}}{\text{SST}} = \frac{\text{SST} - \text{SSE}}{\text{SST}}
 $$
 
-In simple linear regression, $R^2 = r^2$ — the square of the Pearson correlation coefficient. So if $r = 0.9$, then $R^2 = 0.81$, meaning 81% of the variability in $Y$ is explained by its linear relationship with $X$.
+In simple linear regression, $R^2 = r^2$, the square of the Pearson correlation coefficient. So if $r = 0.9$, then $R^2 = 0.81$, meaning 81% of the variability in $Y$ is explained by its linear relationship with $X$.
 
 $R^2$ ranges from 0 to 1. An $R^2$ of 0 means the model explains none of the variability (the regression line is no better than just using $\bar{y}$). An $R^2$ of 1 means the model explains all the variability (every point falls exactly on the line).
 
@@ -63,22 +63,9 @@ A high $R^2$ sounds reassuring, but it does not guarantee the regression model i
 
 **A high $R^2$ does not mean the model fits well.** If the true relationship is curved, fitting a straight line may still produce a high $R^2$ while systematically mispredicting across the range of $X$. This is why we examine residual plots (Section 11.3).
 
-**A low $R^2$ does not make a model useless.** In complex fields like psychology or economics, $R^2$ values of 0.10 to 0.30 are common and the model may still be meaningful — especially if the slope is statistically significant and the relationship is theoretically justified.
+**A low $R^2$ does not make a model useless.** In complex fields like psychology or economics, $R^2$ values of 0.10 to 0.30 are common and the model may still be meaningful, especially if the slope is statistically significant and the relationship is theoretically justified.
 
-{/* ```r
-set.seed(45)
-x <- 1:30
-y_linear <- 2 + 0.8 * x + rnorm(30, 0, 2)
-y_curved <- 10 + 0.5 * x^2 + rnorm(30, 0, 10)
-
-par(mfrow = c(1, 2))
-plot(x, y_linear, main = paste("Linear: R² =", round(cor(x, y_linear)^2, 2)),
-     pch = 19, col = "#3b5b8a")
-abline(lm(y_linear ~ x), col = "#1f3c88")
-plot(x, y_curved, main = paste("Curved: R² =", round(cor(x, y_curved)^2, 2)),
-     pch = 19, col = "#3b5b8a")
-abline(lm(y_curved ~ x), col = "#1f3c88")
-``` */}
+<RegressionWidget />
 
 <div className="example">
 **Example 11.2.3 – High $R^2$, Wrong Model**
@@ -116,5 +103,5 @@ Given the actual observed values: 45, 40, 38, 32, 28, 24, 20, 17:
 - $R^2 = 1 - \text{SSE}/\text{SST}$; ranges from 0 to 1; in simple regression, $R^2 = r^2$
 - $R^2 = 1$: perfect fit; $R^2 = 0$: model no better than using $\bar{y}$
 - A high $R^2$ does not imply causation or guarantee the model is appropriate
-- A low $R^2$ does not automatically mean the model is useless — significance and context matter
+- A low $R^2$ does not automatically mean the model is useless, significance and context matter
 - Always examine residual plots alongside $R^2$ to assess whether a linear model is appropriate

@@ -7,7 +7,7 @@ slug: "06-2-clt-approximations"
 
 ## Section 6.2 – Approximations Using the Central Limit Theorem
 
-In the previous section we established that the sampling distribution of $\bar{x}$ has mean $\mu$ and standard error $\sigma / \sqrt{n}$. But what *shape* does that distribution have? The answer — one of the most remarkable results in all of statistics — is the **Central Limit Theorem (CLT)**.
+In the previous section we established that the sampling distribution of $\bar{x}$ has mean $\mu$ and standard error $\sigma / \sqrt{n}$. But what *shape* does that distribution have? The answer, one of the most remarkable results in all of statistics, is the **Central Limit Theorem (CLT)**.
 
 ### The Central Limit Theorem
 
@@ -21,18 +21,9 @@ $$
 
 The word "approximately" is key. A common rule of thumb is that $n \geq 30$ is usually sufficient for the CLT to apply, though the required sample size depends on how non-normal the original population is. Highly skewed or heavy-tailed populations may need larger samples.
 
-This result is remarkable because it allows us to use the normal distribution as a tool for inference about *any* population — not just normally distributed ones. It is the reason why so many statistical procedures rely on the normal distribution.
+This result is remarkable because it allows us to use the normal distribution as a tool for inference about *any* population, not just normally distributed ones. It is the reason why so many statistical procedures rely on the normal distribution.
 
-{/* ```r
-set.seed(25)
-pop_skewed <- rexp(10000, rate = 0.1)  # skewed population
-
-par(mfrow = c(1, 3))
-for (n in c(2, 10, 30)) {
-  means <- replicate(1000, mean(sample(pop_skewed, size = n)))
-  hist(means, main = paste("n =", n), xlab = "Sample Mean", col = "#dde6f2", border = "#3b5b8a")
-}
-``` */}
+<CLTWidget />
 
 <div className="example">
 **Example 6.2.1 – Applying the CLT**

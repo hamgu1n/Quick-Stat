@@ -7,7 +7,7 @@ slug: "09-1-one-way-anova"
 
 ## Section 9.1 – One-Way ANOVA
 
-So far we have compared the means of two groups using the two-sample t-test. But what if we want to compare three or more groups simultaneously? Suppose a researcher wants to compare the average exam score of students taught using three different methods. We could run multiple t-tests — method A vs. B, A vs. C, B vs. C — but this inflates the probability of making a Type I error. If each test has $\alpha = 0.05$, running three tests raises the overall chance of at least one false positive well above 5%. **Analysis of Variance (ANOVA)** solves this problem by testing all groups at once.
+So far we have compared the means of two groups using the two-sample t-test. But what if we want to compare three or more groups simultaneously? Suppose a researcher wants to compare the average exam score of students taught using three different methods. We could run multiple t-tests, method A vs. B, A vs. C, B vs. C, but this inflates the probability of making a Type I error. If each test has $\alpha = 0.05$, running three tests raises the overall chance of at least one false positive well above 5%. **Analysis of Variance (ANOVA)** solves this problem by testing all groups at once.
 
 ### The ANOVA Idea
 
@@ -43,22 +43,14 @@ $$
 
 Here $k$ is the number of groups and $N$ is the total number of observations. Under $H_0$ (all group means equal), the F-statistic follows an **F-distribution** with degrees of freedom $df_1 = k - 1$ and $df_2 = N - k$.
 
-A large F-statistic means the between-group variation dominates — providing evidence that at least one group mean differs. We reject $H_0$ when the p-value is below $\alpha$.
+A large F-statistic means the between-group variation dominates, providing evidence that at least one group mean differs. We reject $H_0$ when the p-value is below $\alpha$.
 
-{/* ```r
-# One-way ANOVA
-scores <- c(78, 82, 75, 80, 74,   # Method A
-            85, 90, 88, 83, 87,   # Method B
-            70, 73, 68, 72, 71)   # Method C
-method <- rep(c("A", "B", "C"), each = 5)
-df_anova <- data.frame(score = scores, method = method)
-summary(aov(score ~ method, data = df_anova))
-``` */}
+<AnovaWidget />
 
 <div className="example">
 **Example 9.1.1 – Setting Up ANOVA Hypotheses**
 
-A professor tests three different teaching methods — lecture-only, flipped classroom, and problem-based learning — on three groups of 15 students each. At the end of the semester, final exam scores are recorded.
+A professor tests three different teaching methods, lecture-only, flipped classroom, and problem-based learning, on three groups of 15 students each. At the end of the semester, final exam scores are recorded.
 
 State the null and alternative hypotheses for a one-way ANOVA test.
 </div>
@@ -106,4 +98,4 @@ Three fertilizer brands are tested on 18 plots of land (6 per brand). Crop yield
 - The F-statistic = MSB / MSW; a large F suggests the group means differ
 - Degrees of freedom: $df_1 = k - 1$ (between), $df_2 = N - k$ (within)
 - ANOVA assumes independence, normality within groups, and equal variances across groups
-- Rejecting $H_0$ only tells us that *some* means differ — post-hoc tests are needed to identify *which* ones
+- Rejecting $H_0$ only tells us that *some* means differ, post-hoc tests are needed to identify *which* ones

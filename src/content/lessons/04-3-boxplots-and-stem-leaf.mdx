@@ -7,7 +7,7 @@ slug: "04-3-boxplots-and-stem-leaf"
 
 ## Section 4.3 – Boxplots and Stem-and-Leaf Plots
 
-Histograms are excellent for showing the overall shape of a distribution, but they hide the individual data values. Two other graphical tools — the **boxplot** and the **stem-and-leaf plot** — offer different trade-offs between showing shape and preserving detail.
+Histograms are excellent for showing the overall shape of a distribution, but they hide the individual data values. Two other graphical tools, the **boxplot** and the **stem-and-leaf plot**, offer different trade-offs between showing shape and preserving detail.
 
 ### Boxplots
 
@@ -18,27 +18,9 @@ A **boxplot** (sometimes called a box-and-whisker plot) is a visual display of t
 - **Whiskers** that extend from the box out to the smallest and largest non-outlier values
 - **Individual points** plotted beyond the whiskers for any flagged outliers (using the IQR rule from Section 3.3)
 
-Boxplots are particularly powerful for **comparing two or more groups side by side**. When placed next to each other on the same axis, boxplots make it easy to see whether the medians differ, whether one group is more spread out, and whether one group has more outliers.
+Boxplots are particularly powerful for **comparing two or more groups side by side**. When placed next to each other on the same axis, boxplots make it easy to see whether the medians differ, whether one group is more spread out, and whether one group has more outliers. The widget below shows a labeled boxplot of textbook prices, toggle the outlier to see how the five-number summary and whiskers respond.
 
-{/* ```r
-set.seed(11)
-group_a <- rnorm(40, mean = 72, sd = 8)
-group_b <- rnorm(40, mean = 78, sd = 14)
-
-df_box <- data.frame(
-  score = c(group_a, group_b),
-  group = c(rep("Section A", 40), rep("Section B", 40))
-)
-
-ggplot(df_box, aes(x = group, y = score, fill = group)) +
-  geom_boxplot(fill = "#dde6f2", color = "#3b5b8a") +
-  labs(
-    title = "Figure 4.3.1: Exam Scores by Section",
-    x = "Section",
-    y = "Score"
-  ) +
-  theme_textbook()
-``` */}
+<BoxplotWidget />
 
 <div className="example">
 **Example 4.3.1 – Reading a Boxplot**
@@ -76,7 +58,7 @@ A **stem-and-leaf plot** is a simple way to display the distribution of a small 
 
 For example, the value 74 would have a stem of 7 and a leaf of 4. The value 112 could have a stem of 11 and a leaf of 2.
 
-Stem-and-leaf plots are most useful for small datasets (roughly 10 to 50 observations) where you want to see the full distribution *and* retain the original values. They work best for two-digit and three-digit numbers. One clever extension is a **back-to-back stem-and-leaf plot**, which places two groups on either side of a shared set of stems — making comparison as easy as reading a boxplot but with every data value visible.
+Stem-and-leaf plots are most useful for small datasets (roughly 10 to 50 observations) where you want to see the full distribution *and* retain the original values. They work best for two-digit and three-digit numbers. One clever extension is a **back-to-back stem-and-leaf plot**, which places two groups on either side of a shared set of stems, making comparison as easy as reading a boxplot but with every data value visible.
 
 <div className="example">
 **Example 4.3.4 – Constructing a Stem-and-Leaf Plot**
@@ -106,5 +88,5 @@ Create a back-to-back stem-and-leaf plot. Which class appears to have a higher t
 - The box spans the IQR; the line inside marks the median; whiskers extend to the most extreme non-outlier values
 - Outliers flagged by the IQR rule are shown as individual points beyond the whiskers
 - Boxplots excel at comparing two or more groups side by side
-- A stem-and-leaf plot preserves individual values while showing the distribution — useful for small datasets
+- A stem-and-leaf plot preserves individual values while showing the distribution, useful for small datasets
 - Back-to-back stem-and-leaf plots compare two groups using a shared set of stems

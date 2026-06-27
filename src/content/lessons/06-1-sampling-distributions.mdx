@@ -7,15 +7,15 @@ slug: "06-1-sampling-distributions"
 
 ## Section 6.1 – Sampling Distributions
 
-Suppose you want to know the average GPA of all students at your university. You can't survey every single student, so you take a random sample of 50 students and calculate their average GPA. That average is a **statistic** — a number calculated from your sample. Now imagine taking a different sample of 50 students tomorrow. You'd get a slightly different average. Do it again, and again, and the averages will keep varying. The **sampling distribution** describes the pattern of that variation across all possible samples.
+Suppose you want to know the average GPA of all students at your university. You can't survey every single student, so you take a random sample of 50 students and calculate their average GPA. That average is a **statistic**, a number calculated from your sample. Now imagine taking a different sample of 50 students tomorrow. You'd get a slightly different average. Do it again, and again, and the averages will keep varying. The **sampling distribution** describes the pattern of that variation across all possible samples.
 
 ### Parameters vs. Statistics
 
 Before going further, it's important to distinguish two concepts that are easy to confuse:
 
-A **parameter** is a number that describes the entire *population*. It is fixed but usually unknown. For example, the true average GPA of all students at a university is a parameter — often denoted $\mu$ (the population mean).
+A **parameter** is a number that describes the entire *population*. It is fixed but usually unknown. For example, the true average GPA of all students at a university is a parameter, often denoted $\mu$ (the population mean).
 
-A **statistic** is a number calculated from a *sample*. It changes from sample to sample. The sample mean $\bar{x}$ is a statistic. We use statistics to *estimate* parameters — and understanding how statistics vary is what sampling distributions are all about.
+A **statistic** is a number calculated from a *sample*. It changes from sample to sample. The sample mean $\bar{x}$ is a statistic. We use statistics to *estimate* parameters, and understanding how statistics vary is what sampling distributions are all about.
 
 <div className="example">
 **Example 6.1.1 – Parameter or Statistic?**
@@ -30,11 +30,11 @@ For each scenario, identify whether the bolded value is a parameter or a statist
 
 ### The Sampling Distribution of the Mean
 
-When we take many random samples of size $n$ from a population and calculate the mean of each sample, those means form their own distribution — the **sampling distribution of the sample mean** $\bar{x}$.
+When we take many random samples of size $n$ from a population and calculate the mean of each sample, those means form their own distribution, the **sampling distribution of the sample mean** $\bar{x}$.
 
 Two key facts govern this distribution:
 
-1. The **mean of the sampling distribution** equals the population mean: $\mu_{\bar{x}} = \mu$. This tells us that $\bar{x}$ is an **unbiased estimator** of $\mu$ — on average, it hits the right target.
+1. The **mean of the sampling distribution** equals the population mean: $\mu_{\bar{x}} = \mu$. This tells us that $\bar{x}$ is an **unbiased estimator** of $\mu$, on average, it hits the right target.
 
 2. The **standard deviation of the sampling distribution** (called the **standard error**) is:
 
@@ -44,22 +44,9 @@ $$
 
 where $\sigma$ is the population standard deviation and $n$ is the sample size.
 
-Notice that as $n$ increases, the standard error *decreases* — larger samples produce sample means that cluster more tightly around the true population mean. This is one of the most important ideas in all of statistics: bigger samples give us more reliable estimates.
+Notice that as $n$ increases, the standard error *decreases*, larger samples produce sample means that cluster more tightly around the true population mean. This is one of the most important ideas in all of statistics: bigger samples give us more reliable estimates.
 
-{/* ```r
-set.seed(20)
-pop <- rnorm(10000, mean = 70, sd = 15)
-sample_means <- replicate(1000, mean(sample(pop, size = 30)))
-
-ggplot(data.frame(xbar = sample_means), aes(x = xbar)) +
-  geom_histogram(bins = 30, fill = "#dde6f2", color = "#3b5b8a") +
-  labs(
-    title = "Figure 6.1.1: Sampling Distribution of the Mean (n = 30)",
-    x = "Sample Mean",
-    y = "Frequency"
-  ) +
-  theme_textbook()
-``` */}
+<SamplingDistWidget />
 
 <div className="example">
 **Example 6.1.2 – Standard Error**
@@ -93,6 +80,6 @@ Calculate the standard error for each sample size. What pattern do you notice? B
 - A parameter describes a population (fixed, usually unknown); a statistic describes a sample (varies from sample to sample)
 - The sampling distribution of $\bar{x}$ describes how sample means vary across all possible samples of size $n$
 - The mean of the sampling distribution equals the population mean: $\mu_{\bar{x}} = \mu$
-- The standard error is $\sigma_{\bar{x}} = \sigma / \sqrt{n}$ — it decreases as sample size increases
+- The standard error is $\sigma_{\bar{x}} = \sigma / \sqrt{n}$, it decreases as sample size increases
 - Larger samples produce less variable (more reliable) estimates of the population mean
 - Understanding sampling variability is the foundation of all statistical inference

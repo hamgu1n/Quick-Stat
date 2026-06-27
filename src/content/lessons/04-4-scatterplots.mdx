@@ -7,7 +7,7 @@ slug: "04-4-scatterplots"
 
 ## Section 4.4 – Scatterplots
 
-Every graph we have looked at so far has displayed a single variable at a time — its distribution, its center, its spread. But many of the most interesting questions in statistics involve the *relationship* between two variables. Does studying more lead to higher grades? Do taller people tend to weigh more? Does higher caffeine consumption correlate with better test performance? To explore these questions visually, we use a **scatterplot**.
+Every graph we have looked at so far has displayed a single variable at a time, its distribution, its center, its spread. But many of the most interesting questions in statistics involve the *relationship* between two variables. Does studying more lead to higher grades? Do taller people tend to weigh more? Does higher caffeine consumption correlate with better test performance? To explore these questions visually, we use a **scatterplot**.
 
 ### What Is a Scatterplot?
 
@@ -15,26 +15,13 @@ A **scatterplot** displays pairs of numerical observations as points on a coordi
 
 When reading a scatterplot, we focus on three features of the relationship:
 
-1. **Direction**: Does the relationship go upward (as $x$ increases, $y$ tends to increase — a **positive association**) or downward (as $x$ increases, $y$ tends to decrease — a **negative association**)?
+1. **Direction**: Does the relationship go upward (as $x$ increases, $y$ tends to increase, a **positive association**) or downward (as $x$ increases, $y$ tends to decrease, a **negative association**)?
 2. **Form**: Is the pattern roughly **linear** (the points follow a straight-line trend) or **curved**?
 3. **Strength**: How closely do the points follow the trend? Are they tightly packed around an imaginary line, or are they loosely scattered? We will quantify strength more precisely in Chapter 10 using correlation coefficients.
 
-{/* ```r
-set.seed(15)
-study_hours <- runif(40, 0, 10)
-exam_scores <- 50 + 4 * study_hours + rnorm(40, 0, 6)
+Use the slider below to move from a strong negative association all the way to a strong positive one and observe how the point cloud changes shape.
 
-df_scatter <- data.frame(hours = study_hours, score = exam_scores)
-
-ggplot(df_scatter, aes(x = hours, y = score)) +
-  geom_point(color = "#3b5b8a", size = 2, alpha = 0.8) +
-  labs(
-    title = "Figure 4.4.1: Study Hours vs. Exam Score",
-    x = "Hours Studied",
-    y = "Exam Score"
-  ) +
-  theme_textbook()
-``` */}
+<ScatterplotWidget />
 
 <div className="example">
 **Example 4.4.1 – Reading a Scatterplot**
@@ -58,7 +45,7 @@ For each pair of variables, predict whether the scatterplot would show a positiv
 
 ### Outliers in Scatterplots
 
-Just as we look for outliers in single-variable distributions, we also watch for them in scatterplots. An outlier in a scatterplot is a point that falls far from the overall trend — either because its $x$ value, its $y$ value, or both are unusual. Some outliers are also called **influential points** because, as we will see in Chapter 11, they can dramatically shift the line we fit through the data.
+Just as we look for outliers in single-variable distributions, we also watch for them in scatterplots. An outlier in a scatterplot is a point that falls far from the overall trend, either because its $x$ value, its $y$ value, or both are unusual. Some outliers are also called **influential points** because, as we will see in Chapter 11, they can dramatically shift the line we fit through the data.
 
 It's important not to remove outliers automatically. Sometimes they represent data entry errors; other times they are genuine and scientifically important observations that deserve special attention.
 
@@ -91,7 +78,7 @@ Describe the direction, form, and strength of the relationship. What would you p
 <div className="example">
 **Example 4.4.5 – Causation vs. Association**
 
-A scatterplot of ice cream sales (x-axis) and drowning rates (y-axis) across months of the year shows a strong positive association — months with high ice cream sales also tend to have more drownings.
+A scatterplot of ice cream sales (x-axis) and drowning rates (y-axis) across months of the year shows a strong positive association, months with high ice cream sales also tend to have more drownings.
 
 Does this mean eating ice cream causes drowning? What is a more reasonable explanation? What concept from Chapter 2 is at work here?
 </div>
@@ -102,4 +89,4 @@ Does this mean eating ice cream causes drowning? What is a more reasonable expla
 - Describe a relationship by its direction (positive or negative), form (linear or curved), and strength (tight or loose)
 - A positive association means both variables tend to move in the same direction; a negative association means they move in opposite directions
 - Outliers in a scatterplot fall far from the overall trend and may be influential points
-- Association does not imply causation — a lurking variable may drive both observed variables
+- Association does not imply causation, a lurking variable may drive both observed variables

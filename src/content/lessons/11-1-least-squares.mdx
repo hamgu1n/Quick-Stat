@@ -7,7 +7,7 @@ slug: "11-1-least-squares"
 
 ## Section 11.1 – The Least Squares Method
 
-Correlation tells us the *strength* and *direction* of a linear relationship, but it doesn't give us a way to make predictions. If we know that hours studied and exam scores are strongly correlated, we still can't say "if a student studies 6 hours, what score should we expect?" For that, we need a line — specifically, the **least squares regression line**.
+Correlation tells us the *strength* and *direction* of a linear relationship, but it doesn't give us a way to make predictions. If we know that hours studied and exam scores are strongly correlated, we still can't say "if a student studies 6 hours, what score should we expect?" For that, we need a line, specifically, the **least squares regression line**.
 
 ### The Simple Linear Regression Model
 
@@ -17,7 +17,7 @@ $$
 \hat{y} = b_0 + b_1 x
 $$
 
-where $\hat{y}$ (read "y-hat") is the **predicted value** of $Y$ for a given $X$, $b_0$ is the **y-intercept**, and $b_1$ is the **slope** — the predicted change in $Y$ for a one-unit increase in $X$.
+where $\hat{y}$ (read "y-hat") is the **predicted value** of $Y$ for a given $X$, $b_0$ is the **y-intercept**, and $b_1$ is the **slope**, the predicted change in $Y$ for a one-unit increase in $X$.
 
 The hat on $\hat{y}$ is important: it reminds us that we are predicting an *average* response, not an exact one. Individual observations will vary around the line.
 
@@ -29,7 +29,7 @@ $$
 e_i = y_i - \hat{y}_i
 $$
 
-The least squares line minimizes $\sum e_i^2$ — the sum of squared residuals. The formulas for the slope and intercept are:
+The least squares line minimizes $\sum e_i^2$, the sum of squared residuals. The formulas for the slope and intercept are:
 
 $$
 b_1 = r \cdot \frac{s_y}{s_x}
@@ -39,24 +39,9 @@ $$
 b_0 = \bar{y} - b_1 \bar{x}
 $$
 
-where $r$ is Pearson's correlation, $s_y$ and $s_x$ are the sample standard deviations of $Y$ and $X$, and $\bar{y}$, $\bar{x}$ are the sample means. Note that the regression line always passes through the point $(\bar{x}, \bar{y})$ — the means of the two variables.
+where $r$ is Pearson's correlation, $s_y$ and $s_x$ are the sample standard deviations of $Y$ and $X$, and $\bar{y}$, $\bar{x}$ are the sample means. Note that the regression line always passes through the point $(\bar{x}, \bar{y})$, the means of the two variables.
 
-{/* ```r
-set.seed(40)
-x <- runif(30, 1, 10)
-y <- 3 + 2.5 * x + rnorm(30, 0, 2)
-df_reg <- data.frame(x = x, y = y)
-
-ggplot(df_reg, aes(x = x, y = y)) +
-  geom_point(color = "#3b5b8a", size = 2) +
-  geom_smooth(method = "lm", se = FALSE, color = "#1f3c88", linewidth = 1) +
-  labs(
-    title = "Figure 11.1.1: Least Squares Regression Line",
-    x = "Explanatory Variable (x)",
-    y = "Response Variable (y)"
-  ) +
-  theme_textbook()
-``` */}
+<RegressionWidget />
 
 <div className="example">
 **Example 11.1.1 – Calculating the Regression Line**
@@ -96,7 +81,7 @@ Using the regression line from Example 11.1.2, a student studied 5 hours and sco
 
 ### Extrapolation
 
-The regression line is only reliable for predictions within the range of the observed data — or close to it. **Extrapolation** means making predictions far outside the range of $X$ values used to fit the model. This is dangerous because we have no evidence the linear trend continues beyond our data. For example, if our study hours data ranged from 1 to 10 hours, predicting the score for 50 hours of studying is extrapolation — the relationship might level off, reverse, or behave completely differently.
+The regression line is only reliable for predictions within the range of the observed data, or close to it. **Extrapolation** means making predictions far outside the range of $X$ values used to fit the model. This is dangerous because we have no evidence the linear trend continues beyond our data. For example, if our study hours data ranged from 1 to 10 hours, predicting the score for 50 hours of studying is extrapolation, the relationship might level off, reverse, or behave completely differently.
 
 <div className="example">
 **Example 11.1.4 – Dangers of Extrapolation**
@@ -133,8 +118,8 @@ Find the regression equation and predict heating oil consumption for a city with
 
 ### Key Points – Least Squares Method
 - The least squares line minimizes the sum of squared residuals: $\sum (y_i - \hat{y}_i)^2$
-- Slope: $b_1 = r \cdot s_y / s_x$ — the predicted change in $Y$ per one-unit increase in $X$
-- Intercept: $b_0 = \bar{y} - b_1\bar{x}$ — the predicted $Y$ when $X = 0$
+- Slope: $b_1 = r \cdot s_y / s_x$, the predicted change in $Y$ per one-unit increase in $X$
+- Intercept: $b_0 = \bar{y} - b_1\bar{x}$, the predicted $Y$ when $X = 0$
 - The line always passes through $(\bar{x}, \bar{y})$
 - Residuals measure prediction error: $e_i = y_i - \hat{y}_i$; positive residuals lie above the line, negative below
-- Avoid extrapolation — predictions far outside the range of observed $X$ values are unreliable
+- Avoid extrapolation, predictions far outside the range of observed $X$ values are unreliable

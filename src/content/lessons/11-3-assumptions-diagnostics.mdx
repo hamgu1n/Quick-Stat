@@ -23,7 +23,7 @@ The four main assumptions are often summarized by the acronym **LINE**:
 
 ### Checking Assumptions with Residual Plots
 
-The most useful diagnostic tool is the **residual plot** — a scatterplot of the residuals ($e_i = y_i - \hat{y}_i$) on the y-axis versus the fitted values ($\hat{y}_i$) on the x-axis.
+The most useful diagnostic tool is the **residual plot**, a scatterplot of the residuals ($e_i = y_i - \hat{y}_i$) on the y-axis versus the fitted values ($\hat{y}_i$) on the x-axis.
 
 A well-behaved residual plot shows:
 - Points scattered randomly around the horizontal line at zero
@@ -34,27 +34,12 @@ If the residual plot shows a curve, the linearity assumption is likely violated.
 
 A **normal Q-Q plot** of the residuals checks the normality assumption. If the residuals are normally distributed, the points will fall approximately along a straight diagonal line.
 
-{/* ```r
-set.seed(50)
-x <- runif(40, 1, 10)
-y <- 3 + 2 * x + rnorm(40, 0, 2)
-fit <- lm(y ~ x)
-
-par(mfrow = c(1, 2))
-plot(fit$fitted.values, fit$residuals,
-     main = "Residuals vs. Fitted",
-     xlab = "Fitted Values", ylab = "Residuals",
-     pch = 19, col = "#3b5b8a")
-abline(h = 0, lty = 2, col = "gray")
-
-qqnorm(fit$residuals, main = "Normal Q-Q Plot", col = "#3b5b8a", pch = 19)
-qqline(fit$residuals, col = "#1f3c88")
-``` */}
+<ResidualWidget />
 
 <div className="example">
 **Example 11.3.1 – Interpreting a Residual Plot**
 
-A residual plot for a regression of house price on square footage shows the residuals spreading out noticeably as the fitted values increase — small houses have tightly clustered residuals, but large houses have very spread-out residuals.
+A residual plot for a regression of house price on square footage shows the residuals spreading out noticeably as the fitted values increase, small houses have tightly clustered residuals, but large houses have very spread-out residuals.
 
 Which assumption is being violated? What does this mean for the reliability of the regression output?
 </div>
@@ -69,7 +54,7 @@ What does this indicate? Would you trust predictions from this linear model?
 
 ### Influential Points and Leverage
 
-We discussed outliers in the context of scatterplots back in Section 4.4. In regression, certain outliers have an outsized effect on the fitted line. An observation is said to have **high leverage** if its $x$-value is unusually far from $\bar{x}$ — it sits at the edge of the data and has the potential to pull the regression line in its direction. A point is **influential** if removing it substantially changes the estimated slope.
+We discussed outliers in the context of scatterplots back in Section 4.4. In regression, certain outliers have an outsized effect on the fitted line. An observation is said to have **high leverage** if its $x$-value is unusually far from $\bar{x}$, it sits at the edge of the data and has the potential to pull the regression line in its direction. A point is **influential** if removing it substantially changes the estimated slope.
 
 Not every high-leverage point is influential (it might happen to lie close to the overall trend), and not every outlier is high-leverage (it might have an average $x$-value but an unusual $y$-value). Both types deserve attention before finalizing a model.
 
@@ -111,4 +96,4 @@ For each violation, describe a potential remedy:
 - A good residual plot shows random scatter around zero with constant spread
 - The normal Q-Q plot checks the normality of residuals
 - High-leverage points have extreme $x$-values; influential points substantially change the estimated slope when removed
-- Always check assumptions before trusting regression output — a line can be fit to any data, but that doesn't make it appropriate
+- Always check assumptions before trusting regression output, a line can be fit to any data, but that doesn't make it appropriate

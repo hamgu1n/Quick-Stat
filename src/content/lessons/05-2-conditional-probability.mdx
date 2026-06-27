@@ -7,7 +7,7 @@ slug: "05-2-conditional-probability"
 
 ## Section 5.2 – Conditional Probability
 
-In the previous section, we calculated probabilities under the assumption that we knew nothing about the outcome ahead of time. But in real life, we often have *partial information* that changes our assessment of how likely something is. If you know that it rained last night, the probability of seeing wet grass this morning is much higher than it would be otherwise. This idea — updating a probability given new information — is called **conditional probability**.
+In the previous section, we calculated probabilities under the assumption that we knew nothing about the outcome ahead of time. But in real life, we often have *partial information* that changes our assessment of how likely something is. If you know that it rained last night, the probability of seeing wet grass this morning is much higher than it would be otherwise. This idea, updating a probability given new information, is called **conditional probability**.
 
 ### Definition
 
@@ -51,7 +51,7 @@ $$
 P(A \mid B) = P(A)
 $$
 
-In other words, knowing $B$ occurred tells us nothing about the probability of $A$. This is the intuitive definition of independence — new information doesn't change the odds. If $P(A \mid B) \neq P(A)$, the events are dependent.
+In other words, knowing $B$ occurred tells us nothing about the probability of $A$. This is the intuitive definition of independence, new information doesn't change the odds. If $P(A \mid B) \neq P(A)$, the events are dependent.
 
 <div className="example">
 **Example 5.2.3 – Testing Independence via Conditional Probability**
@@ -63,13 +63,15 @@ Is exercising regularly independent of reporting good sleep quality? Use conditi
 
 ### Bayes' Theorem
 
-Sometimes we know $P(A \mid B)$ but we really want $P(B \mid A)$ — the probability in the reverse direction. This is where **Bayes' Theorem** comes in. It is one of the most important results in all of probability and statistics:
+Sometimes we know $P(A \mid B)$ but we really want $P(B \mid A)$, the probability in the reverse direction. This is where **Bayes' Theorem** comes in. It is one of the most important results in all of probability and statistics:
 
 $$
 P(B \mid A) = \frac{P(A \mid B) \cdot P(B)}{P(A)}
 $$
 
-A common application is in medical testing. Suppose a disease affects 1% of the population, and a test correctly identifies the disease 95% of the time. If you test positive, what is the probability you actually have the disease? The answer — often surprisingly low — illustrates why understanding conditional probability matters deeply in real-world decision making.
+A common application is in medical testing. Suppose a disease affects 1% of the population, and a test correctly identifies the disease 95% of the time. If you test positive, what is the probability you actually have the disease? The answer, often surprisingly low, illustrates why understanding conditional probability matters deeply in real-world decision making.
+
+<BayesWidget />
 
 <div className="example">
 **Example 5.2.4 – Bayes' Theorem: Medical Testing**
@@ -94,7 +96,7 @@ A bag contains 3 red and 2 blue marbles. Two marbles are drawn one at a time *wi
 ### Key Points – Conditional Probability
 - Conditional probability $P(A \mid B)$ gives the probability of $A$ assuming $B$ has occurred
 - Formula: $P(A \mid B) = P(A \cap B) / P(B)$
-- Events are independent if $P(A \mid B) = P(A)$ — knowing $B$ gives no information about $A$
+- Events are independent if $P(A \mid B) = P(A)$, knowing $B$ gives no information about $A$
 - Bayes' Theorem lets us reverse the direction of conditioning: $P(B \mid A) = P(A \mid B) \cdot P(B) / P(A)$
 - Two-way tables are a useful tool for computing conditional probabilities from survey data
-- Without replacement sampling creates dependent events — the probability changes after each draw
+- Without replacement sampling creates dependent events, the probability changes after each draw

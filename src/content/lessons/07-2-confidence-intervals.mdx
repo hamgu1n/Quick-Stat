@@ -17,9 +17,9 @@ $$
 \text{Point Estimate} \pm \text{Margin of Error}
 $$
 
-The **margin of error** quantifies how far the estimate might reasonably be from the true parameter. The width of the interval reflects our uncertainty — a narrower interval means a more precise estimate.
+The **margin of error** quantifies how far the estimate might reasonably be from the true parameter. The width of the interval reflects our uncertainty, a narrower interval means a more precise estimate.
 
-A **95% confidence interval** means that if we were to repeat the sampling process many times and construct a confidence interval each time, approximately 95% of those intervals would contain the true population parameter. It does *not* mean there is a 95% probability that this particular interval contains the parameter — the parameter is fixed; the interval is what varies. This distinction is subtle but important.
+A **95% confidence interval** means that if we were to repeat the sampling process many times and construct a confidence interval each time, approximately 95% of those intervals would contain the true population parameter. It does *not* mean there is a 95% probability that this particular interval contains the parameter, the parameter is fixed; the interval is what varies. This distinction is subtle but important.
 
 ### Confidence Interval for a Population Mean (Known $\sigma$)
 
@@ -47,13 +47,13 @@ Construct a 95% confidence interval for the true mean daily study time.
 
 ### Confidence Interval for a Population Mean (Unknown $\sigma$)
 
-In practice, $\sigma$ is almost never known — we estimate it using $s$. When the population standard deviation is unknown, we replace $z^*$ with $t^*$, a critical value from the **t-distribution** with $n - 1$ degrees of freedom:
+In practice, $\sigma$ is almost never known, we estimate it using $s$. When the population standard deviation is unknown, we replace $z^*$ with $t^*$, a critical value from the **t-distribution** with $n - 1$ degrees of freedom:
 
 $$
 \bar{x} \pm t^* \cdot \frac{s}{\sqrt{n}}
 $$
 
-The t-distribution is bell-shaped and symmetric like the normal, but has heavier tails — reflecting the extra uncertainty introduced by estimating $\sigma$ with $s$. As $n$ increases, the t-distribution approaches the normal distribution. We will explore t-based inference in more detail in Section 8.2.
+The t-distribution is bell-shaped and symmetric like the normal, but has heavier tails, reflecting the extra uncertainty introduced by estimating $\sigma$ with $s$. As $n$ increases, the t-distribution approaches the normal distribution. We will explore t-based inference in more detail in Section 8.2.
 
 <div className="example">
 **Example 7.2.2 – When to Use z vs. t**
@@ -75,20 +75,7 @@ $$
 
 The term $\sqrt{\hat{p}(1-\hat{p})/n}$ is the standard error of $\hat{p}$. This formula relies on the CLT and requires that both $n\hat{p} \geq 10$ and $n(1-\hat{p}) \geq 10$.
 
-{/* ```r
-# Simulate confidence interval coverage
-set.seed(30)
-true_p <- 0.4
-n <- 100
-results <- replicate(200, {
-  x <- rbinom(1, n, true_p)
-  phat <- x / n
-  se <- sqrt(phat * (1 - phat) / n)
-  c(phat - 1.96 * se, phat + 1.96 * se)
-})
-coverage <- mean(results[1, ] <= true_p & results[2, ] >= true_p)
-cat("Coverage:", coverage)
-``` */}
+<ConfidenceIntervalWidget />
 
 <div className="example">
 **Example 7.2.3 – Confidence Interval for a Proportion**
@@ -118,7 +105,7 @@ What minimum sample size is needed? *(Hint: set the margin of error equal to $z^
 ### Key Points – Confidence Intervals
 - A confidence interval provides a range of plausible values for a population parameter
 - Form: Point Estimate $\pm$ Margin of Error
-- The confidence level (e.g., 95%) describes the long-run proportion of intervals that capture the true parameter — not the probability for any single interval
+- The confidence level (e.g., 95%) describes the long-run proportion of intervals that capture the true parameter, not the probability for any single interval
 - Use the z-interval when $\sigma$ is known; use the t-interval when $\sigma$ is unknown (replacing $z^*$ with $t^*$)
 - The confidence interval for a proportion uses $\hat{p} \pm z^* \sqrt{\hat{p}(1-\hat{p})/n}$; requires $n\hat{p} \geq 10$ and $n(1-\hat{p}) \geq 10$
 - Wider intervals reflect more uncertainty; narrower intervals require larger samples

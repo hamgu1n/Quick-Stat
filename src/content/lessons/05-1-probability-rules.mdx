@@ -9,11 +9,11 @@ slug: "05-1-probability-rules"
 
 ## Section 5.1 – Probability Rules
 
-Everything we have done so far — describing samples, summarizing distributions — has been purely descriptive. We described what *did* happen. Probability takes us in a different direction: it describes what *could* happen and how likely each outcome is. Probability is the language of uncertainty, and it forms the foundation for everything in statistical inference that follows.
+Everything we have done so far, describing samples, summarizing distributions, has been purely descriptive. We described what *did* happen. Probability takes us in a different direction: it describes what *could* happen and how likely each outcome is. Probability is the language of uncertainty, and it forms the foundation for everything in statistical inference that follows.
 
 ### Basic Probability
 
-The **probability** of an event is a number between 0 and 1 that measures how likely the event is to occur. A probability of 0 means the event is impossible; a probability of 1 means it is certain. In a **random experiment** — a process whose outcome is uncertain — the set of all possible outcomes is called the **sample space**, often denoted $S$.
+The **probability** of an event is a number between 0 and 1 that measures how likely the event is to occur. A probability of 0 means the event is impossible; a probability of 1 means it is certain. In a **random experiment**, a process whose outcome is uncertain, the set of all possible outcomes is called the **sample space**, often denoted $S$.
 
 For equally likely outcomes, the probability of an event $A$ is:
 
@@ -52,18 +52,13 @@ We subtract $P(A \cap B)$ because otherwise we count the overlap twice.
 
 The **intersection** of $A$ and $B$, written $A \cap B$, includes only the outcomes that are in *both* $A$ and $B$ simultaneously.
 
-Two events are **mutually exclusive** (also called **disjoint**) if they cannot both occur at the same time — their intersection is empty. For mutually exclusive events, the addition rule simplifies to:
+Two events are **mutually exclusive** (also called **disjoint**) if they cannot both occur at the same time, their intersection is empty. For mutually exclusive events, the addition rule simplifies to:
 
 $$
 P(A \cup B) = P(A) + P(B)
 $$
 
-{/* ```r
-# Visualize with a Venn diagram
-library(ggvenn)
-events <- list(A = 1:5, B = 4:8)
-ggvenn(events, fill_color = c("#dde6f2", "#f2dde6"))
-``` */}
+<ProbabilityVennWidget />
 
 <div className="example">
 **Example 5.1.2 – Complement Rule**
@@ -97,7 +92,7 @@ $$
 P(A \cap B) = P(A) \times P(B)
 $$
 
-Independence is a strong assumption. Flipping a coin twice is a classic example — the result of the first flip has no bearing on the second. Whether a randomly selected student passed two different unrelated courses might also be approximately independent. But whether a student passed a prerequisite and then passed the follow-on course almost certainly are *not* independent.
+Independence is a strong assumption. Flipping a coin twice is a classic example, the result of the first flip has no bearing on the second. Whether a randomly selected student passed two different unrelated courses might also be approximately independent. But whether a student passed a prerequisite and then passed the follow-on course almost certainly are *not* independent.
 
 <div className="example">
 **Example 5.1.5 – Independent Events**
@@ -118,8 +113,8 @@ If the actual joint probability turns out to be 0.18, does that change your asse
 
 ### Key Points – Probability Rules
 - Probability is a number between 0 and 1; the sample space contains all possible outcomes
-- $P(A^c) = 1 - P(A)$ — complement rule
-- $P(A \cup B) = P(A) + P(B) - P(A \cap B)$ — addition rule; simplifies when $A$ and $B$ are mutually exclusive
+- $P(A^c) = 1 - P(A)$, complement rule
+- $P(A \cup B) = P(A) + P(B) - P(A \cap B)$, addition rule; simplifies when $A$ and $B$ are mutually exclusive
 - Mutually exclusive events cannot both occur; their intersection is empty
 - Independent events satisfy $P(A \cap B) = P(A) \times P(B)$
-- Independence and mutual exclusivity are not the same concept — mutually exclusive events with positive probability are actually *dependent*
+- Independence and mutual exclusivity are not the same concept, mutually exclusive events with positive probability are actually *dependent*

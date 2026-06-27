@@ -7,30 +7,17 @@ slug: "04-1-bar-charts-and-pie-charts"
 
 ## Section 4.1 – Bar Charts and Pie Charts
 
-Numbers on their own can be hard to absorb. A list of 500 survey responses tells us almost nothing at a glance. This is where graphical methods come in — they transform raw data into a visual form that makes patterns, comparisons, and outliers immediately obvious. In this chapter we explore the most common ways to visualize data, starting with two tools designed specifically for **categorical** (qualitative) data: bar charts and pie charts.
+Numbers on their own can be hard to absorb. A list of 500 survey responses tells us almost nothing at a glance. This is where graphical methods come in, they transform raw data into a visual form that makes patterns, comparisons, and outliers immediately obvious. In this chapter we explore the most common ways to visualize data, starting with two tools designed specifically for **categorical** (qualitative) data: bar charts and pie charts.
 
 ### Bar Charts
 
-A **bar chart** (sometimes called a bar graph) displays the frequency or relative frequency of each category as a rectangular bar. The height of each bar corresponds to how many observations fall into that category. Bar charts work well when you want to compare counts or proportions across several categories — for example, favorite sports among students, the number of customers per store location, or the frequency of different response options on a survey.
+A **bar chart** (sometimes called a bar graph) displays the frequency or relative frequency of each category as a rectangular bar. The height of each bar corresponds to how many observations fall into that category. Bar charts work well when you want to compare counts or proportions across several categories, for example, favorite sports among students, the number of customers per store location, or the frequency of different response options on a survey.
 
-One important distinction: bars in a bar chart do not touch each other. This is intentional — it visually reinforces the fact that the categories are *discrete* and separate, not continuous. (We will see in Section 4.2 that histograms, used for numerical data, do have touching bars, and that distinction matters.)
+One important distinction: bars in a bar chart do not touch each other. This is intentional, it visually reinforces the fact that the categories are *discrete* and separate, not continuous. (We will see in Section 4.2 that histograms, used for numerical data, do have touching bars, and that distinction matters.)
 
 A **relative frequency bar chart** replaces raw counts with proportions (each count divided by the total). This is useful when comparing groups of different sizes, because it puts everyone on the same scale.
 
-{/* ```r
-categories <- c("Chocolate", "Vanilla", "Strawberry", "Mint Chip", "Cookie Dough")
-counts <- c(35, 28, 18, 12, 7)
-df_bar <- data.frame(flavor = categories, freq = counts)
-
-ggplot(df_bar, aes(x = flavor, y = freq)) +
-  geom_bar(stat = "identity", fill = "#dde6f2", color = "#3b5b8a", width = 0.6) +
-  labs(
-    title = "Figure 4.1.1: Favorite Ice Cream Flavors",
-    x = "Flavor",
-    y = "Number of Students"
-  ) +
-  theme_textbook()
-``` */}
+<BarChartWidget />
 
 <div className="example">
 **Example 4.1.1 – Reading a Bar Chart**
@@ -58,12 +45,12 @@ A coffee shop recorded the number of drinks sold in one day:
 - Tea: 25
 - Hot Chocolate: 18
 
-List the categories in decreasing order of frequency. This arrangement — called a **Pareto chart** — makes it easy to see which categories dominate.
+List the categories in decreasing order of frequency. This arrangement, called a **Pareto chart**, makes it easy to see which categories dominate.
 </div>
 
 ### Pie Charts
 
-A **pie chart** represents each category as a slice of a circle, where the size of each slice is proportional to its frequency. The full circle represents 100% of the data. Pie charts are intuitive for showing *part-to-whole relationships* — for example, the share of a budget allocated to each department, or the breakdown of students by major.
+A **pie chart** represents each category as a slice of a circle, where the size of each slice is proportional to its frequency. The full circle represents 100% of the data. Pie charts are intuitive for showing *part-to-whole relationships*, for example, the share of a budget allocated to each department, or the breakdown of students by major.
 
 To find the angle of each slice, multiply the relative frequency of that category by 360 degrees:
 

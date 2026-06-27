@@ -123,37 +123,11 @@ $$
 
 Unlike variance, the standard deviation is expressed in the same units as the original data.
 
-A small standard deviation means the data are tightly clustered around the mean. A large standard deviation means the data are more spread out.
+A small standard deviation means the data are tightly clustered around the mean. A large standard deviation means the data are more spread out. Use the sliders below to see how each parameter affects the shape of a normal distribution.
 
-Below we compare two datasets with the same mean but different spread.
+<NormalDistWidget />
 
-{/* ```r
-set.seed(3)
-
-data1 <- rnorm(100, mean = 50, sd = 3)
-data2 <- rnorm(100, mean = 50, sd = 12)
-
-df1 <- data.frame(values = data1, group = "Small Spread")
-df2 <- data.frame(values = data2, group = "Large Spread")
-
-df_combined <- rbind(df1, df2)
-
-ggplot(df_combined, aes(x = values)) +
-  geom_histogram(aes(y = after_stat(density)),
-                 bins = 15,
-                 fill = "#dde6f2",
-                 color = "#3b5b8a") +
-  geom_density(color = "#1f3c88", linewidth = 1) +
-  facet_wrap(~group) +
-  labs(
-    title = "Figure 3.2.2: Comparing Standard Deviations",
-    x = "Values",
-    y = "Density"
-  ) +
-  theme_textbook()
-``` */}
-
-Notice that both distributions are centered near 50, but the first has a much larger spread. Variance and standard deviation are the most used measures of spread to describe a dataset as they tie directly towards normal distributions and are generally robust to outliers.
+Notice how increasing σ flattens and widens the curve, while changing μ simply shifts it left or right. Both distributions remain centered at the mean, but the first has a much tighter spread. Variance and standard deviation are the most used measures of spread to describe a dataset as they tie directly towards normal distributions and are generally robust to outliers.
 
 ---
 
@@ -208,4 +182,4 @@ The box in the boxplot represents the interquartile range. The line inside the b
 - Variance: average squared deviation from the mean
 - Standard deviation: square root of variance, same units as data
 - IQR: spread of the middle 50%, robust to outliers
-- Describing a dataset requires both a measure of center and a measure of spread — together, they provide a much clearer picture of how the data behave
+- Describing a dataset requires both a measure of center and a measure of spread, together, they provide a much clearer picture of how the data behave

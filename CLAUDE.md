@@ -8,10 +8,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - React 19 + TypeScript 6 + Vite 8
 - shadcn/ui with radix-ui (component library)
-- React Router v7 (`BrowserRouter` + `Routes`)
+- React Router v7 (`HashRouter` + `Routes`)
 - Zustand v5 (state management)
 - WebR v0.5 (R compiled to WASM, runs in browser)
+- Recharts v3 (chart rendering in widgets)
 - Tailwind v4 (no `tailwind.config.js` — uses `@tailwindcss/vite` plugin)
+- MDX via `@mdx-js/rollup` with remark-math + rehype-katex (KaTeX math rendering) and remark-mdx-frontmatter (frontmatter as JS exports)
 
 ---
 
@@ -29,10 +31,14 @@ npm run lint     # ESLint
 
 ### Routing
 
-`src/main.tsx` wraps the app in `<BrowserRouter>`. Routes are defined in `src/App.tsx`:
+`src/main.tsx` wraps the app in `<HashRouter>`. Routes are defined in `src/App.tsx`:
 
+- `/` → `src/pages/Home.tsx`
 - `/analyzer` → `src/pages/Analyzer.tsx`
-- `/textbook` → `src/pages/Textbook.tsx`
+- `/textbook` → `src/pages/Textbook.tsx` (TOC view — no `:slug`)
+- `/textbook/:slug` → `src/pages/Textbook.tsx` (lesson view)
+
+The app is deployed to GitHub Pages at `/Quick-Stat/` (set via `base` in `vite.config.ts`).
 
 ### Data flow (Analyzer)
 
@@ -48,7 +54,7 @@ type Dataset = { headers: string[]; rows: string[][] };
 
 ### WebR
 
-`src/lib/webr.ts` exports a singleton `webR` instance and an `initPromise`. COOP/COEP headers are required in `vite.config.ts` for WebR's SharedArrayBuffer usage — do not remove them.
+`src/lib/webr.ts` exports a singleton `webR` instance and an `initPromise`. WebR requires `SharedArrayBuffer`, which in turn requires COOP/COEP headers (`Cross-Origin-Opener-Policy: same-origin` + `Cross-Origin-Embedder-Policy: require-corp`) — if WebR stops working, check that these headers are still being served.
 
 ### Tailwind / shadcn
 
@@ -57,6 +63,19 @@ Tailwind v4 is configured entirely in `src/index.css` (no config file). shadcn c
 ### Textbook (MDX)
 
 The textbook content is fully written and implemented using MDX. The remaining work is embedding interactive R snippet widgets into each chapter. Do not rewrite or restructure chapter content — only add interactive components to existing MDX files.
+
+Each MDX file has frontmatter that is auto-extracted as JS exports by `remark-mdx-frontmatter`:
+
+```yaml
+---
+title: "Measures of Central Tendency"
+unit: 2        # used for grouping in the TOC
+chapter: 3     # used for sorting within a unit
+slug: "03-1-measures-of-central-tendency"   # URL segment
+---
+```
+
+Math is written with KaTeX syntax: `$inline$` and `$$block$$`. MDX files live in `src/content/lessons/` and are loaded at build time via `import.meta.glob`.
 
 ### Interactive Widget Pattern
 
@@ -73,6 +92,14 @@ Each textbook widget is a self-contained React component with:
 4. The displayed R code is a **template string** — current slider values are interpolated into it, so it stays in sync with what's shown
 
 Widget components live in `src/components/widgets/`. They are imported and used directly in MDX files — no generic `RSnippet` executor; each widget is purpose-built for its statistical concept.
+
+**Existing widgets:** `NormalDistWidget`, `MeanMedianWidget`, `ZScoreWidget`, `SkewnessWidget`, `BarChartWidget`, `HistogramWidget`, `BoxplotWidget`, `ScatterplotWidget`.
+
+**Registering a new widget:** Two steps required:
+1. Create the component in `src/components/widgets/YourWidget.tsx`
+2. Import it in `src/pages/Textbook.tsx` and add it to the `components` object passed to `<Lesson>` (line ~83)
+
+Only widgets registered in that `components` object can be used in MDX files.
 
 ### Analyzer / Stats Playground
 

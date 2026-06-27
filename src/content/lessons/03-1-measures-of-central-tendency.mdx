@@ -53,50 +53,9 @@ What do you expect the mean of the following numbers to be? Calculate the mean a
 $[-20, -10, -5, 1, 12]$
 </div>
 
-We can visualize the mean, and its drawbacks using a histogram. Consider the graph below where 50 employees were sampled at a company to gauge the average gross-income of employees (*Figure 3.1.1*). After calculating the mean we found that the average employee makes roughly $130,000 a year.
+We can visualize the mean's sensitivity to outliers using the widget below. It shows 25 employee salaries at a company. Click "Add CEO" to introduce a single extreme value, watch how the mean jumps while the median barely moves.
 
-{/* ```r
-set.seed(122)
-df <- as.integer(rnorm(25, mean = 100000, sd = 15000))
-df <- data.frame(income = df)
-
-ggplot(df, aes(x = income)) +
-  geom_histogram(
-    bins = 8,
-    fill = "#dde6f2",
-    color = "#3b5b8a",
-    alpha = 0.9,
-    linewidth = 0.5
-  ) +
-  scale_x_continuous(labels = scales::comma) +
-  labs(
-    x = "Gross Income of Employees",
-    y = "Frequency",
-    caption = "Figure 3.1.1: Income distribution"
-  ) +
-  theme_textbook()
-``` */}
-
-We then added the CEO of the company as a data point, who has an income of \$10,000,000 a year. This single outlier dramatically changes the distribution, as shown in Figure 3.1.2 below. This drastic change in the distribution is reflected in the new mean, \$479144.7 which we know from earlier is not an accurate representation of the general population.
-
-{/* ```r
-df.outlier <- data.frame(income = c(df$income, 10000000))
-
-ggplot(df.outlier, aes(x = income)) +
-  geom_histogram(
-    bins = 12,
-    fill = "#dde6f2",
-    color = "#3b5b8a",
-    alpha = 0.9,
-    linewidth = 0.5
-  ) +
-  labs(
-    x = "Gross Income of Employees Including CEO",
-    y = "Frequency",
-    caption = "Figure 3.1.2: Income Distribution with Outlier"
-  ) +
-  theme_textbook()
-``` */}
+<MeanMedianWidget />
 
 This is a large reason why we see in datasets with known outliers we use measures that are more robust to data *skewing*, which we explore later in this chapter. All in all, despite this limitation, the mean is extremely useful and easy to calculate it.
 

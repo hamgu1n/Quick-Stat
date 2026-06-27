@@ -7,7 +7,7 @@ slug: "09-2-interpreting-anova"
 
 ## Section 9.2 – Interpreting ANOVA Results
 
-When an ANOVA test yields a significant result (we reject $H_0$), we know that at least one group mean differs from the others. But we don't yet know *which* groups differ, or *how much* they differ. This section addresses how to move from the overall ANOVA result to specific, actionable conclusions — through post-hoc testing and careful interpretation of results.
+When an ANOVA test yields a significant result (we reject $H_0$), we know that at least one group mean differs from the others. But we don't yet know *which* groups differ, or *how much* they differ. This section addresses how to move from the overall ANOVA result to specific, actionable conclusions, through post-hoc testing and careful interpretation of results.
 
 ### The Problem of Multiple Comparisons
 
@@ -29,6 +29,8 @@ fit <- aov(score ~ method, data = df_anova)
 TukeyHSD(fit)
 ``` */}
 
+<PostHocWidget />
+
 <div className="example">
 **Example 9.2.1 – When Post-Hoc Tests Are Needed**
 
@@ -43,7 +45,7 @@ An ANOVA comparing the mean stress levels of students in four academic majors yi
 
 Statistical software typically presents ANOVA results in a table with columns for the source of variation (Between/Within), sum of squares (SS), degrees of freedom (df), mean square (MS), the F-statistic, and the p-value. Learning to read this table efficiently is an essential skill.
 
-A significant p-value in the ANOVA table tells us the overall model is significant — that the group variable explains a meaningful portion of the variation in the response. From there, post-hoc output shows which specific pairs of means are significantly different, usually with confidence intervals for the difference in means.
+A significant p-value in the ANOVA table tells us the overall model is significant, that the group variable explains a meaningful portion of the variation in the response. From there, post-hoc output shows which specific pairs of means are significantly different, usually with confidence intervals for the difference in means.
 
 <div className="example">
 **Example 9.2.2 – Reading ANOVA Software Output**
@@ -53,8 +55,8 @@ Below is a simplified ANOVA table from a study comparing mean weekly exercise ho
 | Source | SS | df | MS | F | p-value |
 |---|---|---|---|---|---|
 | Between | 84.4 | 2 | 42.2 | 6.83 | 0.002 |
-| Within | 353.4 | 57 | 6.2 | — | — |
-| Total | 437.8 | 59 | — | — | — |
+| Within | 353.4 | 57 | 6.2 |, |, |
+| Total | 437.8 | 59 |, |, |, |
 
 1. Interpret the F-statistic and p-value.
 2. Which source of variation (between or within) is larger? What does that suggest?
@@ -91,8 +93,8 @@ Summarize the findings as if writing a brief paragraph for a school board report
 
 ### Key Points – Interpreting ANOVA Results
 - A significant ANOVA F-test means at least one group mean differs; it does not identify which groups
-- Running multiple pairwise t-tests after ANOVA inflates the Type I error rate — use post-hoc tests instead
+- Running multiple pairwise t-tests after ANOVA inflates the Type I error rate, use post-hoc tests instead
 - Tukey's HSD is the most common post-hoc test; it controls the family-wise error rate while comparing all pairs
-- The Bonferroni correction divides $\alpha$ by the number of comparisons — more conservative than Tukey
+- The Bonferroni correction divides $\alpha$ by the number of comparisons, more conservative than Tukey
 - Effect size ($\eta^2$ = SSB / SST) measures practical significance beyond statistical significance
 - Always report post-hoc results alongside the overall ANOVA so readers can see which specific groups differ

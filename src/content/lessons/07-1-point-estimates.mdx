@@ -39,11 +39,11 @@ For each scenario, identify the population parameter being estimated and the poi
 
 Not every statistic makes a good point estimate. Two properties we want in an estimator are:
 
-**Unbiasedness**: An estimator is **unbiased** if, on average across all possible samples, it equals the true parameter. The sample mean $\bar{x}$ is an unbiased estimator of $\mu$ — as we saw in Section 6.1, the mean of the sampling distribution of $\bar{x}$ equals $\mu$. This is why we divide by $n - 1$ rather than $n$ when computing the sample variance $s^2$ — it makes $s^2$ an unbiased estimator of $\sigma^2$.
+**Unbiasedness**: An estimator is **unbiased** if, on average across all possible samples, it equals the true parameter. The sample mean $\bar{x}$ is an unbiased estimator of $\mu$, as we saw in Section 6.1, the mean of the sampling distribution of $\bar{x}$ equals $\mu$. This is why we divide by $n - 1$ rather than $n$ when computing the sample variance $s^2$, it makes $s^2$ an unbiased estimator of $\sigma^2$.
 
 **Efficiency**: Among all unbiased estimators, we prefer the one with the smallest variance (the one whose values cluster most tightly around the parameter). A more efficient estimator is less affected by sampling variation.
 
-An important limitation of any point estimate is that it comes with no indication of how accurate it is. A single number gives no sense of the uncertainty involved. This is why we almost always accompany a point estimate with a **margin of error** or a **confidence interval** — the subject of the next section.
+An important limitation of any point estimate is that it comes with no indication of how accurate it is. A single number gives no sense of the uncertainty involved. This is why we almost always accompany a point estimate with a **margin of error** or a **confidence interval**, the subject of the next section.
 
 <div className="example">
 **Example 7.1.2 – Unbiasedness**
@@ -88,5 +88,5 @@ $$
 - A point estimate is a single sample statistic used to estimate an unknown population parameter
 - Common point estimates: $\bar{x}$ estimates $\mu$; $\hat{p}$ estimates $p$; $s$ estimates $\sigma$
 - A good estimator is unbiased (correct on average) and efficient (low variance)
-- Point estimates vary from sample to sample — they are subject to sampling variability
+- Point estimates vary from sample to sample, they are subject to sampling variability
 - A point estimate alone gives no indication of precision; a confidence interval is needed to convey uncertainty
