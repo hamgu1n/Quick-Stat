@@ -1,15 +1,24 @@
 import { Link } from "react-router-dom";
+import { BookOpen, LayoutGrid, ChartColumn } from "lucide-react";
+import { QuickStatLogo } from "@/components/QuickStatLogo";
 
 export default function Home() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh", gap: "1.5rem", fontFamily: "sans-serif" }}>
-      <h1 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>Quick Stat</h1>
-      <p style={{ color: "#666", fontSize: "1.1rem" }}>An interactive intro statistics textbook</p>
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <Link to="/textbook" style={{ padding: "0.75rem 1.5rem", background: "#2563eb", color: "white", borderRadius: "0.5rem", textDecoration: "none", fontWeight: "500" }}>
+    <div className="home-hero">
+      <QuickStatLogo size={40} />
+      <h1 className="home-title">Quick Stat</h1>
+      <p className="home-subtitle">An interactive intro statistics textbook</p>
+      <div className="home-links">
+        <Link to="/textbook" className="home-link home-link--primary">
+          <BookOpen size={18} strokeWidth={2} />
           Open Textbook
         </Link>
-        <Link to="/analyzer" style={{ padding: "0.75rem 1.5rem", background: "#f3f4f6", color: "#111", borderRadius: "0.5rem", textDecoration: "none", fontWeight: "500" }}>
+        <Link to="/applets" className="home-link">
+          <LayoutGrid size={18} strokeWidth={2} />
+          Browse Applets
+        </Link>
+        <Link to="/analyzer" className="home-link">
+          <ChartColumn size={18} strokeWidth={2} />
           Stats Analyzer
         </Link>
       </div>

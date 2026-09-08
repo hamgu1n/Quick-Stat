@@ -48,12 +48,45 @@ function toX(v: number) {
   return SVG_LEFT + ((v - SCALE_MIN) / (SCALE_MAX - SCALE_MIN)) * SVG_WIDTH;
 }
 
+const LABEL_ROW_HEIGHT = 13;
+// Rough average glyph width at fontSize 10, used only to estimate whether
+// two labels' text would overlap -- doesn't need to be exact.
+const CHAR_WIDTH = 5.3;
+
+type SummaryLabel = { text: string; x: number; fill: string; bold?: boolean };
+
+/** Greedily stacks labels onto extra rows above the box whenever placing
+ * one on the current row would overlap the previous label there, so
+ * tightly-clustered values (e.g. Q1 and the median close together) don't
+ * run their text into each other. Labels must be passed left-to-right. */
+function layoutLabels(labels: SummaryLabel[]): (SummaryLabel & { row: number })[] {
+  const rowRightEdge: number[] = [];
+  return labels.map((l) => {
+    const halfWidth = (l.text.length * CHAR_WIDTH) / 2;
+    let row = 0;
+    while (rowRightEdge[row] !== undefined && l.x - halfWidth < rowRightEdge[row] + 4) {
+      row++;
+    }
+    rowRightEdge[row] = l.x + halfWidth;
+    return { ...l, row };
+  });
+}
+
 export function BoxplotWidget() {
   const [showOutlier, setShowOutlier] = useState(false);
   const [showRCode, setShowRCode] = useState(false);
 
   const data = showOutlier ? [...BASE_DATA, OUTLIER] : BASE_DATA;
   const { min, q1, q2, q3, max, iqr, upperFence, outliers } = fiveNum(data);
+
+  const summaryLabels = layoutLabels([
+    { text: `Min=${min}`, x: toX(min), fill: "var(--muted-foreground)" },
+    { text: `Q₁=${q1}`, x: toX(q1), fill: "var(--foreground)" },
+    { text: `Median=${q2}`, x: toX(q2), fill: "var(--maroon)", bold: true },
+    { text: `Q₃=${q3}`, x: toX(q3), fill: "var(--foreground)" },
+    { text: `Max=${max}`, x: toX(max), fill: "var(--muted-foreground)" },
+    ...outliers.map((v): SummaryLabel => ({ text: `⚠ ${v}`, x: toX(v), fill: "var(--maroon)" })),
+  ].sort((a, b) => a.x - b.x));
 
   const rCode = `prices <- c(${BASE_DATA.join(", ")}${showOutlier ? `, ${OUTLIER}` : ""})
 
@@ -105,14 +138,22 @@ boxplot(prices,
           <circle key={i} cx={toX(v)} cy={BOX_Y + BOX_H / 2} r={5} fill="none" stroke="var(--maroon)" strokeWidth={2} />
         ))}
 
-        {/* Labels */}
-        <text x={toX(min)} y={BOX_Y - 6} textAnchor="middle" fontSize={10} fill="var(--muted-foreground)">Min={min}</text>
-        <text x={toX(q1)} y={BOX_Y - 6} textAnchor="middle" fontSize={10} fill="var(--foreground)">Q₁={q1}</text>
-        <text x={toX(q2)} y={BOX_Y - 6} textAnchor="middle" fontSize={10} fill="var(--maroon)" fontWeight={600}>Median={q2}</text>
-        <text x={toX(q3)} y={BOX_Y - 6} textAnchor="middle" fontSize={10} fill="var(--foreground)">Q₃={q3}</text>
-        <text x={toX(max)} y={BOX_Y - 6} textAnchor="middle" fontSize={10} fill="var(--muted-foreground)">Max={max}</text>
-        {outliers.map((v, i) => (
-          <text key={i} x={toX(v)} y={BOX_Y - 6} textAnchor="middle" fontSize={10} fill="var(--maroon)">⚠ {v}</text>
+        {/* Labels -- staggered onto extra rows when two would overlap
+            horizontally, since with tightly-clustered data (e.g. Q1 and
+            Median close together) placing all five on one fixed row runs
+            their text into each other. */}
+        {summaryLabels.map((l) => (
+          <text
+            key={l.text}
+            x={l.x}
+            y={BOX_Y - 6 - l.row * LABEL_ROW_HEIGHT}
+            textAnchor="middle"
+            fontSize={10}
+            fontWeight={l.bold ? 600 : undefined}
+            fill={l.fill}
+          >
+            {l.text}
+          </text>
         ))}
       </svg>
 
