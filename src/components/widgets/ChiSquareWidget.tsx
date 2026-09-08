@@ -45,8 +45,8 @@ abline(v = chi_stat, col = "#3b5b8a", lty = 2)`;
         {pValue < 0.05 && <span style={{ color: "green", fontSize: "0.82rem" }}>Reject H₀ at α = 0.05</span>}
       </div>
 
-      <ResponsiveContainer width="100%" height={220}>
-        <ComposedChart data={data} margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
+      <ResponsiveContainer width="100%" height={300}>
+        <ComposedChart data={data} margin={{ top: 28, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="x" type="number" domain={[0, xMax]} tickCount={8}
             tickFormatter={(v: number) => v.toFixed(0)} style={{ fontSize: "0.72rem" }} />
           <YAxis width={52} tickFormatter={(v: number) => v.toFixed(3)} style={{ fontSize: "0.72rem" }} />

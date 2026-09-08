@@ -24,6 +24,9 @@ export function TypeErrorPowerWidget() {
 
   const xMin = Math.min(MU0, muA) - 4.5 * se;
   const xMax = Math.max(MU0, muA) + 4.5 * se;
+  // When muA is dragged close to mu0, their reference lines (and default
+  // same-row labels) sit close enough to collide -- stagger them apart.
+  const linesClose = Math.abs(muA - MU0) < (xMax - xMin) * 0.12;
 
   const data = useMemo(() => {
     return Array.from({ length: POINTS }, (_, i) => {
@@ -66,8 +69,8 @@ power <- 1 - beta                                              # ${power.toFixed
         </span>
       </div>
 
-      <ResponsiveContainer width="100%" height={260}>
-        <ComposedChart data={data} margin={{ top: 8, right: 24, bottom: 0, left: 0 }}>
+      <ResponsiveContainer width="100%" height={320}>
+        <ComposedChart data={data} margin={{ top: 28, right: 24, bottom: 0, left: 0 }}>
           <XAxis dataKey="x" type="number" domain={[xMin, xMax]} tickCount={7}
             tickFormatter={(v: number) => v.toFixed(0)} style={{ fontSize: "0.72rem" }} />
           <YAxis width={60} tickFormatter={(v: number) => v.toFixed(4)} style={{ fontSize: "0.72rem" }} />
@@ -84,10 +87,28 @@ power <- 1 - beta                                              # ${power.toFixed
             dot={false} isAnimationActive={false} />
           <ReferenceLine x={critLo} stroke="#666" strokeDasharray="4,3" strokeWidth={1.5} />
           <ReferenceLine x={critHi} stroke="#666" strokeDasharray="4,3" strokeWidth={1.5} />
+          {/* μ₀ and μₐ's labels are anchored to a fixed side of their line,
+              but the domain re-centers around wherever muA is dragged to —
+              so a hardcoded side can push the label past the plot edge and
+              get clipped by the card around it. Point each label back
+              toward the middle of the chart instead, with more breathing
+              room from the line (offset), and -- since dragging muA close
+              to mu0 puts both lines close together too -- push their
+              labels onto separate rows so the text doesn't collide. */}
           <ReferenceLine x={MU0} stroke="#999" strokeWidth={1}
-            label={{ value: `μ₀ = ${MU0}`, position: "insideTopLeft", fontSize: 9, fill: "#888" }} />
+            label={{
+              value: `μ₀ = ${MU0}`,
+              position: MU0 > (xMin + xMax) / 2 ? "insideTopLeft" : "insideTopRight",
+              fontSize: 9, fill: "#888", offset: 10,
+              dy: linesClose ? -7 : 0,
+            }} />
           <ReferenceLine x={muA} stroke="var(--maroon)" strokeWidth={1}
-            label={{ value: `μₐ = ${muA}`, position: "insideTopRight", fontSize: 9, fill: "var(--maroon)" }} />
+            label={{
+              value: `μₐ = ${muA}`,
+              position: muA > (xMin + xMax) / 2 ? "insideTopLeft" : "insideTopRight",
+              fontSize: 9, fill: "var(--maroon)", offset: 10,
+              dy: linesClose ? 9 : 0,
+            }} />
         </ComposedChart>
       </ResponsiveContainer>
 

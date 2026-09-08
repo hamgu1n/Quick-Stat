@@ -105,8 +105,59 @@ export function pchisq(x: number, df: number): number {
   return gammaInc(df / 2, x / 2);
 }
 
+export function pf(x: number, df1: number, df2: number): number {
+  if (x <= 0) return 0;
+  return betai(df1 / 2, df2 / 2, (df1 * x) / (df1 * x + df2));
+}
+
 // Seeded LCG for reproducible random numbers in simulations.
 export function makeLCG(seed: number) {
   let s = seed >>> 0;
   return () => { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+// ---- Quantile (inverse CDF) functions ----
+// Used to find critical values / rejection-region boundaries for charting
+// a test's sampling distribution -- not meant to be R-exact, just close
+// enough to draw where the shaded region should start.
+
+/** Standard normal quantile via a Beasley-Springer-Moro rational approximation. */
+export function qnorm(p: number): number {
+  const a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02,
+    1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00];
+  const b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02,
+    6.680131188771972e+01, -1.328068155288572e+01];
+  const c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00,
+    -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00];
+  const d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00,
+    3.754408661907416e+00];
+  const pLow = 0.02425;
+  if (p < pLow) {
+    const q = Math.sqrt(-2 * Math.log(p));
+    return (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
+      ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1);
+  }
+  if (p > 1 - pLow) return -qnorm(1 - p);
+  const q = p - 0.5, r = q * q;
+  return (((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) * q /
+    (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1);
+}
+
+/** Student-t quantile: a Cornish-Fisher correction on top of the normal quantile. */
+export function qt(p: number, df: number): number {
+  const z = qnorm(p);
+  const g1 = (z ** 3 + z) / (4 * df);
+  const g2 = (5 * z ** 5 + 16 * z ** 3 + 3 * z) / (96 * df ** 2);
+  return z + g1 + g2;
+}
+
+/** Chi-square quantile via bisection on pchisq (monotonic, so this is exact
+ * up to the tolerance below -- no closed-form inverse needed). */
+export function qchisq(p: number, df: number): number {
+  let lo = 0, hi = df + 10 * Math.sqrt(2 * df) + 50;
+  for (let i = 0; i < 100; i++) {
+    const mid = (lo + hi) / 2;
+    if (pchisq(mid, df) < p) lo = mid; else hi = mid;
+  }
+  return (lo + hi) / 2;
 }

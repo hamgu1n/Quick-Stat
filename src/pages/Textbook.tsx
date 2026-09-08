@@ -1,32 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import React, { useState } from "react";
-import { NormalDistWidget } from "@/components/widgets/NormalDistWidget";
-import { MeanMedianWidget } from "@/components/widgets/MeanMedianWidget";
-import { ZScoreWidget } from "@/components/widgets/ZScoreWidget";
-import { SkewnessWidget } from "@/components/widgets/SkewnessWidget";
-import { BarChartWidget } from "@/components/widgets/BarChartWidget";
-import { HistogramWidget } from "@/components/widgets/HistogramWidget";
-import { BoxplotWidget } from "@/components/widgets/BoxplotWidget";
-import { ScatterplotWidget } from "@/components/widgets/ScatterplotWidget";
-import { SamplingMethodWidget } from "@/components/widgets/SamplingMethodWidget";
-import { RandomizationWidget } from "@/components/widgets/RandomizationWidget";
-import { ProbabilityVennWidget } from "@/components/widgets/ProbabilityVennWidget";
-import { BayesWidget } from "@/components/widgets/BayesWidget";
-import { PermCombWidget } from "@/components/widgets/PermCombWidget";
-import { SamplingDistWidget } from "@/components/widgets/SamplingDistWidget";
-import { CLTWidget } from "@/components/widgets/CLTWidget";
-import { ConfidenceIntervalWidget } from "@/components/widgets/ConfidenceIntervalWidget";
-import { ZTestWidget } from "@/components/widgets/ZTestWidget";
-import { TDistWidget } from "@/components/widgets/TDistWidget";
-import { TTestWidget } from "@/components/widgets/TTestWidget";
-import { TypeErrorPowerWidget } from "@/components/widgets/TypeErrorPowerWidget";
-import { ChiSquareWidget } from "@/components/widgets/ChiSquareWidget";
-import { AnovaWidget } from "@/components/widgets/AnovaWidget";
-import { PostHocWidget } from "@/components/widgets/PostHocWidget";
-import { CorrelationWidget } from "@/components/widgets/CorrelationWidget";
-import { OutlierCorrelationWidget } from "@/components/widgets/OutlierCorrelationWidget";
-import { RegressionWidget } from "@/components/widgets/RegressionWidget";
-import { ResidualWidget } from "@/components/widgets/ResidualWidget";
+import { COMPONENTS } from "@/lib/widgetRegistry";
 
 type LessonModule = {
   default: React.ComponentType<{ components?: Record<string, React.ComponentType> }>;
@@ -55,19 +29,6 @@ const sorted = Object.values(lessons).sort((a, b) => {
     return a.frontmatter.unit - b.frontmatter.unit;
   return a.frontmatter.chapter - b.frontmatter.chapter;
 });
-
-const COMPONENTS = {
-  NormalDistWidget, MeanMedianWidget, ZScoreWidget, SkewnessWidget,
-  BarChartWidget, HistogramWidget, BoxplotWidget, ScatterplotWidget,
-  SamplingMethodWidget, RandomizationWidget,
-  ProbabilityVennWidget, BayesWidget, PermCombWidget,
-  SamplingDistWidget, CLTWidget,
-  ConfidenceIntervalWidget,
-  ZTestWidget, TDistWidget, TTestWidget, TypeErrorPowerWidget, ChiSquareWidget,
-  AnovaWidget, PostHocWidget,
-  CorrelationWidget, OutlierCorrelationWidget,
-  RegressionWidget, ResidualWidget,
-};
 
 export default function Textbook() {
   const { slug } = useParams();

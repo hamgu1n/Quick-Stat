@@ -86,7 +86,16 @@ abline(v = x0, col = "red", lwd = 2)`;
             x={x}
             stroke="#3b5b8a"
             strokeWidth={2}
-            label={{ value: `x = ${x}`, position: "top", fontSize: 11, fill: "#3b5b8a" }}
+            label={{
+              value: `x = ${x}`,
+              // "top" centers the label on the line, so near either edge of
+              // the domain half the text runs past the plot and gets
+              // clipped by the card around it. Flip the label to whichever
+              // side points back toward the middle of the chart instead.
+              position: x > (X_MIN + X_MAX) / 2 ? "insideTopLeft" : "insideTopRight",
+              fontSize: 11,
+              fill: "#3b5b8a",
+            }}
           />
         </LineChart>
       </ResponsiveContainer>

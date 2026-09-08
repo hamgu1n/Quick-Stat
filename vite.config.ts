@@ -7,13 +7,17 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import remarkGfm from "remark-gfm";
 
 // https://vite.dev/config/
 export default defineConfig({
   base: "/Quick-Stat/",
   plugins: [
     mdx({
-      remarkPlugins: [remarkMath, remarkFrontmatter, remarkMdxFrontmatter],
+      // remarkGfm adds GitHub-flavored markdown table support -- without
+      // it, pipe-table syntax (`| a | b |`) isn't recognized as a table at
+      // all and gets flattened into one squished paragraph instead.
+      remarkPlugins: [remarkGfm, remarkMath, remarkFrontmatter, remarkMdxFrontmatter],
       rehypePlugins: [rehypeKatex],
     }),
     react(),
