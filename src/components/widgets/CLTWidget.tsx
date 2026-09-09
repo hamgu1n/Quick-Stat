@@ -103,7 +103,7 @@ curve(dnorm(x, mean = ${mu}, sd = ${sigma}/sqrt(${n})),
       </div>
 
       <p style={{ fontSize: "0.8rem", color: "var(--muted-foreground)", margin: "0.25rem 0 0.5rem" }}>
-        Histogram of {N_SAMPLES} sample means. Red curve = N(μ, σ/√n) — the CLT approximation.
+        Histogram of {N_SAMPLES} sample means. Red curve = N(μ, σ/√n) - the CLT approximation.
       </p>
 
       <ResponsiveContainer width="100%" height={240}>

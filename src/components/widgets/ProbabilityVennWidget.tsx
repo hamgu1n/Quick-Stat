@@ -20,7 +20,7 @@ P_AB <- ${safeAB}   # P(A and B)
 
 P_union      <- P_A + P_B - P_AB   # ${pUnion.toFixed(3)}
 P_complement <- 1 - P_A            # ${(1 - pA).toFixed(3)}
-P_A_given_B  <- P_AB / P_B         # ${pB > 0 ? (safeAB / pB).toFixed(3) : "—"}`;
+P_A_given_B  <- P_AB / P_B         # ${pB > 0 ? (safeAB / pB).toFixed(3) : "NA"}`;
 
   return (
     <div className="widget">

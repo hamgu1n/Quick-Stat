@@ -60,8 +60,8 @@ control   <- 11:20`;
 
       <p style={{ fontSize: "0.875rem", color: "var(--muted-foreground)", margin: "0.75rem 0 0.5rem" }}>
         {type === "convenient"
-          ? "First 10 participants go to treatment — but most \"older\" participants happen to be first."
-          : "Participants randomly assigned — age distributes evenly between groups."}
+          ? "First 10 participants go to treatment - but most \"older\" participants happen to be first."
+          : "Participants randomly assigned - age distributes evenly between groups."}
       </p>
 
       <svg viewBox={`0 0 ${COLS * 48} 100`} style={{ width: "100%", maxWidth: 360, display: "block", margin: "0 auto" }}>

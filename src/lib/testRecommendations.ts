@@ -47,7 +47,7 @@ export function recommendTests(dataset: Dataset): Recommendation[] {
     recs.push(
       suggest(
         "two-sample-t",
-        `"${numeric[0]}" is numeric and "${twoLevel.header}" splits your rows into exactly 2 groups — a natural fit for comparing two group means.`,
+        `"${numeric[0]}" is numeric and "${twoLevel.header}" splits your rows into exactly 2 groups - a natural fit for comparing two group means.`,
         { response: numeric[0], group: twoLevel.header, tail: "two.sided" },
       ),
     );
@@ -58,7 +58,7 @@ export function recommendTests(dataset: Dataset): Recommendation[] {
     recs.push(
       suggest(
         "one-way-anova",
-        `"${multiLevel.header}" has ${multiLevel.levels} groups — ANOVA compares means across 3 or more groups at once.`,
+        `"${multiLevel.header}" has ${multiLevel.levels} groups - ANOVA compares means across 3 or more groups at once.`,
         { response: numeric[0], group: multiLevel.header },
       ),
     );
@@ -69,7 +69,7 @@ export function recommendTests(dataset: Dataset): Recommendation[] {
     recs.push(
       suggest(
         "pearson-correlation",
-        `"${numeric[0]}" and "${numeric[1]}" are both numeric — correlation checks whether they move together.`,
+        `"${numeric[0]}" and "${numeric[1]}" are both numeric - correlation checks whether they move together.`,
         { x: numeric[0], y: numeric[1] },
       ),
     );
@@ -81,7 +81,7 @@ export function recommendTests(dataset: Dataset): Recommendation[] {
     recs.push(
       suggest(
         "chi-square-independence",
-        `"${a.header}" and "${b.header}" are both categorical — a chi-square test checks whether they're related.`,
+        `"${a.header}" and "${b.header}" are both categorical - a chi-square test checks whether they're related.`,
         { columnA: a.header, columnB: b.header },
       ),
     );
@@ -92,7 +92,7 @@ export function recommendTests(dataset: Dataset): Recommendation[] {
     recs.push(
       suggest(
         "chi-square-gof",
-        `"${categorical[0].header}" is your only categorical column — goodness-of-fit checks whether its categories are evenly distributed.`,
+        `"${categorical[0].header}" is your only categorical column - goodness-of-fit checks whether its categories are evenly distributed.`,
         { column: categorical[0].header },
       ),
     );
@@ -101,7 +101,7 @@ export function recommendTests(dataset: Dataset): Recommendation[] {
     recs.push(
       suggest(
         "one-sample-t",
-        `"${numeric[0]}" is your only numeric column — a one-sample t-test checks whether its mean differs from a value you choose.`,
+        `"${numeric[0]}" is your only numeric column - a one-sample t-test checks whether its mean differs from a value you choose.`,
         { column: numeric[0], mu0: "0", tail: "two.sided" },
       ),
     );

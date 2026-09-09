@@ -92,7 +92,7 @@ export function DashboardPanel({
         <h3 className="dashboard-section-title">Graphs ({pinnedGraphs.length})</h3>
         {pinnedGraphs.length === 0 ? (
           <p className="dashboard-empty">
-            No graphs pinned yet — build one on the Graph tab and click "Add to Dashboard".
+            No graphs pinned yet - build one on the Graph tab and click "Add to Dashboard".
           </p>
         ) : (
           <div className="dashboard-test-list">
@@ -123,7 +123,7 @@ export function DashboardPanel({
         <h3 className="dashboard-section-title">Tests used ({testHistory.length})</h3>
         {testHistory.length === 0 ? (
           <p className="dashboard-empty">
-            No tests run yet — run one on the Stat tab and it'll be added here.
+            No tests run yet - run one on the Stat tab and it'll be added here.
           </p>
         ) : (
           <div className="dashboard-test-list">

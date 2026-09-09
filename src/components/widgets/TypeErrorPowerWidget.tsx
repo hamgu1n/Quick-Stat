@@ -113,9 +113,9 @@ power <- 1 - beta                                              # ${power.toFixed
       </ResponsiveContainer>
 
       <p style={{ fontSize: "0.78rem", margin: "0.3rem 0 0.6rem", lineHeight: 1.5 }}>
-        <strong style={{ color: "var(--maroon)" }}>Red</strong> = Type I error (α) — rejecting a true H₀ (false positive).{" "}
-        <strong style={{ color: "#3b5b8a" }}>Blue</strong> = Type II error (β) — missing a false H₀ (false negative).{" "}
-        <strong style={{ color: "#2a7a3a" }}>Green</strong> = Power (1−β) — correctly detecting the true effect.
+        <strong style={{ color: "var(--maroon)" }}>Red</strong> = Type I error (α) - rejecting a true H₀ (false positive).{" "}
+        <strong style={{ color: "#3b5b8a" }}>Blue</strong> = Type II error (β) - missing a false H₀ (false negative).{" "}
+        <strong style={{ color: "#2a7a3a" }}>Green</strong> = Power (1−β) - correctly detecting the true effect.
         <br />
         Gray curve = H₀ distribution (N({MU0}, σ/√n)). Red curve = Hₐ distribution (N(μₐ, σ/√n)).
       </p>

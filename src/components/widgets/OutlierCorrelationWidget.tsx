@@ -87,7 +87,7 @@ abline(lm(y ~ x), col = "#3b5b8a")`;
 
       {showOutlier && (
         <p style={{ fontSize: "0.82rem", color: "var(--muted-foreground)", margin: "0.3rem 0 0.5rem" }}>
-          The orange point ({OUTLIER.x}, {OUTLIER.y}) is a <strong>high-leverage outlier</strong> —
+          The orange point ({OUTLIER.x}, {OUTLIER.y}) is a <strong>high-leverage outlier</strong> -
           it sits at an extreme x-value with a y-value far below the trend.
           One point shifts r by {Math.abs(R_WITH - R_BASE).toFixed(3)}: from {R_BASE.toFixed(3)} down to {R_WITH.toFixed(3)}.
         </p>

@@ -2,7 +2,9 @@
 
 An interactive intro-stats web app: a full textbook with embedded interactive widgets (each with equivalent R code you could run yourself), a standalone gallery of those widgets, and a Minitab-style data analyzer — all running in the browser, no server required.
 
-Deployed at `/Quick-Stat/` on GitHub Pages.
+**Live:** https://hamgu1n.github.io/Quick-Stat/
+
+Deployed via GitHub Actions (`.github/workflows/deploy.yml`) on every push to `main` — builds with `npm run build` and publishes `dist/` to GitHub Pages at `/Quick-Stat/`.
 
 ## Stack
 

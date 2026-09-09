@@ -51,7 +51,7 @@ const METHOD_LABELS: Record<Method, string> = {
 };
 
 const METHOD_DESC: Record<Method, string> = {
-  srs: "10 individuals chosen at random from all 50 — like drawing names from a hat.",
+  srs: "10 individuals chosen at random from all 50 - like drawing names from a hat.",
   systematic: "Start at a random position, then pick every 5th person down the list.",
   stratified: "Divide into 5 rows (strata) and randomly pick 2 from each row.",
   cluster: "Divide into 5 column-pair clusters; randomly select 1 entire cluster (10 people).",

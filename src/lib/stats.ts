@@ -110,9 +110,26 @@ export function pf(x: number, df1: number, df2: number): number {
   return betai(df1 / 2, df2 / 2, (df1 * x) / (df1 * x + df2));
 }
 
-// Seeded LCG for reproducible random numbers in simulations.
+// Seeded LCG for reproducible random numbers in simulations. Widgets
+// typically reseed with `seed`, `seed + 1`, `seed + 2`, ... on each
+// "Resample" click; an LCG's *first* output for two consecutive integer
+// seeds is nearly identical (its state has only gone through one
+// multiply-add step, not enough to decorrelate), so a widget that only
+// draws once per reseed -- rather than many draws in a row -- would look
+// stuck on the same result across clicks. Running the seed through a
+// full-avalanche integer hash first (splitmix32-style) fixes that: a
+// one-bit difference in the input flips roughly half the output bits.
+function hashSeed(x: number): number {
+  x = (x ^ (x >>> 16)) >>> 0;
+  x = Math.imul(x, 0x7feb352d) >>> 0;
+  x = (x ^ (x >>> 15)) >>> 0;
+  x = Math.imul(x, 0x846ca68b) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0;
+  return x >>> 0;
+}
+
 export function makeLCG(seed: number) {
-  let s = seed >>> 0;
+  let s = hashSeed(seed);
   return () => { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 4294967296; };
 }
 

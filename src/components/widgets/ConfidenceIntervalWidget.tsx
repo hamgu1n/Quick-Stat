@@ -90,8 +90,8 @@ sum(lo <= mu & mu <= hi)   # expected ≈ ${level}% of ${N_INTERVALS}`;
       </svg>
 
       <div style={{ fontSize: "0.8rem", color: "var(--muted-foreground)", textAlign: "center", marginBottom: "0.5rem" }}>
-        <span style={{ color: "#2a7a3a" }}>—</span> Contains μ &nbsp;
-        <span style={{ color: "#c0392b" }}>—</span> Misses μ &nbsp; · = sample mean
+        <span style={{ color: "#2a7a3a" }}>▬</span> Contains μ &nbsp;
+        <span style={{ color: "#c0392b" }}>▬</span> Misses μ &nbsp; · = sample mean
       </div>
 
       <div className="widget-controls">

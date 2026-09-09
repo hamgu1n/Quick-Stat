@@ -126,7 +126,7 @@ function readCSV(file: File): Promise<Dataset> {
         reject(err);
       }
     };
-    reader.onerror = () => reject(new Error("Couldn't read that file — it may be corrupted or unreadable."));
+    reader.onerror = () => reject(new Error("Couldn't read that file - it may be corrupted or unreadable."));
     reader.readAsText(file);
   });
 }
@@ -145,7 +145,7 @@ function parseCSV(text: string): Dataset {
 
   const headers = rows[0].map((h) => h.trim());
   if (headers.every((h) => h === "")) {
-    throw new Error("Couldn't find a header row — is the first line the column names?");
+    throw new Error("Couldn't find a header row - is the first line the column names?");
   }
 
   const dataRows = rows.slice(1).filter((row) => row.some((cell) => cell.trim() !== ""));

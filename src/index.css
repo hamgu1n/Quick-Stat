@@ -123,9 +123,15 @@
   font-family: "Lora Variable", Georgia, serif;
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.textbook-byline {
+  margin: 0 0 2.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
 }
 
 .lesson-bank-unit {
@@ -198,6 +204,22 @@
   width: 44px;
   padding: 1.25rem 0.5rem;
   overflow: hidden;
+}
+
+/* Below this width, the sidebar sitting beside the lesson in a flex row
+ * would squeeze it down to a sliver, so the *expanded* state becomes a
+ * full-height overlay that slides over the content instead of sharing
+ * width with it. The collapsed 44px rail (with its toggle button) stays
+ * exactly as on desktop -- it needs to stay in-flow and reachable so
+ * there's still a way to open the drawer. */
+@media (max-width: 860px) {
+  .toc-sidebar:not(.toc-sidebar--collapsed) {
+    position: fixed;
+    left: 0;
+    z-index: 15;
+    width: min(85vw, 300px);
+    box-shadow: 4px 0 16px -4px color-mix(in srgb, var(--foreground) 20%, transparent);
+  }
 }
 
 .toc-toggle {
@@ -1249,7 +1271,8 @@
 .dashboard-test-entry-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.5rem;
   margin-bottom: 0.6rem;
   color: var(--maroon);
 }
@@ -1609,4 +1632,47 @@
 .applet-modal-widget {
   padding: 1rem 1.25rem 1.5rem;
   overflow-x: auto;
+}
+
+/* ── Small-screen adjustments ── */
+@media (max-width: 700px) {
+  /* The Analyzer's ribbon toolbar (brand + 5 tab buttons + upload button)
+   * doesn't have room to sit on one row at min-width on a phone, and its
+   * tab buttons can't wrap without looking broken -- scroll horizontally
+   * instead, like a mobile tab strip, rather than overflowing the page. */
+  .analyzer-toolbar-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .analyzer-toolbar-spacer {
+    display: none;
+  }
+
+  .site-nav-inner {
+    padding: 0.4rem 1rem;
+    gap: 1rem;
+  }
+
+  .analyzer-page-content {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  .analyzer-section {
+    padding: 1rem;
+  }
+
+  .home-title {
+    font-size: 2.1rem;
+  }
+}
+
+/* ── Site footer (global, present on every page) ── */
+.site-footer {
+  padding: 1.5rem 1.5rem 2rem;
+  text-align: center;
+  font-family: "Inter Variable", sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
 }

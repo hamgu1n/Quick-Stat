@@ -33,9 +33,9 @@ const PATTERN_LABELS: Record<Pattern, string> = {
 };
 
 const PATTERN_DESC: Record<Pattern, string> = {
-  good: "Points scatter randomly around zero with constant spread — all four LINE assumptions appear satisfied.",
-  hetero: "Spread increases as fitted values grow. This indicates heteroscedasticity (unequal variance) — the E assumption is violated.",
-  nonlinear: "A curved pattern means the true relationship is not linear — the L assumption is violated. A linear model will systematically over- or under-predict.",
+  good: "Points scatter randomly around zero with constant spread - all four LINE assumptions appear satisfied.",
+  hetero: "Spread increases as fitted values grow. This indicates heteroscedasticity (unequal variance) - the E assumption is violated.",
+  nonlinear: "A curved pattern means the true relationship is not linear - the L assumption is violated. A linear model will systematically over- or under-predict.",
 };
 
 const PATTERN_RCODE: Record<Pattern, string> = {

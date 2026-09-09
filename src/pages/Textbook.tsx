@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { COMPONENTS } from "@/lib/widgetRegistry";
 
 type LessonModule = {
@@ -36,6 +36,23 @@ export default function Textbook() {
   const currentIndex = sorted.findIndex(l => l.frontmatter.slug === slug);
   const lesson = currentIndex >= 0 ? sorted[currentIndex] : null;
 
+  // Default open on desktop, closed on mobile -- the sidebar becomes an
+  // overlay drawer below the CSS breakpoint (see .toc-sidebar), so
+  // defaulting it open there would cover the whole screen on first load.
+  // Declared here (above the early return below) rather than down by the
+  // lesson layout, since hooks can't be called conditionally -- the TOC
+  // page returns before ever reaching a hook declared further down.
+  const [tocOpen, setTocOpen] = useState(() =>
+    typeof window === "undefined" || window.innerWidth > 860,
+  );
+
+  // React Router doesn't reset scroll position on navigation by itself,
+  // so switching chapters (or leaving a long one) would otherwise land on
+  // the next page still scrolled halfway down.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   if (!lesson) {
     const byUnit = sorted.reduce<Record<number, typeof sorted>>(
       (acc, l) => {
@@ -50,9 +67,10 @@ export default function Textbook() {
     return (
       <div className="lesson-bank">
         <h1>Textbook</h1>
+        <p className="textbook-byline">Written by Haytham Hlioui</p>
         {Object.entries(byUnit).map(([unit, unitLessons]) => (
           <div className="lesson-bank-unit" key={unit}>
-            <h2>Unit {unit} — {unitNames[Number(unit)]}</h2>
+            <h2>Unit {unit} - {unitNames[Number(unit)]}</h2>
             <ul>
               {unitLessons.map((l) => (
                 <li key={l.frontmatter.slug}>
@@ -71,8 +89,6 @@ export default function Textbook() {
   const prev = currentIndex > 0 ? sorted[currentIndex - 1] : null;
   const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
   const Lesson = lesson.default;
-
-  const [tocOpen, setTocOpen] = useState(true);
 
   const byUnit = sorted.reduce<Record<number, typeof sorted>>((acc, l) => {
     const u = l.frontmatter.unit;

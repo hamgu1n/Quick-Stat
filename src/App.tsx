@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
 import { SiteNav } from "./components/SiteNav";
+import { SiteFooter } from "./components/SiteFooter";
 import Textbook from "./pages/Textbook";
 import Analyzer from "./pages/Analyzer";
 import Applets from "./pages/Applets";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/textbook/" element={<Textbook />} />
         <Route path="/textbook/:slug" element={<Textbook />} />
       </Routes>
+      <SiteFooter />
     </>
   );
 }
