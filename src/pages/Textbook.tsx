@@ -67,7 +67,7 @@ export default function Textbook() {
     return (
       <div className="lesson-bank">
         <h1>Textbook</h1>
-        <p className="textbook-byline">Written by Haytham Hlioui</p>
+        <p className="textbook-byline">Written by Haytham R. Hlioui</p>
         {Object.entries(byUnit).map(([unit, unitLessons]) => (
           <div className="lesson-bank-unit" key={unit}>
             <h2>Unit {unit} - {unitNames[Number(unit)]}</h2>
