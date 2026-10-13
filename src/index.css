@@ -206,19 +206,13 @@
   overflow: hidden;
 }
 
-/* Below this width, the sidebar sitting beside the lesson in a flex row
- * would squeeze it down to a sliver, so the *expanded* state becomes a
- * full-height overlay that slides over the content instead of sharing
- * width with it. The collapsed 44px rail (with its toggle button) stays
- * exactly as on desktop -- it needs to stay in-flow and reachable so
- * there's still a way to open the drawer. */
+/* Below this width the sidebar doesn't get shown at all -- .lesson-prose's
+ * .mobile-chapter-select dropdown (hidden on desktop, see below) takes
+ * over as the chapter picker instead of trying to fit a 240px column or
+ * an overlay drawer into a phone-width layout. */
 @media (max-width: 860px) {
-  .toc-sidebar:not(.toc-sidebar--collapsed) {
-    position: fixed;
-    left: 0;
-    z-index: 15;
-    width: min(85vw, 300px);
-    box-shadow: 4px 0 16px -4px color-mix(in srgb, var(--foreground) 20%, transparent);
+  .toc-sidebar {
+    display: none;
   }
 }
 
@@ -321,6 +315,35 @@
   max-width: 72ch;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 5rem;
+}
+
+/* Mobile-only chapter dropdown -- replaces the sidebar entirely below the
+ * .toc-sidebar breakpoint (see above), rather than trying to cram a
+ * sidebar into a phone-width layout as a drawer. */
+.mobile-chapter-select {
+  display: none;
+}
+
+.mobile-chapter-select select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--muted);
+  color: var(--foreground);
+  font-family: "Inter Variable", sans-serif;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 860px) {
+  .mobile-chapter-select {
+    display: block;
+  }
+
+  .lesson-prose {
+    padding-top: 1.5rem;
+  }
 }
 
 .chapter-nav {
@@ -472,10 +495,15 @@
   margin-bottom: 0;
 }
 
-/* Display math */
+/* Display math. overflow-x: auto silently turns overflow-y to auto too,
+ * and fractions/roots poke a few px past the line box -- so without
+ * overflow-y: hidden + a little padding, tall equations grow a tiny
+ * vertical scrollbar. Horizontal scroll stays for long equations on phones. */
 .lesson-prose .katex-display {
   margin: 1.25rem 0;
+  padding: 0.35em 0;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 /* GFM tables (remark-gfm), e.g. data tables inside worked examples */

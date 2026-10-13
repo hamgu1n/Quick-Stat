@@ -1,5 +1,5 @@
-import { Link, useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
 import { COMPONENTS } from "@/lib/widgetRegistry";
 
 type LessonModule = {
@@ -32,6 +32,7 @@ const sorted = Object.values(lessons).sort((a, b) => {
 
 export default function Textbook() {
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   const currentIndex = sorted.findIndex(l => l.frontmatter.slug === slug);
   const lesson = currentIndex >= 0 ? sorted[currentIndex] : null;
@@ -45,13 +46,6 @@ export default function Textbook() {
   const [tocOpen, setTocOpen] = useState(() =>
     typeof window === "undefined" || window.innerWidth > 860,
   );
-
-  // React Router doesn't reset scroll position on navigation by itself,
-  // so switching chapters (or leaving a long one) would otherwise land on
-  // the next page still scrolled halfway down.
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
 
   if (!lesson) {
     const byUnit = sorted.reduce<Record<number, typeof sorted>>(
@@ -133,6 +127,27 @@ export default function Textbook() {
       </aside>
 
       <div className="lesson-prose">
+        {/* Desktop gets the sidebar; on mobile that's hidden entirely (see
+            .toc-sidebar's media query) and this dropdown takes over as the
+            chapter picker instead, right at the top of the page. */}
+        <label className="mobile-chapter-select">
+          <span className="sr-only">Jump to chapter</span>
+          <select
+            value={slug}
+            onChange={(e) => navigate(`/textbook/${e.target.value}`)}
+          >
+            {Object.entries(byUnit).map(([unit, unitLessons]) => (
+              <optgroup key={unit} label={`Unit ${unit}: ${unitNames[Number(unit)]}`}>
+                {unitLessons.map((l) => (
+                  <option key={l.frontmatter.slug} value={l.frontmatter.slug}>
+                    {l.frontmatter.title}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+        </label>
+
         <Lesson components={COMPONENTS} />
 
         <nav className="chapter-nav chapter-nav--bottom">

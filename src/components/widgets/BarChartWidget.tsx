@@ -2,11 +2,11 @@ import { useState, useMemo } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 
 const FLAVOR_DATA = [
-  { flavor: "Chocolate", count: 35 },
   { flavor: "Vanilla", count: 28 },
-  { flavor: "Strawberry", count: 18 },
   { flavor: "Mint Chip", count: 12 },
+  { flavor: "Chocolate", count: 35 },
   { flavor: "Cookie Dough", count: 7 },
+  { flavor: "Strawberry", count: 18 },
 ];
 
 const PIE_COLORS = ["var(--maroon)", "#3b5b8a", "#2a7a3a", "#c9973f", "var(--maroon-muted)"];
@@ -27,8 +27,8 @@ export function BarChartWidget() {
   );
 
   const rCode = useMemo(() => {
-    const header = `categories <- c("Chocolate", "Vanilla", "Strawberry", "Mint Chip", "Cookie Dough")
-counts <- c(35, 28, 18, 12, 7)`;
+    const header = `categories <- c("Vanilla", "Mint Chip", "Chocolate", "Cookie Dough", "Strawberry")
+counts <- c(28, 12, 35, 7, 18)`;
 
     if (chartType === "pie") {
       return `${header}
@@ -41,10 +41,10 @@ pie(counts, labels = categories,
     if (sorted) {
       return `${header}
 
-# Pareto chart - sorted by frequency
+# Sorted by frequency (largest first)
 ord <- order(counts, decreasing = TRUE)
 barplot(counts[ord], names.arg = categories[ord],
-        main = "Favorite Ice Cream Flavors (Pareto)",
+        main = "Favorite Ice Cream Flavors",
         xlab = "Flavor", ylab = "Count", col = "lightblue")`;
     }
 
@@ -87,7 +87,7 @@ barplot(counts, names.arg = categories,
               nameKey="flavor"
               cx="50%"
               cy="50%"
-              outerRadius={100}
+              outerRadius="60%"
               label={(props: { name?: string; percent?: number }) =>
                 `${props.name} (${((props.percent ?? 0) * 100).toFixed(0)}%)`
               }
@@ -119,7 +119,7 @@ barplot(counts, names.arg = categories,
             className={`widget-toggle-btn${sorted ? " active" : ""}`}
             onClick={() => setSorted(!sorted)}
           >
-            {sorted ? "Unsort (Original Order)" : "Sort by Frequency (Pareto)"}
+            {sorted ? "Unsort (Original Order)" : "Sort by Frequency"}
           </button>
         )}
       </div>

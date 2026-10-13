@@ -24,3 +24,7 @@ CLAUDE.md
 *.njsproj
 *.sln
 *.sw?
+
+# Local scratch / review files
+test.csv
+textbook-draft.md
