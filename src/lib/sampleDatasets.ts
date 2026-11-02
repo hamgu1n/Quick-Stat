@@ -12,6 +12,16 @@ export type SampleDataset = {
 
 export const SAMPLE_DATASETS: SampleDataset[] = [
   {
+    // Real data: case0402 from Ramsey & Schafer, The Statistical Sleuth
+    // (3rd ed.), via the Sleuth3 R package. Originally from Sweller,
+    // Chandler, Tierney & Cooper (1990). Times of 300 are students who
+    // hadn't finished at the 5-minute limit (Censored = 1).
+    id: "cognitive-load",
+    name: "Cognitive Load",
+    file: "cognitive-load.csv",
+    description: "Real study from The Statistical Sleuth (case0402): problem-solving Time in seconds by Treatment (Conventional vs. Modified training). Try a two-sample t-test or a grouped boxplot.",
+  },
+  {
     id: "exam-scores",
     name: "Exam Scores",
     file: "exam-scores.csv",
