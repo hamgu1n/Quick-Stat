@@ -43,7 +43,10 @@ export default function Textbook() {
   // lesson layout, since hooks can't be called conditionally -- the TOC
   // page returns before ever reaching a hook declared further down.
   const showAdvanced = useSettingsStore((st) => st.showAdvanced);
-  const quizResults = useQuizStore((st) => st.results);
+  const hideQuizScores = useSettingsStore((st) => st.hideQuizScores);
+  const allQuizResults = useQuizStore((st) => st.results);
+  // With "Hide quiz scores" on, act as if there are no saved scores.
+  const quizResults = hideQuizScores ? {} : allQuizResults;
 
   const [tocOpen, setTocOpen] = useState(() =>
     typeof window === "undefined" || window.innerWidth > 860,

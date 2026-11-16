@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Switch } from "radix-ui";
 import { ComposedChart, Bar, Line, Cell, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { dnorm } from "@/lib/stats";
 
@@ -118,10 +119,17 @@ barplot(dbinom(0:n, n, p), names.arg = 0:n)`;
               {m === "eq" ? "Exactly k" : m === "le" ? "At most k" : "At least k"}
             </button>
           ))}
-          <button className={`widget-toggle-btn${showNormal ? " active" : ""}`}
-            onClick={() => setShowNormal(s => !s)}>
-            Normal approximation
-          </button>
+        </div>
+        <div className="widget-switch-row">
+          <Switch.Root
+            id="binomial-normal-approx"
+            className="settings-switch"
+            checked={showNormal}
+            onCheckedChange={setShowNormal}
+          >
+            <Switch.Thumb className="settings-switch__thumb" />
+          </Switch.Root>
+          <label htmlFor="binomial-normal-approx">Show the normal approximation</label>
         </div>
         <label className="widget-slider-label">
           <span>k (number of successes): <strong>{kEff}</strong></span>

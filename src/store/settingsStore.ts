@@ -19,6 +19,12 @@ type SettingsState = {
   /** When true, the Section Review page shows the lesson next to the quiz. */
   reviewSideBySide: boolean;
   setReviewSideBySide: (value: boolean) => void;
+  /**
+   * When true, saved Section Review scores aren't shown anywhere (they're
+   * still saved, so turning this off brings them back).
+   */
+  hideQuizScores: boolean;
+  setHideQuizScores: (value: boolean) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -28,6 +34,8 @@ export const useSettingsStore = create<SettingsState>()(
       setShowAdvanced: (value) => set({ showAdvanced: value }),
       reviewSideBySide: false,
       setReviewSideBySide: (value) => set({ reviewSideBySide: value }),
+      hideQuizScores: false,
+      setHideQuizScores: (value) => set({ hideQuizScores: value }),
     }),
     { name: "quickstat-settings" },
   ),

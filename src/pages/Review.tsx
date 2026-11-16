@@ -23,7 +23,9 @@ export default function Review() {
   const sideBySide = useSettingsStore((s) => s.reviewSideBySide);
   const setSideBySide = useSettingsStore((s) => s.setReviewSideBySide);
   const showAdvanced = useSettingsStore((s) => s.showAdvanced);
-  const record = useQuizStore((s) => s.results[slug]);
+  const hideQuizScores = useSettingsStore((s) => s.hideQuizScores);
+  const savedRecord = useQuizStore((s) => s.results[slug]);
+  const record = hideQuizScores ? undefined : savedRecord;
   const recordAttempt = useQuizStore((s) => s.recordAttempt);
 
   const index = sortedLessons.findIndex((l) => l.frontmatter.slug === slug);
