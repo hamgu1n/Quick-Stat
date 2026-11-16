@@ -95,7 +95,7 @@ legend("topright",
           {relationship}
         </span>
       </div>
-      <ResponsiveContainer width="100%" height={230}>
+      <ResponsiveContainer width="100%" height={170}>
         <BarChart data={bins} barCategoryGap="0%" margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="bin" style={{ fontSize: "0.75rem" }} />
           <YAxis width={35} style={{ fontSize: "0.75rem" }} allowDecimals={false} />

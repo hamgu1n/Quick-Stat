@@ -70,7 +70,7 @@ abline(lm(y ~ x), col = "#3b5b8a")`;
         </span>
       </div>
 
-      <ResponsiveContainer width="100%" height={240}>
+      <ResponsiveContainer width="100%" height={170}>
         <ScatterChart margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="x" type="number" name="x" domain={[0, 10]}
             tickCount={6} style={{ fontSize: "0.72rem" }} />

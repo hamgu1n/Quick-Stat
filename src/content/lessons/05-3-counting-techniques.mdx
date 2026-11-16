@@ -5,7 +5,7 @@ chapter: 5
 slug: "05-3-counting-techniques"
 ---
 
-## Section 5.3 – Counting Techniques
+## Section 3.3 – Counting Techniques
 
 Computing probabilities using the formula $P(A) = \frac{\text{favorable outcomes}}{\text{total outcomes}}$ requires us to count accurately. For simple problems, like drawing a single card or rolling one die, counting by hand is easy. But what about the number of ways to arrange a 10-person committee, or the number of possible lottery tickets? This is where systematic counting techniques become essential.
 
@@ -20,7 +20,7 @@ $$
 For example, if a restaurant offers 4 appetizers, 6 main courses, and 3 desserts, the number of possible three-course meals is $4 \times 6 \times 3 = 72$.
 
 <div className="example">
-**Example 5.3.1 – Multiplication Rule**
+**Example 3.3.1 – Multiplication Rule**
 
 A student ID consists of 2 letters (A–Z, repeated letters allowed) followed by 3 digits (0–9, repeated digits allowed).
 
@@ -41,7 +41,7 @@ $$
 
 A **permutation** is an arrangement of objects where *order matters*. If you are choosing 3 students from a class of 20 to be president, vice-president, and secretary, the order matters, student A as president and student B as vice-president is different from student B as president and student A as vice-president.
 
-The number of permutations of $n$ objects taken $r$ at a time is:
+The number of permutations of $n$ objects taken $r$ at a time, written $P(n, r)$ and read "P of n, r," is:
 
 $$
 P(n, r) = \frac{n!}{(n-r)!}
@@ -50,7 +50,7 @@ $$
 where $n!$ (read "n factorial") means $n \times (n-1) \times (n-2) \times \cdots \times 1$.
 
 <div className="example">
-**Example 5.3.2 – Permutations**
+**Example 3.3.2 – Permutations**
 
 A photography club has 8 members. They want to choose a president, a secretary, and a treasurer (three different people, and these are distinct roles).
 
@@ -68,7 +68,7 @@ $$
 </div>
 
 <div className="example">
-**Example 5.3.3 – Permutations of All Objects**
+**Example 3.3.3 – Permutations of All Objects**
 
 How many ways can 5 books be arranged on a shelf?
 
@@ -87,7 +87,7 @@ $$
 
 A **combination** is a selection of objects where *order does not matter*. If you are choosing 3 students from a class of 20 to form a committee (no distinct roles), then A,B,C and C,B,A are the same committee, they count as one.
 
-The number of combinations of $n$ objects taken $r$ at a time is:
+The number of combinations of $n$ objects taken $r$ at a time, written $C(n, r)$ or $\binom{n}{r}$ and read "n choose r," is:
 
 $$
 C(n, r) = \binom{n}{r} = \frac{n!}{r!(n-r)!}
@@ -98,7 +98,7 @@ The key distinction: use permutations when the arrangement or assignment of role
 <PermCombWidget />
 
 <div className="example">
-**Example 5.3.4 – Combinations**
+**Example 3.3.4 – Combinations**
 
 A student council has 10 members. A committee of 4 is to be chosen (no special roles).
 
@@ -116,7 +116,7 @@ $$
 </div>
 
 <div className="example">
-**Example 5.3.5 – Permutation or Combination?**
+**Example 3.3.5 – Permutation or Combination?**
 
 For each scenario, decide whether to use a permutation or combination, then calculate the answer:
 

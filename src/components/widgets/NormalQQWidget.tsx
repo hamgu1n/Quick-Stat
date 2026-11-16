@@ -104,7 +104,7 @@ qqline(x)        # reference line: points near it suggest normality`;
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(15rem, 1fr))", gap: "1rem" }}>
         <div>
           <div className="widget-rcode-label">Histogram</div>
-          <ResponsiveContainer width="100%" height={220}>
+          <ResponsiveContainer width="100%" height={160}>
             <BarChart data={hist} margin={{ top: 8, right: 8, bottom: 0, left: -20 }} barCategoryGap={1}>
               <XAxis dataKey="bin" style={{ fontSize: "0.68rem" }} interval="preserveStartEnd" />
               <YAxis allowDecimals={false} style={{ fontSize: "0.68rem" }} />
@@ -115,7 +115,7 @@ qqline(x)        # reference line: points near it suggest normality`;
         </div>
         <div>
           <div className="widget-rcode-label">Normal probability (Q-Q) plot</div>
-          <ResponsiveContainer width="100%" height={220}>
+          <ResponsiveContainer width="100%" height={160}>
             <ScatterChart margin={{ top: 8, right: 8, bottom: 0, left: -20 }}>
               <XAxis dataKey="theoretical" type="number" domain={[-lim, lim]} tickCount={7}
                 style={{ fontSize: "0.68rem" }} name="Theoretical" allowDataOverflow />

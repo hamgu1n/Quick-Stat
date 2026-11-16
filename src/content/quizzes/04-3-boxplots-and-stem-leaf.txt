@@ -1,0 +1,81 @@
+Section Review: Boxplots and Stem-and-Leaf Plots. Format notes are in src/lib/quiz.ts.
+
+### In a boxplot, what does the box span?
+@ boxplots
+- From the minimum to the maximum
+- From the mean minus one SD to the mean plus one SD
+- From the median to the maximum
++ From $Q_1$ to $Q_3$, the middle 50% of the data
+> The box covers the IQR, and the line inside it marks the median.
+
+### What does the line inside a boxplot's box represent?
+@ boxplots
++ The median
+- The mean
+- The mode
+- $Q_1$
+> The line marks $Q_2$, the median.
+
+### How far do the whiskers of a boxplot extend?
+@ boxplots
++ To the smallest and largest values that aren't flagged as outliers
+- Always to the minimum and maximum, even if they're outliers
+- Exactly 1.5 × IQR from the box
+- To one standard deviation from the median
+> Flagged outliers are drawn as separate points beyond the whiskers.
+
+### A boxplot shows Min = 2, $Q_1$ = 10, Median = 15, $Q_3$ = 20, Max = 26. What is the IQR?
+@ boxplots
+- 24
+- 15
++ 10
+- 5
+> $\text{IQR} = Q_3 - Q_1 = 20 - 10 = 10$.
+
+### Shop A's daily customers have IQR = 40, and Shop B's have IQR = 80. Their medians are about the same. What can you conclude?
+@ boxplots
+- Shop B is more consistent from day to day
+- Shop B has more customers on a typical day
+- Shop A has more outliers
++ Shop A is more consistent from day to day
+> A smaller IQR means the middle half of the days are packed more tightly together.
+
+### What are boxplots especially good for?
+@ boxplots
+- Showing every individual value
++ Comparing the distributions of two or more groups side by side
+- Showing part-to-whole relationships
+- Showing the relationship between two numerical variables
+> Side-by-side boxplots make differences in medians, spread, and outliers easy to see.
+
+### In a stem-and-leaf plot, how is the value 47 split?
+@ stem-and-leaf-plots
++ Stem 4, leaf 7
+- Stem 7, leaf 4
+- Stem 47, leaf 0
+- Stem 0, leaf 47
+> The stem holds the leading digit(s) and the leaf holds the final digit.
+
+### What is the main advantage of a stem-and-leaf plot over a histogram?
+@ stem-and-leaf-plots
+- It works better for very large datasets
++ It shows the shape of the distribution while keeping every individual value
+- It shows the five-number summary directly
+- It works for categorical data
+> A stem-and-leaf plot preserves the original data values, which a histogram hides.
+
+### A stem-and-leaf row reads `6 | 1 3 8`. Which values does it represent?
+@ stem-and-leaf-plots
+- 6, 1, 3, 8
++ 61, 63, 68
+- 16, 36, 86
+- 6.1, 6.3, 6.8
+> Each leaf joins the stem: 61, 63, and 68 (assuming the key says 6 | 1 = 61).
+
+### What is a back-to-back stem-and-leaf plot used for?
+@ stem-and-leaf-plots
+- Showing one dataset twice
+- Showing the relationship between two variables
++ Comparing two groups using a shared set of stems
+- Displaying categorical data
+> The two groups' leaves sit on either side of the same stems, so their distributions can be compared directly.

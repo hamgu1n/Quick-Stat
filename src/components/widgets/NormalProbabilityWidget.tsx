@@ -87,7 +87,7 @@ qnorm(0.90, mean = mu, sd = sigma)   # ${(mu + qnorm(0.9) * sigma).toFixed(1)}`;
         <span>≈ <strong>{(prob * 100).toFixed(1)}%</strong> of values</span>
       </div>
 
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={200}>
         <ComposedChart data={data} margin={{ top: 24, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="x" type="number" domain={[xMin, xMax]} tickCount={9}
             tickFormatter={(v: number) => fmt(v)} style={{ fontSize: "0.72rem" }} />

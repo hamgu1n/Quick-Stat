@@ -5,7 +5,7 @@ chapter: 11
 slug: "11-3-assumptions-diagnostics"
 ---
 
-## Section 11.3 – Assumptions and Diagnostics
+## Section 5.5 – Assumptions and Diagnostics
 
 A regression line can be calculated for any two variables, but that doesn't mean the results will be meaningful. Like many statistical procedures, simple linear regression rests on a set of assumptions. When those assumptions are violated, the estimates of the slope and intercept may be unreliable, predictions may be poor, and p-values and confidence intervals may be misleading. In this section we identify the key assumptions and learn how to check them using **diagnostic plots**.
 
@@ -37,7 +37,7 @@ A **normal Q-Q plot** of the residuals checks the normality assumption. If the r
 <ResidualWidget />
 
 <div className="example">
-**Example 11.3.1 – Interpreting a Residual Plot**
+**Example 5.5.1 – Interpreting a Residual Plot**
 
 A residual plot for a regression of house price on square footage shows the residuals spreading out noticeably as the fitted values increase, small houses have tightly clustered residuals, but large houses have very spread-out residuals.
 
@@ -53,7 +53,7 @@ Predictions for large houses are much less precise than for small houses, but th
 </div>
 
 <div className="example">
-**Example 11.3.2 – Detecting Nonlinearity**
+**Example 5.5.2 – Detecting Nonlinearity**
 
 A researcher fits a linear regression to data on plant growth (y, in cm) and days since planting (x). The residual plot shows a curved pattern: residuals are positive at low and high fitted values, but negative in the middle.
 
@@ -72,12 +72,12 @@ A curved residual pattern means the **linearity assumption is violated**. The tr
 
 ### Influential Points and Leverage
 
-We discussed outliers in the context of scatterplots back in Section 4.4. In regression, certain outliers have an outsized effect on the fitted line. An observation is said to have **high leverage** if its $x$-value is unusually far from $\bar{x}$, it sits at the edge of the data and has the potential to pull the regression line in its direction. A point is **influential** if removing it substantially changes the estimated slope.
+We discussed outliers in the context of scatterplots back in Section 2.8. In regression, certain outliers have an outsized effect on the fitted line. An observation is said to have **high leverage** if its $x$-value is unusually far from $\bar{x}$, it sits at the edge of the data and has the potential to pull the regression line in its direction. A point is **influential** if removing it substantially changes the estimated slope.
 
 Not every high-leverage point is influential (it might happen to lie close to the overall trend), and not every outlier is high-leverage (it might have an average $x$-value but an unusual $y$-value). Both types deserve attention before finalizing a model.
 
 <div className="example">
-**Example 11.3.3 – Influential Points**
+**Example 5.5.3 – Influential Points**
 
 In a study of advertising spend ($x$) and monthly sales ($y$) for 20 small businesses, all companies spend between 500 and 5,000 dollars per month on advertising. One company spends 25,000 dollars and has unusually high sales.
 
@@ -102,7 +102,7 @@ Before including it, the researcher should:
 </Advanced>
 
 <div className="example">
-**Example 11.3.4 – Full Diagnostic Checklist**
+**Example 5.5.4 – Full Diagnostic Checklist**
 
 A regression model is built to predict a student's GPA (y) from hours spent studying per week (x). The researcher provides the following information:
 
@@ -126,7 +126,7 @@ All four assumptions appear to be satisfied, so the **linear regression model is
 </div>
 
 <div className="example">
-**Example 11.3.5 – What to Do When Assumptions Fail**
+**Example 5.5.5 – What to Do When Assumptions Fail**
 
 For each violation, describe a potential remedy:
 

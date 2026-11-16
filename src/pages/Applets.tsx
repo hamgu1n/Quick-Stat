@@ -28,14 +28,14 @@ export default function Applets() {
         <h1>Applets</h1>
         <p>
           Every interactive widget from the textbook, in one scrollable gallery.
-          Search by test name, concept, or chapter, then click a card to open
+          Search by test name, concept, or section, then click a card to open
           and use it.
         </p>
         <label className="applets-search">
           <Search size={16} strokeWidth={2} />
           <input
             type="text"
-            placeholder="Search applets (e.g. “t-test”, “chapter 8”, “correlation”)…"
+            placeholder="Search applets (e.g. “t-test”, “section 4.3”, “correlation”)…"
             value={query}
             onChange={e => setQuery(e.target.value)}
           />
@@ -67,7 +67,7 @@ export default function Applets() {
               aria-label={`Open ${applet.title} applet`}
             >
               <div className="applet-card-header">
-                <span className="applet-card-unit">Unit {applet.unit} · Ch. {applet.chapter}</span>
+                <span className="applet-card-unit">Section {applet.section}</span>
                 <h2 className="applet-card-title">{applet.title}</h2>
                 <Link
                   to={`/textbook/${applet.lessonSlug}`}

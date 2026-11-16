@@ -5,7 +5,7 @@ chapter: 3
 slug: "03-3-measures-of-position"
 ---
 
-## Section 3.3 – Measures of Position and Outliers
+## Section 2.3 – Measures of Position and Outliers
 
 Knowing the center and spread of a dataset is helpful, but sometimes we want to know where a specific value falls *relative to the rest of the data*. Measures of position answer questions like: "Was a score of 78 good or bad on this exam?" or "Is this employee's salary unusually high?" The three most commonly used measures of position are **percentiles**, **quartiles**, and **z-scores**.
 
@@ -13,7 +13,7 @@ Knowing the center and spread of a dataset is helpful, but sometimes we want to 
 
 A **percentile** tells you the percentage of observations that fall at or below a given value. For example, if your exam score is at the 80th percentile, it means you scored higher than roughly 80% of students who took the exam. Percentiles are especially common in standardized testing and pediatric growth charts.
 
-**Quartiles** divide a sorted dataset into four equal parts. The **first quartile** ($Q_1$) is the 25th percentile, 25% of the data falls below it. The **second quartile** ($Q_2$) is the median, or the 50th percentile. The **third quartile** ($Q_3$) is the 75th percentile, 75% of the data falls below it. Together, $Q_1$, $Q_2$, and $Q_3$ give a compact summary of where the bulk of the data lives, and they form the foundation of the five-number summary we will explore in the next section.
+**Quartiles** divide a sorted dataset into four equal parts. The **first quartile** ($Q_1$, pronounced "Q-one") is the 25th percentile, 25% of the data falls below it. The **second quartile** ($Q_2$, "Q-two") is the median, or the 50th percentile. The **third quartile** ($Q_3$, "Q-three") is the 75th percentile, 75% of the data falls below it. Together, $Q_1$, $Q_2$, and $Q_3$ give a compact summary of where the bulk of the data lives, and they form the foundation of the five-number summary we will explore in the next section.
 
 {/* ```r
 set.seed(7)
@@ -22,7 +22,7 @@ quantile(scores, probs = c(0.25, 0.50, 0.75))
 ``` */}
 
 <div className="example">
-**Example 3.3.1 – Finding Quartiles**
+**Example 2.3.1 – Finding Quartiles**
 
 The following are the scores of 9 students on a statistics quiz, sorted in order:
 
@@ -54,7 +54,7 @@ $$
 </div>
 
 <div className="example">
-**Example 3.3.2 – Interpreting a Percentile**
+**Example 2.3.2 – Interpreting a Percentile**
 
 A student scores 88 on the SAT math section. The score report says this is the 72nd percentile.
 
@@ -84,7 +84,7 @@ Use the sliders below to explore how z-scores work. Move x to see where it lands
 <ZScoreWidget />
 
 <div className="example">
-**Example 3.3.3 – Calculating a Z-Score**
+**Example 2.3.3 – Calculating a Z-Score**
 
 A student scored 82 on an exam. The class mean was 75 and the standard deviation was 7.
 
@@ -102,7 +102,7 @@ The student scored exactly **1 standard deviation above** the class mean.
 </div>
 
 <div className="example">
-**Example 3.3.4 – Comparing Across Classes**
+**Example 2.3.4 – Comparing Across Classes**
 
 In Ms. Rivera's class, the mean exam score is 70 with a standard deviation of 5. In Mr. Patel's class, the mean is 80 with a standard deviation of 10.
 
@@ -151,7 +151,7 @@ cat("Lower fence:", lower, "  Upper fence:", upper)
 ``` */}
 
 <div className="example">
-**Example 3.3.5 – Applying the IQR Outlier Rule**
+**Example 2.3.5 – Applying the IQR Outlier Rule**
 
 A dataset of daily coffee sales (in cups) at a campus café over two weeks is:
 

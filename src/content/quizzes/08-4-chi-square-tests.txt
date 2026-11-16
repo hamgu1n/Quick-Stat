@@ -1,0 +1,81 @@
+Section Review: Chi-Square Tests. Format notes are in src/lib/quiz.ts.
+
+### What type of data are chi-square tests designed for?
+@ section-4-6-chi-square-tests
++ Categorical data, to compare observed counts to expected counts
+- Numerical data, to compare means
+- Paired before-and-after measurements
+- Data from two numerical variables
+> Chi-square tests work with counts in categories.
+
+### Which describes the chi-square distribution?
+@ the-chi-square-distribution
+- Symmetric and bell-shaped, centered at 0
+- Left-skewed with heavy tails
++ Right-skewed and never negative, with a shape set by its degrees of freedom
+- Uniform between 0 and 1
+> As the degrees of freedom increase, it shifts right and becomes more symmetric.
+
+### A spinner with 4 equal sections is spun 200 times. Under $H_0$ that it's fair, what is the expected count for each section?
+@ chi-square-test-for-goodness-of-fit
++ 50
+- 25
+- 200
+- 4
+> $E = n \times p_0 = 200 \times \frac{1}{4} = 50$.
+
+### In a goodness-of-fit test, one category has $O = 60$ and $E = 50$. What is its contribution to $\chi^2$?
+@ chi-square-test-for-goodness-of-fit
+- 10
++ 2
+- 0.2
+- 100
+> $(O - E)^2 / E = (60 - 50)^2 / 50 = 100 / 50 = 2$.
+
+### A goodness-of-fit test has 5 categories. How many degrees of freedom does it have?
+@ chi-square-test-for-goodness-of-fit
+- 5
+- 6
+- 10
++ 4
+> $df = k - 1 = 5 - 1 = 4$.
+
+### A contingency table has row total 60, column total 40, and grand total 200. What is the expected count in that cell?
+@ chi-square-test-for-independence
++ 12
+- 100
+- 30
+- 24
+> $E = \frac{60 \times 40}{200} = 12$.
+
+### A contingency table has 3 rows and 4 columns. How many degrees of freedom does the test for independence have?
+@ chi-square-test-for-independence
+- 12
+- 7
+- 5
++ 6
+> $df = (r - 1)(c - 1) = 2 \times 3 = 6$.
+
+### A marketing firm asks whether age group and preferred streaming service are related. Which test fits?
+@ chi-square-test-for-independence
+- Chi-square goodness-of-fit test
++ Chi-square test for independence
+- One-sample t-test
+- Paired t-test
+> Two categorical variables measured on the same people call for a test for independence.
+
+### A candy company wants to know if bag colors match its advertised percentages. Which test fits?
+@ chi-square-test-for-goodness-of-fit
+- Chi-square test for independence
++ Chi-square goodness-of-fit test
+- Two-sample t-test
+- One-way ANOVA
+> One categorical variable (color) is compared to a specified distribution.
+
+### What condition is needed for a chi-square test to be reliable?
+@ chi-square-test-for-independence
+- Each observed count must be at least 30
+- The data must be normally distributed
++ Each expected count should be at least 5
+- There must be exactly two categories
+> If expected counts are too small, collect more data or combine categories.

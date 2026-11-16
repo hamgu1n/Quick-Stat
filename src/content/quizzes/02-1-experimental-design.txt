@@ -1,0 +1,81 @@
+Section Review: Experimental Design. Format notes are in src/lib/quiz.ts.
+
+### What makes a study an experimental study?
+@ section-1-4-observational-vs-experimental-studies
+- Researchers record what already happens without changing anything
+- The study uses a very large sample
+- The data are collected with a survey
++ Researchers deliberately assign a treatment and measure the response
+> In an experiment, the researcher decides who gets which treatment. In an observational study, they only observe and record.
+
+### Researchers track the coffee intake and blood pressure of 500 adults for a year without telling them what to drink. What kind of study is this?
+@ section-1-4-observational-vs-experimental-studies
+- Experimental study
+- Double-blind experiment
++ Observational study
+- Cluster sample
+> No treatment is assigned; the researchers simply record what people already do.
+
+### An observational study finds that students who sleep more tend to earn higher grades. What can we conclude?
+@ section-1-4-observational-vs-experimental-studies
+- Sleeping more causes higher grades
++ Sleep and grades are associated, but this study can't show cause and effect
+- Higher grades cause students to sleep more
+- There is no relationship between sleep and grades
+> Observational studies show associations. Only a well-designed experiment can establish cause and effect.
+
+### Why might researchers choose an observational study instead of an experiment?
+@ section-1-4-observational-vs-experimental-studies
+- Observational studies can prove causation more easily
++ Assigning the treatment would be unethical or impractical
+- Observational studies don't need any data
+- Experiments can't use random samples
+> For example, we can't ethically force students to go without sleep, so we observe their existing habits instead.
+
+### What is the main purpose of randomly assigning subjects to treatment groups?
+@ section-1-5-randomization-control-and-blinding
+- To make sure the groups have different sizes
+- To let participants pick the treatment they prefer
+- To guarantee that the treatment works
++ To balance unknown variables across groups and avoid hidden bias
+> Random assignment spreads differences among subjects (known and unknown) evenly across the groups, so they don't bias the results.
+
+### In a drug trial, one group gets the drug and another gets a placebo. What is the placebo group called?
+@ section-1-5-randomization-control-and-blinding
+- The treatment group
+- The blinded group
+- The confounding group
++ The control group
+> The control group doesn't receive the treatment, giving a baseline to compare against.
+
+### In a study, the participants don't know whether they got the real drug, but the doctors measuring their health do know. What type of study is this?
+@ section-1-5-randomization-control-and-blinding
++ Single-blind
+- Double-blind
+- Unblinded
+- Observational
+> Only the participants are unaware of their treatment, so it is single-blind. In a double-blind study, the researchers wouldn't know either.
+
+### Why is double-blinding useful?
+@ section-1-5-randomization-control-and-blinding
++ It keeps both participants' and researchers' expectations from influencing the results
+- It makes the sample size larger
+- It replaces the need for a control group
+- It guarantees random assignment
+> If either side knows who got the treatment, expectations can change how people feel, respond, or are measured.
+
+### The first 25 patients to arrive get a new drug and the next 25 get a placebo. Which principle is violated?
+@ section-1-5-randomization-control-and-blinding
+- Control
++ Randomization
+- Blinding
+- None; this is a well-designed experiment
+> Treatment depends on arrival time instead of chance. Early arrivals might differ in a systematic way, such as being in more pain.
+
+### What is a confounding factor?
+@ section-1-5-randomization-control-and-blinding
++ An outside variable that can distort the results if not accounted for
+- The treatment the researcher is testing
+- The response being measured
+- A participant who drops out of the study
+> Randomization, control, and blinding all work to reduce confounding, so differences can be traced to the treatment.

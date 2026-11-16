@@ -1,0 +1,81 @@
+Section Review: The Least Squares Method. Format notes are in src/lib/quiz.ts.
+
+### In $\hat{y} = b_0 + b_1 x$, what does $b_1$ represent?
+@ the-simple-linear-regression-model
++ The predicted change in $y$ for a one-unit increase in $x$
+- The predicted value of $y$ when $x = 0$
+- The correlation between $x$ and $y$
+- The residual
+> $b_1$ is the slope of the line.
+
+### Why does $\hat{y}$ have a "hat"?
+@ the-simple-linear-regression-model
++ It's a predicted (average) value, not an exact observation
+- It's the observed value
+- It's always larger than $y$
+- It means the value is an outlier
+> Individual observations vary around the line.
+
+### What is a residual?
+@ finding-the-least-squares-line
+- $\hat{y} - y$
++ $y - \hat{y}$, the observed value minus the predicted value
+- The slope of the line
+- The distance from a point to the y-axis
+> $e_i = y_i - \hat{y}_i$.
+
+### What does the least squares line minimize?
+@ finding-the-least-squares-line
+- The sum of the residuals
+- The correlation
+- The number of points above the line
++ The sum of the squared residuals
+> Among all straight lines, it has the smallest $\sum e_i^2$.
+
+### Given $r = 0.6$, $s_x = 5$, and $s_y = 10$, what is the slope?
+@ finding-the-least-squares-line
+- 0.3
++ 1.2
+- 0.6
+- 3
+> $b_1 = r \cdot s_y / s_x = 0.6 \times 10 / 5 = 1.2$.
+
+### With $\bar{x} = 20$, $\bar{y} = 50$, and slope $b_1 = 1.2$, what is the intercept?
+@ finding-the-least-squares-line
+- 50
++ 26
+- 24
+- 74
+> $b_0 = \bar{y} - b_1\bar{x} = 50 - 1.2(20) = 26$.
+
+### Which point does the least squares line always pass through?
+@ finding-the-least-squares-line
+- $(0, 0)$
+- $(0, \bar{y})$
++ $(\bar{x}, \bar{y})$
+- The point with the largest residual
+> The line always passes through the means of both variables.
+
+### The line is $\hat{y} = 26 + 1.2x$. A point has $x = 25$ and $y = 60$. What is its residual?
+@ finding-the-least-squares-line
+- −4
+- 56
++ 4
+- 60
+> $\hat{y} = 26 + 1.2(25) = 56$, so the residual is $60 - 56 = 4$. The point lies above the line.
+
+### A residual is negative. Where is the point relative to the line?
+@ finding-the-least-squares-line
+- Above the line
+- On the line
+- At $(\bar{x}, \bar{y})$
++ Below the line
+> A negative residual means the observed value is less than predicted.
+
+### A model fit on businesses with 5 to 30 employees is used to predict revenue for one with 150 employees. What's the concern?
+@ extrapolation
+- The slope will be negative
+- The residual will be zero
++ This is extrapolation: we have no evidence the trend continues that far outside the data
+- The correlation will change sign
+> Predictions far outside the observed range of $x$ are unreliable.

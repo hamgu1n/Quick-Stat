@@ -1,0 +1,81 @@
+Section Review: Measures of Dispersion. Format notes are in src/lib/quiz.ts.
+
+### Why do we need measures of spread in addition to measures of center?
+@ section-2-2-measures-of-dispersion
++ Two datasets can share the same center but differ a lot in variability
+- Measures of center are always wrong
+- Spread tells us the most common value
+- Spread replaces the need for the mean
+> The center alone doesn't tell us how spread out the values are, so we report both.
+
+### What is the range of $6, 14, 3, 21, 9$?
+@ range
+- 15
+- 21
+- 9
++ 18
+> Range = Maximum − Minimum = $21 - 3 = 18$.
+
+### What is the main weakness of the range?
+@ range
+- It is too hard to calculate
++ It depends on only two values, so one outlier can change it drastically
+- It can be negative
+- It is measured in squared units
+> The range uses only the minimum and maximum, so it ignores the rest of the data.
+
+### What is the sample variance of $2, 4, 6$?
+@ variance-and-standard-deviation
+- 2.67
+- 8
++ 4
+- 2
+> $\bar{x} = 4$. Squared deviations: $4, 0, 4$, which sum to 8. Divide by $n - 1 = 2$: $s^2 = 4$.
+
+### In the sample variance formula, what do we divide by?
+@ variance-and-standard-deviation
+- $n$
+- $n + 1$
+- $\bar{x}$
++ $n - 1$
+> $s^2 = \frac{1}{n-1}\sum (x_i - \bar{x})^2$.
+
+### A sample has variance $s^2 = 25$. What is the standard deviation?
+@ variance-and-standard-deviation
+- 625
++ 5
+- 12.5
+- 25
+> The standard deviation is the square root of the variance: $\sqrt{25} = 5$.
+
+### Why is the standard deviation often easier to interpret than the variance?
+@ variance-and-standard-deviation
+- It is always smaller than the variance
+- It ignores outliers
++ It is in the same units as the original data
+- It only uses the middle 50% of the data
+> Variance is in squared units (like hours²). Taking the square root brings it back to the data's units.
+
+### Dataset A has $s = 2$ and dataset B has $s = 10$. Which statement is true?
+@ variance-and-standard-deviation
+- Dataset A has a larger mean
+- Dataset A has more outliers
++ Dataset B's values are more spread out around its mean
+- The datasets must have the same range
+> A larger standard deviation means the data are more spread out; a smaller one means they're tightly clustered.
+
+### What does the IQR measure?
+@ interquartile-range-iqr
++ The spread of the middle 50% of the data
+- The spread of all the data, from minimum to maximum
+- The average distance from the mean
+- The most common value
+> $\text{IQR} = Q_3 - Q_1$, the width of the middle half of the data.
+
+### For a dataset with $Q_1 = 12$ and $Q_3 = 30$, what is the IQR, and is it robust to outliers?
+@ interquartile-range-iqr
+- 42; no
++ 18; yes
+- 18; no
+- 21; yes
+> $\text{IQR} = 30 - 12 = 18$. It ignores the lowest and highest 25% of the data, so outliers don't affect it much.

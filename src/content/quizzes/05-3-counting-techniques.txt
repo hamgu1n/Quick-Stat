@@ -1,0 +1,81 @@
+Section Review: Counting Techniques. Format notes are in src/lib/quiz.ts.
+
+### A café offers 3 sizes, 5 flavors, and 2 milk options. How many different drinks are possible?
+@ the-multiplication-rule-of-counting
++ 30
+- 10
+- 15
+- 60
+> Multiplication rule: $3 \times 5 \times 2 = 30$.
+
+### A license plate has 3 digits (0–9, repeats allowed). How many plates are possible?
+@ the-multiplication-rule-of-counting
+- 30
+- 720
++ 1,000
+- 27
+> Each of the 3 positions has 10 choices: $10 \times 10 \times 10 = 1{,}000$.
+
+### What is $5!$?
+@ permutations
++ 120
+- 25
+- 15
+- 60
+> $5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$.
+
+### What is the key difference between a permutation and a combination?
+@ combinations
+- In a combination, order matters; in a permutation, it doesn't
+- Permutations allow repeats and combinations don't
+- There is no difference
++ In a permutation, order matters; in a combination, it doesn't
+> Use permutations when roles or arrangement matter, and combinations when you're just choosing a group.
+
+### A club of 10 members chooses a president and a vice-president. How many ways can this be done?
+@ permutations
+- 45
+- 20
+- 100
++ 90
+> The roles are different, so order matters: $P(10, 2) = 10 \times 9 = 90$.
+
+### How many ways can 4 different books be arranged on a shelf?
+@ permutations
++ 24
+- 4
+- 16
+- 10
+> All 4 are arranged in order: $4! = 24$.
+
+### A committee of 3 is chosen from 6 people, all with equal status. How many committees are possible?
+@ combinations
+- 120
++ 20
+- 18
+- 216
+> Order doesn't matter: $\binom{6}{3} = \frac{6!}{3!\,3!} = 20$.
+
+### Which situation calls for a combination?
+@ combinations
+- Awarding 1st, 2nd, and 3rd place in a race
+- Setting a 4-digit PIN with no repeated digits
+- Assigning a president, secretary, and treasurer
++ Choosing 5 people from a class to form a study group
+> A study group has no distinct roles, so the order of selection doesn't matter.
+
+### How are $P(n, r)$ and $C(n, r)$ related?
+@ combinations
+- $P(n, r) = C(n, r) + r$
++ $P(n, r) = C(n, r) \times r!$
+- $C(n, r) = P(n, r) \times r!$
+- They are always equal
+> Each group of $r$ can be arranged in $r!$ orders, so permutations equal combinations times $r!$.
+
+### What is $\binom{8}{2}$?
+@ combinations
+- 16
+- 56
++ 28
+- 40,320
+> $\binom{8}{2} = \frac{8 \times 7}{2 \times 1} = 28$.

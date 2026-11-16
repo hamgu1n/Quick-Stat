@@ -5,9 +5,9 @@ chapter: 11
 slug: "11-2-coefficient-of-determination"
 ---
 
-## Section 11.2 – The Coefficient of Determination
+## Section 5.4 – The Coefficient of Determination
 
-The least squares regression line gives us the best linear prediction of $Y$ from $X$. But how good is that prediction, really? The **coefficient of determination**, denoted $R^2$ (or $r^2$ in simple linear regression), measures exactly this, the proportion of the total variability in $Y$ that is explained by the linear relationship with $X$.
+The least squares regression line gives us the best linear prediction of $Y$ from $X$. But how good is that prediction, really? The **coefficient of determination**, denoted $R^2$ (pronounced "R-squared," and written $r^2$ in simple linear regression), measures exactly this, the proportion of the total variability in $Y$ that is explained by the linear relationship with $X$.
 
 ### What Is $R^2$?
 
@@ -36,7 +36,7 @@ In simple linear regression, $R^2 = r^2$, the square of the Pearson correlation 
 $R^2$ ranges from 0 to 1. An $R^2$ of 0 means the model explains none of the variability (the regression line is no better than just using $\bar{y}$). An $R^2$ of 1 means the model explains all the variability (every point falls exactly on the line).
 
 <div className="example">
-**Example 11.2.1 – Calculating $R^2$**
+**Example 5.4.1 – Calculating $R^2$**
 
 A regression model predicting exam scores from study hours has SST = 1,200 and SSE = 240.
 
@@ -54,7 +54,7 @@ A regression model predicting exam scores from study hours has SST = 1,200 and S
 </div>
 
 <div className="example">
-**Example 11.2.2 – Interpreting $R^2$**
+**Example 5.4.2 – Interpreting $R^2$**
 
 A regression of monthly advertising spend ($x$) on sales revenue ($y$) for a small chain of coffee shops yields $r = 0.73$.
 
@@ -75,16 +75,16 @@ A regression of monthly advertising spend ($x$) on sales revenue ($y$) for a sma
 
 A high $R^2$ sounds reassuring, but it does not guarantee the regression model is appropriate. Several cautions apply:
 
-**A high $R^2$ does not prove causation.** As we emphasized in Chapter 10, a strong linear relationship may be driven by lurking variables.
+**A high $R^2$ does not prove causation.** As we emphasized in Section 5.2, a strong linear relationship may be driven by lurking variables.
 
-**A high $R^2$ does not mean the model fits well.** If the true relationship is curved, fitting a straight line may still produce a high $R^2$ while systematically mispredicting across the range of $X$. This is why we examine residual plots (Section 11.3).
+**A high $R^2$ does not mean the model fits well.** If the true relationship is curved, fitting a straight line may still produce a high $R^2$ while systematically mispredicting across the range of $X$. This is why we examine residual plots (Section 5.5).
 
 **A low $R^2$ does not make a model useless.** In complex fields like psychology or economics, $R^2$ values of 0.10 to 0.30 are common and the model may still be meaningful, especially if the slope is statistically significant and the relationship is theoretically justified.
 
 <RegressionWidget />
 
 <div className="example">
-**Example 11.2.3 – High $R^2$, Wrong Model**
+**Example 5.4.3 – High $R^2$, Wrong Model**
 
 A dataset relating age ($x$, in years) to annual salary ($y$, in thousands of dollars) produces a regression line with $R^2 = 0.78$. However, a scatterplot reveals that salary rises steeply from ages 25 to 45, then levels off after 50.
 
@@ -100,7 +100,7 @@ A linear model is the **wrong shape** for these data. The relationship is curved
 </div>
 
 <div className="example">
-**Example 11.2.4 – Comparing Models**
+**Example 5.4.4 – Comparing Models**
 
 Two researchers each build a regression model to predict students' GPA from the number of hours they study per week.
 
@@ -129,9 +129,9 @@ Information that would help:
 </div>
 
 <div className="example">
-**Example 11.2.5 – Full Calculation**
+**Example 5.4.5 – Full Calculation**
 
-Using the city temperature and heating oil data from Example 11.1.5, the regression model gives $\hat{y} = 61.02 - 0.814x$.
+Using the city temperature and heating oil data from Example 5.3.5, the regression model gives $\hat{y} = 61.02 - 0.814x$.
 
 Given the actual observed values: 45, 40, 38, 32, 28, 24, 20, 17:
 

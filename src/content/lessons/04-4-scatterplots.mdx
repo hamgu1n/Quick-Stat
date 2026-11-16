@@ -5,7 +5,7 @@ chapter: 4
 slug: "04-4-scatterplots"
 ---
 
-## Section 4.4 – Scatterplots
+## Section 2.8 – Scatterplots
 
 Every graph we have looked at so far has displayed a single variable at a time, its distribution, its center, its spread. But many of the most interesting questions in statistics involve the *relationship* between two variables. Does studying more lead to higher grades? Do taller people tend to weigh more? Does higher caffeine consumption correlate with better test performance? To explore these questions visually, we use a **scatterplot**.
 
@@ -17,14 +17,14 @@ When reading a scatterplot, we focus on three features of the relationship:
 
 1. **Direction**: Does the relationship go upward (as $x$ increases, $y$ tends to increase, a **positive association**) or downward (as $x$ increases, $y$ tends to decrease, a **negative association**)?
 2. **Form**: Is the pattern roughly **linear** (the points follow a straight-line trend) or **curved**?
-3. **Strength**: How closely do the points follow the trend? Are they tightly packed around an imaginary line, or are they loosely scattered? We will quantify strength more precisely in Chapter 10 using correlation coefficients.
+3. **Strength**: How closely do the points follow the trend? Are they tightly packed around an imaginary line, or are they loosely scattered? We will quantify strength more precisely in Section 5.1 using correlation coefficients.
 
 Use the slider below to move from a strong negative association all the way to a strong positive one and observe how the point cloud changes shape.
 
 <ScatterplotWidget />
 
 <div className="example">
-**Example 4.4.1 – Reading a Scatterplot**
+**Example 2.8.1 – Reading a Scatterplot**
 
 A scatterplot shows the number of hours employees work per week on the horizontal axis and their self-reported stress level (on a scale of 1 to 10) on the vertical axis. The points form an upward-sloping cloud.
 
@@ -42,7 +42,7 @@ We would expect stress levels to **increase, on average**, as work hours increas
 </div>
 
 <div className="example">
-**Example 4.4.2 – Positive vs. Negative Association**
+**Example 2.8.2 – Positive vs. Negative Association**
 
 For each pair of variables, predict whether the scatterplot would show a positive association, a negative association, or no clear association:
 
@@ -65,12 +65,12 @@ For each pair of variables, predict whether the scatterplot would show a positiv
 
 ### Outliers in Scatterplots
 
-Just as we look for outliers in single-variable distributions, we also watch for them in scatterplots. An outlier in a scatterplot is a point that falls far from the overall trend, either because its $x$ value, its $y$ value, or both are unusual. Some outliers are also called **influential points** because, as we will see in Chapter 11, they can dramatically shift the line we fit through the data.
+Just as we look for outliers in single-variable distributions, we also watch for them in scatterplots. An outlier in a scatterplot is a point that falls far from the overall trend, either because its $x$ value, its $y$ value, or both are unusual. Some outliers are also called **influential points** because, as we will see in Unit 5, they can dramatically shift the line we fit through the data.
 
 It's important not to remove outliers automatically. Sometimes they represent data entry errors; other times they are genuine and scientifically important observations that deserve special attention.
 
 <div className="example">
-**Example 4.4.3 – Identifying an Outlier in a Scatterplot**
+**Example 2.8.3 – Identifying an Outlier in a Scatterplot**
 
 A researcher plots the number of hours students spent on a take-home project (x-axis) against the score they received (y-axis). Most points form an upward-sloping cloud between 2 and 10 hours. One student spent 1 hour and received a 95. Another spent 12 hours and received a 40.
 
@@ -89,7 +89,7 @@ Both could be **influential**, because they sit at the edges of the $x$-range wh
 </div>
 
 <div className="example">
-**Example 4.4.4 – Describing a Scatterplot**
+**Example 2.8.4 – Describing a Scatterplot**
 
 The following data show the weekly advertising spend (in hundreds of dollars) and weekly sales (in thousands of dollars) for a small bakery:
 
@@ -111,23 +111,23 @@ Describe the direction, form, and strength of the relationship. What would you p
 - **Form:** linear, as the points follow a nearly straight line.
 - **Strength:** very strong. The points lie close to a line (one small dip at 8, where sales are 11.8, a little below the 12.1 at 7).
 
-At an advertising spend of 600 dollars ($x = 6$ hundred), sales should fall between the values at $x = 5$ (9.4) and $x = 7$ (12.1), so we would predict about **10 to 11 thousand dollars** in weekly sales. (A least-squares line, from Chapter 11, gives about 10.2 thousand dollars.)
+At an advertising spend of 600 dollars ($x = 6$ hundred), sales should fall between the values at $x = 5$ (9.4) and $x = 7$ (12.1), so we would predict about **10 to 11 thousand dollars** in weekly sales. (A least-squares line, from Section 5.3, gives about 10.2 thousand dollars.)
 
 </Solution>
 </div>
 
 <div className="example">
-**Example 4.4.5 – Causation vs. Association**
+**Example 2.8.5 – Causation vs. Association**
 
 A scatterplot of ice cream sales (x-axis) and drowning rates (y-axis) across months of the year shows a strong positive association, months with high ice cream sales also tend to have more drownings.
 
-Does this mean eating ice cream causes drowning? What is a more reasonable explanation? What concept from Chapter 2 is at work here?
+Does this mean eating ice cream causes drowning? What is a more reasonable explanation? What concept from Unit 1 is at work here?
 
 <Solution>
 
 **No.** Association does not prove causation. A more reasonable explanation is a **lurking (confounding) variable**: **hot weather**. In summer, people buy more ice cream *and* swim more often, which leads to more drownings. The temperature drives both variables, so they rise and fall together even though neither causes the other.
 
-This is the distinction from Chapter 2 between **observational studies and experiments**. These data are observational, so we can't draw cause-and-effect conclusions from them.
+This is the distinction from Section 1.4 between **observational studies and experiments**. These data are observational, so we can't draw cause-and-effect conclusions from them.
 
 </Solution>
 </div>

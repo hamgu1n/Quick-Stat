@@ -82,7 +82,7 @@ barplot(dbinom(0:n, n, p), names.arg = 0:n)`;
         <span>σ = <strong>{sd.toFixed(3)}</strong></span>
       </div>
 
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={200}>
         <ComposedChart data={data} margin={{ top: 8, right: 16, bottom: 0, left: 0 }} barCategoryGap="12%">
           <XAxis dataKey="x" interval={tickInterval} style={{ fontSize: "0.72rem" }} />
           <YAxis width={50} tickFormatter={(v: number) => v.toFixed(2)} style={{ fontSize: "0.72rem" }} />

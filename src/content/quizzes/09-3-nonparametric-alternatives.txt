@@ -1,0 +1,81 @@
+Section Review: Nonparametric Alternatives. Format notes are in src/lib/quiz.ts.
+
+### What makes a test nonparametric?
+@ the-idea-behind-nonparametric-tests
+- It uses a larger sample
++ It makes few or no assumptions about the population's distribution
+- It only works for normal data
+- It always gives smaller p-values
+> Parametric tests usually assume normality; nonparametric tests don't.
+
+### Why are rank-based tests robust to outliers?
+@ the-idea-behind-nonparametric-tests
+- They delete outliers before testing
++ A value's rank is the same no matter how extreme it is
+- They use the mean instead of the median
+- Outliers always get rank 1
+> Whether the largest value is 50 or 50,000, it gets the top rank.
+
+### What are the ranks of the values 12, 4, 20, 9?
+@ the-idea-behind-nonparametric-tests
+- 1, 2, 3, 4
+- 2, 4, 1, 3
+- 12, 4, 20, 9
++ 3, 1, 4, 2
+> Rank from smallest to largest: 4 gets 1, 9 gets 2, 12 gets 3, and 20 gets 4.
+
+### What does the sign test use from each observation?
+@ the-sign-test
+- Its exact value
+- Its rank among all values
++ Only whether it is above or below the claimed median $M_0$
+- Its z-score
+> That's why it needs almost no assumptions, but also why it throws away information.
+
+### Under $H_0$, the number of "+" signs in a sign test with 12 values follows which distribution?
+@ the-sign-test
+- Normal(12, 0.5)
+- t with 11 degrees of freedom
++ Binomial(12, 0.5)
+- Chi-square with 11 degrees of freedom
+> If the median is $M_0$, each value is equally likely to fall above or below it.
+
+### Which test is the nonparametric alternative to the paired t-test?
+@ the-wilcoxon-signed-rank-test
++ Wilcoxon signed-rank test
+- Mann-Whitney U test
+- Kruskal-Wallis test
+- Chi-square test
+> It ranks the absolute differences and compares the positive and negative rank sums.
+
+### Which test is the nonparametric alternative to the two-sample t-test?
+@ the-mann-whitney-u-test
+- Wilcoxon signed-rank test
+- Sign test
++ Mann-Whitney U test (Wilcoxon rank-sum)
+- Kruskal-Wallis test
+> It ranks both groups together and compares the rank sums.
+
+### In a Mann-Whitney test, one group holds almost all the high ranks. What does that suggest?
+@ the-mann-whitney-u-test
+- The groups come from the same distribution
++ That group's values tend to be larger
+- The test was done incorrectly
+- That group has more outliers
+> If the groups were the same, high and low ranks would be mixed evenly.
+
+### Customer ratings on a 1–5 scale are compared across three stores. Which test fits best?
+@ the-kruskal-wallis-test
+- One-way ANOVA
+- Mann-Whitney U test
+- Paired t-test
++ Kruskal-Wallis test
+> Three independent groups with ordinal data call for Kruskal-Wallis.
+
+### When the conditions for a t-test are met, why is the t-test usually preferred over a nonparametric test?
+@ when-should-you-use-a-nonparametric-test
++ The t-test is usually more powerful, so it's more likely to detect a real difference
+- Nonparametric tests are always wrong
+- The t-test doesn't need any data
+- Nonparametric tests can't give p-values
+> Choose nonparametric tests for small, skewed, or ordinal data.

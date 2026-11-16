@@ -5,7 +5,7 @@ chapter: 8
 slug: "08-1-z-tests"
 ---
 
-## Section 8.1 – z-Tests
+## Section 4.3 – z-Tests
 
 Confidence intervals estimate the value of a population parameter. **Hypothesis testing** takes a different approach: we start with a specific claim about a parameter and then use sample data to decide whether the evidence supports or contradicts that claim. In this section we introduce the framework for hypothesis testing and apply it using **z-tests**, tests that rely on the standard normal distribution.
 
@@ -13,9 +13,9 @@ Confidence intervals estimate the value of a population parameter. **Hypothesis 
 
 Every hypothesis test begins with two competing hypotheses:
 
-The **null hypothesis** ($H_0$) is the default claim, the one we assume to be true unless there is strong evidence against it. It typically states that there is "no effect," "no difference," or that a parameter equals a specific value.
+The **null hypothesis** ($H_0$, pronounced "H-naught") is the default claim, the one we assume to be true unless there is strong evidence against it. It typically states that there is "no effect," "no difference," or that a parameter equals a specific value.
 
-The **alternative hypothesis** ($H_a$ or $H_1$) is the claim we are trying to find evidence _for_. It represents the researcher's suspicion or the claim they want to test.
+The **alternative hypothesis** ($H_a$ or $H_1$, pronounced "H-A" or "H-one") is the claim we are trying to find evidence _for_. It represents the researcher's suspicion or the claim they want to test.
 
 For example, if a bottling company claims their bottles contain exactly 16 ounces of water, the hypotheses might be:
 
@@ -32,13 +32,13 @@ $$
 z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}}
 $$
 
-where $\mu_0$ is the value claimed in $H_0$. This z-statistic tells us how many standard errors the sample mean falls from the hypothesized mean.
+where $\mu_0$ (pronounced "mu-naught") is the value claimed in $H_0$. This z-statistic tells us how many standard errors the sample mean falls from the hypothesized mean.
 
 ### The p-Value
 
 The **p-value** is the probability of observing a test statistic at least as extreme as the one computed, assuming $H_0$ is true. A small p-value means the observed data would be very unlikely if $H_0$ were true, providing evidence against it.
 
-We compare the p-value to a pre-chosen **significance level** $\alpha$ (commonly 0.05):
+We compare the p-value to a pre-chosen **significance level** $\alpha$ (pronounced "alpha," commonly 0.05):
 
 - If $p$-value $\leq \alpha$: **Reject $H_0$**, the data provide sufficient evidence against the null
 - If $p$-value $> \alpha$: **Fail to reject $H_0$**, the data do not provide sufficient evidence
@@ -48,7 +48,7 @@ Failing to reject $H_0$ does not mean $H_0$ is true, it simply means we don't ha
 <ZTestWidget />
 
 <div className="example">
-**Example 8.1.1 – Setting Up Hypotheses**
+**Example 4.3.1 – Setting Up Hypotheses**
 
 For each scenario, write the null and alternative hypotheses using proper notation:
 
@@ -66,7 +66,7 @@ For each scenario, write the null and alternative hypotheses using proper notati
 </div>
 
 <div className="example">
-**Example 8.1.2 – One-Sample z-Test**
+**Example 4.3.2 – One-Sample z-Test**
 
 A bottling company claims that bottles contain a mean of 16 ounces of water. A quality inspector samples 36 bottles and finds a sample mean of 15.8 ounces. The population standard deviation is known to be 0.5 ounces.
 
@@ -88,9 +88,9 @@ At the $\alpha = 0.05$ significance level, is there evidence that the mean fill 
 </div>
 
 <div className="example">
-**Example 8.1.3 – One-Tailed vs. Two-Tailed Tests**
+**Example 4.3.3 – One-Tailed vs. Two-Tailed Tests**
 
-Explain the difference between a one-tailed and a two-tailed test. In Example 8.1.2, what would change if the inspector only wanted to test whether the mean is *less than* 16 ounces?
+Explain the difference between a one-tailed and a two-tailed test. In Example 4.3.2, what would change if the inspector only wanted to test whether the mean is *less than* 16 ounces?
 
 <Solution>
 
@@ -113,14 +113,14 @@ No hypothesis test is infallible. We can make two types of errors:
 
 A **Type I error** occurs when we reject $H_0$ when it is actually true, a false positive. The probability of a Type I error equals the significance level $\alpha$. Lowering $\alpha$ makes it harder to reject $H_0$, reducing Type I error risk.
 
-A **Type II error** occurs when we fail to reject $H_0$ when it is actually false, a false negative. Its probability is denoted $\beta$. The **power** of a test is $1 - \beta$: the probability of correctly rejecting a false null hypothesis.
+A **Type II error** occurs when we fail to reject $H_0$ when it is actually false, a false negative. Its probability is denoted $\beta$ (pronounced "BAY-tuh"). The **power** of a test is $1 - \beta$: the probability of correctly rejecting a false null hypothesis.
 
 There is always a trade-off: decreasing $\alpha$ (reducing Type I error) increases $\beta$ (increasing Type II error). Larger sample sizes are the most effective way to reduce both.
 
 <TypeErrorPowerWidget />
 
 <div className="example">
-**Example 8.1.4 – Type I and Type II Errors**
+**Example 4.3.4 – Type I and Type II Errors**
 
 A pharmaceutical company tests a new drug for lowering blood pressure. $H_0$: the drug has no effect. $H_a$: the drug lowers blood pressure.
 

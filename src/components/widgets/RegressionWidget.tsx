@@ -65,7 +65,7 @@ abline(fit, col = "#3b5b8a", lwd = 2)`;
         <span>Predict (x={predX}h): <strong>ŷ = {predY.toFixed(1)}</strong></span>
       </div>
 
-      <ResponsiveContainer width="100%" height={240}>
+      <ResponsiveContainer width="100%" height={170}>
         <ComposedChart margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis type="number" dataKey="x" domain={[0, 8]} name="Hours studied"
             label={{ value: "Hours studied", position: "insideBottom", offset: -2, fontSize: 11 }}

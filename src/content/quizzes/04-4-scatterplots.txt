@@ -1,0 +1,81 @@
+Section Review: Scatterplots. Format notes are in src/lib/quiz.ts.
+
+### What does a scatterplot display?
+@ what-is-a-scatterplot
+- The distribution of one numerical variable
++ The relationship between two numerical variables
+- How a categorical variable splits into groups
+- The five-number summary
+> Each dot is one observation, plotted using its values for both variables.
+
+### A study looks at whether hours of exercise predict resting heart rate. Which variable goes on the x-axis?
+@ what-is-a-scatterplot
+- Resting heart rate (the response variable)
+- It doesn't matter at all
++ Hours of exercise (the explanatory variable)
+- Whichever variable has larger numbers
+> The explanatory variable goes on the x-axis and the response variable on the y-axis.
+
+### What three features describe the relationship in a scatterplot?
+@ what-is-a-scatterplot
+- Mean, median, and mode
+- Center, spread, and skew
++ Direction, form, and strength
+- Minimum, maximum, and range
+> Direction (positive or negative), form (linear or curved), and strength (how tightly the points follow the trend).
+
+### As outdoor temperature rises, hot coffee sales tend to fall. What type of association is this?
+@ what-is-a-scatterplot
+- Positive
+- No association
+- Curved
++ Negative
+> When one variable goes up and the other tends to go down, the association is negative.
+
+### Which pair of variables would most likely show a positive association?
+@ what-is-a-scatterplot
++ Height and weight of adults
+- Number of absences and final grade
+- Hours of sleep and data-entry errors
+- Shoe size and favorite color
+> Taller adults tend to weigh more, so both variables move in the same direction.
+
+### The points in a scatterplot lie very close to a straight line that rises from left to right. How would you describe it?
+@ what-is-a-scatterplot
+- Weak, negative, linear
++ Strong, positive, linear
+- Strong, negative, curved
+- Weak, positive, curved
+> Rising means positive, a straight-line pattern means linear, and points close to the line mean strong.
+
+### What is an outlier in a scatterplot?
+@ outliers-in-scatterplots
++ A point that falls far from the overall trend
+- Any point with a large y-value
+- The point with the smallest x-value
+- A point that lies exactly on the trend line
+> A point can be unusual in its x-value, its y-value, or both, relative to the overall pattern.
+
+### Why are some scatterplot outliers called influential points?
+@ outliers-in-scatterplots
+- They always come from data-entry errors
+- They are always removed before analysis
+- They have the largest y-values
++ They can dramatically shift a line fitted through the data
+> Points far from the trend, especially at the edges of the x-range, can pull a fitted line toward them.
+
+### What should you do when you find an outlier in a scatterplot?
+@ outliers-in-scatterplots
+- Always delete it
+- Always keep it without comment
++ Investigate it: it could be an error or an important genuine observation
+- Replace it with the average point
+> Outliers shouldn't be removed automatically. Some are mistakes; others are scientifically important.
+
+### Ice cream sales and drownings show a strong positive association across months. What's the best explanation?
+@ what-is-a-scatterplot
+- Eating ice cream causes drowning
++ A lurking variable, hot weather, increases both
+- Drowning causes people to buy ice cream
+- The association must be a mistake
+> Association does not imply causation. In hot weather, people buy more ice cream and swim more.

@@ -54,7 +54,7 @@ abline(v = x0, col = "red", lwd = 2)`;
           <strong style={{ color: "var(--maroon)" }}>{z.toFixed(2)}</strong>
         </span>
       </div>
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer width="100%" height={190}>
         <LineChart data={data} margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis
             dataKey="x"

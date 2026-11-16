@@ -9,14 +9,16 @@ slug: "03-1-measures-of-central-tendency"
 
 Data is rarely useful in its raw form. A list of thousands of observations tells us very little about the behavior of a variable. For instance, below is a list of students grades on a final exam in an introductory psychology course. How would you explain what is important about this data?
 
+82, 69, 82, 82, 75, 59, 64, 69, 71, 91, 78, 65, 62, 69, 69, 68, 74, 64, 75, 62, 70, 75, 73, 78
+
 {/* ```r
 set.seed(0)
-as.integer(rnorm(25, mean = 72, sd = 8))
+head(as.integer(rnorm(25, mean = 72, sd = 8)), 24)
 ``` */}
 
-Descriptive statistics allow us to "describe" or summarize data in a meaningful way. Often we summarize data by describing the *center* and *spread* of a dataset which we will explore throughout this chapter.
+Descriptive statistics allow us to "describe" or summarize data in a meaningful way. Often we summarize data by describing the *center* and *spread* of a dataset which we will explore throughout this unit.
 
-## Section 3.1 – Measures of Central Tendency
+## Section 2.1 – Measures of Central Tendency
 
 The most common summary of a dataset is describing its *center*. The most useful measures of central tendency are the *mean*, *median*, and *mode*.
 Each provides different information, and while some are more commonly used than others, no single measure is universally best.
@@ -29,8 +31,10 @@ $$
 \bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
 $$
 
+The symbol $\sum$ is a capital sigma, and it means to sum up.
+
 <div className="example">
-**Example 3.1.1**
+**Example 2.1.1**
 
 Calculate the mean of the following list of numbers.
 
@@ -48,7 +52,7 @@ $$
 </div>
 
 <div className="example">
-**Example 3.1.2**
+**Example 2.1.2**
 
 What do you expect the mean of the following numbers to be? Calculate the mean and compare.
 
@@ -68,7 +72,7 @@ The calculation matches: when every value is the same, the mean equals that valu
 </div>
 
 <div className="example">
-**Example 3.1.3**
+**Example 2.1.3**
 
 What do you expect the mean of the following numbers to be? Calculate the mean and compare.
 
@@ -82,22 +86,22 @@ $$
 \bar{x} = \frac{-20 + (-10) + (-5) + 1 + 12}{5} = \frac{-22}{5} = -4.4
 $$
 
-The mean is negative, as expected, but it is less extreme than the median of $-5$ because the large value 12 pulls the mean upward.
+The mean is negative, as expected, but the single large value of 12 pulls it upward, closer to zero than most of the data. Every value, even an unusual one, affects the mean.
 
 </Solution>
 </div>
 
-We can visualize the mean's sensitivity to outliers using the widget below. It shows 25 employee salaries at a company. Click "Add CEO" to introduce a single extreme value, watch how the mean jumps while the median barely moves.
-
-<MeanMedianWidget />
-
-This is a large reason why we see in datasets with known outliers we use measures that are more robust to data *skewing*, which we explore later in this chapter. All in all, despite this limitation, the mean is extremely useful and easy to calculate it.
+Because the mean uses every value, a single extreme value can pull it a long way. Despite this limitation, the mean is extremely useful and easy to calculate. We will compare it with the median, which handles extreme values better, once we have defined the median.
 
 ### The Median
 
 The median is the middle value of an ordered list. For example the list $[1, 2, 4, 5, 6]$ has a median of $4$. In the case of an even number of entries the median is the average of the two center values.
 
-Below is a list of 5 students study hours:
+Below is a list of 5 students' study hours:
+
+$$
+2, 2, \mathbf{3}, 3, 4
+$$
 
 {/* ```r
 set.seed(1)
@@ -105,6 +109,10 @@ sort(as.integer(rnorm(5, mean = 3, sd = 1)))
 ``` */}
 
 The median of the dataset is 3. After sampling another student we now have:
+
+$$
+2, 2, \mathbf{2}, \mathbf{3}, 3, 4
+$$
 
 {/* ```r
 set.seed(1)
@@ -135,19 +143,10 @@ ggplot(data, aes(x = "", y = scores)) +
   theme_textbook()
 ``` */}
 
-Unlike the mean, who is vulnerable to outliers, the median is considered *robust* against outliers. For example, is a dataset of student attendance over a 2 weeks in a computer science course.
-
-{/* ```r
-set.seed(2)
-sort(c(c(0, 0),as.integer(rnorm(8, mean = 25, sd = 1))))
-``` */}
-
-Comparing the mean and median of the above dataset, we find that the mean is 19.6, while the median is 24. We can see that the mean was "pulled down" by the the two days where 0 students attended the class due to a blizzard. As we will later see, outliers are not necessarily insignificant but can greatly shift the descriptive statistics of a dataset.
-
 The median does have its downsides however, it requires that your list be sorted which can be tedious by hand and computationally tasking for larger datasets.
 
 <div className="example">
-**Example 3.1.4**
+**Example 2.1.4**
 
 A teacher recorded the number of books read by each student in a reading club:
 
@@ -171,7 +170,7 @@ The median is **5 books**.
 </div>
 
 <div className="example">
-**Example 3.1.5**
+**Example 2.1.5**
 
 The following are the ages of participants in a workshop:
 
@@ -191,7 +190,7 @@ The median age is **28**.
 </div>
 
 <div className="example">
-**Example 3.1.6**
+**Example 2.1.6**
 
 The scores of 6 students on a quiz are:
 
@@ -212,12 +211,53 @@ $$
 </Solution>
 </div>
 
+### Comparing the Mean and Median
+
+Now that we have both measures, we can compare how they handle outliers. Unlike the mean, which is vulnerable to outliers, the median is considered *robust* against outliers. For example, below is the number of students who attended a computer science course on 8 class days:
+
+$$
+23, 24, 24, 24, 25, 25, 25, 26
+$$
+
+The mean and median are:
+
+$$
+\bar{x} = \frac{196}{8} = 24.5 \qquad \text{Median} = \frac{24 + 25}{2} = 24.5
+$$
+
+With no unusual values, the mean and median agree.
+
+Now suppose a blizzard hit and the class met on two more days that no one attended. Adding those two days gives:
+
+$$
+0, 0, 23, 24, 24, 24, 25, 25, 25, 26
+$$
+
+{/* ```r
+set.seed(2)
+sort(c(c(0, 0),as.integer(rnorm(8, mean = 25, sd = 1))))
+``` */}
+
+Now the mean and median are:
+
+$$
+\bar{x} = \frac{196}{10} = 19.6 \qquad \text{Median} = \frac{24 + 24}{2} = 24
+$$
+
+The two blizzard days "pulled down" the mean by almost 5 students, while the median, which only depends on the middle of the ordered data, stays close to a typical day. As we will later see, outliers are not necessarily insignificant but can greatly shift the descriptive statistics of a dataset.
+
+We can see the same effect with the widget below. It shows 25 employee salaries at a company. Click "Add CEO" to introduce a single extreme value, and watch how the mean jumps while the median barely moves.
+
+<MeanMedianWidget />
+
+This is a large reason why, in datasets with known outliers, we use measures that are more robust to *skewing*, which we explore later in this unit.
+
 ### The Mode
 
 The mode is the most frequent value in a list. A dataset may have more than one mode if multiple values have the same frequency, or no mode if all values appear equally. The mode is especially useful for **qualitative data**.
 
 <div className="example">
-**Example 3.1.7**
+**Example 2.1.7**
 
 The number of pets owned by 10 students is:
 
@@ -241,7 +281,7 @@ The mode is **3 pets**, which appears 4 times.
 </div>
 
 <div className="example">
-**Example 3.1.8**
+**Example 2.1.8**
 
 The following are favorite ice cream flavors chosen by 12 students, coded numerically:
 
@@ -265,7 +305,7 @@ The mode is **flavor 1**, chosen by 4 students. There is only one mode, since no
 </div>
 
 <div className="example">
-**Example 3.1.9**
+**Example 2.1.9**
 
 A survey of 15 students' preferred study time produced these results:
 

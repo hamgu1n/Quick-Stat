@@ -76,7 +76,7 @@ prop.test(x, n, p = p0, alternative = "${alt}", correct = FALSE)`;
           : <span style={{ color: "var(--muted-foreground)", fontSize: "0.82rem" }}>Fail to reject H₀ at α = 0.05</span>}
       </div>
 
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={200}>
         <ComposedChart data={data} margin={{ top: 28, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="v" type="number" domain={[xMin, xMax]} tickCount={7}
             tickFormatter={(v: number) => v.toFixed(3)} style={{ fontSize: "0.72rem" }} />

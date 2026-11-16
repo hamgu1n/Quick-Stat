@@ -1,0 +1,81 @@
+Section Review: Probability Rules. Format notes are in src/lib/quiz.ts.
+
+### Which of these could NOT be a probability?
+@ basic-probability
+- 0
+- 0.73
++ 1.2
+- 1
+> Probabilities are always between 0 (impossible) and 1 (certain).
+
+### A fair six-sided die is rolled. What is the probability of rolling a number greater than 4?
+@ basic-probability
+- $\frac{1}{6}$
+- $\frac{1}{2}$
+- $\frac{2}{3}$
++ $\frac{1}{3}$
+> Two outcomes (5 and 6) out of six equally likely outcomes: $2/6 = 1/3$.
+
+### A bag has 5 red, 3 blue, and 2 green marbles. What is the probability of drawing a blue marble?
+@ basic-probability
+- 0.5
++ 0.3
+- 0.2
+- 0.03
+> There are 10 marbles, 3 of them blue: $3/10 = 0.3$.
+
+### The probability it rains tomorrow is 0.35. What is the probability it doesn't rain?
+@ complement-union-and-intersection
++ 0.65
+- 0.35
+- 1.35
+- 0.5
+> Complement rule: $P(A^c) = 1 - P(A) = 1 - 0.35 = 0.65$.
+
+### At a fair, 50% of visitors ride the Ferris wheel, 40% ride the roller coaster, and 15% ride both. What is the probability a visitor rides at least one?
+@ complement-union-and-intersection
++ 0.75
+- 0.90
+- 0.65
+- 0.20
+> Addition rule: $0.50 + 0.40 - 0.15 = 0.75$. We subtract the overlap so it isn't counted twice.
+
+### What does it mean for two events to be mutually exclusive?
+@ complement-union-and-intersection
+- One event makes the other more likely
++ They cannot both happen at the same time
+- They have the same probability
+- Knowing one happened doesn't change the probability of the other
+> Mutually exclusive (disjoint) events have no overlap: $P(A \cap B) = 0$.
+
+### One card is drawn from a standard deck. What is the probability it is a heart or a club?
+@ complement-union-and-intersection
+- 0.25
+- 0.0625
++ 0.5
+- 0.75
+> Hearts and clubs are mutually exclusive, so add: $13/52 + 13/52 = 26/52 = 0.5$.
+
+### A fair coin is flipped twice. What is the probability of getting heads both times?
+@ independent-events
+- 0.5
+- 0.75
+- 1
++ 0.25
+> The flips are independent, so multiply: $0.5 \times 0.5 = 0.25$.
+
+### $P(A) = 0.4$ and $P(B) = 0.5$. If $A$ and $B$ are independent, what is $P(A \cap B)$?
+@ independent-events
++ 0.2
+- 0.9
+- 0.1
+- 0.45
+> Multiplication rule for independent events: $0.4 \times 0.5 = 0.2$.
+
+### $P(A) = 0.3$, $P(B) = 0.6$, and the actual $P(A \cap B) = 0.25$. Are $A$ and $B$ independent?
+@ independent-events
+- Yes, because both probabilities are less than 1
+- Yes, because $0.3 + 0.6 < 1$
+- No, because they are mutually exclusive
++ No, because $0.3 \times 0.6 = 0.18$, which is not 0.25
+> Independent events must satisfy $P(A \cap B) = P(A) \times P(B)$. Here $0.25 \neq 0.18$.

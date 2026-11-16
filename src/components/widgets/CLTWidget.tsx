@@ -106,7 +106,7 @@ curve(dnorm(x, mean = ${mu}, sd = ${sigma}/sqrt(${n})),
         Histogram of {N_SAMPLES} sample means. Red curve = N(μ, σ/√n) - the CLT approximation.
       </p>
 
-      <ResponsiveContainer width="100%" height={240}>
+      <ResponsiveContainer width="100%" height={170}>
         <ComposedChart data={data} margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="x" type="number" domain={["auto", "auto"]} tickCount={7}
             tickFormatter={(v: number) => v.toFixed(1)} style={{ fontSize: "0.72rem" }} />

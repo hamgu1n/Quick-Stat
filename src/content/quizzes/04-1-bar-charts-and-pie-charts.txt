@@ -1,0 +1,81 @@
+Section Review: Bar Charts and Pie Charts. Format notes are in src/lib/quiz.ts.
+
+### What type of data are bar charts and pie charts designed for?
+@ section-2-5-bar-charts-and-pie-charts
+- Numerical (quantitative) data
+- Paired numerical data
+- Only data with outliers
++ Categorical (qualitative) data
+> Both charts show how observations are split among categories.
+
+### Why don't the bars in a bar chart touch?
+@ bar-charts
++ To show that the categories are separate, not a continuous scale
+- To save space on the page
+- Because the bars represent percentages
+- Because each bar has a different width
+> The gaps reinforce that the categories are distinct. Histograms, which show numerical data, have touching bars.
+
+### In a survey of 80 students, 20 chose basketball as their favorite sport. What is basketball's relative frequency?
+@ bar-charts
+- 20
+- 0.20
++ 0.25
+- 0.80
+> Relative frequency = count ÷ total = $20/80 = 0.25$, or 25%.
+
+### What is a Pareto chart?
+@ bar-charts
+- A pie chart with more than five slices
+- A histogram with touching bars
++ A bar chart with the bars arranged in decreasing order of frequency
+- A bar chart that uses relative frequencies
+> Sorting the bars from tallest to shortest makes it easy to see which categories dominate.
+
+### School A has 200 students and School B has 400. Why use a relative frequency bar chart to compare participation in clubs?
+@ bar-charts
+- Relative frequencies are easier to calculate
++ The schools are different sizes, so proportions put them on the same scale
+- Raw counts can't be shown in a bar chart
+- Relative frequency bar charts don't need labels
+> The bigger school could have more participants just because it has more students. Proportions compare the rates fairly.
+
+### In a pie chart, a category makes up 25% of the data. What is the angle of its slice?
+@ pie-charts
+- 25°
+- 45°
+- 180°
++ 90°
+> Angle = relative frequency × 360° = $0.25 \times 360° = 90°$.
+
+### In a class of 40 students, 10 prefer rock music. What is the angle of rock's slice in a pie chart?
+@ pie-charts
+- 10°
++ 90°
+- 40°
+- 36°
+> $10/40 = 0.25$, and $0.25 \times 360° = 90°$.
+
+### What kind of relationship are pie charts best at showing?
+@ pie-charts
++ Part-to-whole: what share of the total each category makes up
+- How two numerical variables are related
+- How a variable changes over time
+- The spread of a numerical variable
+> The whole circle represents 100% of the data, and each slice shows one category's share.
+
+### Why do statisticians often prefer bar charts over pie charts?
+@ pie-charts
+- Bar charts can show more colors
++ People compare bar lengths more accurately than slice angles or areas
+- Pie charts can't show percentages
+- Bar charts work for numerical data and pie charts don't
+> When several categories have similar sizes, slices are hard to compare, while bar heights are easy to read.
+
+### When can a pie chart be a reasonable choice?
+@ pie-charts
+- When there are 15 categories of similar size
+- When the data are numerical
++ When there are only two or three categories with clearly different shares of a whole
+- When the categories don't add up to a whole
+> With few, clearly different categories that make up a whole, a pie chart communicates the shares well.

@@ -7,7 +7,7 @@ slug: "05-1-probability-rules"
 
 # Unit 3 – Probability and the Central Limit Theorem
 
-## Section 5.1 – Probability Rules
+## Section 3.1 – Probability Rules
 
 Everything we have done so far, describing samples, summarizing distributions, has been purely descriptive. We described what *did* happen. Probability takes us in a different direction: it describes what *could* happen and how likely each outcome is. Probability is the language of uncertainty, and it forms the foundation for everything in statistical inference that follows.
 
@@ -24,7 +24,7 @@ $$
 For example, rolling a fair six-sided die has a sample space of $S = \{1, 2, 3, 4, 5, 6\}$. The probability of rolling an even number is $\frac{3}{6} = 0.5$, because three outcomes (2, 4, 6) satisfy the event.
 
 <div className="example">
-**Example 5.1.1 – Basic Probability**
+**Example 3.1.1 – Basic Probability**
 
 A bag contains 4 red marbles, 3 blue marbles, and 3 green marbles. One marble is drawn at random.
 
@@ -47,13 +47,13 @@ There are $4 + 3 + 3 = 10$ marbles in total.
 
 Three operations on events appear constantly in probability:
 
-The **complement** of event $A$, written $A^c$ (or $\bar{A}$), is the set of all outcomes *not* in $A$. The complement rule states:
+The **complement** of event $A$, written $A^c$ (pronounced "A complement") or $\bar{A}$ ("A-bar"), is the set of all outcomes *not* in $A$. The complement rule states:
 
 $$
 P(A^c) = 1 - P(A)
 $$
 
-The **union** of events $A$ and $B$, written $A \cup B$, includes every outcome that is in $A$, in $B$, or in both. The **addition rule** gives us:
+The **union** of events $A$ and $B$, written $A \cup B$ and read "A union B" (or simply "A or B"), includes every outcome that is in $A$, in $B$, or in both. The **addition rule** gives us:
 
 $$
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
@@ -61,7 +61,7 @@ $$
 
 We subtract $P(A \cap B)$ because otherwise we count the overlap twice.
 
-The **intersection** of $A$ and $B$, written $A \cap B$, includes only the outcomes that are in *both* $A$ and $B$ simultaneously.
+The **intersection** of $A$ and $B$, written $A \cap B$ and read "A intersect B" (or "A and B"), includes only the outcomes that are in *both* $A$ and $B$ simultaneously.
 
 Two events are **mutually exclusive** (also called **disjoint**) if they cannot both occur at the same time, their intersection is empty. For mutually exclusive events, the addition rule simplifies to:
 
@@ -72,7 +72,7 @@ $$
 <ProbabilityVennWidget />
 
 <div className="example">
-**Example 5.1.2 – Complement Rule**
+**Example 3.1.2 – Complement Rule**
 
 The probability that a randomly selected student passed a statistics exam is 0.72.
 
@@ -90,7 +90,7 @@ $$
 </div>
 
 <div className="example">
-**Example 5.1.3 – Addition Rule**
+**Example 3.1.3 – Addition Rule**
 
 At a career fair, 60% of attendees are interested in finance, 45% are interested in technology, and 25% are interested in both.
 
@@ -110,7 +110,7 @@ $$
 </div>
 
 <div className="example">
-**Example 5.1.4 – Mutually Exclusive Events**
+**Example 3.1.4 – Mutually Exclusive Events**
 
 A single card is drawn from a standard 52-card deck. Let $A$ be the event of drawing a heart and $B$ be the event of drawing a spade.
 
@@ -138,7 +138,7 @@ $$
 Independence is a strong assumption. Flipping a coin twice is a classic example, the result of the first flip has no bearing on the second. Whether a randomly selected student passed two different unrelated courses might also be approximately independent. But whether a student passed a prerequisite and then passed the follow-on course almost certainly are *not* independent.
 
 <div className="example">
-**Example 5.1.5 – Independent Events**
+**Example 3.1.5 – Independent Events**
 
 A fair coin is flipped and a fair die is rolled.
 
@@ -154,7 +154,7 @@ A fair coin is flipped and a fair die is rolled.
 </div>
 
 <div className="example">
-**Example 5.1.6 – Checking Independence**
+**Example 3.1.6 – Checking Independence**
 
 A survey finds that 40% of students drink coffee daily, and 30% of students get fewer than 6 hours of sleep. If these events are independent, what is the probability that a randomly selected student both drinks coffee daily and gets fewer than 6 hours of sleep?
 

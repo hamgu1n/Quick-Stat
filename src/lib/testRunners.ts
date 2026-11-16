@@ -27,16 +27,18 @@ export type TestResult = {
   chart?: ChartSpec;
 };
 
+// Shared helpers below are also used by proportionTests.ts and rankTests.ts.
+
 // Rejection regions are drawn at the conventional alpha = 0.05, regardless
 // of the tail/mu0/etc. the student chose -- it's just the shading, not part
 // of the printed R output, so it's labeled on the chart itself.
-const CHART_ALPHA = 0.05;
+export const CHART_ALPHA = 0.05;
 
-function toNumbers(values: string[]): number[] {
+export function toNumbers(values: string[]): number[] {
   return values.filter((v) => !isMissingValue(v)).map(Number);
 }
 
-function mean(xs: number[]): number {
+export function mean(xs: number[]): number {
   return xs.reduce((a, b) => a + b, 0) / xs.length;
 }
 
@@ -45,7 +47,7 @@ function sd(xs: number[]): number {
   return Math.sqrt(xs.reduce((a, b) => a + (b - m) ** 2, 0) / (xs.length - 1));
 }
 
-function groupBy(numeric: string[], group: string[]): Map<string, number[]> {
+export function groupBy(numeric: string[], group: string[]): Map<string, number[]> {
   const map = new Map<string, number[]>();
   for (let i = 0; i < numeric.length; i++) {
     const g = group[i];
@@ -59,12 +61,12 @@ function groupBy(numeric: string[], group: string[]): Map<string, number[]> {
   return map;
 }
 
-function fmt(x: number, digits = 4): string {
+export function fmt(x: number, digits = 4): string {
   if (!Number.isFinite(x)) return "NaN";
   return x.toFixed(digits);
 }
 
-function pValueString(p: number): string {
+export function pValueString(p: number): string {
   return p < 2.2e-16 ? "< 2.2e-16" : fmt(p, p < 0.001 ? 6 : 4);
 }
 

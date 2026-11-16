@@ -87,6 +87,27 @@ export function recommendTests(dataset: Dataset): Recommendation[] {
     );
   }
 
+  // Two 2-level categorical columns: compare a success rate between two groups.
+  const twoLevelCols = categorical.filter((c) => c.levels === 2);
+  if (twoLevelCols.length >= 2) {
+    const [resp, grp] = twoLevelCols;
+    recs.push(
+      suggest(
+        "two-prop-z",
+        `"${resp.header}" and "${grp.header}" each have 2 values - compare the rate of one "${resp.header}" answer between the two "${grp.header}" groups.`,
+        { response: resp.header, group: grp.header, tail: "two.sided" },
+      ),
+    );
+  } else if (twoLevelCols.length === 1 && numeric.length === 0) {
+    recs.push(
+      suggest(
+        "one-prop-z",
+        `"${twoLevelCols[0].header}" has 2 values - test whether the proportion of one of them differs from a claimed value.`,
+        { column: twoLevelCols[0].header, tail: "two.sided" },
+      ),
+    );
+  }
+
   // Fallbacks for thinner datasets, only offered when nothing above applies.
   if (recs.length === 0 && categorical.length === 1) {
     recs.push(

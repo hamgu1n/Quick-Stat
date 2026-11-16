@@ -59,7 +59,7 @@ barplot(counts, names.arg = categories,
   return (
     <div className="widget">
       {chartType === "bar" ? (
-        <ResponsiveContainer width="100%" height={260}>
+        <ResponsiveContainer width="100%" height={190}>
           <BarChart data={data} margin={{ top: 8, right: 16, bottom: 40, left: 0 }}>
             <XAxis
               dataKey="flavor"
@@ -79,7 +79,7 @@ barplot(counts, names.arg = categories,
           </BarChart>
         </ResponsiveContainer>
       ) : (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={220}>
           <PieChart>
             <Pie
               data={FLAVOR_DATA}

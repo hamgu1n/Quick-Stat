@@ -1,0 +1,81 @@
+Section Review: Summary Statistics. Format notes are in src/lib/quiz.ts.
+
+### Which list is the five-number summary?
+@ the-five-number-summary
++ Minimum, $Q_1$, median, $Q_3$, maximum
+- Mean, median, mode, range, standard deviation
+- Minimum, mean, median, mode, maximum
+- $Q_1$, $Q_2$, $Q_3$, IQR, range
+> The five-number summary shows where the data start and end, where the middle half lives, and where the center falls.
+
+### Find the five-number summary of $4, 6, 7, 9, 10, 12, 15$.
+@ the-five-number-summary
++ 4, 6, 9, 12, 15
+- 4, 7, 9, 12, 15
+- 4, 6.5, 9, 11, 15
+- 4, 6, 9.5, 12, 15
+> $n = 7$, so the median is the 4th value, 9. The lower half $4, 6, 7$ has median 6, and the upper half $10, 12, 15$ has median 12.
+
+### Which graph is built directly from the five-number summary?
+@ the-five-number-summary
+- Histogram
++ Boxplot
+- Pie chart
+- Scatterplot
+> The boxplot draws the box from $Q_1$ to $Q_3$, a line at the median, and whiskers toward the extremes.
+
+### Two classes both have a mean exam score of 75. What else do you need to tell them apart?
+@ combining-center-and-spread
+- The mode
+- The sample size only
++ A measure of spread, such as the standard deviation or IQR
+- Nothing; the mean is enough
+> One class might score between 70 and 80 and the other between 30 and 100. Only a measure of spread shows that difference.
+
+### For a roughly symmetric distribution with no strong outliers, which pair should you report?
+@ combining-center-and-spread
+- Median and IQR
++ Mean and standard deviation
+- Mode and range
+- Mean and IQR
+> When the data are symmetric, the mean and median are close, and the standard deviation describes spread well.
+
+### Salaries at a company include a few executives earning millions. Which pair should you report?
+@ combining-center-and-spread
+- Mean and standard deviation
+- Mode and range
++ Median and IQR
+- Mean and range
+> The extreme salaries would pull the mean up and inflate the standard deviation. The median and IQR resist outliers.
+
+### In a right-skewed distribution, how do the mean and median usually compare?
+@ combining-center-and-spread
+- The mean is less than the median
+- They are always equal
+- There's no way to tell
++ The mean is greater than the median
+> The long right tail pulls the mean toward it, while the median stays near the bulk of the data.
+
+### A five-number summary is: Min = 10, $Q_1$ = 40, Median = 45, $Q_3$ = 50, Max = 140. What shape does this suggest?
+@ combining-center-and-spread
+- Roughly symmetric
+- Skewed left
+- Bimodal
++ Skewed right
+> The middle is balanced (5 on each side of the median), but the maximum is 90 above $Q_3$ while the minimum is only 30 below $Q_1$: a long right tail.
+
+### Why can reporting only a measure of center be misleading?
+@ combining-center-and-spread
+- The center is usually calculated wrong
+- The center is always affected by outliers
++ Datasets with the same center can have very different variability
+- Measures of center only work for categorical data
+> Center and spread together give an honest picture of how the data behave.
+
+### Monthly bills are $85, 90, 92, 95, 98, 100, 105, 108, 110, 115, 120, 210$. The mean is about 110.67 and the median is 102.5. Why is the mean larger?
+@ combining-center-and-spread
+- The data are skewed left
+- The median is calculated incorrectly
+- There are an even number of values
++ The high value of 210 pulls the mean upward
+> 210 is an outlier (above the upper fence of 141), and it drags the mean toward it. The median isn't affected much.

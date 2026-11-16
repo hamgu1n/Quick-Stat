@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Lightbulb, LayoutDashboard } from "lucide-react";
 import type { Dataset } from "@/types/dataset";
-import { getColumnValues, inferColumnType } from "@/lib/columnStats";
+import { getColumnValues, inferColumnType, isMissingValue } from "@/lib/columnStats";
 import { TEST_DEFS, type FormValues, type TestDef } from "@/lib/testDefs";
 import { recommendTests } from "@/lib/testRecommendations";
 import { RConsoleOutput } from "@/components/analyzer/RConsoleOutput";
@@ -35,6 +35,15 @@ export function TestRunnerPanel({
     return { numericColumns: numeric, categoricalColumns: categorical };
   }, [dataset]);
 
+  // The distinct values of each column, for "Success value" dropdowns.
+  const levelsOf = useMemo(() => {
+    const map = new Map<string, string[]>();
+    dataset.headers.forEach((h, i) => {
+      map.set(h, [...new Set(getColumnValues(dataset.rows, i).filter((v) => !isMissingValue(v)))].sort());
+    });
+    return map;
+  }, [dataset]);
+
   const groups = useMemo(() => {
     const map = new Map<string, TestDef[]>();
     for (const def of TEST_DEFS) {
@@ -50,7 +59,7 @@ export function TestRunnerPanel({
   const selected = TEST_DEFS.find((d) => d.id === selectedId)!;
 
   const [values, setValues] = useState<FormValues>(() =>
-    defaultValues(selected, numericColumns, categoricalColumns),
+    defaultValues(selected, numericColumns, categoricalColumns, levelsOf),
   );
   const [result, setResult] = useState<TestResult | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -58,7 +67,7 @@ export function TestRunnerPanel({
   function selectTest(id: string) {
     const def = TEST_DEFS.find((d) => d.id === id)!;
     setSelectedId(id);
-    setValues(defaultValues(def, numericColumns, categoricalColumns));
+    setValues(defaultValues(def, numericColumns, categoricalColumns, levelsOf));
     setResult(null);
     setError(null);
   }
@@ -68,13 +77,20 @@ export function TestRunnerPanel({
     setSelectedId(id);
     // Start from the usual defaults, then layer the recommendation's
     // specific column choices on top so every input still has a value.
-    setValues({ ...defaultValues(def, numericColumns, categoricalColumns), ...prefilled });
+    setValues(fillCategoryValues(def, { ...defaultValues(def, numericColumns, categoricalColumns, levelsOf), ...prefilled }, levelsOf));
     setResult(null);
     setError(null);
   }
 
   function setValue(key: string, v: string) {
-    setValues((prev) => ({ ...prev, [key]: v }));
+    // Changing a column resets any "Success value" that depends on it.
+    setValues((prev) => {
+      const next = { ...prev, [key]: v };
+      for (const input of selected.inputs) {
+        if (input.kind === "category-value" && input.column === key) next[input.key] = "";
+      }
+      return fillCategoryValues(selected, next, levelsOf);
+    });
   }
 
   function run() {
@@ -163,6 +179,11 @@ export function TestRunnerPanel({
                 onChange={(e) => setValue(input.key, e.target.value)}
               />
             )}
+            {input.kind === "category-value" && (
+              <select value={values[input.key] ?? ""} onChange={(e) => setValue(input.key, e.target.value)}>
+                {(levelsOf.get(values[input.column] ?? "") ?? []).map((v) => <option key={v} value={v}>{v}</option>)}
+              </select>
+            )}
             {input.kind === "tail" && (
               <select value={values[input.key] ?? "two.sided"} onChange={(e) => setValue(input.key, e.target.value)}>
                 {TAIL_OPTIONS.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
@@ -220,13 +241,48 @@ function describeRun(def: TestDef, values: FormValues): string {
   return columns.join(" vs. ");
 }
 
-function defaultValues(def: TestDef, numericColumns: string[], categoricalColumns: string[]): FormValues {
+function defaultValues(
+  def: TestDef,
+  numericColumns: string[],
+  categoricalColumns: string[],
+  levelsOf: Map<string, string[]>,
+): FormValues {
   const values: FormValues = {};
+  // Useful grouping columns first: skip ID-like columns where every row is
+  // different, and prefer columns with few levels.
+  const rowCount = Math.max(0, ...[...levelsOf.values()].map((l) => l.length));
+  const groupable = [...categoricalColumns]
+    .filter((c) => (levelsOf.get(c)?.length ?? 0) >= 2 && (levelsOf.get(c)?.length ?? 0) < rowCount)
+    .sort((a, b) => (levelsOf.get(a)?.length ?? 0) - (levelsOf.get(b)?.length ?? 0));
+  const categoricalOrder = groupable.length > 0 ? groupable : categoricalColumns;
+  const twoLevel = categoricalOrder.filter((c) => levelsOf.get(c)?.length === 2);
+
+  // Tests with two columns of the same kind (X and Y, Column 1 and Column 2,
+  // response and group) start with two different columns, not one twice.
+  const used = new Set<string>();
+  const pick = (options: string[]) => {
+    const choice = options.find((c) => !used.has(c)) ?? options[0] ?? "";
+    used.add(choice);
+    return choice;
+  };
   for (const input of def.inputs) {
-    if (input.kind === "numeric-column") values[input.key] = numericColumns[0] ?? "";
-    else if (input.kind === "categorical-column") values[input.key] = categoricalColumns[0] ?? "";
-    else if (input.kind === "number") values[input.key] = String(input.default);
+    if (input.kind === "numeric-column") values[input.key] = pick(numericColumns);
+    else if (input.kind === "categorical-column") {
+      const wantsTwo = /2 levels/.test(input.label);
+      values[input.key] = pick(wantsTwo && twoLevel.length > 0 ? [...twoLevel, ...categoricalOrder] : categoricalOrder);
+    } else if (input.kind === "number") values[input.key] = String(input.default);
     else if (input.kind === "tail") values[input.key] = "two.sided";
   }
-  return values;
+  return fillCategoryValues(def, values, levelsOf);
+}
+
+/** Gives each empty "Success value" the first value of its column. */
+function fillCategoryValues(def: TestDef, values: FormValues, levelsOf: Map<string, string[]>): FormValues {
+  const out = { ...values };
+  for (const input of def.inputs) {
+    if (input.kind !== "category-value") continue;
+    const levels = levelsOf.get(out[input.column] ?? "") ?? [];
+    if (!levels.includes(out[input.key])) out[input.key] = levels[0] ?? "";
+  }
+  return out;
 }

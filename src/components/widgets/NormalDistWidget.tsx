@@ -46,7 +46,7 @@ export function NormalDistWidget() {
 
   return (
     <div className="widget">
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis
             dataKey="x"

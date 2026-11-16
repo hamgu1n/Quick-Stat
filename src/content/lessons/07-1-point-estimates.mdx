@@ -7,7 +7,7 @@ slug: "07-1-point-estimates"
 
 # Unit 4 – Statistical Inference
 
-## Section 7.1 – Point Estimates
+## Section 4.1 – Point Estimates
 
 We have spent the last several chapters learning how to describe data and understand the behavior of sample statistics. Now we turn to the central challenge of statistics: using a sample to draw conclusions about a population. This is called **statistical inference**, and it comes in two main flavors: estimation and hypothesis testing. We begin with estimation.
 
@@ -23,10 +23,16 @@ The most common point estimates are:
 | Population proportion | $p$ | Sample proportion | $\hat{p}$ |
 | Population standard deviation | $\sigma$ | Sample standard deviation | $s$ |
 
+Read aloud, $\mu$ is "myoo," $\bar{x}$ is "x-bar," $\hat{p}$ is "p-hat," and $\sigma$ is "sigma."
+
 For example, if we want to estimate the average commute time for all workers in a city, we survey 100 workers and calculate their average commute time. That sample mean is our point estimate of $\mu$.
 
+The applet below plays out exactly this. It holds the commute times of every worker in a city, but like a real researcher you only get to see a random sample. Draw a sample to get point estimates of the mean, standard deviation, and proportion of long commutes, then draw more to watch the estimates change from sample to sample. When you're ready, reveal the true values and see how close you came.
+
+<PointEstimateWidget />
+
 <div className="example">
-**Example 7.1.1 – Identifying Point Estimates**
+**Example 4.1.1 – Identifying Point Estimates**
 
 For each scenario, identify the population parameter being estimated and the point estimate being used:
 
@@ -47,7 +53,7 @@ For each scenario, identify the population parameter being estimated and the poi
 
 Not every statistic makes a good point estimate. The most important property we want in an estimator is:
 
-**Unbiasedness**: An estimator is **unbiased** if, on average across all possible samples, it equals the true parameter. The sample mean $\bar{x}$ is an unbiased estimator of $\mu$, as we saw in Section 6.1, the mean of the sampling distribution of $\bar{x}$ equals $\mu$. This is why we divide by $n - 1$ rather than $n$ when computing the sample variance $s^2$, it makes $s^2$ an unbiased estimator of $\sigma^2$.
+**Unbiasedness**: An estimator is **unbiased** if, on average across all possible samples, it equals the true parameter. The sample mean $\bar{x}$ is an unbiased estimator of $\mu$, as we saw in Section 3.6, the mean of the sampling distribution of $\bar{x}$ equals $\mu$. This is why we divide by $n - 1$ rather than $n$ when computing the sample variance $s^2$, it makes $s^2$ an unbiased estimator of $\sigma^2$.
 
 <Advanced title="Efficiency of estimators">
 
@@ -57,10 +63,10 @@ Not every statistic makes a good point estimate. The most important property we 
 
 An important limitation of any point estimate is that it comes with no indication of how accurate it is. A single number gives no sense of the uncertainty involved. This is why we almost always accompany a point estimate with a **margin of error** or a **confidence interval**, the subject of the next section.
 
-<Advanced title="Example 7.1.2">
+<Advanced title="Example 4.1.2">
 
 <div className="example">
-**Example 7.1.2 – Unbiasedness**
+**Example 4.1.2 – Unbiasedness**
 
 A researcher is deciding whether to use the sample mean or the sample median to estimate the population mean of a symmetric distribution.
 
@@ -76,7 +82,7 @@ Both are unbiased estimators of $\mu$ for a symmetric distribution. What other c
 </Advanced>
 
 <div className="example">
-**Example 7.1.3 – Sample Proportion**
+**Example 4.1.3 – Sample Proportion**
 
 In a survey of 500 college students, 320 report that they prefer online classes over in-person classes.
 
@@ -94,7 +100,7 @@ In a survey of 500 college students, 320 report that they prefer online classes 
 </div>
 
 <div className="example">
-**Example 7.1.4 – Limitations of Point Estimates**
+**Example 4.1.4 – Limitations of Point Estimates**
 
 A political polling firm surveys 800 likely voters and reports that a candidate has 49% support. A rival poll of 1,200 voters reports 51% support.
 
@@ -110,7 +116,7 @@ This shows why a point estimate alone is incomplete. We need a **margin of error
 </div>
 
 <div className="example">
-**Example 7.1.5 – Calculating Point Estimates**
+**Example 4.1.5 – Calculating Point Estimates**
 
 A nutritionist records the daily caloric intake of 8 randomly selected adults:
 

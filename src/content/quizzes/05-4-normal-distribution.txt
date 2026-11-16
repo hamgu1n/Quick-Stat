@@ -1,0 +1,81 @@
+Section Review: The Normal Distribution. Format notes are in src/lib/quiz.ts.
+
+### Which two parameters completely describe a normal distribution?
+@ the-normal-curve
+- The median and the IQR
+- The minimum and the maximum
++ The mean $\mu$ and the standard deviation $\sigma$
+- The mode and the range
+> We write $X \sim N(\mu, \sigma)$. The mean sets the center and the standard deviation sets the spread.
+
+### For a normal distribution, how do the mean, median, and mode compare?
+@ the-normal-curve
+- The mean is largest
++ They are all equal
+- The median is largest
+- It depends on the standard deviation
+> A normal curve is symmetric about its mean, so all three measures of center are the same.
+
+### For a continuous variable like $X \sim N(50, 5)$, how is probability represented?
+@ the-normal-curve
+- By the height of the curve
+- By the number of data points
++ By the area under the curve
+- By the z-score
+> The probability that $X$ falls between two values is the area under the curve between them. The total area is 1.
+
+### Heights are normal with mean 66 inches and SD 3 inches. About what percentage are between 60 and 72 inches?
+@ the-empirical-rule
+- 68%
+- 99.7%
+- 50%
++ 95%
+> 60 and 72 are each 2 SDs from the mean, and about 95% of values fall within 2 SDs.
+
+### Using the same heights (mean 66, SD 3), about what percentage of people are taller than 69 inches?
+@ the-empirical-rule
+- 32%
+- 34%
+- 2.5%
++ 16%
+> 68% fall within 1 SD (63 to 69), so 32% are outside, split evenly: 16% above 69.
+
+### What are the mean and standard deviation of the standard normal distribution?
+@ the-standard-normal-distribution
+- Mean 1, standard deviation 0
++ Mean 0, standard deviation 1
+- Mean 0, standard deviation 0
+- Mean 100, standard deviation 15
+> The standard normal is $Z \sim N(0, 1)$. Any normal variable can be converted to it with $z = (x - \mu)/\sigma$.
+
+### Test scores are $N(70, 10)$. What is the z-score for a score of 85?
+@ the-standard-normal-distribution
+- 0.85
++ 1.5
+- 15
+- −1.5
+> $z = (85 - 70)/10 = 1.5$.
+
+### A z-table shows $P(Z < 1.5) = 0.9332$. What is $P(Z > 1.5)$?
+@ finding-probabilities
+- 0.9332
+- 0.4332
++ 0.0668
+- 1.5
+> Z-tables give left areas, so use the complement rule: $1 - 0.9332 = 0.0668$.
+
+### Scores are $N(70, 10)$. The 90th percentile has $z \approx 1.28$. What score is the 90th percentile?
+@ finding-percentiles
++ 82.8
+- 71.28
+- 57.2
+- 90
+> $x = \mu + z\sigma = 70 + 1.28(10) = 82.8$.
+
+### How can you check whether a normal model is reasonable for a dataset?
+@ is-the-normal-model-appropriate
+- Check that the mean is larger than the median
+- Make sure the sample size is exactly 30
+- Check that there are no repeated values
++ Look for a roughly symmetric, bell-shaped histogram and a straight-line normal probability plot
+> If the histogram is skewed or the Q-Q plot bends, a normal model may not fit.

@@ -1,0 +1,81 @@
+Section Review: Difference of Two Proportions. Format notes are in src/lib/quiz.ts.
+
+### In an A/B test, visitors are randomly assigned to version A or B. Why does that matter?
+@ a-b-testing
++ It makes the test a randomized experiment, so a significant difference supports cause and effect
+- It makes the sample larger
+- It guarantees version B will win
+- It removes the need for a hypothesis test
+> Random assignment balances other variables, so a difference can be credited to the version.
+
+### What is the point estimate of $p_1 - p_2$?
+@ the-sampling-distribution-of-hat-p-1-hat-p-2
+- $p_1 - p_2$
+- $\hat{p}_1 + \hat{p}_2$
+- $\hat{p}_{pool}$
++ $\hat{p}_1 - \hat{p}_2$
+> We estimate the difference in population proportions with the difference in sample proportions.
+
+### In the standard error of $\hat{p}_1 - \hat{p}_2$, what happens to the two groups' variances?
+@ the-sampling-distribution-of-hat-p-1-hat-p-2
+- They subtract
+- They multiply
++ They add
+- Only the larger one is used
+> Each sample adds its own uncertainty, so the difference is more uncertain than either proportion alone.
+
+### Which is NOT a condition for inference about $p_1 - p_2$?
+@ the-sampling-distribution-of-hat-p-1-hat-p-2
+- Observations are independent within each group
+- The two groups are independent of each other
+- At least 10 successes and 10 failures in each group
++ The two groups must have the same sample size
+> The groups can be different sizes. They just need to be independent and large enough.
+
+### A 95% confidence interval for $p_1 - p_2$ is (0.251, 0.349). What does it suggest?
+@ confidence-interval-for-p-1-p-2
++ $p_1$ is larger than $p_2$, since the whole interval is above 0
+- There is no difference between the groups
+- $p_2$ is larger than $p_1$
+- The interval is too wide to say anything
+> If the interval doesn't contain 0, "no difference" isn't plausible.
+
+### A 95% confidence interval for $p_1 - p_2$ is $(-0.03, 0.06)$. What can you conclude?
+@ confidence-interval-for-p-1-p-2
+- $p_1$ is definitely larger
+- $p_2$ is definitely larger
++ "No difference" is plausible, since the interval contains 0
+- The groups are identical
+> An interval containing 0 means the data are consistent with no difference.
+
+### Group 1 has 30 successes out of 100, and group 2 has 50 out of 150. What is the pooled proportion?
+@ hypothesis-test-for-p-1-p-2
+- 0.317
++ 0.32
+- 0.633
+- 0.30
+> $\hat{p}_{pool} = (30 + 50)/(100 + 150) = 80/250 = 0.32$.
+
+### When do you use the pooled proportion?
+@ hypothesis-test-for-p-1-p-2
+- When building a confidence interval for $p_1 - p_2$
+- Whenever the sample sizes differ
++ When testing $H_0: p_1 = p_2$, because the test assumes the proportions are equal
+- Never; it's only for means
+> A confidence interval doesn't assume equal proportions, so it uses $\hat{p}_1$ and $\hat{p}_2$ separately.
+
+### What are the hypotheses for testing whether two proportions differ?
+@ hypothesis-test-for-p-1-p-2
++ $H_0: p_1 = p_2$ vs. $H_a: p_1 \neq p_2$
+- $H_0: \hat{p}_1 = \hat{p}_2$ vs. $H_a: \hat{p}_1 \neq \hat{p}_2$
+- $H_0: p_1 \neq p_2$ vs. $H_a: p_1 = p_2$
+- $H_0: p_1 - p_2 = 1$ vs. $H_a: p_1 - p_2 \neq 1$
+> $H_0: p_1 = p_2$ can also be written $H_0: p_1 - p_2 = 0$.
+
+### A researcher finds photo posts get 100+ likes significantly more often than posts without photos. The posters chose whether to add photos. What can they conclude?
+@ hypothesis-test-for-p-1-p-2
+- Photos cause more likes
++ Photos are associated with more likes, but other variables could explain it
+- There is no relationship
+- The test is invalid
+> This is observational, so lurking variables (like follower counts) could explain the difference.

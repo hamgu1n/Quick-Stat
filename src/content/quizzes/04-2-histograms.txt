@@ -1,0 +1,81 @@
+Section Review: Histograms. Format notes are in src/lib/quiz.ts.
+
+### What type of data does a histogram display?
+@ section-2-6-histograms
+- Categorical data
++ Numerical data
+- Two numerical variables at once
+- Only percentages
+> Histograms show the distribution of a numerical (quantitative) variable.
+
+### What are the intervals that a histogram groups values into called?
+@ what-is-a-histogram
+- Strata
+- Quartiles
++ Bins
+- Categories
+> A histogram divides the range of the data into equal-width bins and draws a bar for each.
+
+### Why do the bars in a histogram touch?
+@ what-is-a-histogram
+- To make the chart look less cluttered
+- Because each bar represents a different category
++ The variable is numerical and continuous, with no gaps between possible values
+- Because the bins have different widths
+> Touching bars show a continuous number line. Bar charts leave gaps because their categories are separate.
+
+### A histogram of 50 values uses only 2 bins. What is the likely problem?
+@ what-is-a-histogram
++ It will hide the shape of the distribution
+- It will look jagged and noisy
+- It will show too many outliers
+- Nothing; fewer bins are always better
+> Too few bins lump the data into a featureless block. Too many bins make the histogram jagged and noisy.
+
+### A histogram has a long tail stretching to the right. How is it described?
+@ describing-the-shape-of-a-distribution
+- Skewed left
++ Skewed right
+- Symmetric
+- Bimodal
+> The skew is named after the side with the long tail.
+
+### Scores on a very easy quiz pile up near 10 out of 10, with a few low scores. What shape is the histogram?
+@ describing-the-shape-of-a-distribution
+- Skewed right
+- Symmetric
+- Uniform
++ Skewed left
+> Most values are high, and the few low scores form a tail to the left.
+
+### Which is a classic example of a right-skewed distribution?
+@ describing-the-shape-of-a-distribution
+- Adult heights
+- Scores on a very easy quiz
+- Coin flips
++ Household incomes
+> Most people earn moderate incomes, but a few earn very high incomes, stretching the right tail.
+
+### A histogram of restaurant tips is strongly skewed right. Which is likely larger?
+@ describing-the-shape-of-a-distribution
+- The median
++ The mean
+- They will be exactly equal
+- There's no way to tell
+> A few large tips pull the mean toward the right tail, while the median stays with the bulk of the data.
+
+### A histogram of heights for a mixed group of children and adults shows two clear peaks. What is this called, and what might it suggest?
+@ describing-the-shape-of-a-distribution
+- Unimodal; the data are normal
+- Skewed; there is an outlier
++ Bimodal; the data may come from two distinct groups
+- Symmetric; the mean equals the median
+> Two peaks often mean two subgroups are mixed together, here children and adults.
+
+### Counts by bin are: 0–9: 7, 10–19: 9, 20–29: 3, 30–39: 1. What shape is this?
+@ describing-the-shape-of-a-distribution
++ Skewed right
+- Symmetric
+- Skewed left
+- Bimodal
+> The peak is in a low bin and counts tail off toward higher values.

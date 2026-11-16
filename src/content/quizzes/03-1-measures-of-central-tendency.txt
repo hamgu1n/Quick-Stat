@@ -1,0 +1,81 @@
+Section Review: Measures of Central Tendency. Format notes are in src/lib/quiz.ts.
+
+### What is the mean of $2, 5, 6, 9, 13$?
+@ the-mean
+- 6
+- 7.5
++ 7
+- 8.75
+> $\bar{x} = (2 + 5 + 6 + 9 + 13) / 5 = 35 / 5 = 7$.
+
+### What is the median of $9, 2, 7, 4, 6$?
+@ the-median
+- 7
+- 5.6
+- 4
++ 6
+> Sort first: $2, 4, 6, 7, 9$. With $n = 5$, the median is the 3rd value, 6.
+
+### What is the median of $4, 8, 10, 15, 21, 30$?
+@ the-median
+- 10
+- 15
+- 14.67
++ 12.5
+> $n = 6$ is even, so average the 3rd and 4th values: $(10 + 15) / 2 = 12.5$.
+
+### What is the mode of $1, 3, 3, 4, 5, 5, 5, 6$?
+@ the-mode
+- 3
++ 5
+- 4
+- There is no mode
+> 5 appears three times, more than any other value.
+
+### Students list their favorite season: Fall, Summer, Fall, Winter, Spring, Fall, Summer. Which measure of center makes sense here?
+@ the-mode
++ The mode
+- The mean
+- The median
+- None of them
+> The data are categorical, so we can't add or order them. The mode (Fall) is the only measure of center that works.
+
+### A dataset of 25 salaries has one very large CEO salary added. What happens?
+@ comparing-the-mean-and-median
++ The mean increases a lot, but the median barely changes
+- The median increases a lot, but the mean barely changes
+- Both change by the same amount
+- Neither changes
+> The mean uses every value, so one extreme value pulls it toward that value. The median is robust to outliers.
+
+### What does it mean to say the median is "robust"?
+@ the-median
+- It is always larger than the mean
++ It is not strongly affected by outliers
+- It uses every value in its calculation
+- It only works for categorical data
+> The median depends on the middle of the ordered data, so a few extreme values don't move it much.
+
+### What does $\bar{x}$ represent?
+@ the-mean
++ The mean of a sample
+- The median of a sample
+- The number of observations
+- The most common value
+> $\bar{x}$ ("x-bar") is the sample mean: the sum of the observations divided by $n$.
+
+### A dataset has the values $2, 2, 5, 5, 8$. What is true about its mode?
+@ the-mode
+- The mode is 5 only
++ It has two modes, 2 and 5
+- There is no mode
+- The mode is 4.4
+> 2 and 5 each appear twice, so the dataset is bimodal.
+
+### A class's attendance includes two days with 0 students because of a blizzard. Which measure of the typical attendance is less affected by those days?
+@ comparing-the-mean-and-median
+- The mean
+- Both are affected equally
++ The median
+- Neither is affected
+> The two zeros pull the mean down, but the median stays close to a typical day.

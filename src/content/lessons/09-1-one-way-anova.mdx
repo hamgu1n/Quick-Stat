@@ -5,7 +5,7 @@ chapter: 9
 slug: "09-1-one-way-anova"
 ---
 
-## Section 9.1 – One-Way ANOVA
+## Section 4.8 – One-Way ANOVA
 
 So far we have compared the means of two groups using the two-sample t-test. But what if we want to compare three or more groups simultaneously? Suppose a researcher wants to compare the average exam score of students taught using three different methods. We could run multiple t-tests, method A vs. B, A vs. C, B vs. C, but this inflates the probability of making a Type I error. If each test has $\alpha = 0.05$, running three tests raises the overall chance of at least one false positive well above 5%. **Analysis of Variance (ANOVA)** solves this problem by testing all groups at once.
 
@@ -48,7 +48,7 @@ A large F-statistic means the between-group variation dominates, providing evide
 <AnovaWidget />
 
 <div className="example">
-**Example 9.1.1 – Setting Up ANOVA Hypotheses**
+**Example 4.8.1 – Setting Up ANOVA Hypotheses**
 
 A professor tests three different teaching methods, lecture-only, flipped classroom, and problem-based learning, on three groups of 15 students each. At the end of the semester, final exam scores are recorded.
 
@@ -66,7 +66,7 @@ Note that $H_a$ is *not* "all three means are different."
 </div>
 
 <div className="example">
-**Example 9.1.2 – Interpreting the F-Statistic**
+**Example 4.8.2 – Interpreting the F-Statistic**
 
 A one-way ANOVA comparing customer satisfaction scores (1–10) across four store locations yields the following:
 
@@ -99,7 +99,7 @@ ANOVA rests on three key assumptions:
 3. **Equal variances** (homoscedasticity): The population variances of all groups are equal. A common rule of thumb is that ANOVA is reasonable if the largest sample standard deviation is no more than twice the smallest.
 
 <div className="example">
-**Example 9.1.3 – Checking Assumptions**
+**Example 4.8.3 – Checking Assumptions**
 
 A researcher compares the mean number of errors made by employees under three different lighting conditions. The sample standard deviations are 2.1, 2.4, and 4.8.
 
@@ -112,14 +112,14 @@ Is the equal-variance assumption likely satisfied? What should the researcher do
 If the assumption is violated, the researcher could:
 
 - use a test that doesn't assume equal variances, such as **Welch's ANOVA**
-- use a nonparametric alternative like the **Kruskal-Wallis test** (Section 9.3)
+- use a nonparametric alternative like the **Kruskal-Wallis test** (Section 4.10)
 - try **transforming** the data (for example, taking logs) to make the spreads more similar
 
 </Solution>
 </div>
 
 <div className="example">
-**Example 9.1.4 – Full ANOVA Table**
+**Example 4.8.4 – Full ANOVA Table**
 
 Three fertilizer brands are tested on 18 plots of land (6 per brand). Crop yields (in bushels) are recorded. The ANOVA table reports: SSB = 90, SSW = 135.
 

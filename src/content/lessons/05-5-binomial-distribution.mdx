@@ -5,9 +5,9 @@ chapter: 5
 slug: "05-5-binomial-distribution"
 ---
 
-## Section 5.5 – The Binomial Distribution
+## Section 3.5 – The Binomial Distribution
 
-Many real-world questions come down to counting successes. Out of 20 people who see an ad, how many click on it? Out of 50 online orders, how many are returned? Out of 10 free throws, how many go in? Each of these situations involves repeating the same yes-or-no trial several times and counting how many times the outcome we care about happens. The **binomial distribution** gives us the probabilities for exactly this kind of count, and it brings together the probability rules from Section 5.1 and the counting techniques from Section 5.3.
+Many real-world questions come down to counting successes. Out of 20 people who see an ad, how many click on it? Out of 50 online orders, how many are returned? Out of 10 free throws, how many go in? Each of these situations involves repeating the same yes-or-no trial several times and counting how many times the outcome we care about happens. The **binomial distribution** gives us the probabilities for exactly this kind of count, and it brings together the probability rules from Section 3.1 and the counting techniques from Section 3.3.
 
 ### Bernoulli Trials
 
@@ -24,10 +24,10 @@ A random variable $X$ follows a **binomial distribution** when we count the numb
 3. **Independent trials**: the outcome of one trial does not affect any other trial
 4. **Same probability**: the probability of success $p$ is the same for every trial
 
-When these conditions hold, we write $X \sim \text{Binomial}(n, p)$.
+When these conditions hold, we write $X \sim \text{Binomial}(n, p)$, read "X follows a binomial distribution with n trials and success probability p."
 
 <div className="example">
-**Example 5.5.1 – Is It Binomial?**
+**Example 3.5.1 – Is It Binomial?**
 
 For each scenario, decide whether $X$ follows a binomial distribution. If not, identify which condition is violated:
 
@@ -50,7 +50,7 @@ For each scenario, decide whether $X$ follows a binomial distribution. If not, i
 
 Suppose a free throw shooter makes 70% of their shots and takes 3 shots. What is the probability they make exactly 2? One way this could happen is make, make, miss, which by the multiplication rule for independent events has probability $(0.7)(0.7)(0.3) = 0.147$. But the miss could also come first or second, so there are three different orderings, each with the same probability. The total is $3 \times 0.147 = 0.441$.
 
-The number of orderings is exactly the combination $\binom{3}{2} = 3$ from Section 5.3. Generalizing this idea gives the **binomial probability formula**: the probability of exactly $k$ successes in $n$ trials is
+The number of orderings is exactly the combination $\binom{3}{2} = 3$ from Section 3.3. Generalizing this idea gives the **binomial probability formula**: the probability of exactly $k$ successes in $n$ trials is
 
 $$
 P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
@@ -67,7 +67,7 @@ Software can compute these probabilities directly, which is especially helpful w
 <BinomialWidget />
 
 <div className="example">
-**Example 5.5.2 – Using the Binomial Formula**
+**Example 3.5.2 – Using the Binomial Formula**
 
 An online retailer knows that 10% of orders are returned. A random sample of 8 orders is selected.
 
@@ -87,7 +87,7 @@ Here $X \sim \text{Binomial}(8, 0.1)$.
 </div>
 
 <div className="example">
-**Example 5.5.3 – "At Most" and "At Least"**
+**Example 3.5.3 – "At Most" and "At Least"**
 
 A social media post has a 25% chance of being shared by each person who views it. Suppose 6 people view the post, and their decisions are independent.
 
@@ -121,7 +121,7 @@ $$
 The mean tells us the long-run average number of successes, and the standard deviation tells us how much the count typically varies from that average.
 
 <div className="example">
-**Example 5.5.4 – Expected Number of Successes**
+**Example 3.5.4 – Expected Number of Successes**
 
 An email marketing campaign is sent to 400 customers. Historically, 15% of customers open the email.
 
@@ -142,7 +142,7 @@ Here $X \sim \text{Binomial}(400, 0.15)$.
 
 ### The Normal Approximation to the Binomial
 
-When $n$ is large, the binomial formula becomes tedious, since finding $P(X \leq 70)$ would mean adding up 71 separate probabilities. Fortunately, as $n$ grows, the shape of the binomial distribution becomes more and more like a normal curve. This is closely related to the Central Limit Theorem we will see in Section 6.2.
+When $n$ is large, the binomial formula becomes tedious, since finding $P(X \leq 70)$ would mean adding up 71 separate probabilities. Fortunately, as $n$ grows, the shape of the binomial distribution becomes more and more like a normal curve. This is closely related to the Central Limit Theorem we will see in Section 3.7.
 
 The normal approximation is reasonable when we expect at least 10 successes and at least 10 failures:
 
@@ -150,10 +150,10 @@ $$
 np \geq 10 \qquad \text{and} \qquad n(1-p) \geq 10
 $$
 
-When this **success-failure condition** holds, we can approximate the binomial with a normal distribution that has the same mean and standard deviation, $N\left(np, \sqrt{np(1-p)}\right)$, and then use the methods from Section 5.4. This same condition will appear again when we build confidence intervals and hypothesis tests for proportions in Chapters 7 and 8.
+When this **success-failure condition** holds, we can approximate the binomial with a normal distribution that has the same mean and standard deviation, $N\left(np, \sqrt{np(1-p)}\right)$, and then use the methods from Section 3.4. This same condition will appear again when we build confidence intervals and hypothesis tests for proportions in Unit 4.
 
 <div className="example">
-**Example 5.5.5 – Normal Approximation**
+**Example 3.5.5 – Normal Approximation**
 
 About 62% of adults in a city use a streaming service. A random sample of 200 adults is selected.
 

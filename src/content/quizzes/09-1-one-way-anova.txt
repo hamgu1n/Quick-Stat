@@ -1,0 +1,81 @@
+Section Review: One-Way ANOVA. Format notes are in src/lib/quiz.ts.
+
+### Why use ANOVA instead of running several t-tests to compare three groups?
+@ section-4-8-one-way-anova
+- t-tests can't compare means
+- ANOVA always gives smaller p-values
+- t-tests only work with paired data
++ Running many tests inflates the chance of at least one Type I error
+> Each test has its own 5% false-positive risk, so the overall risk grows with every test.
+
+### What are the hypotheses for a one-way ANOVA with three groups?
+@ the-anova-idea
+- $H_0$: all means are different vs. $H_a$: all means are equal
+- $H_0: \mu_1 = \mu_2 = \mu_3$ vs. $H_a$: all three means are different
++ $H_0: \mu_1 = \mu_2 = \mu_3$ vs. $H_a$: at least one mean is different
+- $H_0: \mu_1 > \mu_2 > \mu_3$ vs. $H_a$: they are equal
+> The alternative is "at least one differs," not "all differ."
+
+### ANOVA splits total variability into which two parts?
+@ the-anova-idea
+- Variability before and after treatment
++ Variability between groups and variability within groups
+- Variance and standard deviation
+- Sample size and significance level
+> If the between-group variability is large compared to the within-group variability, the means likely differ.
+
+### What is the F-statistic?
+@ the-f-statistic
++ MSB / MSW
+- MSW / MSB
+- SSB + SSW
+- $k - 1$
+> F compares between-group to within-group variability.
+
+### An ANOVA compares 4 groups with 40 observations in total. What are the degrees of freedom?
+@ the-f-statistic
+- $df_1 = 4$, $df_2 = 40$
++ $df_1 = 3$, $df_2 = 36$
+- $df_1 = 3$, $df_2 = 39$
+- $df_1 = 39$, $df_2 = 3$
+> $df_1 = k - 1 = 3$ and $df_2 = N - k = 36$.
+
+### With 3 groups and 33 observations, SSB = 60 and SSW = 180. What is F?
+@ the-f-statistic
+- 0.33
+- 3
+- 10
++ 5
+> MSB $= 60/2 = 30$ and MSW $= 180/30 = 6$, so $F = 30/6 = 5$.
+
+### What does a large F-statistic suggest?
+@ the-f-statistic
++ Between-group variation dominates, so at least one mean likely differs
+- The groups have equal means
+- The within-group variability is large
+- The sample is too small
+> A large F leads to a small p-value and rejecting $H_0$.
+
+### Which is NOT an assumption of one-way ANOVA?
+@ assumptions-of-one-way-anova
++ Equal sample sizes in every group
+- Independent observations
+- Normal data within each group
+- Equal population variances
+> The groups don't need the same sizes.
+
+### Three groups have sample standard deviations of 3, 4, and 7. Is the equal-variance rule of thumb met?
+@ assumptions-of-one-way-anova
+- Yes, all are under 10
++ No, the largest is more than twice the smallest
+- Yes, the middle one is about the average
+- We need the means to decide
+> $7 / 3 \approx 2.3$, which is greater than 2.
+
+### An ANOVA rejects $H_0$. What do you know?
+@ the-anova-idea
+- All group means are different
+- The first group has the largest mean
++ At least one group mean differs, but not which one
+- The assumptions were violated
+> Post-hoc tests are needed to find which means differ.

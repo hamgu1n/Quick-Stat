@@ -7,6 +7,7 @@ const LINKS = [
   { to: "/textbook", label: "Textbook", end: false },
   { to: "/applets", label: "Applets", end: false },
   { to: "/analyzer", label: "Analyzer", end: false },
+  { to: "/about", label: "About", end: false },
 ];
 
 export function SiteNav() {

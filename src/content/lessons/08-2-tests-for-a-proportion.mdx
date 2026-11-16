@@ -5,13 +5,13 @@ chapter: 8
 slug: "08-2-tests-for-a-proportion"
 ---
 
-## Section 8.2 – Hypothesis Tests for a Proportion
+## Section 4.4 – Hypothesis Tests for a Proportion
 
-Many of the most common questions in statistics are about proportions rather than means. What fraction of users click on a new website button? What percentage of voters support a ballot measure? Has the share of adults who get their news from social media changed? In Section 7.2 we built confidence intervals for a proportion. In this section we use the hypothesis testing framework from Section 8.1 to test claims about a proportion.
+Many of the most common questions in statistics are about proportions rather than means. What fraction of users click on a new website button? What percentage of voters support a ballot measure? Has the share of adults who get their news from social media changed? In Section 4.2 we built confidence intervals for a proportion. In this section we use the hypothesis testing framework from Section 4.3 to test claims about a proportion.
 
 ### Setting Up the Test
 
-A hypothesis test for a proportion compares the sample proportion $\hat{p}$ to a claimed value of the population proportion, which we call $p_0$. The hypotheses take one of three forms:
+A hypothesis test for a proportion compares the sample proportion $\hat{p}$ to a claimed value of the population proportion, which we call $p_0$ (pronounced "p-naught"). The hypotheses take one of three forms:
 
 - $H_0$: $p = p_0$ vs. $H_a$: $p \neq p_0$ (two-tailed)
 - $H_0$: $p = p_0$ vs. $H_a$: $p > p_0$ (right-tailed)
@@ -20,7 +20,7 @@ A hypothesis test for a proportion compares the sample proportion $\hat{p}$ to a
 The null hypothesis always contains the equals sign, and the hypotheses are always about the population proportion $p$, never the sample proportion $\hat{p}$. We already know what $\hat{p}$ is, since we calculated it from our data.
 
 <div className="example">
-**Example 8.2.1 – Writing Hypotheses for a Proportion**
+**Example 4.4.1 – Writing Hypotheses for a Proportion**
 
 For each scenario, define the parameter $p$ in words and write $H_0$ and $H_a$:
 
@@ -58,18 +58,18 @@ $$
 z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0(1 - p_0)}{n}}}
 $$
 
-The denominator is the **standard error** of $\hat{p}$ calculated under the assumption that $H_0$ is true. Just like the z-test for a mean, this statistic tells us how many standard errors the sample proportion falls from the claimed proportion. Under $H_0$, it follows the standard normal distribution, so we find the p-value using the methods from Section 5.4:
+The denominator is the **standard error** of $\hat{p}$ calculated under the assumption that $H_0$ is true. Just like the z-test for a mean, this statistic tells us how many standard errors the sample proportion falls from the claimed proportion. Under $H_0$, it follows the standard normal distribution, so we find the p-value using the methods from Section 3.4:
 
 - **Right-tailed**: p-value $= P(Z > z)$
 - **Left-tailed**: p-value $= P(Z < z)$
 - **Two-tailed**: p-value $= 2 \times P(Z > |z|)$
 
-Then we compare the p-value to $\alpha$ and state a conclusion in context, exactly as in Section 8.1.
+Then we compare the p-value to $\alpha$ and state a conclusion in context, exactly as in Section 4.3.
 
 <OnePropTestWidget />
 
 <div className="example">
-**Example 8.2.2 – One-Proportion z-Test**
+**Example 4.4.2 – One-Proportion z-Test**
 
 A social media platform claims that 40% of its users log in every day. A researcher takes a random sample of 500 users and finds that 182 of them logged in every day.
 
@@ -98,7 +98,7 @@ $$
 </div>
 
 <div className="example">
-**Example 8.2.3 – A One-Tailed Test**
+**Example 4.4.3 – A One-Tailed Test**
 
 An online retailer's checkout page historically converts 12% of visitors into buyers. After adding a "free shipping" banner, the retailer tracks 850 randomly selected visitors and finds that 124 make a purchase.
 
@@ -123,7 +123,7 @@ $$
 
 4. Since $0.010 \leq 0.05$, we **reject $H_0$**. There is evidence that the conversion rate is now higher than 12%.
 
-   However, **we can't conclude that the banner *caused* the increase** from these data alone. Comparing to a historical rate means something else could also have changed (season, a sale, different traffic sources). To show causation, the retailer would need a **randomized experiment** that shows some visitors the banner and others not at the same time, which is an A/B test (Section 8.3).
+   However, **we can't conclude that the banner *caused* the increase** from these data alone. Comparing to a historical rate means something else could also have changed (season, a sale, different traffic sources). To show causation, the retailer would need a **randomized experiment** that shows some visitors the banner and others not at the same time, which is an A/B test (Section 4.5).
 
 </Solution>
 </div>
@@ -135,7 +135,7 @@ Confidence intervals and two-tailed tests are closely linked. A 95% confidence i
 The match is not always exact for proportions, since the interval uses $\hat{p}$ in its standard error while the test uses $p_0$. But the two methods almost always lead to the same conclusion, and the confidence interval has an advantage: it tells us not only *whether* $p$ differs from $p_0$, but by *how much*.
 
 <div className="example">
-**Example 8.2.4 – Interval or Test?**
+**Example 4.4.4 – Interval or Test?**
 
 A poll of 1,200 randomly selected adults finds that 54% support a new data privacy law. A 95% confidence interval for the true proportion is (0.512, 0.568).
 
@@ -169,7 +169,7 @@ $$
 But there is a catch: we don't know $p$ before collecting the data. If we have a reasonable estimate from a previous study, we use it. If not, we use $p = 0.5$, because $p(1-p)$ is largest when $p = 0.5$. This gives the most conservative (largest) sample size, guaranteeing our margin of error is no larger than the target. Always round $n$ *up* to the next whole number.
 
 <div className="example">
-**Example 8.2.5 – Sample Size for a Proportion**
+**Example 4.4.5 – Sample Size for a Proportion**
 
 A campus newspaper wants to estimate the proportion of students who use a smartphone app to order food, with a margin of error of 4 percentage points at the 95% confidence level.
 
@@ -203,7 +203,7 @@ $$
 With a very large sample, even a tiny difference between $\hat{p}$ and $p_0$ can produce a small p-value. For example, a website with millions of visitors might find that a new button color increases the click rate from 5.00% to 5.03%, with a p-value well below 0.05. The result is **statistically significant**, meaning it is unlikely to be due to chance alone, but it may not be **practically significant**, meaning large enough to matter in the real world. A good analysis reports both the p-value and the size of the effect, which is another reason confidence intervals are so useful.
 
 <div className="example">
-**Example 8.2.6 – Is It Meaningful?**
+**Example 4.4.6 – Is It Meaningful?**
 
 A large online study of 2,000,000 users finds that a redesigned sign-up page raises the sign-up rate from 8.0% to 8.1%, with a p-value of 0.0001.
 

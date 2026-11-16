@@ -5,7 +5,7 @@ chapter: 5
 slug: "05-2-conditional-probability"
 ---
 
-## Section 5.2 – Conditional Probability
+## Section 3.2 – Conditional Probability
 
 In the previous section, we calculated probabilities under the assumption that we knew nothing about the outcome ahead of time. But in real life, we often have *partial information* that changes our assessment of how likely something is. If you know that it rained last night, the probability of seeing wet grass this morning is much higher than it would be otherwise. This idea, updating a probability given new information, is called **conditional probability**.
 
@@ -20,7 +20,7 @@ $$
 Intuitively, we are restricting our attention to the world where $B$ has already happened (the denominator), and asking what fraction of that world also contains $A$ (the numerator).
 
 <div className="example">
-**Example 5.2.1 – Computing a Conditional Probability**
+**Example 3.2.1 – Computing a Conditional Probability**
 
 In a class of 40 students, 15 are seniors, 10 are seniors who play a sport, and 20 students overall play a sport.
 
@@ -38,7 +38,7 @@ Half of the students who play a sport are seniors.
 </div>
 
 <div className="example">
-**Example 5.2.2 – Conditional Probability from a Table**
+**Example 3.2.2 – Conditional Probability from a Table**
 
 A survey of 200 college students asked whether they own a laptop and whether they have a part-time job:
 
@@ -72,7 +72,7 @@ $$
 In other words, knowing $B$ occurred tells us nothing about the probability of $A$. This is the intuitive definition of independence, new information doesn't change the odds. If $P(A \mid B) \neq P(A)$, the events are dependent.
 
 <div className="example">
-**Example 5.2.3 – Testing Independence via Conditional Probability**
+**Example 3.2.3 – Testing Independence via Conditional Probability**
 
 In a group of 100 people, 50 exercise regularly and 40 report good sleep quality. 30 people both exercise regularly and report good sleep quality.
 
@@ -108,7 +108,7 @@ A common application is in medical testing. Suppose a disease affects 1% of the 
 <BayesWidget />
 
 <div className="example">
-**Example 5.2.4 – Bayes' Theorem: Medical Testing**
+**Example 3.2.4 – Bayes' Theorem: Medical Testing**
 
 A rare illness affects 2% of a population. A test for the illness has a 90% true positive rate (probability of a positive test given the disease is present) and a 5% false positive rate (probability of a positive test given the disease is absent).
 
@@ -136,7 +136,7 @@ $$
 </div>
 
 <div className="example">
-**Example 5.2.5 – Conditional Probability in Everyday Life**
+**Example 3.2.5 – Conditional Probability in Everyday Life**
 
 A bag contains 3 red and 2 blue marbles. Two marbles are drawn one at a time *without replacement*.
 

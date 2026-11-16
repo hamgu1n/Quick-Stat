@@ -1,0 +1,81 @@
+Section Review: z-Tests. Format notes are in src/lib/quiz.ts.
+
+### What does the null hypothesis $H_0$ usually state?
+@ the-hypothesis-testing-framework
+- The researcher's suspicion
+- That the sample mean equals the population mean
+- That the p-value is small
++ The default claim: no effect, no difference, or a parameter equals a specific value
+> We assume $H_0$ is true unless the data give strong evidence against it.
+
+### A researcher suspects the mean commute time is more than 25 minutes. What are the hypotheses?
+@ the-hypothesis-testing-framework
+- $H_0: \mu > 25$ vs. $H_a: \mu = 25$
+- $H_0: \bar{x} = 25$ vs. $H_a: \bar{x} > 25$
++ $H_0: \mu = 25$ vs. $H_a: \mu > 25$
+- $H_0: \mu = 25$ vs. $H_a: \mu \neq 25$
+> The null has the equals sign, and the alternative is the claim we want evidence for. Hypotheses are about $\mu$, not $\bar{x}$.
+
+### A sample of 64 has $\bar{x} = 52$. Test $H_0: \mu = 50$ with $\sigma = 8$. What is the z-statistic?
+@ the-z-test-for-a-mean
++ 2
+- 0.25
+- 0.5
+- 16
+> $SE = 8/\sqrt{64} = 1$, so $z = (52 - 50)/1 = 2$.
+
+### What does a p-value measure?
+@ the-p-value
+- The probability that $H_0$ is true
++ The probability of a result at least as extreme as the one observed, assuming $H_0$ is true
+- The probability that the sample was random
+- The size of the effect
+> A small p-value means the data would be surprising if $H_0$ were true.
+
+### A test at $\alpha = 0.05$ gives a p-value of 0.03. What is the conclusion?
+@ the-p-value
+- Fail to reject $H_0$
+- Accept $H_0$
+- Prove $H_a$ is true
++ Reject $H_0$
+> $0.03 \leq 0.05$, so the data provide sufficient evidence against $H_0$.
+
+### A test gives a p-value of 0.21 at $\alpha = 0.05$. Which statement is correct?
+@ the-p-value
++ We fail to reject $H_0$; there isn't enough evidence against it
+- We have proven $H_0$ is true
+- We reject $H_0$
+- The test was done incorrectly
+> Failing to reject $H_0$ is not the same as proving it true.
+
+### A two-tailed test gives $z = -2.4$. How does the p-value of a one-tailed ($<$) test compare?
+@ the-p-value
+- It is twice as large
++ It is half as large
+- It is the same
+- It is $1$ minus the two-tailed p-value
+> The two-tailed p-value counts both tails. The one-tailed version counts only the left tail.
+
+### What is a Type I error?
+@ type-i-and-type-ii-errors
+- Failing to reject $H_0$ when it is actually false
++ Rejecting $H_0$ when it is actually true
+- Choosing the wrong significance level
+- Calculating the wrong test statistic
+> A Type I error is a false positive. Its probability is $\alpha$.
+
+### A drug trial concludes the drug has no effect, but it actually works. What kind of error is this?
+@ type-i-and-type-ii-errors
+- Type I error
+- Sampling error
++ Type II error
+- No error
+> Failing to reject a false $H_0$ is a Type II error, a false negative.
+
+### What is the most effective way to reduce both Type I and Type II errors?
+@ type-i-and-type-ii-errors
+- Lower $\alpha$
+- Raise $\alpha$
+- Use a one-tailed test
++ Increase the sample size
+> Changing $\alpha$ trades one error for the other. A larger sample reduces both.

@@ -43,7 +43,7 @@ export function AppletModal({ applet, onClose }: AppletModalProps) {
       >
         <div className="applet-modal-header">
           <div>
-            <span className="applet-card-unit">Unit {applet.unit} · Ch. {applet.chapter}</span>
+            <span className="applet-card-unit">Section {applet.section}</span>
             <h2 className="applet-card-title">{applet.title}</h2>
             <Link to={`/textbook/${applet.lessonSlug}`} className="applet-card-link">
               {applet.lessonTitle} →

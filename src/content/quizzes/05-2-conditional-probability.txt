@@ -1,0 +1,81 @@
+Section Review: Conditional Probability. Format notes are in src/lib/quiz.ts.
+
+### How is $P(A \mid B)$ read?
+@ definition
+- The probability of $A$ and $B$
+- The probability of $A$ or $B$
+- The probability of $A$ divided by $B$
++ The probability of $A$ given that $B$ has occurred
+> The vertical bar means "given." We restrict attention to outcomes where $B$ happened.
+
+### What is the formula for $P(A \mid B)$?
+@ definition
++ $\frac{P(A \cap B)}{P(B)}$
+- $P(A) \times P(B)$
+- $\frac{P(A)}{P(B)}$
+- $P(A) + P(B) - P(A \cap B)$
+> We divide the overlap by the probability of the condition, $B$.
+
+### $P(A \cap B) = 0.12$ and $P(B) = 0.4$. What is $P(A \mid B)$?
+@ definition
+- 0.048
+- 0.52
++ 0.3
+- 0.28
+> $P(A \mid B) = 0.12 / 0.4 = 0.3$.
+
+### Of 200 students, 110 have a job, and 80 of those also own a laptop. Given a student has a job, what is the probability they own a laptop?
+@ definition
+- $\frac{80}{200}$
+- $\frac{110}{200}$
++ $\frac{80}{110}$
+- $\frac{80}{140}$
+> Restrict to the 110 students with a job; 80 of them own a laptop: $80/110 \approx 0.727$.
+
+### Using conditional probability, when are $A$ and $B$ independent?
+@ conditional-probability-and-independence
++ When $P(A \mid B) = P(A)$
+- When $P(A \mid B) = 0$
+- When $P(A \mid B) = 1$
+- When $P(A \mid B) = P(B)$
+> Knowing $B$ happened gives no new information about $A$.
+
+### Of 100 people, 40 sleep well overall, but 30 of the 50 people who exercise sleep well. Are exercising and sleeping well independent?
+@ conditional-probability-and-independence
+- Yes, because 30 is less than 40
++ No, because $P(\text{sleep well} \mid \text{exercise}) = 0.6$ but $P(\text{sleep well}) = 0.4$
+- Yes, because half the people exercise
+- We can't tell without more data
+> The conditional probability differs from the overall probability, so the events are dependent.
+
+### What does Bayes' Theorem let us do?
+@ bayes-theorem
+- Add the probabilities of two events
+- Find the probability of a complement
++ Reverse the direction of conditioning: find $P(B \mid A)$ from $P(A \mid B)$
+- Count the outcomes in a sample space
+> Bayes' Theorem: $P(B \mid A) = \frac{P(A \mid B) \cdot P(B)}{P(A)}$.
+
+### A disease affects 10% of people. A test is positive for 80% of people with the disease and 10% of people without it. If someone tests positive, about what is the probability they have the disease?
+@ bayes-theorem
+- 0.80
++ 0.47
+- 0.10
+- 0.17
+> $P(T^+) = (0.8)(0.1) + (0.1)(0.9) = 0.08 + 0.09 = 0.17$. Then $P(D \mid T^+) = 0.08 / 0.17 \approx 0.47$.
+
+### Why is the chance of having a rare disease after a positive test often surprisingly low?
+@ bayes-theorem
+- Medical tests are usually wrong
+- Bayes' Theorem only works for common diseases
+- The test's true positive rate is always low
++ False positives from the large healthy group can outnumber true positives from the small sick group
+> When a disease is rare, even a small false positive rate produces many false positives.
+
+### A bag has 4 red and 2 blue marbles. Two are drawn without replacement. What is the probability both are red?
+@ definition
+- $\frac{4}{9}$
+- $\frac{2}{3}$
+- $\frac{1}{3}$
++ $\frac{2}{5}$
+> $P(\text{1st red}) = 4/6$, then $P(\text{2nd red} \mid \text{1st red}) = 3/5$. Multiply: $\frac{4}{6} \times \frac{3}{5} = \frac{12}{30} = \frac{2}{5}$.

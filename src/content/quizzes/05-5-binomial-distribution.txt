@@ -1,0 +1,81 @@
+Section Review: The Binomial Distribution. Format notes are in src/lib/quiz.ts.
+
+### What is a Bernoulli trial?
+@ bernoulli-trials
+- A trial with exactly three outcomes
++ A random experiment with exactly two outcomes, success and failure
+- A trial that always succeeds
+- A set of $n$ repeated experiments
+> The probability of success is $p$ and the probability of failure is $1 - p$.
+
+### In a study of returned orders, a returned order is labeled a "success." Why?
+@ bernoulli-trials
+- Returns are good for the business
+- The label is a mistake
++ "Success" just means the outcome we are counting
+- Returns happen more than half the time
+> "Success" doesn't have to mean something good.
+
+### Which is NOT one of the four conditions for a binomial setting?
+@ the-binomial-setting
+- A fixed number of trials
++ A sample size of at least 30
+- Independent trials
+- The same probability of success on every trial
+> The four conditions are: fixed $n$, two outcomes, independent trials, and the same $p$.
+
+### You keep flipping a coin until you get heads. $X$ is the number of flips. Why isn't $X$ binomial?
+@ the-binomial-setting
+- The coin has more than two outcomes
++ There is no fixed number of trials
+- The flips aren't independent
+- The probability of heads changes
+> A binomial variable needs a fixed number of trials, decided in advance.
+
+### You draw 5 cards without replacement and count hearts. Why isn't this binomial?
+@ the-binomial-setting
+- There are more than two outcomes per draw
+- The number of draws isn't fixed
++ The probability of a heart changes after each draw, so the trials aren't independent
+- It is binomial
+> Without replacement, each draw changes what's left in the deck.
+
+### A fair coin is flipped 4 times. What is the probability of exactly 2 heads?
+@ the-binomial-formula
+- 0.5
+- 0.25
+- 0.0625
++ 0.375
+> $\binom{4}{2}(0.5)^2(0.5)^2 = 6 \times 0.0625 = 0.375$.
+
+### In the binomial formula $P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$, what does $\binom{n}{k}$ count?
+@ the-binomial-formula
++ The number of ways to arrange $k$ successes among $n$ trials
+- The probability of $k$ successes in a row
+- The expected number of successes
+- The number of failures
+> Each arrangement has the same probability, $p^k(1-p)^{n-k}$, so we multiply by the number of arrangements.
+
+### Each of 5 independent trials has $p = 0.2$. What is the probability of at least one success?
+@ the-binomial-formula
+- 0.2
+- 0.32768
++ 0.67232
+- 1
+> $P(X = 0) = (0.8)^5 = 0.32768$, so $P(X \geq 1) = 1 - 0.32768 = 0.67232$.
+
+### $X \sim \text{Binomial}(50, 0.3)$. What are the mean and standard deviation?
+@ mean-and-standard-deviation-of-a-binomial
+- $\mu = 15$, $\sigma = 10.5$
+- $\mu = 35$, $\sigma \approx 3.24$
+- $\mu = 0.3$, $\sigma = 50$
++ $\mu = 15$, $\sigma \approx 3.24$
+> $\mu = np = 15$ and $\sigma = \sqrt{np(1-p)} = \sqrt{10.5} \approx 3.24$.
+
+### When is the normal approximation to a binomial reasonable?
+@ the-normal-approximation-to-the-binomial
++ When $np \geq 10$ and $n(1-p) \geq 10$
+- When $n \geq 30$
+- When $p = 0.5$ exactly
+- Always
+> This success-failure condition means we expect at least 10 successes and at least 10 failures.

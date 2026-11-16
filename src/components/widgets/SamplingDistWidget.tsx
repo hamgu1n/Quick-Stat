@@ -48,7 +48,7 @@ legend("topright", c("Population (σ=${SIGMA})", paste0("Sampling dist (SE=", ro
         <span>SE = σ/√n = <strong style={{ color: "var(--maroon)" }}>{se.toFixed(3)}</strong></span>
       </div>
 
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer width="100%" height={190}>
         <LineChart data={data} margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="x" type="number" domain={[X_MIN, X_MAX]} tickCount={7}
             tickFormatter={(v: number) => v.toFixed(0)} style={{ fontSize: "0.75rem" }} />

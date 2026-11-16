@@ -49,7 +49,7 @@ abline(v = median(data), col = "blue", lwd = 2)  # median`;
           Median: <strong style={{ color: "#3b5b8a" }}>${med.toFixed(0)}k</strong>
         </span>
       </div>
-      <ResponsiveContainer width="100%" height={240}>
+      <ResponsiveContainer width="100%" height={170}>
         <BarChart data={bins} barCategoryGap="0%" margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis dataKey="bin" style={{ fontSize: "0.7rem" }} interval={1} />
           <YAxis width={30} style={{ fontSize: "0.75rem" }} allowDecimals={false} />

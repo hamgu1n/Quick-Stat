@@ -5,13 +5,13 @@ chapter: 9
 slug: "09-2-interpreting-anova"
 ---
 
-## Section 9.2 – Interpreting ANOVA Results
+## Section 4.9 – Interpreting ANOVA Results
 
 When an ANOVA test yields a significant result (we reject $H_0$), we know that at least one group mean differs from the others. But we don't yet know *which* groups differ, or *how much* they differ. This section addresses how to move from the overall ANOVA result to specific, actionable conclusions, through post-hoc testing and careful interpretation of results.
 
 ### The Problem of Multiple Comparisons
 
-After rejecting the ANOVA null hypothesis, it might be tempting to run pairwise t-tests for each pair of groups. As mentioned at the start of this chapter, this approach inflates the overall Type I error rate. With 3 groups there are 3 pairwise comparisons; with 5 groups there are 10. Running each at $\alpha = 0.05$ makes false positives increasingly likely as the number of comparisons grows.
+After rejecting the ANOVA null hypothesis, it might be tempting to run pairwise t-tests for each pair of groups. As mentioned at the start of Section 4.8, this approach inflates the overall Type I error rate. With 3 groups there are 3 pairwise comparisons; with 5 groups there are 10. Running each at $\alpha = 0.05$ makes false positives increasingly likely as the number of comparisons grows.
 
 **Post-hoc tests** are specifically designed to make multiple comparisons while controlling the overall error rate. Two of the most common are:
 
@@ -32,7 +32,7 @@ TukeyHSD(fit)
 <PostHocWidget />
 
 <div className="example">
-**Example 9.2.1 – When Post-Hoc Tests Are Needed**
+**Example 4.9.1 – When Post-Hoc Tests Are Needed**
 
 An ANOVA comparing the mean stress levels of students in four academic majors yields an F-statistic with p-value = 0.003.
 
@@ -56,7 +56,7 @@ Statistical software typically presents ANOVA results in a table with columns fo
 A significant p-value in the ANOVA table tells us the overall model is significant, that the group variable explains a meaningful portion of the variation in the response. From there, post-hoc output shows which specific pairs of means are significantly different, usually with confidence intervals for the difference in means.
 
 <div className="example">
-**Example 9.2.2 – Reading ANOVA Software Output**
+**Example 4.9.2 – Reading ANOVA Software Output**
 
 Below is a simplified ANOVA table from a study comparing mean weekly exercise hours across three age groups (18–25, 26–40, 41+), with 20 people in each group:
 
@@ -82,7 +82,7 @@ Below is a simplified ANOVA table from a study comparing mean weekly exercise ho
 <Advanced title="Effect size (eta-squared)">
 
 <div className="example">
-**Example 9.2.3 – Effect Size in ANOVA**
+**Example 4.9.3 – Effect Size in ANOVA**
 
 Statistical significance tells us whether an effect exists, but not how large it is. A common measure of effect size for ANOVA is **eta-squared** ($\eta^2$):
 
@@ -92,7 +92,7 @@ $$
 
 where SST = SSB + SSW is the total sum of squares.
 
-Using the values from Example 9.2.2 (SSB = 84.4, SST = 437.8), calculate $\eta^2$ and interpret it. General guidelines: $\eta^2 \approx 0.01$ is small, $\approx 0.06$ is medium, $\approx 0.14$ is large.
+Using the values from Example 4.9.2 (SSB = 84.4, SST = 437.8), calculate $\eta^2$ and interpret it. General guidelines: $\eta^2 \approx 0.01$ is small, $\approx 0.06$ is medium, $\approx 0.14$ is large.
 
 <Solution>
 
@@ -108,7 +108,7 @@ About **19.3%** of the variation in weekly exercise hours is explained by age gr
 </Advanced>
 
 <div className="example">
-**Example 9.2.4 – Putting It All Together**
+**Example 4.9.4 – Putting It All Together**
 
 A school administrator tests three different homework policies (no homework, moderate homework, heavy homework) on student GPA. After one semester:
 

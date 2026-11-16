@@ -1,0 +1,81 @@
+Section Review: Sampling Distributions. Format notes are in src/lib/quiz.ts.
+
+### What is the difference between a parameter and a statistic?
+@ parameters-vs-statistics
+- A parameter is calculated from a sample; a statistic describes a population
++ A parameter describes a population; a statistic is calculated from a sample
+- A parameter changes from sample to sample; a statistic is fixed
+- They mean the same thing
+> Parameters are fixed but usually unknown. Statistics vary from sample to sample and are used to estimate parameters.
+
+### A poll of 1,000 voters finds 52% support a candidate. Is 52% a parameter or a statistic?
+@ parameters-vs-statistics
++ Statistic
+- Parameter
+- Neither
+- Both
+> It was calculated from a sample of 1,000 voters, so it's a statistic.
+
+### The true proportion of all defective chips a factory made this month is a:
+@ parameters-vs-statistics
+- Statistic
++ Parameter
+- Sampling distribution
+- Standard error
+> It describes everything the factory produced, the whole population.
+
+### What is a sampling distribution of $\bar{x}$?
+@ the-sampling-distribution-of-the-mean
+- The distribution of the values in one sample
+- The distribution of the population
++ The distribution of sample means across all possible samples of size $n$
+- A list of every possible sample size
+> If we took sample after sample and recorded each mean, those means would form the sampling distribution.
+
+### What is the mean of the sampling distribution of $\bar{x}$?
+@ the-sampling-distribution-of-the-mean
++ The population mean $\mu$
+- $\sigma / \sqrt{n}$
+- Always 0
+- The mean of the first sample taken
+> $\mu_{\bar{x}} = \mu$, which is why $\bar{x}$ is an unbiased estimator of $\mu$.
+
+### What is the standard deviation of the sampling distribution of $\bar{x}$ called?
+@ the-sampling-distribution-of-the-mean
+- The variance
++ The standard error
+- The margin of error
+- The z-score
+> The standard error is $\sigma_{\bar{x}} = \sigma / \sqrt{n}$.
+
+### A population has $\sigma = 20$. What is the standard error of $\bar{x}$ for samples of size $n = 25$?
+@ the-sampling-distribution-of-the-mean
+- 20
+- 0.8
+- 5
++ 4
+> $\sigma / \sqrt{n} = 20 / \sqrt{25} = 20 / 5 = 4$.
+
+### What happens to the standard error as the sample size increases?
+@ the-sampling-distribution-of-the-mean
++ It decreases
+- It increases
+- It stays the same
+- It becomes equal to $\sigma$
+> Larger samples give sample means that cluster more tightly around $\mu$.
+
+### If the sample size is multiplied by 4, what happens to the standard error?
+@ the-sampling-distribution-of-the-mean
+- It is divided by 4
+- It doubles
+- It stays the same
++ It is cut in half
+> The standard error depends on $\sqrt{n}$, and $\sqrt{4} = 2$.
+
+### Bulbs last $\mu = 1{,}000$ hours with $\sigma = 80$. For a sample of 25 bulbs, the standard error is 16 hours. Would a sample mean of 940 hours be surprising?
+@ the-sampling-distribution-of-the-mean
+- No, it's within normal sampling variation
+- No, because individual bulbs vary by 80 hours
++ Yes, it is 3.75 standard errors below the mean
+- We can't tell without the sample data
+> $(940 - 1000)/16 = -3.75$. A sample mean that far from $\mu$ would be very unusual.

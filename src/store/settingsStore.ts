@@ -16,6 +16,9 @@ type SettingsState = {
    */
   showAdvanced: boolean;
   setShowAdvanced: (value: boolean) => void;
+  /** When true, the Section Review page shows the lesson next to the quiz. */
+  reviewSideBySide: boolean;
+  setReviewSideBySide: (value: boolean) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -23,6 +26,8 @@ export const useSettingsStore = create<SettingsState>()(
     (set) => ({
       showAdvanced: false,
       setShowAdvanced: (value) => set({ showAdvanced: value }),
+      reviewSideBySide: false,
+      setReviewSideBySide: (value) => set({ reviewSideBySide: value }),
     }),
     { name: "quickstat-settings" },
   ),

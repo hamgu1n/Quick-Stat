@@ -1,0 +1,81 @@
+Section Review: Pearson and Spearman Correlation. Format notes are in src/lib/quiz.ts.
+
+### What does Pearson's $r$ measure?
+@ pearson-s-correlation-coefficient
++ The strength and direction of the linear relationship between two numerical variables
+- Whether one variable causes another
+- The slope of the regression line
+- The difference between two means
+> $r$ summarizes a scatterplot's linear trend in one number.
+
+### Which value is impossible for Pearson's $r$?
+@ pearson-s-correlation-coefficient
++ $1.4$
+- $-0.98$
+- $0$
+- $1$
+> $r$ is always between $-1$ and $1$.
+
+### What does $r = -1$ mean?
+@ pearson-s-correlation-coefficient
+- There is no relationship
+- The relationship is weak and negative
++ The points fall exactly on a downward-sloping line
+- One variable causes the other to decrease
+> $r = \pm 1$ means a perfect linear relationship.
+
+### A scatterplot shows a clear U-shaped pattern, and $r \approx 0$. What can you conclude?
+@ pearson-s-correlation-coefficient
+- There is no relationship at all
+- The calculation is wrong
+- The relationship is strongly positive
++ There is no linear relationship, but there may be a strong curved one
+> $r$ only measures linear association, so it can miss curved patterns.
+
+### Heights are converted from inches to centimeters. What happens to $r$ between height and weight?
+@ pearson-s-correlation-coefficient
+- It gets 2.54 times larger
++ It stays the same
+- It gets smaller
+- It becomes 0
+> $r$ is unitless and unaffected by changes in scale.
+
+### How is Spearman's $r_s$ computed?
+@ spearman-s-rank-correlation
+- Square Pearson's $r$
+- Divide the covariance by the sample size
+- Count the points above the line
++ Rank each variable, then measure the correlation of the ranks
+> Working with ranks makes $r_s$ resistant to outliers.
+
+### What kind of association does Spearman's $r_s$ measure?
+@ spearman-s-rank-correlation
+- Only linear association
++ Monotonic association: whether $Y$ tends to rise (or fall) as $X$ rises
+- Only causal association
+- Association between categorical variables
+> A relationship can be monotonic without being a straight line.
+
+### Which situation calls for Spearman's $r_s$ instead of Pearson's $r$?
+@ spearman-s-rank-correlation
+- Height and weight of 50 adults with no outliers
+- Two numerical variables with a clear linear trend
++ House prices that include a few extreme mansions
+- A large sample with no outliers
+> Extreme values distort Pearson's $r$, but ranks resist them.
+
+### Four observations have rank differences whose squares add to $\sum d_i^2 = 2$. What is $r_s$?
+@ spearman-s-rank-correlation
++ 0.8
+- 0.2
+- 0.5
+- −0.8
+> $r_s = 1 - \frac{6(2)}{4(16 - 1)} = 1 - \frac{12}{60} = 0.8$.
+
+### Every runner who trained more finished faster, with no exceptions. What is Spearman's $r_s$ between training hours and finish time?
+@ spearman-s-rank-correlation
+- 1
+- 0
+- It can't be computed
++ −1
+> More training always goes with a lower time: a perfect negative monotonic relationship.

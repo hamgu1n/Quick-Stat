@@ -1,0 +1,81 @@
+Section Review: Interpreting Correlation Coefficients. Format notes are in src/lib/quiz.ts.
+
+### Using the textbook's guidelines, how would you describe $r = 0.87$?
+@ strength-guidelines
++ Very strong positive
+- Moderate positive
+- Strong negative
+- Weak positive
+> $|r|$ from 0.80 to 1.00 is very strong, and the positive sign gives the direction.
+
+### How would you describe $r = -0.43$?
+@ strength-guidelines
+- Strong negative
+- Weak positive
++ Moderate negative
+- Very weak negative
+> $|r|$ from 0.40 to 0.59 is moderate.
+
+### How would you describe $r = 0.12$?
+@ strength-guidelines
+- Moderate positive
++ Very weak or no association
+- Strong positive
+- Perfect positive
+> $|r|$ below 0.20 is very weak.
+
+### Why are the strength guidelines "guidelines, not rules"?
+@ strength-guidelines
+- Correlations can be larger than 1
++ What counts as strong depends on the field
+- The guidelines only apply to Spearman's $r_s$
+- Strength doesn't matter
+> An $r$ of 0.5 might be impressive in psychology but weak in physics.
+
+### Cities with more hospitals have higher death rates. What's the most likely explanation?
+@ correlation-does-not-imply-causation
+- Hospitals cause deaths
+- Deaths cause hospitals to be built
++ A lurking variable, population size, increases both
+- The correlation must be a mistake
+> Bigger cities have more hospitals and more deaths.
+
+### Which is NOT one of the possible explanations for a correlation between $X$ and $Y$?
+@ correlation-does-not-imply-causation
+- $X$ causes $Y$
+- $Y$ causes $X$
+- A lurking variable causes both
++ A strong correlation always proves $X$ causes $Y$
+> Correlation alone never proves causation.
+
+### What kind of study can establish cause and effect?
+@ correlation-does-not-imply-causation
+- An observational study with a very strong correlation
+- Any study with a large sample
+- A survey with a high response rate
++ A properly designed experiment with randomization and control
+> No matter how strong, a correlation from observational data can't show causation.
+
+### Removing one outlier changes $r$ from 0.82 to 0.31. What does this tell you?
+@ the-effect-of-outliers-on-correlation
++ One point created most of the apparent relationship
+- The original correlation was reliable
+- The outlier should always be deleted
+- The remaining data are strongly correlated
+> Investigate the outlier and report results with and without it.
+
+### What should you always do before reporting a correlation?
+@ the-effect-of-outliers-on-correlation
+- Square it
+- Round it to one decimal place
+- Make sure it's positive
++ Look at the scatterplot
+> A scatterplot reveals outliers and curved patterns that $r$ alone can hide.
+
+### The number of firefighters at a fire is positively correlated with the damage done. What's the best explanation?
+@ correlation-does-not-imply-causation
++ The size of the fire drives both
+- Firefighters cause damage
+- Damage summons more firefighters, so damage causes firefighters
+- There is no real relationship
+> Bigger fires bring more firefighters and cause more damage.

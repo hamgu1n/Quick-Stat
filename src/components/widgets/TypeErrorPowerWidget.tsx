@@ -69,7 +69,7 @@ power <- 1 - beta                                              # ${power.toFixed
         </span>
       </div>
 
-      <ResponsiveContainer width="100%" height={320}>
+      <ResponsiveContainer width="100%" height={230}>
         <ComposedChart data={data} margin={{ top: 28, right: 24, bottom: 0, left: 0 }}>
           <XAxis dataKey="x" type="number" domain={[xMin, xMax]} tickCount={7}
             tickFormatter={(v: number) => v.toFixed(0)} style={{ fontSize: "0.72rem" }} />

@@ -64,7 +64,7 @@ ${tail === "left" ? `pt(t_stat, df = df)` : tail === "right" ? `pt(t_stat, df = 
           : <span style={{ color: "var(--muted-foreground)", fontSize: "0.82rem" }}>Fail to reject H₀ at α = 0.05</span>}
       </div>
 
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={220}>
         <ComposedChart data={data} margin={{ top: 28, right: 16, bottom: 16, left: 0 }}>
           <XAxis dataKey="t" type="number" domain={[-T_RANGE, T_RANGE]} tickCount={11}
             tickFormatter={(v: number) => v.toFixed(1)} style={{ fontSize: "0.72rem" }}

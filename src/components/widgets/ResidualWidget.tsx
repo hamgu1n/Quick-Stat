@@ -80,7 +80,7 @@ export function ResidualWidget() {
 
       <p style={{ fontSize: "0.8rem", fontWeight: 600, margin: "0 0 0.25rem" }}>Residuals vs. Fitted Values</p>
 
-      <ResponsiveContainer width="100%" height={220}>
+      <ResponsiveContainer width="100%" height={160}>
         <ScatterChart margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <XAxis type="number" dataKey="yhat" name="Fitted" domain={[25, 75]}
             label={{ value: "Fitted Values (ŷ)", position: "insideBottom", offset: -2, fontSize: 10 }}

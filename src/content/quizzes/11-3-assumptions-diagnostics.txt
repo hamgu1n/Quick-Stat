@@ -1,0 +1,81 @@
+Section Review: Assumptions and Diagnostics. Format notes are in src/lib/quiz.ts.
+
+### What does the acronym LINE stand for in regression?
+@ the-assumptions-of-simple-linear-regression
+- Least squares, Intercept, Normality, Error
+- Linearity, Intercept, No outliers, Extrapolation
++ Linearity, Independence, Normality of residuals, Equal variance
+- Leverage, Independence, Normality, Extrapolation
+> These are the four main assumptions of simple linear regression.
+
+### Data are collected on the same store every week for two years. Which assumption is most likely violated?
+@ the-assumptions-of-simple-linear-regression
++ Independence
+- Linearity
+- Normality
+- Equal variance
+> Time series data often violate independence, since nearby weeks tend to be similar.
+
+### What is heteroscedasticity?
+@ the-assumptions-of-simple-linear-regression
++ Residual spread that changes systematically across values of $X$
+- A curved relationship between $X$ and $Y$
+- Residuals that aren't normal
+- Observations that aren't independent
+> It violates the equal-variance assumption.
+
+### Why does the normality assumption matter less with large samples?
+@ the-assumptions-of-simple-linear-regression
+- Large samples are always normal
++ The Central Limit Theorem helps the inference procedures work anyway
+- Residuals disappear with large samples
+- Normality only applies to small samples
+> With large samples, confidence intervals and tests for the slope are less sensitive to non-normal residuals.
+
+### What is plotted in a residual plot?
+@ checking-assumptions-with-residual-plots
+- $x$ versus $y$
+- Residuals versus their ranks
+- The regression line only
++ Residuals on the y-axis versus fitted values $\hat{y}$ on the x-axis
+> It's the main tool for checking linearity and equal variance.
+
+### What does a well-behaved residual plot look like?
+@ checking-assumptions-with-residual-plots
+- A clear upward trend
+- A U-shaped curve
++ Random scatter around zero with roughly constant spread
+- A megaphone shape
+> Any pattern suggests an assumption is violated.
+
+### A residual plot shows a curve: positive residuals at both ends and negative in the middle. Which assumption fails?
+@ checking-assumptions-with-residual-plots
+- Independence
+- Equal variance
+- None
++ Linearity
+> The straight line can't follow the true curved relationship.
+
+### A residual plot fans out into a megaphone shape as $\hat{y}$ increases. Which assumption fails?
+@ checking-assumptions-with-residual-plots
+- Linearity
++ Equal variance
+- Independence
+- Normality
+> Growing spread is heteroscedasticity. A log transformation of $y$ often helps.
+
+### How do you check the normality of residuals?
+@ checking-assumptions-with-residual-plots
+- With a pie chart
+- By computing $R^2$
+- By checking the slope's sign
++ With a normal Q-Q plot of the residuals
+> If the residuals are normal, the Q-Q plot points fall close to a straight line.
+
+### The residual plot is random, the Q-Q plot is straight, the sample is random, and the residual spread is constant. What do you conclude?
+@ checking-assumptions-with-residual-plots
+- At least one assumption fails
++ All four LINE assumptions appear satisfied, so the linear model is appropriate
+- The model has a high $R^2$
+- The relationship is causal
+> Each check matches one of the LINE assumptions.

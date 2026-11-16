@@ -1,0 +1,81 @@
+Section Review: The Coefficient of Determination. Format notes are in src/lib/quiz.ts.
+
+### What does $R^2$ measure?
+@ what-is-r-2
+- The slope of the regression line
+- The average residual
+- Whether $X$ causes $Y$
++ The proportion of the variability in $Y$ explained by the linear relationship with $X$
+> $R^2$ compares the model's prediction errors to the variability around $\bar{y}$.
+
+### A model has SST = 500 and SSE = 100. What is $R^2$?
+@ what-is-r-2
+- 0.2
+- 5
++ 0.8
+- 400
+> $R^2 = 1 - \text{SSE}/\text{SST} = 1 - 100/500 = 0.8$.
+
+### In simple linear regression, $r = 0.9$. What is $R^2$?
+@ what-is-r-2
+- 0.9
+- 0.95
+- 0.18
++ 0.81
+> $R^2 = r^2 = 0.9^2 = 0.81$.
+
+### $R^2 = 0.64$ and the relationship is negative. What is $r$?
+@ what-is-r-2
+- 0.64
++ −0.8
+- −0.64
+- 0.8
+> $|r| = \sqrt{0.64} = 0.8$, and the sign matches the direction: $r = -0.8$.
+
+### How should you interpret $R^2 = 0.53$ for advertising spend predicting sales?
+@ what-is-r-2
++ About 53% of the variation in sales is explained by the linear relationship with advertising spend
+- Advertising causes 53% of sales
+- The model is correct 53% of the time
+- 53% of the points lie on the line
+> The remaining 47% comes from other factors and random variation.
+
+### What does $R^2 = 0$ mean?
+@ what-is-r-2
++ The regression line is no better than predicting $\bar{y}$ for everyone
+- Every point falls on the line
+- The slope is 1
+- The model is perfect
+> $R^2$ ranges from 0 (explains nothing) to 1 (explains everything).
+
+### A model has a high $R^2$. Which statement is true?
+@ r-2-does-not-tell-the-whole-story
+- $X$ must cause $Y$
++ The line explains much of the variation, but that alone doesn't prove causation or a good fit
+- The model must be the right shape
+- The residual plot doesn't need to be checked
+> A strong linear relationship can still come from lurking variables or a curved pattern.
+
+### Salary rises steeply from age 25 to 45, then levels off, yet a linear fit gives $R^2 = 0.78$. What's the problem?
+@ r-2-does-not-tell-the-whole-story
+- There is no problem; 0.78 is high
+- $R^2$ should be negative
+- The sample must be too small
++ A straight line is the wrong shape and will mispredict systematically
+> A residual plot would show a curved pattern, the sign of a poor fit.
+
+### A psychology study reports $R^2 = 0.20$. Does that make the model useless?
+@ r-2-does-not-tell-the-whole-story
+- Yes, anything below 0.5 is useless
++ Not necessarily: in complex fields, low $R^2$ values are common and the model can still be meaningful
+- Yes, because $R^2$ must be at least 0.9
+- No, because $R^2$ doesn't matter
+> Context, significance, and theory all matter alongside $R^2$.
+
+### What should you examine alongside $R^2$ to judge whether a linear model is appropriate?
+@ r-2-does-not-tell-the-whole-story
++ A residual plot
+- The sample mean of $x$
+- The intercept only
+- A pie chart of the residuals
+> Residual plots reveal curves and changing spread that $R^2$ hides.

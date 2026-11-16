@@ -77,7 +77,7 @@ abline(lm(y ~ x), col = "red", lwd = 2)`;
           {describeCorrelation(rho)}
         </span>
       </div>
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={200}>
         <ScatterChart margin={{ top: 8, right: 16, bottom: 0, left: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis

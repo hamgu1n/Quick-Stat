@@ -1,0 +1,81 @@
+Section Review: Hypothesis Tests for a Proportion. Format notes are in src/lib/quiz.ts.
+
+### A company claims 80% of customers are satisfied. A consumer group suspects it's lower. What are the hypotheses?
+@ setting-up-the-test
+- $H_0: \hat{p} = 0.80$ vs. $H_a: \hat{p} < 0.80$
++ $H_0: p = 0.80$ vs. $H_a: p < 0.80$
+- $H_0: p < 0.80$ vs. $H_a: p = 0.80$
+- $H_0: p = 0.80$ vs. $H_a: p \neq 0.80$
+> Hypotheses are about the population proportion $p$, never $\hat{p}$, and the null contains the equals sign.
+
+### When checking the success-failure condition for a test, which proportion do you use?
+@ conditions-for-the-test
+- $\hat{p}$
++ $p_0$, the value claimed by $H_0$
+- 0.5
+- The pooled proportion
+> The test assumes $H_0$ is true, so we check $np_0 \geq 10$ and $n(1 - p_0) \geq 10$.
+
+### Testing $H_0: p = 0.02$ with $n = 300$: is the success-failure condition met?
+@ conditions-for-the-test
+- Yes, because $n \geq 30$
++ No, because $np_0 = 6$, which is less than 10
+- Yes, because $n(1 - p_0) = 294$
+- We can't tell without $\hat{p}$
+> Both $np_0$ and $n(1-p_0)$ must be at least 10. Here $300(0.02) = 6$.
+
+### Testing $H_0: p = 0.5$ with $n = 100$, a sample gives $\hat{p} = 0.6$. What is the z-statistic?
+@ the-one-proportion-z-test
++ 2
+- 1
+- 0.1
+- 4
+> $SE = \sqrt{0.5(0.5)/100} = 0.05$, so $z = (0.6 - 0.5)/0.05 = 2$.
+
+### In the one-proportion z-test, what goes in the standard error?
+@ the-one-proportion-z-test
+- $\sqrt{\hat{p}(1 - \hat{p})/n}$
+- $\sigma/\sqrt{n}$
++ $\sqrt{p_0(1 - p_0)/n}$
+- $p_0/n$
+> The standard error is calculated assuming $H_0$ is true, so it uses $p_0$.
+
+### For a two-tailed test with $z = 1.8$, how do you find the p-value?
+@ the-one-proportion-z-test
+- $P(Z > 1.8)$
+- $P(Z < 1.8)$
+- $1 - 2 \times P(Z > 1.8)$
++ $2 \times P(Z > 1.8)$
+> A two-tailed test counts the area in both tails: $2 \times P(Z > |z|)$.
+
+### A 95% confidence interval for $p$ is (0.512, 0.568). Would a two-tailed test at $\alpha = 0.05$ reject $H_0: p = 0.50$?
+@ connecting-tests-and-confidence-intervals
+- No, because 0.50 is outside the interval
+- Yes, because 0.50 is inside the interval
+- We can't tell without the p-value
++ Yes, because 0.50 is outside the interval
+> Values outside the 95% interval aren't plausible, so the test rejects them.
+
+### You want a margin of error of 0.05 at 95% confidence with no prior estimate of $p$. What sample size do you need?
+@ choosing-a-sample-size
+- 384
+- 196
++ 385
+- 1,537
+> Use $p = 0.5$: $n = (1.96/0.05)^2 (0.25) = 384.16$. Round up to 385.
+
+### Why use $p = 0.5$ when there's no prior estimate?
+@ choosing-a-sample-size
++ $p(1-p)$ is largest at 0.5, giving the most conservative (largest) sample size
+- It's always the true proportion
+- It gives the smallest sample size
+- It makes the success-failure condition fail
+> Using 0.5 guarantees the margin of error won't exceed the target.
+
+### A study of 2 million users finds a sign-up rate went from 8.0% to 8.1%, with p = 0.0001. Which is true?
+@ statistical-vs-practical-significance
++ It is statistically significant but may not be practically significant
+- The result isn't statistically significant
+- A small p-value means the effect is large
+- The sample is too small to tell
+> Huge samples can detect tiny differences. Whether 0.1 percentage points matters depends on real-world costs and benefits.

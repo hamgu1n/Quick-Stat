@@ -5,7 +5,7 @@ chapter: 10
 slug: "10-2-interpreting-correlation"
 ---
 
-## Section 10.2 – Interpreting Correlation Coefficients
+## Section 5.2 – Interpreting Correlation Coefficients
 
 Computing a correlation coefficient is straightforward; interpreting it correctly is where students often go wrong. In this section we address the most common pitfalls, the difference between association and causation and the effect of outliers.
 
@@ -24,7 +24,7 @@ While there are no universal rules, the following guidelines are widely used to 
 These are guidelines, not rules. The appropriate threshold for "strong" depends on the field, an $r$ of 0.5 might be impressive in psychology but unacceptably weak in physics.
 
 <div className="example">
-**Example 10.2.1 – Describing a Correlation**
+**Example 5.2.1 – Describing a Correlation**
 
 For each correlation coefficient, describe the strength and direction of the relationship:
 
@@ -45,7 +45,7 @@ For each correlation coefficient, describe the strength and direction of the rel
 
 ### Correlation Does Not Imply Causation
 
-This is perhaps the most important lesson in all of statistics: **a high correlation between two variables does not mean that one causes the other.** We saw a hint of this in Section 4.4 with the ice cream and drowning example. Here we formalize the idea.
+This is perhaps the most important lesson in all of statistics: **a high correlation between two variables does not mean that one causes the other.** We saw a hint of this in Section 2.8 with the ice cream and drowning example. Here we formalize the idea.
 
 Three possible explanations for an observed correlation between $X$ and $Y$ are:
 
@@ -55,10 +55,10 @@ Three possible explanations for an observed correlation between $X$ and $Y$ are:
 
 The ice cream and drowning example is driven by a lurking variable: hot weather. Hot weather causes people to buy more ice cream *and* causes more people to swim, increasing drowning risk. Ice cream consumption doesn't cause drowning.
 
-Only a properly designed experiment (with randomization and control, as discussed in Chapter 2) can establish causation. A correlation from an observational study, no matter how strong, cannot.
+Only a properly designed experiment (with randomization and control, as discussed in Section 1.5) can establish causation. A correlation from an observational study, no matter how strong, cannot.
 
 <div className="example">
-**Example 10.2.2 – Causation or Lurking Variable?**
+**Example 5.2.2 – Causation or Lurking Variable?**
 
 For each observed correlation, propose a possible lurking variable or alternative explanation:
 
@@ -82,7 +82,7 @@ For each observed correlation, propose a possible lurking variable or alternativ
 Pearson's $r$ is sensitive to outliers, as we noted in the previous section. A single unusual point can dramatically increase or decrease $r$, even when the rest of the data show no clear linear pattern. This is one reason why always *looking at the scatterplot* before reporting $r$ is critical. The correlation alone can be deeply misleading.
 
 <div className="example">
-**Example 10.2.3 – Outlier Impact on r**
+**Example 5.2.3 – Outlier Impact on r**
 
 A researcher computes $r = 0.82$ for a dataset of 20 points. Upon examining the scatterplot, she notices that removing a single outlier reduces $r$ to 0.31.
 
@@ -125,7 +125,7 @@ $$
 which follows a t-distribution with $n - 2$ degrees of freedom under $H_0$. The p-value tells us whether the observed $r$ is large enough, for the given sample size, to be statistically unlikely if there truly is no relationship.
 
 <div className="example">
-**Example 10.2.4 – Testing Correlation Significance**
+**Example 5.2.4 – Testing Correlation Significance**
 
 A sample of $n = 20$ observations yields a Pearson correlation of $r = 0.45$.
 
@@ -148,7 +148,7 @@ $$
 </div>
 
 <div className="example">
-**Example 10.2.5 – Sample Size and Significance**
+**Example 5.2.5 – Sample Size and Significance**
 
 Explain why a correlation of $r = 0.30$ might be statistically significant with $n = 100$ but not with $n = 15$, even though the correlation coefficient is the same.
 

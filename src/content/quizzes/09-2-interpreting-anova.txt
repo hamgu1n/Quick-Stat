@@ -1,0 +1,81 @@
+Section Review: Interpreting ANOVA Results. Format notes are in src/lib/quiz.ts.
+
+### An ANOVA comparing four groups has p = 0.003. What does that tell you?
+@ section-4-9-interpreting-anova-results
+- All four group means are different
+- The first and last groups differ
+- None of the means differ
++ At least one group mean differs from the others
+> A significant F-test shows that some difference exists, but not where.
+
+### What does a significant ANOVA result NOT tell you?
+@ section-4-9-interpreting-anova-results
+- That at least one mean differs
+- That the p-value is below $\alpha$
++ Which specific groups differ from each other
+- That the null hypothesis was rejected
+> Post-hoc tests are needed to identify which pairs of means differ.
+
+### How many pairwise comparisons are there among 5 groups?
+@ the-problem-of-multiple-comparisons
+- 5
+- 20
+- 25
++ 10
+> $\binom{5}{2} = 10$.
+
+### Why not just run a t-test for every pair of groups after ANOVA?
+@ the-problem-of-multiple-comparisons
+- t-tests can't compare two groups
+- It would take too long to compute
++ Running many tests inflates the overall Type I error rate
+- t-tests always disagree with ANOVA
+> With more comparisons, a false positive somewhere becomes increasingly likely.
+
+### What is a post-hoc test?
+@ the-problem-of-multiple-comparisons
+- A test run before collecting data
++ A follow-up test that compares groups while controlling the overall error rate
+- A test that replaces ANOVA entirely
+- A test for categorical data
+> Tukey's HSD and the Bonferroni correction are common post-hoc methods.
+
+### Which post-hoc test is most commonly used when group sizes are equal or similar?
+@ the-problem-of-multiple-comparisons
++ Tukey's Honestly Significant Difference (HSD)
+- The chi-square test
+- The paired t-test
+- The sign test
+> Tukey's HSD compares all pairs while holding the family-wise error rate at $\alpha$.
+
+### With $\alpha = 0.05$ and 5 comparisons, what significance level does the Bonferroni correction use for each test?
+@ the-problem-of-multiple-comparisons
+- 0.05
+- 0.25
+- 0.001
++ 0.01
+> Bonferroni divides $\alpha$ by the number of comparisons: $0.05 / 5 = 0.01$.
+
+### An ANOVA table has MS Between = 42.2 and MS Within = 6.2. What is F?
+@ reading-the-anova-output
++ About 6.8
+- 36.0
+- 0.15
+- 48.4
+> $F = \text{MSB}/\text{MSW} = 42.2/6.2 \approx 6.8$.
+
+### In an ANOVA table, the within-group SS is much larger than the between-group SS, but F is still significant. How is that possible?
+@ reading-the-anova-output
+- The table must have an error
++ F compares mean squares (SS divided by df), and the between-group SS has far fewer degrees of freedom
+- F only uses the between-group SS
+- A larger within-group SS always gives a larger F
+> Dividing each SS by its df can make the between-group mean square much larger.
+
+### ANOVA is significant, and Tukey finds only Groups 1 and 2 differ. Which summary is correct?
+@ reading-the-anova-output
+- All three groups differ from one another
++ Groups 1 and 2 have significantly different means; no other pairs differ significantly
+- Group 3 is different from everyone
+- The ANOVA result was a false positive
+> Report the post-hoc results alongside the overall ANOVA so readers know which groups differ.

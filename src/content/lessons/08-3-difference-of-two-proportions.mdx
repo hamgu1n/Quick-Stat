@@ -5,19 +5,19 @@ chapter: 8
 slug: "08-3-difference-of-two-proportions"
 ---
 
-## Section 8.3 – Difference of Two Proportions
+## Section 4.5 – Difference of Two Proportions
 
-In the previous section we compared a single proportion to a claimed value. But many of the most interesting questions involve *comparing two groups*. Does a new website layout get a higher click rate than the old one? Are younger adults more likely than older adults to get their news from social media? Did a vaccine group get sick less often than a placebo group? Each of these compares two population proportions, $p_1$ and $p_2$, and the quantity we care about is their difference, $p_1 - p_2$.
+In the previous section we compared a single proportion to a claimed value. But many of the most interesting questions involve *comparing two groups*. Does a new website layout get a higher click rate than the old one? Are younger adults more likely than older adults to get their news from social media? Did a vaccine group get sick less often than a placebo group? Each of these compares two population proportions, $p_1$ and $p_2$ (pronounced "p-one" and "p-two"), and the quantity we care about is their difference, $p_1 - p_2$.
 
 ### A/B Testing
 
 Comparing two proportions is the statistics behind **A/B testing**, one of the most common tools used by tech companies and online retailers. In an A/B test, visitors to a website are randomly assigned to see either version A or version B of a page, and the company compares the proportion of visitors in each group who take some action, like clicking a button or making a purchase.
 
-Because visitors are *randomly assigned*, an A/B test is a randomized experiment. As we saw in Section 2.2, this means that if version B performs significantly better, we can conclude that the change *caused* the improvement, not just that the two are associated.
+Because visitors are *randomly assigned*, an A/B test is a randomized experiment. As we saw in Section 1.5, this means that if version B performs significantly better, we can conclude that the change *caused* the improvement, not just that the two are associated.
 
 ### The Sampling Distribution of $\hat{p}_1 - \hat{p}_2$
 
-Our point estimate for $p_1 - p_2$ is the difference in sample proportions, $\hat{p}_1 - \hat{p}_2$. Like a single sample proportion, this difference varies from sample to sample. When the conditions below are met, its sampling distribution is approximately normal with standard error
+Our point estimate for $p_1 - p_2$ is the difference in sample proportions, $\hat{p}_1 - \hat{p}_2$ (read "p-hat one minus p-hat two"). Like a single sample proportion, this difference varies from sample to sample. When the conditions below are met, its sampling distribution is approximately normal with standard error
 
 $$
 SE = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
@@ -42,7 +42,7 @@ $$
 When interpreting this interval, pay attention to whether it contains 0. If the entire interval is above 0, the data suggest $p_1$ is larger than $p_2$. If the entire interval is below 0, the data suggest $p_1$ is smaller. If the interval contains 0, then "no difference" is a plausible value.
 
 <div className="example">
-**Example 8.3.1 – Confidence Interval for a Difference**
+**Example 4.5.1 – Confidence Interval for a Difference**
 
 A survey asks randomly selected adults whether they regularly get news from social media. Of 600 adults aged 18–29, 438 said yes. Of 800 adults aged 50–64, 344 said yes.
 
@@ -80,7 +80,7 @@ $$
 
 which we can also write as $H_0: p_1 - p_2 = 0$.
 
-Just like in Section 8.2, we carry out the test assuming $H_0$ is true. If $H_0$ is true, the two groups share the same proportion, so our best estimate of that common proportion combines both samples. This is called the **pooled proportion**:
+Just like in Section 4.4, we carry out the test assuming $H_0$ is true. If $H_0$ is true, the two groups share the same proportion, so our best estimate of that common proportion combines both samples. This is called the **pooled proportion**, written $\hat{p}_{pool}$ and pronounced "p-hat pool":
 
 $$
 \hat{p}_{pool} = \frac{x_1 + x_2}{n_1 + n_2}
@@ -97,7 +97,7 @@ We then find the p-value from the standard normal distribution and draw a conclu
 <TwoPropWidget />
 
 <div className="example">
-**Example 8.3.2 – An A/B Test**
+**Example 4.5.2 – An A/B Test**
 
 An online store tests two versions of its product page. Visitors are randomly assigned to one of the versions:
 
@@ -138,7 +138,7 @@ $$
 </div>
 
 <div className="example">
-**Example 8.3.3 – Pooled or Not?**
+**Example 4.5.3 – Pooled or Not?**
 
 For each task, decide whether you should use the pooled proportion $\hat{p}_{pool}$ or the separate sample proportions $\hat{p}_1$ and $\hat{p}_2$ in the standard error, and explain why:
 
@@ -156,7 +156,7 @@ For each task, decide whether you should use the pooled proportion $\hat{p}_{poo
 </div>
 
 <div className="example">
-**Example 8.3.4 – Observational Data**
+**Example 4.5.4 – Observational Data**
 
 A researcher compares the proportion of Facebook posts that receive at least 100 likes for posts that include a photo versus posts that do not. They find a statistically significant difference, with photo posts receiving 100+ likes more often.
 

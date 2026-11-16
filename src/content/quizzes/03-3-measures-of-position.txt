@@ -1,0 +1,81 @@
+Section Review: Measures of Position and Outliers. Format notes are in src/lib/quiz.ts.
+
+### Your exam score is at the 85th percentile. What does that mean?
+@ percentiles-and-quartiles
++ You scored at or above about 85% of the students who took the exam
+- You answered 85% of the questions correctly
+- You scored 85 points
+- 85% of students scored higher than you
+> Percentiles describe relative standing: the percentage of observations at or below your value. They say nothing about the percentage of questions answered correctly.
+
+### Which quartile is the same as the median?
+@ percentiles-and-quartiles
+- $Q_1$
+- $Q_3$
+- None of them
++ $Q_2$
+> $Q_2$ is the 50th percentile, which is the median.
+
+### For the sorted data $3, 5, 7, 8, 12, 13, 14, 18, 21$, what is $Q_1$?
+@ percentiles-and-quartiles
+- 5
+- 7
++ 6
+- 8
+> The median is the 5th value, 12. The lower half is $3, 5, 7, 8$, whose median is $(5 + 7)/2 = 6$.
+
+### For the same data, $3, 5, 7, 8, 12, 13, 14, 18, 21$, what is $Q_3$?
+@ percentiles-and-quartiles
++ 16
+- 14
+- 18
+- 13.5
+> The upper half is $13, 14, 18, 21$, whose median is $(14 + 18)/2 = 16$.
+
+### A student scores 90 on a test with mean 78 and standard deviation 6. What is the z-score?
+@ z-scores
+- 1.5
+- 12
++ 2
+- −2
+> $z = (90 - 78)/6 = 12/6 = 2$. The score is 2 standard deviations above the mean.
+
+### A value has a z-score of $-1.5$. What does that tell you?
+@ z-scores
+- The value is 1.5 units below the mean
++ The value is 1.5 standard deviations below the mean
+- The value is 1.5 standard deviations above the mean
+- The value is an outlier
+> The sign gives the direction (negative means below the mean), and the size counts standard deviations.
+
+### Student A scores 85 in a class with mean 75 and SD 5. Student B scores 90 in a class with mean 82 and SD 8. Who did better relative to their class?
+@ z-scores
+- Student B
+- They did equally well
+- We can't compare different classes
++ Student A
+> $z_A = (85 - 75)/5 = 2$ and $z_B = (90 - 82)/8 = 1$. Student A is further above their class mean.
+
+### A dataset has $Q_1 = 20$ and $Q_3 = 30$. What is the upper fence for the IQR outlier rule?
+@ outlier-detection-using-the-iqr-rule
+- 40
++ 45
+- 35
+- 60
+> $\text{IQR} = 10$, so the upper fence is $Q_3 + 1.5 \times \text{IQR} = 30 + 15 = 45$.
+
+### With $Q_1 = 20$ and $Q_3 = 30$, which of these values would be flagged as a potential outlier?
+@ outlier-detection-using-the-iqr-rule
+- 8
+- 36
+- 44
++ 3
+> The fences are $20 - 15 = 5$ and $30 + 15 = 45$. Only 3 falls outside them.
+
+### The IQR rule flags a value as a potential outlier. What should you do?
+@ outlier-detection-using-the-iqr-rule
+- Delete it immediately
++ Investigate it: it may be an error or a genuinely unusual observation
+- Replace it with the mean
+- Ignore the rule, since it is rarely correct
+> The rule gives an objective starting point, but context matters. A flagged value shouldn't be removed automatically.

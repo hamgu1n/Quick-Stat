@@ -1,0 +1,81 @@
+Section Review: Populations and Samples. Format notes are in src/lib/quiz.ts.
+
+### A researcher wants to know how many hours per week Roanoke College students spend studying. She surveys 120 Roanoke students. What is the population?
+@ section-1-1-populations-and-samples
+- The 120 students she surveyed
+- All college students in the United States
++ All Roanoke College students
+- The number of hours each student studies
+> The population is the full group we want to draw conclusions about: every Roanoke student. The 120 students surveyed are the sample.
+
+### Why do statisticians usually study a sample instead of the whole population?
+@ section-1-1-populations-and-samples
+- Samples always give the exact same answer as the population
+- Populations are too small to be useful
++ It is usually impossible or impractical to examine every member of a large population
+- A sample removes the need to think about bias
+> Populations can contain thousands or millions of individuals, so we examine a smaller portion and use it to draw conclusions about the whole.
+
+### What makes a sample biased?
+@ section-1-2-biased-sampling
+- It contains fewer than 30 people
+- It was chosen using random numbers
+- It includes people with different opinions
++ One part of the population is favored or weighted more than others
+> A biased sample over-represents some portion of the population, so it doesn't reflect the population as a whole.
+
+### A reporter interviews the first 15 people who walk out of a gym about their exercise habits. What kind of sample is this?
+@ section-1-2-biased-sampling
+- Simple random sample
++ Convenience sample
+- Systematic sample
+- Cluster sample
+> The reporter picks the people who are easiest to reach. Gym-goers probably exercise more than the general public, so the sample is biased.
+
+### A website asks visitors to rate a new movie, and only people who choose to respond are counted. Why is this likely to be biased?
+@ section-1-2-biased-sampling
+- The sample size is always too large
+- Every visitor has an equal chance of being included
++ People with strong opinions are more likely to respond than people who feel neutral
+- Online surveys can't record numbers accurately
+> This is a voluntary response sample. People choose themselves, so extreme opinions tend to be over-represented.
+
+### A teacher puts all 30 students' names in a hat, mixes them well, and draws 5. What type of sample is this?
+@ section-1-3-unbiased-sampling
+- Stratified sample
+- Systematic sample
+- Convenience sample
++ Simple random sample
+> Every student, and every group of 5 students, has the same chance of being chosen. That defines a simple random sample.
+
+### A store manager surveys every 8th customer who walks in, starting with a randomly chosen customer among the first 8. What type of sample is this?
+@ section-1-3-unbiased-sampling
++ Systematic sample
+- Cluster sample
+- Simple random sample
+- Voluntary response sample
+> A systematic sample follows a fixed rule (every 8th customer) with a random starting point.
+
+### In stratified sampling, what are the **strata**?
+@ section-1-3-unbiased-sampling
+- The individuals who refuse to take part
+- The randomly selected groups where everyone is surveyed
+- The list of everyone in the population
++ Groups that share a characteristic, such as grade level, from each of which we randomly sample
+> The population is divided into strata (like freshmen, sophomores, juniors, and seniors), and a random sample is taken from every stratum.
+
+### A city randomly selects 4 of its 40 elementary schools and surveys every student in those 4 schools. What type of sample is this?
+@ section-1-3-unbiased-sampling
++ Cluster sample
+- Stratified sample
+- Systematic sample
+- Convenience sample
+> Whole groups (schools) are chosen at random and everyone in them is surveyed. In a stratified sample, we would sample some students from every school instead.
+
+### What is the key difference between stratified sampling and cluster sampling?
+@ section-1-3-unbiased-sampling
+- Stratified sampling is biased and cluster sampling is unbiased
++ Stratified sampling randomly picks individuals from every group; cluster sampling randomly picks whole groups
+- Cluster sampling never uses randomness
+- There is no difference; the terms mean the same thing
+> Both divide the population into groups. Stratified sampling samples within every group, while cluster sampling selects entire groups at random.

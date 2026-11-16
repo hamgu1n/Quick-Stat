@@ -1,0 +1,81 @@
+Section Review: Confidence Intervals for Means and Proportions. Format notes are in src/lib/quiz.ts.
+
+### What is the general form of a confidence interval?
+@ what-is-a-confidence-interval
++ Point estimate ± Margin of error
+- Parameter ± Standard deviation
+- Sample size ± Critical value
+- Mean ± Median
+> The margin of error shows how far the estimate might reasonably be from the true parameter.
+
+### What does "95% confident" mean for a confidence interval?
+@ what-is-a-confidence-interval
+- There is a 95% probability that the parameter is in this particular interval
+- 95% of the data fall inside the interval
++ If we repeated the sampling many times, about 95% of the intervals would contain the true parameter
+- The sample mean is correct 95% of the time
+> The parameter is fixed; the interval is what varies. The 95% describes the method.
+
+### What is the $z^*$ critical value for a 95% confidence interval?
+@ confidence-interval-for-a-population-mean-known-sigma
++ 1.960
+- 1.645
+- 2.576
+- 0.95
+> 90% uses 1.645, 95% uses 1.960, and 99% uses 2.576.
+
+### A sample of 25 has $\bar{x} = 50$, and $\sigma = 10$ is known. What is the 95% confidence interval for $\mu$?
+@ confidence-interval-for-a-population-mean-known-sigma
+- $50 \pm 19.6$
+- $50 \pm 1.96$
+- $50 \pm 10$
++ $50 \pm 3.92$
+> $\sigma/\sqrt{n} = 10/5 = 2$, so the margin of error is $1.96 \times 2 = 3.92$: (46.08, 53.92).
+
+### Raising the confidence level from 95% to 99% (with everything else the same) makes the interval:
+@ confidence-interval-for-a-population-mean-known-sigma
+- Narrower
+- The same width
+- Centered at a different value
++ Wider
+> A higher confidence level uses a larger critical value (2.576 instead of 1.96).
+
+### When should you use a t-interval instead of a z-interval for a mean?
+@ confidence-interval-for-a-population-mean-unknown-sigma
+- When the sample size is larger than 30
+- When estimating a proportion
+- When the data are categorical
++ When the population standard deviation $\sigma$ is unknown and estimated with $s$
+> In practice $\sigma$ is almost never known, so t-intervals are the usual choice.
+
+### How does the t-distribution compare to the standard normal distribution?
+@ confidence-interval-for-a-population-mean-unknown-sigma
+- It is skewed right
+- It has thinner tails
++ It is bell-shaped and symmetric but has heavier tails
+- It is identical for every sample size
+> The heavier tails reflect the extra uncertainty from estimating $\sigma$. As $n$ grows, t approaches the normal.
+
+### In a survey of 300 people, 120 say yes. What is the 95% confidence interval for $p$?
+@ confidence-interval-for-a-proportion
+- $0.40 \pm 0.028$
+- $0.40 \pm 0.096$
++ $0.40 \pm 0.055$
+- $0.60 \pm 0.055$
+> $\hat{p} = 0.40$ and $SE = \sqrt{0.4(0.6)/300} \approx 0.0283$. The margin of error is $1.96 \times 0.0283 \approx 0.055$.
+
+### What conditions are needed to use the confidence interval for a proportion?
+@ confidence-interval-for-a-proportion
+- $n \geq 30$
++ $n\hat{p} \geq 10$ and $n(1 - \hat{p}) \geq 10$
+- $\hat{p} = 0.5$
+- The population must be normal
+> We need at least 10 successes and 10 failures in the sample.
+
+### A researcher wants a margin of error of 2 at 95% confidence, with $\sigma = 10$. What is the minimum sample size?
+@ confidence-interval-for-a-population-mean-known-sigma
++ 97
+- 96
+- 10
+- 50
+> $n = (1.96 \times 10 / 2)^2 = 96.04$. Always round up, so $n = 97$.

@@ -5,7 +5,7 @@ chapter: 8
 slug: "08-4-chi-square-tests"
 ---
 
-## Section 8.4 – Chi-Square Tests
+## Section 4.6 – Chi-Square Tests
 
 The z-tests and t-tests we have studied so far are designed for numerical data, where we are making claims about means. But what about categorical data? How do we test whether two categorical variables are related, or whether a categorical distribution matches a particular pattern? For these questions we turn to the **chi-square test** ($\chi^2$ test), pronounced "ky-square."
 
@@ -34,7 +34,7 @@ $$
 where $p_0$ is the hypothesized proportion for that category. The statistic follows a chi-square distribution with $df = k - 1$, where $k$ is the number of categories.
 
 <div className="example">
-**Example 8.4.1 – Goodness-of-Fit Test**
+**Example 4.6.1 – Goodness-of-Fit Test**
 
 A six-sided die is rolled 120 times. The observed counts for each face are:
 
@@ -87,7 +87,7 @@ $$
 <ChiSquareWidget />
 
 <div className="example">
-**Example 8.4.2 – Chi-Square Test for Independence**
+**Example 4.6.2 – Chi-Square Test for Independence**
 
 A researcher surveys 200 students to determine if there is a relationship between class year (freshman vs. upperclassman) and whether they use the campus tutoring center.
 
@@ -123,7 +123,7 @@ At $\alpha = 0.05$, is there a significant relationship between class year and t
 </div>
 
 <div className="example">
-**Example 8.4.3 – Conditions for the Chi-Square Test**
+**Example 4.6.3 – Conditions for the Chi-Square Test**
 
 The chi-square test requires that expected counts be sufficiently large, typically, each expected count should be at least 5. A survey of 30 students asks about their preferred social media platform, with 6 categories.
 
@@ -142,7 +142,7 @@ Possible fixes:
 </div>
 
 <div className="example">
-**Example 8.4.4 – Goodness-of-Fit vs. Test for Independence**
+**Example 4.6.4 – Goodness-of-Fit vs. Test for Independence**
 
 For each scenario, identify whether a goodness-of-fit test or a test for independence is appropriate:
 

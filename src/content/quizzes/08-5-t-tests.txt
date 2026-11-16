@@ -1,0 +1,81 @@
+Section Review: t-Tests. Format notes are in src/lib/quiz.ts.
+
+### When should you use a t-test instead of a z-test for a mean?
+@ section-4-7-t-tests
+- When the sample size is larger than 30
+- When the data are categorical
+- When comparing three or more groups
++ When the population standard deviation $\sigma$ is unknown and estimated with $s$
+> Estimating $\sigma$ with $s$ adds uncertainty, which the t-distribution accounts for.
+
+### How does the t-distribution compare to the standard normal?
+@ the-t-distribution
++ It is symmetric and bell-shaped but has heavier tails
+- It is skewed right
+- It has thinner tails
+- It can't take negative values
+> The heavier tails reflect the extra variability from using $s$.
+
+### What happens to the t-distribution as the degrees of freedom increase?
+@ the-t-distribution
+- Its tails get heavier
+- It becomes skewed
++ It gets closer to the standard normal
+- It stops being symmetric
+> By about $df = 30$, the t and standard normal are nearly identical.
+
+### A sample of 25 has $\bar{x} = 105$ and $s = 10$. Test $H_0: \mu = 100$. What is the t-statistic?
+@ one-sample-t-test
+- 0.5
++ 2.5
+- 5
+- 12.5
+> $t = (105 - 100)/(10/\sqrt{25}) = 5/2 = 2.5$.
+
+### How many degrees of freedom does a one-sample t-test with $n = 25$ have?
+@ one-sample-t-test
++ 24
+- 25
+- 26
+- 23
+> $df = n - 1 = 24$.
+
+### What does a two-sample t-test compare?
+@ two-sample-t-test
+- One sample mean to a fixed value
+- Before-and-after measurements on the same people
+- The proportions of two groups
++ The means of two independent groups
+> Its hypotheses are $H_0: \mu_1 = \mu_2$ vs. $H_a: \mu_1 \neq \mu_2$ (or $<$, $>$).
+
+### Researchers measure blood pressure on the same patients before and after an exercise program. Which test fits?
+@ paired-t-test
+- Two-sample t-test
+- One-sample z-test
+- Chi-square test
++ Paired t-test
+> Each "after" value is linked to a "before" value from the same person.
+
+### How is a paired t-test carried out?
+@ paired-t-test
+- Compare the two group means with the two-sample formula
+- Add the two groups together and test the total
++ Compute each pair's difference, then do a one-sample t-test on the differences
+- Use a chi-square test on the pairs
+> We test $H_0: \mu_d = 0$, where $\mu_d$ is the mean difference.
+
+### A company compares mean salaries at two different firms using separate random samples. Which test fits?
+@ two-sample-t-test
+- Paired t-test
++ Two-sample t-test
+- One-sample t-test
+- Goodness-of-fit test
+> The samples come from two independent groups.
+
+### A two-sample t-test gives p = 0.059 at $\alpha = 0.05$. Which conclusion is correct?
+@ two-sample-t-test
+- Reject $H_0$; the means are different
+- Accept $H_0$; the means are equal
++ Fail to reject $H_0$; there isn't enough evidence the means differ
+- The test is invalid
+> $0.059 > 0.05$, so the evidence isn't strong enough. That doesn't prove the means are equal.

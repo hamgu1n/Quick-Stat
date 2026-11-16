@@ -1,0 +1,81 @@
+Section Review: CLT Approximations. Format notes are in src/lib/quiz.ts.
+
+### What does the Central Limit Theorem say?
+@ the-central-limit-theorem
++ For large enough $n$, the sampling distribution of $\bar{x}$ is approximately normal, whatever the population's shape
+- Every population is normally distributed
+- Larger samples always have a larger mean
+- The sample mean always equals the population mean
+> The CLT is about the distribution of sample means, not the population or a single sample.
+
+### What is a common rule of thumb for a "large enough" sample for the CLT?
+@ the-central-limit-theorem
++ $n \geq 30$
+- $n \geq 5$
+- $n \geq 10$
+- $n \geq 1{,}000$
+> $n \geq 30$ is a common guideline, though very skewed populations may need larger samples.
+
+### Wait times are strongly right-skewed. For samples of $n = 64$, what is the shape of the sampling distribution of $\bar{x}$?
+@ the-central-limit-theorem
+- Strongly right-skewed
+- Strongly left-skewed
++ Approximately normal
+- Uniform
+> The population is skewed, but $n = 64$ is large enough for the CLT.
+
+### A sample of 25 is drawn from a population that is itself normal. Is $\bar{x}$ normally distributed?
+@ the-central-limit-theorem
+- Only if $n \geq 30$
+- No, never
+- Only if the population is skewed
++ Yes, exactly normal for any sample size
+> When the population is normal, $\bar{x}$ is normal no matter the sample size. The CLT isn't even needed.
+
+### A sample of 5 is drawn from a heavily skewed population. Can we use the CLT to treat $\bar{x}$ as normal?
+@ the-central-limit-theorem
++ No, $n = 5$ is far too small to overcome heavy skew
+- Yes, the CLT works for any sample size
+- Yes, as long as the population mean is known
+- No, the CLT never applies to skewed populations
+> The CLT applies to skewed populations too, but they need larger samples.
+
+### What is the z-score formula for a sample mean?
+@ using-the-normal-approximation
+- $z = \frac{x - \mu}{\sigma}$
+- $z = \frac{\bar{x} - \mu}{\sigma \sqrt{n}}$
+- $z = \frac{\mu - \bar{x}}{n}$
++ $z = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}}$
+> For a sample mean, divide by the standard error, $\sigma/\sqrt{n}$, not by $\sigma$.
+
+### A population has $\mu = 50$ and $\sigma = 12$. For samples of $n = 36$, what is the standard error?
+@ using-the-normal-approximation
+- 12
+- 0.33
+- 6
++ 2
+> $12 / \sqrt{36} = 12 / 6 = 2$.
+
+### With $\mu = 50$, $\sigma = 12$, and $n = 36$, about what is $P(\bar{x} > 54)$?
+@ using-the-normal-approximation
+- 0.37
+- 0.16
++ 0.023
+- 0.50
+> $z = (54 - 50)/2 = 2$, and $P(Z > 2) = 1 - 0.977 \approx 0.023$.
+
+### Why is the CLT so important?
+@ the-central-limit-theorem
+- It guarantees our sample is unbiased
++ It lets us use normal probability calculations for sample means from almost any population
+- It shows that individual values are always normal
+- It means we never need large samples
+> The CLT is the foundation for the confidence intervals and hypothesis tests in the next units.
+
+### Individual heights have $\sigma = 2.8$ inches. For a sample of 49 people, how does the spread of $\bar{x}$ compare to the spread of individual heights?
+@ using-the-normal-approximation
+- It is the same, 2.8 inches
++ It is smaller, $2.8 / 7 = 0.4$ inches
+- It is larger, $2.8 \times 7 = 19.6$ inches
+- It is 0
+> Averages vary much less than individuals: the standard error is $\sigma / \sqrt{n} = 2.8 / 7 = 0.4$.
