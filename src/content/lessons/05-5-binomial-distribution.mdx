@@ -1,0 +1,128 @@
+---
+title: "The Binomial Distribution"
+unit: 3
+chapter: 5
+slug: "05-5-binomial-distribution"
+---
+
+## Section 5.5 – The Binomial Distribution
+
+Many real-world questions come down to counting successes. Out of 20 people who see an ad, how many click on it? Out of 50 online orders, how many are returned? Out of 10 free throws, how many go in? Each of these situations involves repeating the same yes-or-no trial several times and counting how many times the outcome we care about happens. The **binomial distribution** gives us the probabilities for exactly this kind of count, and it brings together the probability rules from Section 5.1 and the counting techniques from Section 5.3.
+
+### Bernoulli Trials
+
+A **Bernoulli trial** is a random experiment with exactly two possible outcomes, which we label **success** and **failure**. The probability of success is $p$, and the probability of failure is $1 - p$.
+
+The word "success" does not have to mean something good. It is simply the outcome we are counting. If we are studying returned orders, a returned order is a "success," even though the retailer would not see it that way.
+
+### The Binomial Setting
+
+A random variable $X$ follows a **binomial distribution** when we count the number of successes in a fixed number of Bernoulli trials and all four of the following conditions are met:
+
+1. **Fixed number of trials**: there are exactly $n$ trials, decided in advance
+2. **Two outcomes**: each trial is either a success or a failure
+3. **Independent trials**: the outcome of one trial does not affect any other trial
+4. **Same probability**: the probability of success $p$ is the same for every trial
+
+When these conditions hold, we write $X \sim \text{Binomial}(n, p)$.
+
+<div className="example">
+**Example 5.5.1 – Is It Binomial?**
+
+For each scenario, decide whether $X$ follows a binomial distribution. If not, identify which condition is violated:
+
+1. A website shows an ad to 30 randomly selected visitors. Each visitor has a 4% chance of clicking. $X$ is the number of visitors who click.
+2. You draw 5 cards from a standard deck without replacement. $X$ is the number of hearts.
+3. You keep rolling a die until you roll a 6. $X$ is the number of rolls needed.
+4. A survey asks 200 randomly selected adults whether they own a smartphone. $X$ is the number who say yes.
+</div>
+
+### The Binomial Formula
+
+Suppose a free throw shooter makes 70% of their shots and takes 3 shots. What is the probability they make exactly 2? One way this could happen is make, make, miss, which by the multiplication rule for independent events has probability $(0.7)(0.7)(0.3) = 0.147$. But the miss could also come first or second, so there are three different orderings, each with the same probability. The total is $3 \times 0.147 = 0.441$.
+
+The number of orderings is exactly the combination $\binom{3}{2} = 3$ from Section 5.3. Generalizing this idea gives the **binomial probability formula**: the probability of exactly $k$ successes in $n$ trials is
+
+$$
+P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+$$
+
+Each piece of the formula has a meaning:
+
+- $\binom{n}{k}$ counts the number of ways to arrange $k$ successes among $n$ trials
+- $p^k$ is the probability of the $k$ successes
+- $(1-p)^{n-k}$ is the probability of the remaining $n - k$ failures
+
+In R, the function `dbinom(k, n, p)` computes $P(X = k)$, and `pbinom(k, n, p)` computes $P(X \leq k)$.
+
+<BinomialWidget />
+
+<div className="example">
+**Example 5.5.2 – Using the Binomial Formula**
+
+An online retailer knows that 10% of orders are returned. A random sample of 8 orders is selected.
+
+1. What is the probability that exactly 1 order is returned?
+2. What is the probability that no orders are returned?
+3. What is the probability that at least 1 order is returned? *(Hint: use the complement rule.)*
+</div>
+
+<div className="example">
+**Example 5.5.3 – "At Most" and "At Least"**
+
+A social media post has a 25% chance of being shared by each person who views it. Suppose 6 people view the post, and their decisions are independent.
+
+1. What is the probability that at most 2 people share it?
+2. What is the probability that at least 3 people share it?
+3. How are your answers to parts 1 and 2 related?
+</div>
+
+### Mean and Standard Deviation of a Binomial
+
+If you flip a fair coin 100 times, you would expect about 50 heads. This intuition carries over to every binomial distribution. The mean (or **expected value**) and standard deviation of $X \sim \text{Binomial}(n, p)$ are:
+
+$$
+\mu = np \qquad \sigma = \sqrt{np(1-p)}
+$$
+
+The mean tells us the long-run average number of successes, and the standard deviation tells us how much the count typically varies from that average.
+
+<div className="example">
+**Example 5.5.4 – Expected Number of Successes**
+
+An email marketing campaign is sent to 400 customers. Historically, 15% of customers open the email.
+
+1. What is the expected number of customers who open the email?
+2. What is the standard deviation of the number who open it?
+3. Would it be unusual for 80 customers to open the email? Use the mean and standard deviation to explain.
+</div>
+
+### The Normal Approximation to the Binomial
+
+When $n$ is large, the binomial formula becomes tedious, since finding $P(X \leq 70)$ would mean adding up 71 separate probabilities. Fortunately, as $n$ grows, the shape of the binomial distribution becomes more and more like a normal curve. This is closely related to the Central Limit Theorem we will see in Section 6.2.
+
+The normal approximation is reasonable when we expect at least 10 successes and at least 10 failures:
+
+$$
+np \geq 10 \qquad \text{and} \qquad n(1-p) \geq 10
+$$
+
+When this **success-failure condition** holds, we can approximate the binomial with a normal distribution that has the same mean and standard deviation, $N\left(np, \sqrt{np(1-p)}\right)$, and then use the methods from Section 5.4. This same condition will appear again when we build confidence intervals and hypothesis tests for proportions in Chapters 7 and 8.
+
+<div className="example">
+**Example 5.5.5 – Normal Approximation**
+
+About 62% of adults in a city use a streaming service. A random sample of 200 adults is selected.
+
+1. Check the success-failure condition.
+2. Find the mean and standard deviation of the number of streaming service users in the sample.
+3. Use the normal approximation to estimate the probability that more than 135 people in the sample use a streaming service.
+</div>
+
+### Key Points – The Binomial Distribution
+- A Bernoulli trial has two outcomes, success (probability $p$) and failure (probability $1 - p$)
+- A binomial variable counts successes in $n$ independent trials with the same probability of success $p$
+- Binomial formula: $P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}$
+- Mean $\mu = np$ and standard deviation $\sigma = \sqrt{np(1-p)}$
+- Use the complement rule for "at least" questions to avoid adding many terms
+- When $np \geq 10$ and $n(1-p) \geq 10$, the binomial is approximately normal with the same mean and standard deviation

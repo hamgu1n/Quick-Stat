@@ -7,13 +7,13 @@ slug: "10-2-interpreting-correlation"
 
 ## Section 10.2 – Interpreting Correlation Coefficients
 
-Computing a correlation coefficient is straightforward; interpreting it correctly is where students often go wrong. In this section we address the most common pitfalls, the difference between association and causation, the effect of outliers, and what it means to test whether a correlation is statistically significant.
+Computing a correlation coefficient is straightforward; interpreting it correctly is where students often go wrong. In this section we address the most common pitfalls, the difference between association and causation and the effect of outliers.
 
 ### Strength Guidelines
 
 While there are no universal rules, the following guidelines are widely used to describe the strength of a correlation:
 
-| $|r|$ value | Interpretation |
+| $\lvert r \rvert$ value | Interpretation |
 |---|---|
 | 0.00 – 0.19 | Very weak or no association |
 | 0.20 – 0.39 | Weak association |
@@ -73,6 +73,8 @@ What does this tell us about the reliability of the original correlation? What s
 
 <OutlierCorrelationWidget />
 
+<Advanced title="Testing whether a correlation is significant">
+
 ### Testing Whether a Correlation Is Significant
 
 A computed correlation coefficient is a sample statistic, it varies from sample to sample. Just because $r \neq 0$ in our sample doesn't guarantee that the true population correlation $\rho$ (the Greek letter "rho") is nonzero. We can perform a hypothesis test:
@@ -108,10 +110,16 @@ A sample of $n = 20$ observations yields a Pearson correlation of $r = 0.45$.
 Explain why a correlation of $r = 0.30$ might be statistically significant with $n = 100$ but not with $n = 15$, even though the correlation coefficient is the same.
 </div>
 
+</Advanced>
+
 ### Key Points – Interpreting Correlation Coefficients
 - Strength guidelines: $|r| < 0.20$ weak, $0.40$ – $0.59$ moderate, $\geq 0.80$ very strong (field-dependent)
 - Correlation describes association, it does not establish causation
 - A lurking variable may drive both variables simultaneously, producing correlation without direct causation
 - Always inspect the scatterplot, outliers can dramatically distort $r$
+<Advanced compact>
+
 - Statistical significance of $r$ depends on both the size of $r$ and the sample size $n$
 - A significant correlation with a large sample may still represent a practically unimportant relationship, always consider effect size alongside p-values
+
+</Advanced>

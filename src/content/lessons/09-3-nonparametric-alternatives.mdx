@@ -1,0 +1,145 @@
+---
+title: "Nonparametric Alternatives"
+unit: 4
+chapter: 9
+slug: "09-3-nonparametric-alternatives"
+---
+
+## Section 9.3 – Nonparametric Alternatives
+
+The t-tests in Section 8.5 and the ANOVA in Section 9.1 all rely on an assumption of normality: either the data come from normal populations, or the samples are large enough for the Central Limit Theorem to take over. But what if the sample is small and the data are clearly skewed, or full of outliers? What if the data are ordinal, like ratings on a 1–5 scale, where it's not even clear that a "mean" makes sense? In these situations we turn to **nonparametric tests**, methods that do not assume the data follow any particular distribution.
+
+### The Idea Behind Nonparametric Tests
+
+A **parametric test** makes assumptions about the population's distribution, usually that it is normal, and tests a claim about a parameter like $\mu$. A **nonparametric test** makes far fewer assumptions. Most nonparametric tests work by replacing the actual data values with their **ranks** (1 for the smallest, 2 for the next smallest, and so on), the same idea behind Spearman's rank correlation in Section 10.1.
+
+Ranks have a big advantage: they are not affected by how extreme a value is. Whether the largest value in a dataset is 50 or 50,000, its rank is the same. This makes rank-based tests **robust to outliers and skewness**.
+
+Because they focus on ranks rather than means, nonparametric tests usually compare **medians** or overall distributions rather than means. Each of the common tests is an alternative to a parametric test you already know:
+
+| Situation | Parametric Test | Nonparametric Alternative |
+|---|---|---|
+| One sample or paired data | One-sample or paired t-test | Sign test, Wilcoxon signed-rank test |
+| Two independent groups | Two-sample t-test | Mann-Whitney U test (Wilcoxon rank-sum) |
+| Three or more independent groups | One-way ANOVA | Kruskal-Wallis test |
+| Association between two variables | Pearson's $r$ | Spearman's $r_s$ |
+
+### The Sign Test
+
+The **sign test** is the simplest nonparametric test. It tests a claim about a population median $M$:
+
+$$
+H_0: M = M_0 \quad \text{vs.} \quad H_a: M \neq M_0 \; (\text{or} < \text{or} >)
+$$
+
+The idea is simple. If the median really is $M_0$, then each observation is equally likely to fall above or below it. So we record whether each value is above $M_0$ (a "+") or below it (a "−"), discarding any values exactly equal to $M_0$. Under $H_0$, the number of "+" signs follows a $\text{Binomial}(n, 0.5)$ distribution from Section 5.5, and we find the p-value from that distribution.
+
+The sign test can also be used for paired data by looking at the sign of each difference. It throws away a lot of information, since it only looks at the direction of each value and not how far it is from $M_0$, but it requires almost no assumptions.
+
+<div className="example">
+**Example 9.3.1 – The Sign Test**
+
+A streaming service claims the median number of hours its subscribers watch per week is 10. A random sample of 12 subscribers reports the following weekly hours:
+
+3, 6, 7, 7, 8, 9, 9, 11, 12, 30, 41, 55
+
+1. Why might a t-test be a poor choice for these data?
+2. Count the number of values above and below 10.
+3. Under $H_0$, what distribution does the number of values above 10 follow?
+4. Find the two-tailed p-value and state your conclusion at $\alpha = 0.05$.
+</div>
+
+### The Wilcoxon Signed-Rank Test
+
+The **Wilcoxon signed-rank test** improves on the sign test by using the *size* of each difference as well as its direction. It is most often used for paired data, as an alternative to the paired t-test.
+
+The procedure is:
+
+1. Compute the difference for each pair, and drop any differences of 0
+2. Rank the *absolute values* of the differences from smallest to largest
+3. Attach the original sign to each rank
+4. Add up the positive ranks ($W^+$) and the negative ranks ($W^-$)
+
+If there is no difference between the paired measurements, the positive and negative ranks should be roughly balanced. If one sum is much larger than the other, that is evidence of a real difference. The p-value is usually found with software, using `wilcox.test()` in R with the argument `paired = TRUE`.
+
+<div className="example">
+**Example 9.3.2 – Signed Ranks**
+
+Eight students record how many minutes they spend on their phones on a day before and a day after turning on screen-time notifications:
+
+| Student | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| Before | 210 | 185 | 320 | 150 | 240 | 275 | 190 | 400 |
+| After | 180 | 190 | 250 | 140 | 215 | 230 | 195 | 290 |
+
+1. Compute the difference (Before − After) for each student.
+2. Rank the absolute differences and attach the signs.
+3. Calculate $W^+$ and $W^-$.
+4. Do the results suggest that the notifications reduced phone use? Explain in words.
+</div>
+
+### The Mann-Whitney U Test
+
+The **Mann-Whitney U test** (also called the **Wilcoxon rank-sum test**) is the nonparametric alternative to the two-sample t-test. It compares two *independent* groups.
+
+The procedure is:
+
+1. Combine both samples and rank all of the values together, from smallest to largest
+2. Add up the ranks belonging to each group
+3. Compare the rank sums
+
+If the two groups come from the same distribution, the high and low ranks should be mixed evenly between them, and the average rank in each group should be about the same. If one group's values tend to be larger, that group will collect most of the high ranks. In R, this test is also carried out with `wilcox.test()`, without the `paired` argument.
+
+<RankTestWidget />
+
+<div className="example">
+**Example 9.3.3 – Ranking Two Groups**
+
+An online store compares the time (in seconds) it takes customers to check out using two different checkout designs. Customers were randomly assigned to a design:
+
+- Design A: 45, 52, 60, 38, 210
+- Design B: 30, 33, 41, 28, 36
+
+1. Combine the two samples and rank all ten values.
+2. Find the sum of the ranks for each design.
+3. Which design tends to have faster checkout times?
+4. Why might the Mann-Whitney test be a better choice than the two-sample t-test for these data?
+</div>
+
+### The Kruskal-Wallis Test
+
+The **Kruskal-Wallis test** extends the Mann-Whitney idea to three or more independent groups, making it the nonparametric alternative to one-way ANOVA. All of the observations are ranked together, and the test compares the average rank in each group. The hypotheses are:
+
+- $H_0$: all groups come from the same distribution
+- $H_a$: at least one group tends to have larger or smaller values than the others
+
+Just as with ANOVA, a significant Kruskal-Wallis result tells us that *some* difference exists, but not *which* groups differ. In R, the test is carried out with `kruskal.test()`.
+
+<div className="example">
+**Example 9.3.4 – Choosing a Test**
+
+For each scenario, choose the most appropriate test from this chapter or Chapter 8, and explain your choice:
+
+1. Customer satisfaction ratings (on a 1–5 scale) are compared across three different store locations.
+2. The mean exam scores of 200 students taught with two different methods are compared, and both groups have roughly symmetric score distributions.
+3. Twelve people rate a product before and after watching an advertisement, and the differences are strongly skewed.
+4. Household incomes are compared between two small towns, and each sample contains a few very high incomes.
+</div>
+
+### When Should You Use a Nonparametric Test?
+
+Nonparametric tests are not automatically better. When the conditions for a t-test or ANOVA are met, the parametric test is usually more **powerful**, meaning it is more likely to detect a real difference (recall from Section 8.1 that power is $1 - \beta$). Nonparametric tests are the better choice when:
+
+- The sample size is small and the data are clearly skewed or contain outliers
+- The data are ordinal (ranks or ratings) rather than truly numerical
+- You are more interested in the median than the mean
+
+A good habit is to always graph your data first. A histogram or boxplot from Chapter 4 will usually tell you right away whether a normal-based method is reasonable.
+
+### Key Points – Nonparametric Alternatives
+- Nonparametric tests make few or no assumptions about the shape of the population distribution
+- Most nonparametric tests replace data values with ranks, making them robust to outliers and skewness
+- The sign test uses only whether values fall above or below $M_0$, and uses the $\text{Binomial}(n, 0.5)$ distribution
+- The Wilcoxon signed-rank test is the alternative to the paired t-test; the Mann-Whitney U test is the alternative to the two-sample t-test
+- The Kruskal-Wallis test is the alternative to one-way ANOVA
+- When their conditions are met, parametric tests are usually more powerful; choose nonparametric tests for small, skewed, or ordinal data

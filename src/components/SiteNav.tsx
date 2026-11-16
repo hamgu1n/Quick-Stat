@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { QuickStatLogo } from "@/components/QuickStatLogo";
+import { SettingsMenu } from "@/components/SettingsMenu";
 
 const LINKS = [
   { to: "/", label: "Home", end: true },
@@ -30,6 +31,8 @@ export function SiteNav() {
             </NavLink>
           ))}
         </nav>
+        <div className="site-nav-spacer" />
+        <SettingsMenu />
       </div>
     </header>
   );

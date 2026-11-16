@@ -1,9 +1,16 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import React, { useState } from "react";
+import type { MDXComponents } from "mdx/types";
 import { COMPONENTS } from "@/lib/widgetRegistry";
+import { Advanced } from "@/components/Advanced";
+
+// Everything an MDX lesson can use as a tag: every registered widget, plus
+// the <Advanced> wrapper for beyond-the-course content. Built once at module
+// load so the object identity is stable across renders.
+const LESSON_COMPONENTS: MDXComponents = { ...COMPONENTS, Advanced };
 
 type LessonModule = {
-  default: React.ComponentType<{ components?: Record<string, React.ComponentType> }>;
+  default: React.ComponentType<{ components?: MDXComponents }>;
   frontmatter: {
     title: string;
     slug: string;
@@ -148,7 +155,7 @@ export default function Textbook() {
           </select>
         </label>
 
-        <Lesson components={COMPONENTS} />
+        <Lesson components={LESSON_COMPONENTS} />
 
         <nav className="chapter-nav chapter-nav--bottom">
           {prev ? (

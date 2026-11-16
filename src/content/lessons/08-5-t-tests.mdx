@@ -2,12 +2,12 @@
 title: "t-Tests"
 unit: 4
 chapter: 8
-slug: "08-2-t-tests"
+slug: "08-5-t-tests"
 ---
 
-## Section 8.2 – t-Tests
+## Section 8.5 – t-Tests
 
-In the previous section we used the z-test when the population standard deviation $\sigma$ was known. In practice, $\sigma$ is almost never known, we estimate it using the sample standard deviation $s$. Substituting $s$ for $\sigma$ introduces additional uncertainty, especially for small samples. The **t-test** accounts for this extra uncertainty by using the **t-distribution** instead of the standard normal.
+In Section 8.1 we used the z-test when the population standard deviation $\sigma$ was known. In practice, $\sigma$ is almost never known, we estimate it using the sample standard deviation $s$. Substituting $s$ for $\sigma$ introduces additional uncertainty, especially for small samples. The **t-test** accounts for this extra uncertainty by using the **t-distribution** instead of the standard normal.
 
 ### The t-Distribution
 
@@ -28,7 +28,7 @@ This statistic follows a t-distribution with $n - 1$ degrees of freedom under $H
 <TDistWidget />
 
 <div className="example">
-**Example 8.2.1 – One-Sample t-Test**
+**Example 8.5.1 – One-Sample t-Test**
 
 A nutritionist claims that the mean daily sodium intake of adults in a certain city exceeds 2,300 mg (the recommended limit). A random sample of 16 adults shows a mean daily intake of 2,450 mg with a sample standard deviation of 320 mg.
 
@@ -59,7 +59,7 @@ $$
 The degrees of freedom for this test are approximated using the Welch formula (usually computed by software) and need not be memorized.
 
 <div className="example">
-**Example 8.2.2 – Two-Sample t-Test**
+**Example 8.5.2 – Two-Sample t-Test**
 
 A researcher wants to know whether two different study methods lead to different mean test scores. Group 1 (method A, $n_1 = 20$) has a mean score of 82 and standard deviation of 9. Group 2 (method B, $n_2 = 22$) has a mean score of 76 and standard deviation of 11.
 
@@ -76,7 +76,7 @@ A **paired t-test** is used when the two samples are not independent, each obser
 For a paired test, we compute the difference $d_i = x_{1i} - x_{2i}$ for each pair, then apply a one-sample t-test to the differences with $H_0: \mu_d = 0$.
 
 <div className="example">
-**Example 8.2.3 – Paired t-Test**
+**Example 8.5.3 – Paired t-Test**
 
 Eight students took a speed-reading course. Their reading speeds (words per minute) before and after the course are recorded:
 
@@ -95,7 +95,7 @@ At $\alpha = 0.05$, did the course significantly improve reading speed? Use a pa
 </div>
 
 <div className="example">
-**Example 8.2.4 – One-Sample vs. Two-Sample vs. Paired**
+**Example 8.5.4 – One-Sample vs. Two-Sample vs. Paired**
 
 For each scenario, identify whether you would use a one-sample t-test, a two-sample t-test, or a paired t-test:
 

@@ -26,6 +26,12 @@ import { CorrelationWidget } from "@/components/widgets/CorrelationWidget";
 import { OutlierCorrelationWidget } from "@/components/widgets/OutlierCorrelationWidget";
 import { RegressionWidget } from "@/components/widgets/RegressionWidget";
 import { ResidualWidget } from "@/components/widgets/ResidualWidget";
+import { NormalProbabilityWidget } from "@/components/widgets/NormalProbabilityWidget";
+import { NormalQQWidget } from "@/components/widgets/NormalQQWidget";
+import { BinomialWidget } from "@/components/widgets/BinomialWidget";
+import { OnePropTestWidget } from "@/components/widgets/OnePropTestWidget";
+import { TwoPropWidget } from "@/components/widgets/TwoPropWidget";
+import { RankTestWidget } from "@/components/widgets/RankTestWidget";
 
 /**
  * Single source of truth for every interactive textbook widget.
@@ -155,6 +161,30 @@ export const APPLETS: AppletEntry[] = [
     lessonSlug: "05-3-counting-techniques", lessonTitle: "Counting Techniques",
   },
   {
+    id: "NormalProbabilityWidget",
+    title: "Normal Probability Calculator",
+    component: NormalProbabilityWidget,
+    tags: ["normal distribution", "normal curve", "bell curve", "standard normal", "z-score", "z-table", "pnorm", "qnorm", "probability", "area under the curve", "percentile", "empirical rule", "68-95-99.7", "unit 3", "chapter 5"],
+    unit: 3, chapter: 5,
+    lessonSlug: "05-4-normal-distribution", lessonTitle: "The Normal Distribution",
+  },
+  {
+    id: "NormalQQWidget",
+    title: "Normal Probability (Q-Q) Plot",
+    component: NormalQQWidget,
+    tags: ["q-q plot", "qq plot", "normal probability plot", "qqnorm", "normality", "checking normality", "skewness", "skewed", "heavy tails", "histogram", "normal distribution", "unit 3", "chapter 5"],
+    unit: 3, chapter: 5,
+    lessonSlug: "05-4-normal-distribution", lessonTitle: "The Normal Distribution",
+  },
+  {
+    id: "BinomialWidget",
+    title: "Binomial Distribution Explorer",
+    component: BinomialWidget,
+    tags: ["binomial", "binomial distribution", "bernoulli", "bernoulli trial", "dbinom", "pbinom", "successes", "expected value", "np", "normal approximation", "success-failure condition", "probability distribution", "unit 3", "chapter 5"],
+    unit: 3, chapter: 5,
+    lessonSlug: "05-5-binomial-distribution", lessonTitle: "The Binomial Distribution",
+  },
+  {
     id: "SamplingDistWidget",
     title: "Sampling Distribution Simulator",
     component: SamplingDistWidget,
@@ -195,20 +225,20 @@ export const APPLETS: AppletEntry[] = [
     lessonSlug: "08-1-z-tests", lessonTitle: "z-Tests",
   },
   {
-    id: "TDistWidget",
-    title: "t-Distribution Explorer",
-    component: TDistWidget,
-    tags: ["t-distribution", "t distribution", "degrees of freedom", "df", "student's t", "students t distribution", "heavy tails", "unit 4", "chapter 8"],
+    id: "OnePropTestWidget",
+    title: "One-Proportion z-Test",
+    component: OnePropTestWidget,
+    tags: ["one-proportion z-test", "proportion test", "hypothesis test", "hypothesis testing", "p-value", "p0", "sample proportion", "p-hat", "prop.test", "success-failure condition", "null hypothesis", "unit 4", "chapter 8"],
     unit: 4, chapter: 8,
-    lessonSlug: "08-2-t-tests", lessonTitle: "t-Tests",
+    lessonSlug: "08-2-tests-for-a-proportion", lessonTitle: "Hypothesis Tests for a Proportion",
   },
   {
-    id: "TTestWidget",
-    title: "One-Sample t-Test",
-    component: TTestWidget,
-    tags: ["t-test", "t test", "hypothesis test", "hypothesis testing", "p-value", "null hypothesis", "alternative hypothesis", "one-sample", "degrees of freedom", "test statistic", "unit 4", "chapter 8"],
+    id: "TwoPropWidget",
+    title: "A/B Test Simulator",
+    component: TwoPropWidget,
+    tags: ["a/b test", "ab test", "two-proportion z-test", "difference of proportions", "difference in proportions", "pooled proportion", "prop.test", "confidence interval", "type i error", "power", "randomized experiment", "unit 4", "chapter 8"],
     unit: 4, chapter: 8,
-    lessonSlug: "08-2-t-tests", lessonTitle: "t-Tests",
+    lessonSlug: "08-3-difference-of-two-proportions", lessonTitle: "Difference of Two Proportions",
   },
   {
     id: "ChiSquareWidget",
@@ -216,7 +246,23 @@ export const APPLETS: AppletEntry[] = [
     component: ChiSquareWidget,
     tags: ["chi-square", "chi square", "chi-squared", "goodness of fit", "independence test", "test of independence", "contingency table", "observed vs expected", "p-value", "categorical data", "unit 4", "chapter 8"],
     unit: 4, chapter: 8,
-    lessonSlug: "08-3-chi-square-tests", lessonTitle: "Chi-Square Tests",
+    lessonSlug: "08-4-chi-square-tests", lessonTitle: "Chi-Square Tests",
+  },
+  {
+    id: "TDistWidget",
+    title: "t-Distribution Explorer",
+    component: TDistWidget,
+    tags: ["t-distribution", "t distribution", "degrees of freedom", "df", "student's t", "students t distribution", "heavy tails", "unit 4", "chapter 8"],
+    unit: 4, chapter: 8,
+    lessonSlug: "08-5-t-tests", lessonTitle: "t-Tests",
+  },
+  {
+    id: "TTestWidget",
+    title: "One-Sample t-Test",
+    component: TTestWidget,
+    tags: ["t-test", "t test", "hypothesis test", "hypothesis testing", "p-value", "null hypothesis", "alternative hypothesis", "one-sample", "degrees of freedom", "test statistic", "unit 4", "chapter 8"],
+    unit: 4, chapter: 8,
+    lessonSlug: "08-5-t-tests", lessonTitle: "t-Tests",
   },
   {
     id: "AnovaWidget",
@@ -233,6 +279,14 @@ export const APPLETS: AppletEntry[] = [
     tags: ["post-hoc", "post hoc test", "bonferroni", "tukey", "pairwise comparison", "multiple comparisons", "family-wise error rate", "anova", "unit 4", "chapter 9"],
     unit: 4, chapter: 9,
     lessonSlug: "09-2-interpreting-anova", lessonTitle: "Interpreting ANOVA Results",
+  },
+  {
+    id: "RankTestWidget",
+    title: "t-Test vs. Mann-Whitney",
+    component: RankTestWidget,
+    tags: ["nonparametric", "non-parametric", "mann-whitney", "mann-whitney u", "wilcoxon", "wilcoxon rank-sum", "rank-sum test", "ranks", "outliers", "robust", "median", "wilcox.test", "two-sample t-test", "unit 4", "chapter 9"],
+    unit: 4, chapter: 9,
+    lessonSlug: "09-3-nonparametric-alternatives", lessonTitle: "Nonparametric Alternatives",
   },
   {
     id: "CorrelationWidget",

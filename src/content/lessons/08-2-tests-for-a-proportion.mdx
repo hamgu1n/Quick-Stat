@@ -1,0 +1,152 @@
+---
+title: "Hypothesis Tests for a Proportion"
+unit: 4
+chapter: 8
+slug: "08-2-tests-for-a-proportion"
+---
+
+## Section 8.2 – Hypothesis Tests for a Proportion
+
+Many of the most common questions in statistics are about proportions rather than means. What fraction of users click on a new website button? What percentage of voters support a ballot measure? Has the share of adults who get their news from social media changed? In Section 7.2 we built confidence intervals for a proportion. In this section we use the hypothesis testing framework from Section 8.1 to test claims about a proportion.
+
+### Setting Up the Test
+
+A hypothesis test for a proportion compares the sample proportion $\hat{p}$ to a claimed value of the population proportion, which we call $p_0$. The hypotheses take one of three forms:
+
+- $H_0$: $p = p_0$ vs. $H_a$: $p \neq p_0$ (two-tailed)
+- $H_0$: $p = p_0$ vs. $H_a$: $p > p_0$ (right-tailed)
+- $H_0$: $p = p_0$ vs. $H_a$: $p < p_0$ (left-tailed)
+
+The null hypothesis always contains the equals sign, and the hypotheses are always about the population proportion $p$, never the sample proportion $\hat{p}$. We already know what $\hat{p}$ is, since we calculated it from our data.
+
+<div className="example">
+**Example 8.2.1 – Writing Hypotheses for a Proportion**
+
+For each scenario, define the parameter $p$ in words and write $H_0$ and $H_a$:
+
+1. A company claims that 80% of its customers are satisfied. A consumer group suspects the true percentage is lower.
+2. Historically, 3% of visitors to a website make a purchase. After a redesign, the company wants to know whether the purchase rate has changed.
+3. A news article claims that more than half of teenagers use social media for more than 3 hours a day.
+</div>
+
+### Conditions for the Test
+
+Like the confidence interval for a proportion, the test relies on the sampling distribution of $\hat{p}$ being approximately normal. Before carrying out the test, we check two conditions:
+
+1. **Independence**: the observations are independent. This is reasonable when the data come from a random sample (or a randomized experiment), and the sample is less than 10% of the population.
+2. **Success-failure condition**: we expect at least 10 successes and 10 failures *if the null hypothesis is true*:
+
+$$
+np_0 \geq 10 \qquad \text{and} \qquad n(1 - p_0) \geq 10
+$$
+
+Notice that we use $p_0$ here, not $\hat{p}$. A hypothesis test is carried out assuming $H_0$ is true, so we use the value that $H_0$ claims. This is a key difference from the confidence interval, where we have no claimed value and must use $\hat{p}$ instead.
+
+### The One-Proportion z-Test
+
+When the conditions are met, the test statistic is:
+
+$$
+z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0(1 - p_0)}{n}}}
+$$
+
+The denominator is the **standard error** of $\hat{p}$ calculated under the assumption that $H_0$ is true. Just like the z-test for a mean, this statistic tells us how many standard errors the sample proportion falls from the claimed proportion. Under $H_0$, it follows the standard normal distribution, so we find the p-value using the methods from Section 5.4:
+
+- **Right-tailed**: p-value $= P(Z > z)$
+- **Left-tailed**: p-value $= P(Z < z)$
+- **Two-tailed**: p-value $= 2 \times P(Z > |z|)$
+
+Then we compare the p-value to $\alpha$ and state a conclusion in context, exactly as in Section 8.1.
+
+<OnePropTestWidget />
+
+<div className="example">
+**Example 8.2.2 – One-Proportion z-Test**
+
+A social media platform claims that 40% of its users log in every day. A researcher takes a random sample of 500 users and finds that 182 of them logged in every day.
+
+At $\alpha = 0.05$, is there evidence that the true proportion of daily users is different from 40%?
+
+1. State $H_0$ and $H_a$, defining $p$ in words.
+2. Check the conditions.
+3. Calculate $\hat{p}$ and the z-test statistic.
+4. Find the p-value.
+5. State your conclusion in context.
+</div>
+
+<div className="example">
+**Example 8.2.3 – A One-Tailed Test**
+
+An online retailer's checkout page historically converts 12% of visitors into buyers. After adding a "free shipping" banner, the retailer tracks 850 randomly selected visitors and finds that 124 make a purchase.
+
+At $\alpha = 0.05$, is there evidence that the banner *increased* the conversion rate?
+
+1. State $H_0$ and $H_a$.
+2. Check the conditions.
+3. Calculate the test statistic and p-value.
+4. State your conclusion in context. Can the retailer conclude that the banner *caused* the change? What would they need to know about how the data were collected?
+</div>
+
+### Connecting Tests and Confidence Intervals
+
+Confidence intervals and two-tailed tests are closely linked. A 95% confidence interval contains the values of $p$ that are plausible based on our data. If $p_0$ falls *outside* the 95% interval, a two-tailed test at $\alpha = 0.05$ will reject $H_0$. If $p_0$ falls *inside* the interval, the test will fail to reject $H_0$.
+
+The match is not always exact for proportions, since the interval uses $\hat{p}$ in its standard error while the test uses $p_0$. But the two methods almost always lead to the same conclusion, and the confidence interval has an advantage: it tells us not only *whether* $p$ differs from $p_0$, but by *how much*.
+
+<div className="example">
+**Example 8.2.4 – Interval or Test?**
+
+A poll of 1,200 randomly selected adults finds that 54% support a new data privacy law. A 95% confidence interval for the true proportion is (0.512, 0.568).
+
+1. Based on the interval, would a two-tailed test at $\alpha = 0.05$ reject $H_0$: $p = 0.50$? Explain.
+2. Would it reject $H_0$: $p = 0.55$?
+3. What does the interval tell you that the test alone does not?
+</div>
+
+### Choosing a Sample Size
+
+Before collecting data, researchers often want to know how large a sample they need to estimate a proportion with a certain margin of error. The margin of error for a proportion is
+
+$$
+ME = z^* \sqrt{\frac{p(1-p)}{n}}
+$$
+
+Solving this for $n$ gives
+
+$$
+n = \left(\frac{z^*}{ME}\right)^2 p(1 - p)
+$$
+
+But there is a catch: we don't know $p$ before collecting the data. If we have a reasonable estimate from a previous study, we use it. If not, we use $p = 0.5$, because $p(1-p)$ is largest when $p = 0.5$. This gives the most conservative (largest) sample size, guaranteeing our margin of error is no larger than the target. Always round $n$ *up* to the next whole number.
+
+<div className="example">
+**Example 8.2.5 – Sample Size for a Proportion**
+
+A campus newspaper wants to estimate the proportion of students who use a smartphone app to order food, with a margin of error of 4 percentage points at the 95% confidence level.
+
+1. How many students should they survey if they have no prior estimate of $p$?
+2. A survey last year found that about 30% of students used such an app. How many students should they survey using this estimate?
+3. Why is the answer to part 2 smaller than the answer to part 1?
+</div>
+
+### Statistical vs. Practical Significance
+
+With a very large sample, even a tiny difference between $\hat{p}$ and $p_0$ can produce a small p-value. For example, a website with millions of visitors might find that a new button color increases the click rate from 5.00% to 5.03%, with a p-value well below 0.05. The result is **statistically significant**, meaning it is unlikely to be due to chance alone, but it may not be **practically significant**, meaning large enough to matter in the real world. A good analysis reports both the p-value and the size of the effect, which is another reason confidence intervals are so useful.
+
+<div className="example">
+**Example 8.2.6 – Is It Meaningful?**
+
+A large online study of 2,000,000 users finds that a redesigned sign-up page raises the sign-up rate from 8.0% to 8.1%, with a p-value of 0.0001.
+
+1. Is this result statistically significant at $\alpha = 0.05$?
+2. Is it practically significant? What other information would help a company decide whether the redesign is worth it?
+</div>
+
+### Key Points – Hypothesis Tests for a Proportion
+- Hypotheses are always about the population proportion $p$; the null hypothesis is $H_0$: $p = p_0$
+- Check independence and the success-failure condition using $p_0$: $np_0 \geq 10$ and $n(1-p_0) \geq 10$
+- Test statistic: $z = (\hat{p} - p_0) / \sqrt{p_0(1-p_0)/n}$, which uses $p_0$ in the standard error
+- Find the p-value from the standard normal distribution, then compare to $\alpha$ and state the conclusion in context
+- A two-tailed test at level $\alpha$ and a $(1 - \alpha)$ confidence interval almost always agree, but the interval also shows the size of the effect
+- To plan a study, use $n = (z^*/ME)^2 \, p(1-p)$ with $p = 0.5$ if no prior estimate is available, and round up
+- Statistical significance does not guarantee practical significance, especially with very large samples

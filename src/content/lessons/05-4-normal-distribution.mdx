@@ -1,0 +1,149 @@
+---
+title: "The Normal Distribution"
+unit: 3
+chapter: 5
+slug: "05-4-normal-distribution"
+---
+
+## Section 5.4 – The Normal Distribution
+
+So far, our probability rules have dealt with outcomes we can list and count, like rolling a die or drawing a card. But many of the variables we care about, like heights, test scores, or the time it takes a web page to load, are measured on a continuous scale. For these, we need a *probability distribution*, a model that tells us how likely different ranges of values are. The most important of these models, and the one that shows up again and again in statistics, is the **normal distribution**.
+
+### The Normal Curve
+
+A **normal distribution** is a symmetric, bell-shaped distribution that is completely described by two parameters: its mean $\mu$ and its standard deviation $\sigma$. We write $X \sim N(\mu, \sigma)$ to say that the variable $X$ follows a normal distribution with mean $\mu$ and standard deviation $\sigma$.
+
+Every normal curve shares the same basic features:
+
+- It is symmetric around the mean, so the mean, median, and mode are all equal
+- It is highest at the mean and tapers off equally in both directions
+- The total area under the curve is 1, representing 100% of the probability
+- The tails extend forever in both directions but get very close to zero within a few standard deviations of the mean
+
+For a continuous variable, probability is represented by **area under the curve**. The probability that $X$ falls between two values $a$ and $b$ is the area under the normal curve between $a$ and $b$. One consequence of this is that the probability of any single exact value is 0, so $P(X \leq a)$ and $P(X < a)$ are the same for a normal distribution.
+
+You already saw in Section 3.2 how changing $\mu$ shifts the curve and changing $\sigma$ widens or narrows it. No matter where it is centered or how spread out it is, the *shape* is always the same bell curve.
+
+<NormalProbabilityWidget />
+
+### The 68-95-99.7 Rule
+
+Because every normal curve has the same shape, the same proportion of the data always falls within a given number of standard deviations of the mean. This gives us a quick rule of thumb called the **Empirical Rule**, or the **68-95-99.7 Rule**:
+
+- About **68%** of values fall within 1 standard deviation of the mean, between $\mu - \sigma$ and $\mu + \sigma$
+- About **95%** of values fall within 2 standard deviations of the mean, between $\mu - 2\sigma$ and $\mu + 2\sigma$
+- About **99.7%** of values fall within 3 standard deviations of the mean, between $\mu - 3\sigma$ and $\mu + 3\sigma$
+
+This rule is useful for quick estimates and for spotting unusual values. A value more than 2 standard deviations from the mean is fairly unusual, and a value more than 3 standard deviations away is very rare.
+
+<div className="example">
+**Example 5.4.1 – Using the 68-95-99.7 Rule**
+
+The time users spend on a social media app per session is approximately normally distributed with a mean of 22 minutes and a standard deviation of 6 minutes.
+
+1. Between what two values do about 68% of session times fall?
+2. Between what two values do about 95% of session times fall?
+3. About what percentage of sessions last longer than 34 minutes?
+</div>
+
+### The Standard Normal Distribution
+
+Since there are infinitely many normal distributions, one for every combination of $\mu$ and $\sigma$, it would be impossible to build a separate table for each one. Instead, we convert any normal variable to a single reference distribution called the **standard normal distribution**, which has a mean of 0 and a standard deviation of 1, written $Z \sim N(0, 1)$.
+
+We make this conversion with the z-score formula from Section 3.3, written here with the population mean and standard deviation:
+
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+The z-score tells us how many standard deviations $x$ is from the mean. Once a value has been converted to a z-score, we can find probabilities using a **z-table** (a table of areas under the standard normal curve) or using software. In R, the function `pnorm()` gives the area to the *left* of a value.
+
+### Finding Probabilities
+
+To find a probability for a normal variable, follow three steps:
+
+1. Draw a sketch of the normal curve and shade the area you want
+2. Convert the value(s) to z-scores
+3. Use a z-table or software to find the shaded area
+
+Since the table and `pnorm()` both give the area to the left, the area to the right of a value is found with the complement rule from Section 5.1:
+
+$$
+P(Z > z) = 1 - P(Z < z)
+$$
+
+and the area between two values is the difference of two left areas:
+
+$$
+P(a < Z < b) = P(Z < b) - P(Z < a)
+$$
+
+<div className="example">
+**Example 5.4.2 – Finding a Probability**
+
+SAT math scores are approximately normally distributed with a mean of 520 and a standard deviation of 115.
+
+1. What proportion of students score below 400?
+2. What proportion of students score above 700?
+3. What proportion of students score between 450 and 600?
+</div>
+
+<div className="example">
+**Example 5.4.3 – Comparing Using the Normal Model**
+
+An online retailer finds that delivery times for standard shipping are approximately normal with a mean of 4.2 days and a standard deviation of 0.9 days.
+
+1. What is the probability that a package arrives in under 3 days?
+2. The retailer advertises "delivery within 6 days." What percentage of packages fail to meet this promise?
+</div>
+
+### Finding Percentiles
+
+Sometimes we want to work in the opposite direction. Instead of starting with a value and finding a probability, we start with a probability and find the value. For example, what score does a student need to be in the top 10%? This is a question about a **percentile**.
+
+To find a percentile:
+
+1. Find the z-score that has the desired area to its left (using a z-table in reverse, or `qnorm()` in R)
+2. Convert the z-score back to the original units by solving the z-score formula for $x$:
+
+$$
+x = \mu + z\sigma
+$$
+
+<div className="example">
+**Example 5.4.4 – Finding a Percentile**
+
+Using the SAT math scores from Example 5.4.2 (mean 520, standard deviation 115):
+
+1. What score marks the 90th percentile?
+2. A scholarship program accepts only students in the top 2.5%. What is the minimum score needed?
+</div>
+
+### Is the Normal Model Appropriate?
+
+The normal distribution is a *model*, and like any model, it only works when the data actually look approximately normal. Before using normal calculations, we should check:
+
+- **A histogram** of the data should look roughly symmetric and bell-shaped, without strong skew or multiple peaks
+- **A normal probability plot** (also called a Q-Q plot) plots the data against the values we would expect from a normal distribution. If the data are approximately normal, the points fall close to a straight line. Curves or bends in the plot indicate skewness, and points far off the line at the ends indicate unusually heavy tails or outliers
+
+<NormalQQWidget />
+
+<div className="example">
+**Example 5.4.5 – Checking Normality**
+
+For each variable, decide whether a normal model is likely to be reasonable, and explain why:
+
+1. The heights of adult men in a large city.
+2. The number of followers for a random sample of Instagram accounts.
+3. The weights of bags of chips filled by a factory machine.
+4. Household incomes in the United States.
+</div>
+
+### Key Points – The Normal Distribution
+- A normal distribution $N(\mu, \sigma)$ is symmetric and bell-shaped, and is completely determined by its mean and standard deviation
+- For continuous variables, probability is the area under the curve; the total area is 1
+- The 68-95-99.7 Rule: about 68%, 95%, and 99.7% of values fall within 1, 2, and 3 standard deviations of the mean
+- Any normal variable can be standardized with $z = (x - \mu)/\sigma$, giving the standard normal distribution $N(0, 1)$
+- Tables and `pnorm()` give the area to the left; use the complement rule for right-tail areas
+- To find a percentile, find the z-score first and then convert back with $x = \mu + z\sigma$
+- Always check that a normal model is reasonable using a histogram or normal probability plot before using normal calculations

@@ -63,6 +63,8 @@ Below is a simplified ANOVA table from a study comparing mean weekly exercise ho
 3. A Tukey test reveals that the 18–25 and 41+ groups are significantly different, but no other pairs are. Summarize the findings in plain language.
 </div>
 
+<Advanced title="Effect size (eta-squared)">
+
 <div className="example">
 **Example 9.2.3 – Effect Size in ANOVA**
 
@@ -76,6 +78,8 @@ where SST = SSB + SSW is the total sum of squares.
 
 Using the values from Example 9.2.2 (SSB = 84.4, SST = 437.8), calculate $\eta^2$ and interpret it. General guidelines: $\eta^2 \approx 0.01$ is small, $\approx 0.06$ is medium, $\approx 0.14$ is large.
 </div>
+
+</Advanced>
 
 <div className="example">
 **Example 9.2.4 – Putting It All Together**
@@ -96,5 +100,10 @@ Summarize the findings as if writing a brief paragraph for a school board report
 - Running multiple pairwise t-tests after ANOVA inflates the Type I error rate, use post-hoc tests instead
 - Tukey's HSD is the most common post-hoc test; it controls the family-wise error rate while comparing all pairs
 - The Bonferroni correction divides $\alpha$ by the number of comparisons, more conservative than Tukey
-- Effect size ($\eta^2$ = SSB / SST) measures practical significance beyond statistical significance
 - Always report post-hoc results alongside the overall ANOVA so readers can see which specific groups differ
+
+<Advanced compact>
+
+- Effect size ($\eta^2$ = SSB / SST) measures practical significance beyond statistical significance
+
+</Advanced>

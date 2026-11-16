@@ -1,0 +1,124 @@
+---
+title: "Difference of Two Proportions"
+unit: 4
+chapter: 8
+slug: "08-3-difference-of-two-proportions"
+---
+
+## Section 8.3 – Difference of Two Proportions
+
+In the previous section we compared a single proportion to a claimed value. But many of the most interesting questions involve *comparing two groups*. Does a new website layout get a higher click rate than the old one? Are younger adults more likely than older adults to get their news from social media? Did a vaccine group get sick less often than a placebo group? Each of these compares two population proportions, $p_1$ and $p_2$, and the quantity we care about is their difference, $p_1 - p_2$.
+
+### A/B Testing
+
+Comparing two proportions is the statistics behind **A/B testing**, one of the most common tools used by tech companies and online retailers. In an A/B test, visitors to a website are randomly assigned to see either version A or version B of a page, and the company compares the proportion of visitors in each group who take some action, like clicking a button or making a purchase.
+
+Because visitors are *randomly assigned*, an A/B test is a randomized experiment. As we saw in Section 2.2, this means that if version B performs significantly better, we can conclude that the change *caused* the improvement, not just that the two are associated.
+
+### The Sampling Distribution of $\hat{p}_1 - \hat{p}_2$
+
+Our point estimate for $p_1 - p_2$ is the difference in sample proportions, $\hat{p}_1 - \hat{p}_2$. Like a single sample proportion, this difference varies from sample to sample. When the conditions below are met, its sampling distribution is approximately normal with standard error
+
+$$
+SE = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+$$
+
+Notice that the variances of the two groups *add*, even though we are subtracting the proportions. Each sample adds its own uncertainty, so the difference is more uncertain than either proportion alone.
+
+The conditions are:
+
+1. **Independence within groups**: the observations in each group are independent (for example, from random samples or random assignment)
+2. **Independence between groups**: the two groups are independent of each other, meaning the data are not paired
+3. **Success-failure condition**: there are at least 10 successes and 10 failures in *each* group
+
+### Confidence Interval for $p_1 - p_2$
+
+Since we don't know $p_1$ and $p_2$, we estimate the standard error by plugging in the sample proportions. The confidence interval for $p_1 - p_2$ is:
+
+$$
+(\hat{p}_1 - \hat{p}_2) \pm z^* \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
+$$
+
+When interpreting this interval, pay attention to whether it contains 0. If the entire interval is above 0, the data suggest $p_1$ is larger than $p_2$. If the entire interval is below 0, the data suggest $p_1$ is smaller. If the interval contains 0, then "no difference" is a plausible value.
+
+<div className="example">
+**Example 8.3.1 – Confidence Interval for a Difference**
+
+A survey asks randomly selected adults whether they regularly get news from social media. Of 600 adults aged 18–29, 438 said yes. Of 800 adults aged 50–64, 344 said yes.
+
+1. Calculate $\hat{p}_1$ and $\hat{p}_2$.
+2. Check the conditions.
+3. Construct a 95% confidence interval for $p_1 - p_2$.
+4. Interpret the interval in context. Does it suggest a real difference between the age groups?
+</div>
+
+### Hypothesis Test for $p_1 - p_2$
+
+The most common test for two proportions checks whether they are equal:
+
+$$
+H_0: p_1 = p_2 \quad \text{vs.} \quad H_a: p_1 \neq p_2 \; (\text{or} < \text{or} >)
+$$
+
+which we can also write as $H_0: p_1 - p_2 = 0$.
+
+Just like in Section 8.2, we carry out the test assuming $H_0$ is true. If $H_0$ is true, the two groups share the same proportion, so our best estimate of that common proportion combines both samples. This is called the **pooled proportion**:
+
+$$
+\hat{p}_{pool} = \frac{x_1 + x_2}{n_1 + n_2}
+$$
+
+where $x_1$ and $x_2$ are the number of successes in each group. We use the pooled proportion both to check the success-failure condition and to compute the standard error. The test statistic is:
+
+$$
+z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\dfrac{1}{n_1} + \dfrac{1}{n_2}\right)}}
+$$
+
+We then find the p-value from the standard normal distribution and draw a conclusion, just as before. In R, the function `prop.test()` carries out this test.
+
+<TwoPropWidget />
+
+<div className="example">
+**Example 8.3.2 – An A/B Test**
+
+An online store tests two versions of its product page. Visitors are randomly assigned to one of the versions:
+
+| Version | Visitors | Purchases |
+|---|---|---|
+| A (original) | 1,500 | 96 |
+| B (new layout) | 1,500 | 129 |
+
+At $\alpha = 0.05$, is there evidence that the two versions have different purchase rates?
+
+1. State $H_0$ and $H_a$.
+2. Calculate the pooled proportion and check the conditions.
+3. Calculate the test statistic and p-value.
+4. State your conclusion in context. Since this was a randomized experiment, what can the store conclude about the new layout?
+</div>
+
+<div className="example">
+**Example 8.3.3 – Pooled or Not?**
+
+For each task, decide whether you should use the pooled proportion $\hat{p}_{pool}$ or the separate sample proportions $\hat{p}_1$ and $\hat{p}_2$ in the standard error, and explain why:
+
+1. Constructing a 90% confidence interval for $p_1 - p_2$.
+2. Testing $H_0: p_1 = p_2$.
+3. Checking the success-failure condition for a hypothesis test.
+</div>
+
+<div className="example">
+**Example 8.3.4 – Observational Data**
+
+A researcher compares the proportion of Facebook posts that receive at least 100 likes for posts that include a photo versus posts that do not. They find a statistically significant difference, with photo posts receiving 100+ likes more often.
+
+1. Was this a randomized experiment or an observational study?
+2. Can the researcher conclude that adding a photo *causes* more likes? What other variables might explain the difference?
+</div>
+
+### Key Points – Difference of Two Proportions
+- Comparing two proportions estimates $p_1 - p_2$ using $\hat{p}_1 - \hat{p}_2$
+- A/B tests randomly assign subjects to two versions, so a significant difference supports a cause-and-effect conclusion
+- Conditions: independence within and between groups, and at least 10 successes and 10 failures in each group
+- Confidence interval: $(\hat{p}_1 - \hat{p}_2) \pm z^* \sqrt{\hat{p}_1(1-\hat{p}_1)/n_1 + \hat{p}_2(1-\hat{p}_2)/n_2}$; check whether it contains 0
+- For a test of $H_0: p_1 = p_2$, use the pooled proportion $\hat{p}_{pool} = (x_1 + x_2)/(n_1 + n_2)$ in the standard error
+- Variances add when taking a difference, so the difference is more uncertain than either single proportion
