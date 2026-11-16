@@ -53,6 +53,22 @@ For a dataset of 10 students, the following summary statistics are recorded:
 - $r = 0.85$
 
 Find the equation of the least squares regression line.
+
+<Solution>
+
+$$
+b = r\frac{s_y}{s_x} = 0.85 \cdot \frac{8}{1.5} \approx 4.533
+$$
+
+$$
+a = \bar{y} - b\bar{x} = 72 - 4.533(4) \approx 53.87
+$$
+
+$$
+\hat{y} = 53.87 + 4.53x
+$$
+
+</Solution>
 </div>
 
 <div className="example">
@@ -67,6 +83,14 @@ $$
 1. Interpret the slope in the context of the problem.
 2. Interpret the y-intercept. Does it have a meaningful practical interpretation here?
 3. Predict the exam score for a student who studies 7 hours.
+
+<Solution>
+
+1. **Slope:** for each additional hour studied, the predicted exam score **increases by about 4.53 points**.
+2. **Intercept:** a student who studies 0 hours is predicted to score **48.5**. This is meaningful only if the data include students who studied close to 0 hours. If they don't, it is an extrapolation and shouldn't be taken literally.
+3. $\hat{y} = 48.5 + 4.53(7) = 48.5 + 31.71 = 80.21$, so about **80 points**.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -77,6 +101,14 @@ Using the regression line from Example 11.1.2, a student studied 5 hours and sco
 1. What is the predicted score for a student who studied 5 hours?
 2. Calculate the residual for this student.
 3. Is the residual positive or negative, and what does that mean?
+
+<Solution>
+
+1. $\hat{y} = 48.5 + 4.53(5) = 71.15$
+2. Residual $= y - \hat{y} = 76 - 71.15 = 4.85$
+3. The residual is **positive**, so the student scored **4.85 points higher than the model predicted**. The point lies above the regression line.
+
+</Solution>
 </div>
 
 ### Extrapolation
@@ -93,6 +125,12 @@ $$
 $$
 
 A startup plans to hire 150 employees and uses this equation to project revenues. What is the concern with this prediction?
+
+<Solution>
+
+This is **extrapolation**. The model was built using businesses with 5 to 30 employees, and 150 is far outside that range. We have no evidence that the relationship stays linear at that size. Larger companies may have different costs, markets, and efficiencies. The prediction, $12 + 3.8(150) = 582$ thousand dollars per month, could be badly wrong.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -111,9 +149,29 @@ A dataset of 8 cities records average January temperature ($x$, in °F) and heat
 | G | 50 | 20 |
 | H | 55 | 17 |
 
-$\bar{x} = 37.5$, $\bar{y} = 30.5$, $s_x = 12.2$, $s_y = 9.7$, $r = -0.997$.
+$\bar{x} = 37.5$, $\bar{y} = 30.5$, $s_x = 12.25$, $s_y = 10.0$, $r = -0.997$.
 
 Find the regression equation and predict heating oil consumption for a city with an average January temperature of 28°F.
+
+<Solution>
+
+$$
+b = r\frac{s_y}{s_x} = -0.997 \cdot \frac{10.0}{12.25} \approx -0.814
+$$
+
+$$
+a = \bar{y} - b\bar{x} = 30.5 - (-0.814)(37.5) \approx 61.02
+$$
+
+$$
+\hat{y} = 61.02 - 0.814x
+$$
+
+**Prediction at 28°F:** $\hat{y} = 61.02 - 0.814(28) \approx 38.2$ gallons per household per month.
+
+The slope means each 1°F increase in average January temperature is associated with about 0.81 fewer gallons of heating oil per month.
+
+</Solution>
 </div>
 
 ### Key Points – Least Squares Method

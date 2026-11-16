@@ -47,6 +47,21 @@ A streaming service claims the median number of hours its subscribers watch per 
 2. Count the number of values above and below 10.
 3. Under $H_0$, what distribution does the number of values above 10 follow?
 4. Find the two-tailed p-value and state your conclusion at $\alpha = 0.05$.
+
+<Solution>
+
+1. The data are **strongly skewed right** with clear outliers (30, 41, 55) in a small sample of 12, so the normality condition for a t-test isn't met. The mean would also be pulled far above the typical value.
+2. **Above 10:** 11, 12, 30, 41, 55, which is **5 values**. **Below 10:** 3, 6, 7, 7, 8, 9, 9, which is **7 values**. (No values equal 10, so none are discarded.)
+3. Under $H_0$ (median = 10), each value is equally likely to fall above or below 10, so the number above 10 follows a **$\text{Binomial}(12, 0.5)$** distribution.
+4. Getting 5 above is in the lower tail, so
+
+$$
+\text{p-value} = 2 \times P(X \leq 5) = 2 \times 0.387 \approx 0.774
+$$
+
+   Since $0.774 > 0.05$, we **fail to reject $H_0$**. A 5-to-7 split is very consistent with a median of 10 hours, so the data give no evidence against the streaming service's claim.
+
+</Solution>
 </div>
 
 ### The Wilcoxon Signed-Rank Test
@@ -60,7 +75,7 @@ The procedure is:
 3. Attach the original sign to each rank
 4. Add up the positive ranks ($W^+$) and the negative ranks ($W^-$)
 
-If there is no difference between the paired measurements, the positive and negative ranks should be roughly balanced. If one sum is much larger than the other, that is evidence of a real difference. The p-value is usually found with software, using `wilcox.test()` in R with the argument `paired = TRUE`.
+If there is no difference between the paired measurements, the positive and negative ranks should be roughly balanced. If one sum is much larger than the other, that is evidence of a real difference. The p-value is usually found with software.
 
 <div className="example">
 **Example 9.3.2 – Signed Ranks**
@@ -76,6 +91,26 @@ Eight students record how many minutes they spend on their phones on a day befor
 2. Rank the absolute differences and attach the signs.
 3. Calculate $W^+$ and $W^-$.
 4. Do the results suggest that the notifications reduced phone use? Explain in words.
+
+<Solution>
+
+1. Differences (Before − After):
+
+| Student | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| Difference | 30 | −5 | 70 | 10 | 25 | 45 | −5 | 110 |
+
+2. Rank the absolute differences. The two 5s tie for ranks 1 and 2, so each gets the average rank, 1.5:
+
+| Absolute difference | 5 | 5 | 10 | 25 | 30 | 45 | 70 | 110 |
+|---|---|---|---|---|---|---|---|---|
+| Rank | 1.5 | 1.5 | 3 | 4 | 5 | 6 | 7 | 8 |
+| Sign | − | − | + | + | + | + | + | + |
+
+3. $W^+ = 3 + 4 + 5 + 6 + 7 + 8 = 33$ and $W^- = 1.5 + 1.5 = 3$. As a check, $W^+ + W^- = 36 = \frac{8 \times 9}{2}$.
+4. **Yes, the results suggest that the notifications reduced phone use.** Six of the eight students used their phones less afterward, and they include *all* of the large changes. The two increases were tiny (5 minutes each). The positive ranks dominate, 33 to 3. (Software gives a one-sided p-value of about 0.02.)
+
+</Solution>
 </div>
 
 ### The Mann-Whitney U Test
@@ -88,7 +123,7 @@ The procedure is:
 2. Add up the ranks belonging to each group
 3. Compare the rank sums
 
-If the two groups come from the same distribution, the high and low ranks should be mixed evenly between them, and the average rank in each group should be about the same. If one group's values tend to be larger, that group will collect most of the high ranks. In R, this test is also carried out with `wilcox.test()`, without the `paired` argument.
+If the two groups come from the same distribution, the high and low ranks should be mixed evenly between them, and the average rank in each group should be about the same. If one group's values tend to be larger, that group will collect most of the high ranks. As with the signed-rank test, the p-value is usually found with software.
 
 <RankTestWidget />
 
@@ -104,6 +139,21 @@ An online store compares the time (in seconds) it takes customers to check out u
 2. Find the sum of the ranks for each design.
 3. Which design tends to have faster checkout times?
 4. Why might the Mann-Whitney test be a better choice than the two-sample t-test for these data?
+
+<Solution>
+
+1. Combined and sorted, with ranks:
+
+| Value | 28 | 30 | 33 | 36 | 38 | 41 | 45 | 52 | 60 | 210 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Design | B | B | B | B | A | B | A | A | A | A |
+| Rank | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+
+2. **Design A:** $5 + 7 + 8 + 9 + 10 = 39$. **Design B:** $1 + 2 + 3 + 4 + 6 = 16$. (Check: $39 + 16 = 55 = \frac{10 \times 11}{2}$.)
+3. **Design B** tends to be faster. Its customers hold nearly all of the low ranks, meaning the shortest checkout times.
+4. The 210-second value is an extreme outlier in a tiny sample. It inflates Design A's standard deviation, which weakens the t-test (here $p \approx 0.22$, not significant). Mann-Whitney only sees that 210 is the *largest* value (rank 10), not how extreme it is, so it still detects the clear difference ($p \approx 0.016$).
+
+</Solution>
 </div>
 
 ### The Kruskal-Wallis Test
@@ -113,7 +163,7 @@ The **Kruskal-Wallis test** extends the Mann-Whitney idea to three or more indep
 - $H_0$: all groups come from the same distribution
 - $H_a$: at least one group tends to have larger or smaller values than the others
 
-Just as with ANOVA, a significant Kruskal-Wallis result tells us that *some* difference exists, but not *which* groups differ. In R, the test is carried out with `kruskal.test()`.
+Just as with ANOVA, a significant Kruskal-Wallis result tells us that *some* difference exists, but not *which* groups differ. As with the other rank tests, the p-value is found with software.
 
 <div className="example">
 **Example 9.3.4 – Choosing a Test**
@@ -124,6 +174,15 @@ For each scenario, choose the most appropriate test from this chapter or Chapter
 2. The mean exam scores of 200 students taught with two different methods are compared, and both groups have roughly symmetric score distributions.
 3. Twelve people rate a product before and after watching an advertisement, and the differences are strongly skewed.
 4. Household incomes are compared between two small towns, and each sample contains a few very high incomes.
+
+<Solution>
+
+1. **Kruskal-Wallis test**: three independent groups, with ordinal data (ratings on a 1–5 scale).
+2. **Two-sample t-test**: two independent groups, large samples, and roughly symmetric distributions, so the parametric test's conditions are met (and it is more powerful).
+3. **Wilcoxon signed-rank test**: paired data (before and after on the same people) with strongly skewed differences in a small sample.
+4. **Mann-Whitney U test**: two independent groups, small samples, and extreme high values that would distort a t-test.
+
+</Solution>
 </div>
 
 ### When Should You Use a Nonparametric Test?

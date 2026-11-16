@@ -38,6 +38,15 @@ At $\alpha = 0.05$, is there sufficient evidence to support the nutritionist's c
 2. Calculate the t-test statistic.
 3. Identify the degrees of freedom and find the p-value.
 4. State your conclusion in context.
+
+<Solution>
+
+1. $H_0: \mu = 2{,}300$ vs. $H_a: \mu > 2{,}300$
+2. $t = \dfrac{\bar{x} - \mu_0}{s / \sqrt{n}} = \dfrac{2{,}450 - 2{,}300}{320 / \sqrt{16}} = \dfrac{150}{80} = 1.875$
+3. $df = 16 - 1 = 15$, and the p-value is $P(t_{15} > 1.875) \approx 0.040$.
+4. Since $0.040 \leq 0.05$, we **reject $H_0$**. There is sufficient evidence that the mean daily sodium intake in this city exceeds 2,300 mg, supporting the nutritionist's claim.
+
+</Solution>
 </div>
 
 <TTestWidget />
@@ -64,6 +73,20 @@ The degrees of freedom for this test are approximated using the Welch formula (u
 A researcher wants to know whether two different study methods lead to different mean test scores. Group 1 (method A, $n_1 = 20$) has a mean score of 82 and standard deviation of 9. Group 2 (method B, $n_2 = 22$) has a mean score of 76 and standard deviation of 11.
 
 At $\alpha = 0.05$, is there a significant difference in mean scores?
+
+<Solution>
+
+$H_0: \mu_1 = \mu_2$ vs. $H_a: \mu_1 \neq \mu_2$
+
+$$
+t = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2}}} = \frac{82 - 76}{\sqrt{\dfrac{81}{20} + \dfrac{121}{22}}} = \frac{6}{3.09} \approx 1.94
+$$
+
+Software (Welch's formula) gives $df \approx 39.6$ and a two-tailed **p-value of about 0.059**.
+
+Since $0.059 > 0.05$, we **fail to reject $H_0$**. Method A's average is 6 points higher, but at the 0.05 level there isn't quite enough evidence to conclude that the two study methods produce different mean scores. (Using the conservative $df = 19$, the smaller sample size minus 1, gives $p \approx 0.067$ and the same conclusion.)
+
+</Solution>
 </div>
 
 ### Paired t-Test
@@ -92,6 +115,26 @@ Eight students took a speed-reading course. Their reading speeds (words per minu
 | 8 | 195 | 215 |
 
 At $\alpha = 0.05$, did the course significantly improve reading speed? Use a paired t-test.
+
+<Solution>
+
+Work with the differences, $d = \text{After} - \text{Before}$:
+
+$$
+30,\ 25,\ 15,\ 25,\ 20,\ 25,\ 15,\ 20
+$$
+
+$H_0: \mu_d = 0$ vs. $H_a: \mu_d > 0$ (the course improves speed)
+
+$$
+\bar{d} = 21.875 \qquad s_d \approx 5.30 \qquad t = \frac{\bar{d}}{s_d / \sqrt{n}} = \frac{21.875}{5.30 / \sqrt{8}} \approx 11.67
+$$
+
+With $df = 7$, the p-value is far below 0.001 (about 0.000004).
+
+We **reject $H_0$**. There is very strong evidence that the course improved reading speed, by about 22 words per minute on average. Every one of the 8 students got faster.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -102,6 +145,14 @@ For each scenario, identify whether you would use a one-sample t-test, a two-sam
 1. Testing whether the mean score on a national exam differs from 500 for students at a particular school.
 2. Comparing the mean blood pressure of patients before and after a 3-month exercise program.
 3. Comparing the mean salary of employees at two different companies using separate random samples.
+
+<Solution>
+
+1. **One-sample t-test**: one group compared to a fixed value (500).
+2. **Paired t-test**: the same patients are measured twice, before and after.
+3. **Two-sample t-test**: two independent groups (separate companies).
+
+</Solution>
 </div>
 
 ### Key Points – t-Tests

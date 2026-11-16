@@ -25,6 +25,16 @@ Intuitively, we are restricting our attention to the world where $B$ has already
 In a class of 40 students, 15 are seniors, 10 are seniors who play a sport, and 20 students overall play a sport.
 
 Given that a student plays a sport, what is the probability that they are a senior?
+
+<Solution>
+
+$$
+P(\text{senior} \mid \text{sport}) = \frac{P(\text{senior} \cap \text{sport})}{P(\text{sport})} = \frac{10/40}{20/40} = \frac{10}{20} = 0.5
+$$
+
+Half of the students who play a sport are seniors.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -41,6 +51,14 @@ A survey of 200 college students asked whether they own a laptop and whether the
 1. What is the probability that a randomly selected student owns a laptop?
 2. Given that a student has a job, what is the probability they own a laptop?
 3. Does having a job appear to be related to laptop ownership?
+
+<Solution>
+
+1. $P(\text{laptop}) = \dfrac{140}{200} = 0.70$
+2. $P(\text{laptop} \mid \text{job}) = \dfrac{80}{110} \approx 0.727$
+3. Compare with students who don't have a job: $P(\text{laptop} \mid \text{no job}) = \dfrac{60}{90} \approx 0.667$. Students with jobs are slightly more likely to own a laptop (72.7% vs. 66.7%), so there appears to be a **weak relationship**. The difference is small, though, and it could be due to chance.
+
+</Solution>
 </div>
 
 ### Conditional Probability and Independence
@@ -59,6 +77,22 @@ In other words, knowing $B$ occurred tells us nothing about the probability of $
 In a group of 100 people, 50 exercise regularly and 40 report good sleep quality. 30 people both exercise regularly and report good sleep quality.
 
 Is exercising regularly independent of reporting good sleep quality? Use conditional probabilities to support your answer.
+
+<Solution>
+
+If the events were independent, knowing someone exercises wouldn't change the probability of good sleep. Compare:
+
+$$
+P(\text{good sleep}) = \frac{40}{100} = 0.40
+$$
+
+$$
+P(\text{good sleep} \mid \text{exercise}) = \frac{30}{50} = 0.60
+$$
+
+Since $0.60 \neq 0.40$, the events are **not independent**. People who exercise regularly are more likely to report good sleep. (Equivalently, $P(E) \times P(S) = 0.5 \times 0.4 = 0.20$, but $P(E \cap S) = 0.30$.)
+
+</Solution>
 </div>
 
 ### Bayes' Theorem
@@ -81,6 +115,24 @@ A rare illness affects 2% of a population. A test for the illness has a 90% true
 If a randomly selected person tests positive, what is the probability they actually have the illness?
 
 (Hint: Let $D$ = has disease, $T^+$ = tests positive. You are looking for $P(D \mid T^+)$.)
+
+<Solution>
+
+We need $P(D \mid T^+)$. First find the overall probability of testing positive, which can happen with or without the disease:
+
+$$
+P(T^+) = P(T^+ \mid D)P(D) + P(T^+ \mid D^c)P(D^c) = (0.90)(0.02) + (0.05)(0.98) = 0.018 + 0.049 = 0.067
+$$
+
+Then apply Bayes' Theorem:
+
+$$
+P(D \mid T^+) = \frac{P(T^+ \mid D)\,P(D)}{P(T^+)} = \frac{0.018}{0.067} \approx 0.269
+$$
+
+**Only about 27% of people who test positive actually have the illness.** Because the illness is rare, false positives from the large healthy group (0.049) outnumber true positives from the small sick group (0.018).
+
+</Solution>
 </div>
 
 <div className="example">
@@ -91,6 +143,14 @@ A bag contains 3 red and 2 blue marbles. Two marbles are drawn one at a time *wi
 1. What is the probability that the first marble is red?
 2. Given that the first marble was red, what is the probability that the second marble is also red?
 3. What is the probability that both marbles are red?
+
+<Solution>
+
+1. $P(\text{1st red}) = \dfrac{3}{5} = 0.6$
+2. After removing one red marble, 2 red and 2 blue remain: $P(\text{2nd red} \mid \text{1st red}) = \dfrac{2}{4} = 0.5$
+3. $P(\text{both red}) = P(\text{1st red}) \times P(\text{2nd red} \mid \text{1st red}) = 0.6 \times 0.5 = 0.3$
+
+</Solution>
 </div>
 
 ### Key Points – Conditional Probability

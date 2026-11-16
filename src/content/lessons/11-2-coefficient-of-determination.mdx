@@ -43,6 +43,14 @@ A regression model predicting exam scores from study hours has SST = 1,200 and S
 1. Calculate $R^2$.
 2. Interpret this value in context.
 3. What is the Pearson correlation $r$? (Assume a positive relationship.)
+
+<Solution>
+
+1. $R^2 = 1 - \dfrac{\text{SSE}}{\text{SST}} = 1 - \dfrac{240}{1200} = 0.80$
+2. **80% of the variability in exam scores is explained** by the linear relationship with study hours. The other 20% comes from other factors.
+3. $r = +\sqrt{0.80} \approx 0.894$
+
+</Solution>
 </div>
 
 <div className="example">
@@ -53,6 +61,14 @@ A regression of monthly advertising spend ($x$) on sales revenue ($y$) for a sma
 1. Calculate $R^2$.
 2. Interpret $R^2$ in a sentence.
 3. What accounts for the remaining variability in sales that is *not* explained by advertising spend?
+
+<Solution>
+
+1. $R^2 = 0.73^2 \approx 0.533$
+2. About **53.3% of the variation in sales revenue** across shops is explained by the linear relationship with advertising spend.
+3. The remaining 46.7% comes from **other factors**, such as location, foot traffic, prices, competition, season, menu, and staff, plus random month-to-month variation.
+
+</Solution>
 </div>
 
 ### $R^2$ Does Not Tell the Whole Story
@@ -73,6 +89,14 @@ A high $R^2$ sounds reassuring, but it does not guarantee the regression model i
 A dataset relating age ($x$, in years) to annual salary ($y$, in thousands of dollars) produces a regression line with $R^2 = 0.78$. However, a scatterplot reveals that salary rises steeply from ages 25 to 45, then levels off after 50.
 
 What does this suggest about using a linear model here? Would a high $R^2$ guarantee good predictions across all ages?
+
+<Solution>
+
+A linear model is the **wrong shape** for these data. The relationship is curved: it rises steeply and then levels off. A straight line will systematically **underpredict** salaries in the middle years and **overpredict** them for older workers, where the real salaries have flattened out.
+
+**No**, a high $R^2$ doesn't guarantee good predictions across all ages. $R^2$ only measures how much variation the line explains *overall*. A residual plot here would show a curved pattern, which is the sign of a poor model fit.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -84,18 +108,56 @@ Two researchers each build a regression model to predict students' GPA from the 
 - Researcher B's model: $R^2 = 0.40$
 
 Researcher B argues her model is still useful. Under what circumstances might she be right? What additional information would help you evaluate both models?
+
+<Solution>
+
+Researcher B could be right in several situations:
+
+- The models might use **different data**, for example different schools or populations. B's population may simply be more varied, so explaining 40% of it is still useful.
+- **In many fields, $R^2 = 0.40$ is quite good**, since human behavior is affected by many factors.
+- B's model might **meet the regression assumptions** better. A higher $R^2$ means nothing if the model is the wrong shape or was fit to flawed data.
+
+Information that would help:
+
+- the residual plots for both models
+- the sample sizes and how each sample was collected
+- whether the relationships are statistically significant
+- prediction errors on new data the models haven't seen
+- whether either model was fit to data with influential outliers
+
+</Solution>
 </div>
 
 <div className="example">
 **Example 11.2.5 – Full Calculation**
 
-Using the city temperature and heating oil data from Example 11.1.5, the regression model gives $\hat{y} = 65.2 - 0.929x$.
+Using the city temperature and heating oil data from Example 11.1.5, the regression model gives $\hat{y} = 61.02 - 0.814x$.
 
 Given the actual observed values: 45, 40, 38, 32, 28, 24, 20, 17:
 
 1. Compute the predicted values $\hat{y}_i$ for each city.
 2. Compute SSE and SST.
 3. Calculate $R^2$ and interpret it.
+
+<Solution>
+
+1. Predicted values from $\hat{y} = 61.02 - 0.814x$:
+
+| City | $x$ | $y$ | $\hat{y}$ | Residual $y - \hat{y}$ |
+|---|---|---|---|---|
+| A | 20 | 45 | 44.74 | 0.26 |
+| B | 25 | 40 | 40.67 | −0.67 |
+| C | 30 | 38 | 36.60 | 1.40 |
+| D | 35 | 32 | 32.53 | −0.53 |
+| E | 40 | 28 | 28.46 | −0.46 |
+| F | 45 | 24 | 24.39 | −0.39 |
+| G | 50 | 20 | 20.32 | −0.32 |
+| H | 55 | 17 | 16.25 | 0.75 |
+
+2. $\text{SSE} = \sum (y - \hat{y})^2 \approx 3.79$. With $\bar{y} = 30.5$, $\text{SST} = \sum (y - \bar{y})^2 = 700$.
+3. $R^2 = 1 - \dfrac{3.79}{700} \approx 0.995$. About **99.5% of the variation in heating oil consumption** is explained by the linear relationship with January temperature. As a check, this matches $r^2 = (-0.997)^2 \approx 0.994$, up to rounding.
+
+</Solution>
 </div>
 
 ### Key Points – Coefficient of Determination

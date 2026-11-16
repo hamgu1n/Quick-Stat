@@ -39,6 +39,14 @@ An ANOVA comparing the mean stress levels of students in four academic majors yi
 1. What does this result tell us?
 2. What does it *not* tell us?
 3. Why should we not simply run six pairwise t-tests to find out which majors differ?
+
+<Solution>
+
+1. With $p = 0.003 < 0.05$, at least one major has a **different mean stress level** from the others.
+2. It doesn't tell us **which** majors differ, **how many** differ, or **how large** the differences are.
+3. Four majors give $\binom{4}{2} = 6$ pairwise comparisons. Running each at $\alpha = 0.05$ inflates the chance of at least one false positive to as much as $1 - 0.95^6 \approx 26\%$. A post-hoc test controls this overall error rate.
+
+</Solution>
 </div>
 
 ### Reading the ANOVA Output
@@ -55,12 +63,20 @@ Below is a simplified ANOVA table from a study comparing mean weekly exercise ho
 | Source | SS | df | MS | F | p-value |
 |---|---|---|---|---|---|
 | Between | 84.4 | 2 | 42.2 | 6.83 | 0.002 |
-| Within | 353.4 | 57 | 6.2 |, |, |
-| Total | 437.8 | 59 |, |, |, |
+| Within | 353.4 | 57 | 6.2 | | |
+| Total | 437.8 | 59 | | | |
 
 1. Interpret the F-statistic and p-value.
 2. Which source of variation (between or within) is larger? What does that suggest?
 3. A Tukey test reveals that the 18–25 and 41+ groups are significantly different, but no other pairs are. Summarize the findings in plain language.
+
+<Solution>
+
+1. $F = 6.83$ means the variation *between* the age-group means is about 6.8 times larger than we'd expect from the variation *within* groups alone. With p-value $= 0.002 < 0.05$, we reject $H_0$: mean weekly exercise hours differ for at least one age group.
+2. The **within-group** sum of squares is larger (353.4 vs. 84.4). Most of the total variation in exercise hours comes from differences between *individuals*, not between age groups. Still, once each SS is divided by its degrees of freedom, the between-group mean square (42.2) is much larger than the within-group mean square (6.2), and that is why the F-test is significant.
+3. "On average, adults aged 41 and older exercise a different number of hours per week than 18–25 year-olds. We found no significant differences between the 26–40 group and either of the other groups."
+
+</Solution>
 </div>
 
 <Advanced title="Effect size (eta-squared)">
@@ -77,6 +93,16 @@ $$
 where SST = SSB + SSW is the total sum of squares.
 
 Using the values from Example 9.2.2 (SSB = 84.4, SST = 437.8), calculate $\eta^2$ and interpret it. General guidelines: $\eta^2 \approx 0.01$ is small, $\approx 0.06$ is medium, $\approx 0.14$ is large.
+
+<Solution>
+
+$$
+\eta^2 = \frac{\text{SSB}}{\text{SST}} = \frac{84.4}{437.8} \approx 0.193
+$$
+
+About **19.3%** of the variation in weekly exercise hours is explained by age group. Since $0.193 > 0.14$, this is a **large effect** by the usual guidelines.
+
+</Solution>
 </div>
 
 </Advanced>
@@ -93,6 +119,14 @@ A school administrator tests three different homework policies (no homework, mod
 The ANOVA p-value is 0.04. A Tukey test finds only the comparison between Groups 1 and 2 is significant (adjusted p = 0.03).
 
 Summarize the findings as if writing a brief paragraph for a school board report.
+
+<Solution>
+
+*Sample paragraph:*
+
+"We compared the GPAs of three groups of 25 students under different homework policies. The groups differed significantly overall (ANOVA, $p = 0.04$). Students with moderate homework had the highest average GPA (3.2), compared with 3.0 for heavy homework and 2.9 for no homework. Follow-up comparisons showed that the only statistically significant difference was between moderate homework and no homework. Heavy homework did not differ significantly from either of the other policies. These results suggest that a moderate homework load may support higher GPAs than no homework. The difference is modest (0.3 GPA points), and the study should be repeated before policy decisions are made."
+
+</Solution>
 </div>
 
 ### Key Points – Interpreting ANOVA Results

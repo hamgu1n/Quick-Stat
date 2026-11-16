@@ -43,6 +43,18 @@ Here $z^*$ is the **critical value** from the standard normal distribution corre
 A sample of 64 students has a mean study time of 3.2 hours per day. The population standard deviation is known to be 1.4 hours.
 
 Construct a 95% confidence interval for the true mean daily study time.
+
+<Solution>
+
+With $\sigma$ known, use the z-interval:
+
+$$
+\bar{x} \pm z^* \frac{\sigma}{\sqrt{n}} = 3.2 \pm 1.96 \cdot \frac{1.4}{\sqrt{64}} = 3.2 \pm 1.96(0.175) = 3.2 \pm 0.343
+$$
+
+The 95% confidence interval is **(2.857, 3.543) hours**. We are 95% confident that the true mean daily study time is between about 2.86 and 3.54 hours.
+
+</Solution>
 </div>
 
 ### Confidence Interval for a Population Mean (Unknown $\sigma$)
@@ -63,6 +75,14 @@ For each scenario, decide whether you would use a z-interval or a t-interval, an
 1. A sample of 40 employees, population standard deviation of salaries is known to be \$8,000.
 2. A sample of 15 patients, population standard deviation of recovery time is unknown.
 3. A sample of 200 adults, population standard deviation is unknown but $n$ is large.
+
+<Solution>
+
+1. **z-interval.** The population standard deviation $\sigma$ is known.
+2. **t-interval.** $\sigma$ is unknown and must be estimated with $s$. The small sample makes the t-distribution's extra width especially important.
+3. **t-interval.** $\sigma$ is still unknown, so t is technically correct. With $n = 200$, the t and z critical values are nearly identical, so a z-interval would give almost the same answer.
+
+</Solution>
 </div>
 
 ### Confidence Interval for a Proportion
@@ -83,6 +103,20 @@ The term $\sqrt{\hat{p}(1-\hat{p})/n}$ is the standard error of $\hat{p}$. This 
 In a survey of 400 registered voters, 228 say they plan to vote in the upcoming election.
 
 Construct a 95% confidence interval for the true proportion of registered voters who plan to vote.
+
+<Solution>
+
+$\hat{p} = 228/400 = 0.57$.
+
+**Check:** $n\hat{p} = 228 \geq 10$ and $n(1 - \hat{p}) = 172 \geq 10$.
+
+$$
+\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} = 0.57 \pm 1.96\sqrt{\frac{0.57(0.43)}{400}} = 0.57 \pm 1.96(0.0248) = 0.57 \pm 0.049
+$$
+
+The 95% confidence interval is **(0.521, 0.619)**. We are 95% confident that between about 52.1% and 61.9% of registered voters plan to vote.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -92,6 +126,13 @@ A 95% confidence interval for the mean monthly rent in a city is (1,240 dollars,
 
 1. Interpret this interval in a sentence a non-statistician would understand.
 2. Is the following statement correct? "There is a 95% probability that the true mean rent is between 1,240 and 1,380 dollars." Explain.
+
+<Solution>
+
+1. "We are 95% confident that the average monthly rent in this city is somewhere between 1,240 and 1,380 dollars."
+2. **Not quite.** The true mean rent is a fixed number, so it either is or isn't in this particular interval. The "95%" describes the *method*: if we repeated the sampling many times, about 95% of the intervals we built would capture the true mean.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -100,6 +141,18 @@ A 95% confidence interval for the mean monthly rent in a city is (1,240 dollars,
 A researcher wants to estimate the mean daily caloric intake of adults with a margin of error of 50 calories at the 95% confidence level. The population standard deviation is known to be 300 calories.
 
 What minimum sample size is needed? *(Hint: set the margin of error equal to $z^* \cdot \sigma / \sqrt{n}$ and solve for $n$.)*
+
+<Solution>
+
+Set the margin of error equal to 50 and solve for $n$:
+
+$$
+50 = 1.96 \cdot \frac{300}{\sqrt{n}} \quad\Rightarrow\quad \sqrt{n} = \frac{1.96 \times 300}{50} = 11.76 \quad\Rightarrow\quad n = 11.76^2 \approx 138.3
+$$
+
+Always round **up**, so the researcher needs at least **139 adults**.
+
+</Solution>
 </div>
 
 ### Key Points – Confidence Intervals

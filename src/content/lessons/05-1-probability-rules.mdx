@@ -30,6 +30,17 @@ A bag contains 4 red marbles, 3 blue marbles, and 3 green marbles. One marble is
 
 1. What is the probability of drawing a red marble?
 2. What is the probability of drawing a marble that is not green?
+
+<Solution>
+
+There are $4 + 3 + 3 = 10$ marbles in total.
+
+1. $P(\text{red}) = \dfrac{4}{10} = 0.4$
+2. $P(\text{not green}) = 1 - P(\text{green}) = 1 - \dfrac{3}{10} = 0.7$
+
+(Or count directly: $4$ red $+ 3$ blue $= 7$ out of 10.)
+
+</Solution>
 </div>
 
 ### Complement, Union, and Intersection
@@ -66,6 +77,16 @@ $$
 The probability that a randomly selected student passed a statistics exam is 0.72.
 
 What is the probability that the student did not pass?
+
+<Solution>
+
+By the complement rule:
+
+$$
+P(\text{did not pass}) = 1 - 0.72 = 0.28
+$$
+
+</Solution>
 </div>
 
 <div className="example">
@@ -74,6 +95,18 @@ What is the probability that the student did not pass?
 At a career fair, 60% of attendees are interested in finance, 45% are interested in technology, and 25% are interested in both.
 
 What is the probability that a randomly selected attendee is interested in finance or technology?
+
+<Solution>
+
+Use the addition rule, subtracting the overlap so it isn't counted twice:
+
+$$
+P(F \cup T) = P(F) + P(T) - P(F \cap T) = 0.60 + 0.45 - 0.25 = 0.80
+$$
+
+80% of attendees are interested in finance, technology, or both.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -82,6 +115,16 @@ What is the probability that a randomly selected attendee is interested in finan
 A single card is drawn from a standard 52-card deck. Let $A$ be the event of drawing a heart and $B$ be the event of drawing a spade.
 
 Are $A$ and $B$ mutually exclusive? Find $P(A \cup B)$.
+
+<Solution>
+
+**Yes, they are mutually exclusive.** A single card can't be both a heart and a spade, so $P(A \cap B) = 0$. The addition rule simplifies to:
+
+$$
+P(A \cup B) = P(A) + P(B) = \frac{13}{52} + \frac{13}{52} = \frac{26}{52} = 0.5
+$$
+
+</Solution>
 </div>
 
 ### Independent Events
@@ -101,6 +144,13 @@ A fair coin is flipped and a fair die is rolled.
 
 1. What is the probability of getting heads *and* rolling a 6?
 2. Are these events independent? Justify your answer.
+
+<Solution>
+
+1. $P(\text{heads and } 6) = P(\text{heads}) \times P(6) = \dfrac{1}{2} \times \dfrac{1}{6} = \dfrac{1}{12} \approx 0.0833$
+2. **Yes, they are independent.** The coin and the die are separate physical objects, so the outcome of the coin flip has no effect on the die roll. That is why we are allowed to multiply the probabilities in part 1.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -109,6 +159,18 @@ A fair coin is flipped and a fair die is rolled.
 A survey finds that 40% of students drink coffee daily, and 30% of students get fewer than 6 hours of sleep. If these events are independent, what is the probability that a randomly selected student both drinks coffee daily and gets fewer than 6 hours of sleep?
 
 If the actual joint probability turns out to be 0.18, does that change your assessment of independence?
+
+<Solution>
+
+If the events were independent:
+
+$$
+P(C \cap S) = P(C) \times P(S) = 0.40 \times 0.30 = 0.12
+$$
+
+**Yes, it changes the assessment.** The actual joint probability of 0.18 is larger than the 0.12 we would expect under independence, so the events are **not independent**. Students who drink coffee daily are more likely than other students to get less than 6 hours of sleep (or vice versa).
+
+</Solution>
 </div>
 
 ### Key Points – Probability Rules

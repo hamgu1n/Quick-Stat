@@ -35,6 +35,15 @@ For each scenario, decide whether $X$ follows a binomial distribution. If not, i
 2. You draw 5 cards from a standard deck without replacement. $X$ is the number of hearts.
 3. You keep rolling a die until you roll a 6. $X$ is the number of rolls needed.
 4. A survey asks 200 randomly selected adults whether they own a smartphone. $X$ is the number who say yes.
+
+<Solution>
+
+1. **Binomial.** There are 30 visitors (fixed $n$), each clicks or doesn't, visitors act independently, and each has the same $p = 0.04$.
+2. **Not binomial.** Drawing *without replacement* changes the probability of a heart after each card, so the trials aren't independent and $p$ isn't constant.
+3. **Not binomial.** There is no fixed number of trials, since we keep rolling until a 6 appears.
+4. **Binomial (approximately).** There are 200 randomly selected adults, each says yes or no, and the sample is a small fraction of the population, so the trials are effectively independent with the same $p$.
+
+</Solution>
 </div>
 
 ### The Binomial Formula
@@ -53,7 +62,7 @@ Each piece of the formula has a meaning:
 - $p^k$ is the probability of the $k$ successes
 - $(1-p)^{n-k}$ is the probability of the remaining $n - k$ failures
 
-In R, the function `dbinom(k, n, p)` computes $P(X = k)$, and `pbinom(k, n, p)` computes $P(X \leq k)$.
+Software can compute these probabilities directly, which is especially helpful when $n$ is large.
 
 <BinomialWidget />
 
@@ -65,6 +74,16 @@ An online retailer knows that 10% of orders are returned. A random sample of 8 o
 1. What is the probability that exactly 1 order is returned?
 2. What is the probability that no orders are returned?
 3. What is the probability that at least 1 order is returned? *(Hint: use the complement rule.)*
+
+<Solution>
+
+Here $X \sim \text{Binomial}(8, 0.1)$.
+
+1. $P(X = 1) = \dbinom{8}{1}(0.1)^1(0.9)^7 = 8(0.1)(0.4783) \approx 0.383$
+2. $P(X = 0) = \dbinom{8}{0}(0.1)^0(0.9)^8 = (0.9)^8 \approx 0.430$
+3. $P(X \geq 1) = 1 - P(X = 0) \approx 1 - 0.430 = 0.570$
+
+</Solution>
 </div>
 
 <div className="example">
@@ -75,6 +94,20 @@ A social media post has a 25% chance of being shared by each person who views it
 1. What is the probability that at most 2 people share it?
 2. What is the probability that at least 3 people share it?
 3. How are your answers to parts 1 and 2 related?
+
+<Solution>
+
+Here $X \sim \text{Binomial}(6, 0.25)$.
+
+| $k$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|---|
+| $P(X = k)$ | 0.1780 | 0.3560 | 0.2966 | 0.1318 | 0.0330 | 0.0044 | 0.0002 |
+
+1. $P(X \leq 2) = 0.1780 + 0.3560 + 0.2966 \approx 0.831$
+2. $P(X \geq 3) = 0.1318 + 0.0330 + 0.0044 + 0.0002 \approx 0.169$
+3. They are **complements**: "at least 3" is everything that isn't "at most 2," so the two answers add to 1. Part 2 is easiest as $1 - 0.831$.
+
+</Solution>
 </div>
 
 ### Mean and Standard Deviation of a Binomial
@@ -95,6 +128,16 @@ An email marketing campaign is sent to 400 customers. Historically, 15% of custo
 1. What is the expected number of customers who open the email?
 2. What is the standard deviation of the number who open it?
 3. Would it be unusual for 80 customers to open the email? Use the mean and standard deviation to explain.
+
+<Solution>
+
+Here $X \sim \text{Binomial}(400, 0.15)$.
+
+1. $\mu = np = 400(0.15) = 60$ customers
+2. $\sigma = \sqrt{np(1-p)} = \sqrt{400(0.15)(0.85)} = \sqrt{51} \approx 7.14$ customers
+3. **Yes, 80 opens would be unusual.** It is $\dfrac{80 - 60}{7.14} \approx 2.8$ standard deviations above the mean, and values more than 2 standard deviations away are fairly rare.
+
+</Solution>
 </div>
 
 ### The Normal Approximation to the Binomial
@@ -117,6 +160,16 @@ About 62% of adults in a city use a streaming service. A random sample of 200 ad
 1. Check the success-failure condition.
 2. Find the mean and standard deviation of the number of streaming service users in the sample.
 3. Use the normal approximation to estimate the probability that more than 135 people in the sample use a streaming service.
+
+<Solution>
+
+1. $np = 200(0.62) = 124 \geq 10$ and $n(1-p) = 200(0.38) = 76 \geq 10$, so the condition is met.
+2. $\mu = 124$ and $\sigma = \sqrt{200(0.62)(0.38)} \approx 6.86$
+3. $z = \dfrac{135 - 124}{6.86} \approx 1.60$, so $P(X > 135) \approx 1 - P(Z < 1.60) \approx 0.055$.
+
+About a **5.5%** chance. (The exact binomial probability, found with software, is about 0.046. The normal approximation is close but not perfect.)
+
+</Solution>
 </div>
 
 ### Key Points – The Binomial Distribution

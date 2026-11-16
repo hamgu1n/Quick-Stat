@@ -50,6 +50,24 @@ A survey asks randomly selected adults whether they regularly get news from soci
 2. Check the conditions.
 3. Construct a 95% confidence interval for $p_1 - p_2$.
 4. Interpret the interval in context. Does it suggest a real difference between the age groups?
+
+<Solution>
+
+1. $\hat{p}_1 = \dfrac{438}{600} = 0.73$ (ages 18–29) and $\hat{p}_2 = \dfrac{344}{800} = 0.43$ (ages 50–64)
+2. **Independence:** random samples from two separate age groups. **Success-failure:** 438 and 162 in group 1, 344 and 456 in group 2, all at least 10.
+3. Compute the standard error, then the interval:
+
+$$
+SE = \sqrt{\frac{0.73(0.27)}{600} + \frac{0.43(0.57)}{800}} \approx 0.0252
+$$
+
+$$
+(0.73 - 0.43) \pm 1.96(0.0252) = 0.30 \pm 0.049 \quad\Rightarrow\quad (0.251, 0.349)
+$$
+
+4. We are 95% confident that the proportion of 18–29 year-olds who get news from social media is between **25.1 and 34.9 percentage points higher** than for 50–64 year-olds. The interval is entirely above 0, so there is a **real difference** between the age groups.
+
+</Solution>
 </div>
 
 ### Hypothesis Test for $p_1 - p_2$
@@ -74,7 +92,7 @@ $$
 z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\dfrac{1}{n_1} + \dfrac{1}{n_2}\right)}}
 $$
 
-We then find the p-value from the standard normal distribution and draw a conclusion, just as before. In R, the function `prop.test()` carries out this test.
+We then find the p-value from the standard normal distribution and draw a conclusion, just as before. Statistical software can also carry out this test directly.
 
 <TwoPropWidget />
 
@@ -94,6 +112,29 @@ At $\alpha = 0.05$, is there evidence that the two versions have different purch
 2. Calculate the pooled proportion and check the conditions.
 3. Calculate the test statistic and p-value.
 4. State your conclusion in context. Since this was a randomized experiment, what can the store conclude about the new layout?
+
+<Solution>
+
+1. $H_0: p_A = p_B$ vs. $H_a: p_A \neq p_B$
+2. $\hat{p}_A = \dfrac{96}{1500} = 0.064$ and $\hat{p}_B = \dfrac{129}{1500} = 0.086$
+
+$$
+\hat{p}_{pool} = \frac{96 + 129}{1500 + 1500} = \frac{225}{3000} = 0.075
+$$
+
+   **Success-failure (pooled):** $1500(0.075) = 112.5$ and $1500(0.925) = 1387.5$, both at least 10. Visitors were randomly assigned, so independence is reasonable.
+
+3. Compute the test statistic:
+
+$$
+z = \frac{0.086 - 0.064}{\sqrt{0.075(0.925)\left(\dfrac{1}{1500} + \dfrac{1}{1500}\right)}} = \frac{0.022}{0.00962} \approx 2.29
+$$
+
+   p-value $= 2 \times P(Z > 2.29) \approx 0.022$
+
+4. Since $0.022 \leq 0.05$, we **reject $H_0$**. Version B had a significantly higher purchase rate (8.6% vs. 6.4%). **Because visitors were randomly assigned**, the store can conclude that the new layout *caused* the increase in purchases.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -104,6 +145,14 @@ For each task, decide whether you should use the pooled proportion $\hat{p}_{poo
 1. Constructing a 90% confidence interval for $p_1 - p_2$.
 2. Testing $H_0: p_1 = p_2$.
 3. Checking the success-failure condition for a hypothesis test.
+
+<Solution>
+
+1. **Separate proportions** $\hat{p}_1$ and $\hat{p}_2$. A confidence interval doesn't assume the proportions are equal.
+2. **Pooled proportion.** The test is carried out assuming $H_0: p_1 = p_2$ is true, so we combine both samples to estimate the shared proportion.
+3. **Pooled proportion.** As with the standard error, the condition is checked under the assumption that $H_0$ is true.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -113,6 +162,18 @@ A researcher compares the proportion of Facebook posts that receive at least 100
 
 1. Was this a randomized experiment or an observational study?
 2. Can the researcher conclude that adding a photo *causes* more likes? What other variables might explain the difference?
+
+<Solution>
+
+1. **Observational study.** The researcher didn't randomly assign which posts got photos; the posters chose.
+2. **No.** Without random assignment, other variables could explain the difference. For example:
+   - Posts with photos might come from **accounts with more followers**.
+   - Photo posts might be about **more exciting events** (vacations, weddings, pets).
+   - People who add photos might **post at better times** or put more effort into their posts overall.
+
+   To show that photos *cause* more likes, the researcher would need a randomized experiment, such as randomly choosing whether each post includes a photo.
+
+</Solution>
 </div>
 
 ### Key Points – Difference of Two Proportions

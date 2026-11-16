@@ -35,6 +35,16 @@ $$
 Calculate the mean of the following list of numbers.
 
 $[1, 5, 4, 9, 3, 5, 4, 6]$
+
+<Solution>
+
+Add the values and divide by how many there are ($n = 8$):
+
+$$
+\bar{x} = \frac{1 + 5 + 4 + 9 + 3 + 5 + 4 + 6}{8} = \frac{37}{8} = 4.625
+$$
+
+</Solution>
 </div>
 
 <div className="example">
@@ -43,6 +53,18 @@ $[1, 5, 4, 9, 3, 5, 4, 6]$
 What do you expect the mean of the following numbers to be? Calculate the mean and compare.
 
 $[0, 0, 0, 0, 0]$
+
+<Solution>
+
+Every value is 0, so we should expect the mean to be 0.
+
+$$
+\bar{x} = \frac{0 + 0 + 0 + 0 + 0}{5} = 0
+$$
+
+The calculation matches: when every value is the same, the mean equals that value.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -51,6 +73,18 @@ $[0, 0, 0, 0, 0]$
 What do you expect the mean of the following numbers to be? Calculate the mean and compare.
 
 $[-20, -10, -5, 1, 12]$
+
+<Solution>
+
+Most of the values are negative, so we might expect a negative mean, but the 12 pulls it back toward zero.
+
+$$
+\bar{x} = \frac{-20 + (-10) + (-5) + 1 + 12}{5} = \frac{-22}{5} = -4.4
+$$
+
+The mean is negative, as expected, but it is less extreme than the median of $-5$ because the large value 12 pulls the mean upward.
+
+</Solution>
 </div>
 
 We can visualize the mean's sensitivity to outliers using the widget below. It shows 25 employee salaries at a company. Click "Add CEO" to introduce a single extreme value, watch how the mean jumps while the median barely moves.
@@ -122,6 +156,18 @@ $$
 $$
 
 Find the median number of books read.
+
+<Solution>
+
+The data are already in order, and $n = 5$ is odd, so the median is the middle (3rd) value:
+
+$$
+2, 3, \mathbf{5}, 6, 8
+$$
+
+The median is **5 books**.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -134,6 +180,14 @@ $$
 $$
 
 Find the median age.
+
+<Solution>
+
+First sort the ages: $22, 25, 28, 30, 34$. With $n = 5$, the median is the 3rd value.
+
+The median age is **28**.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -146,6 +200,16 @@ $$
 $$
 
 Find the median score.
+
+<Solution>
+
+Sort the scores: $10, 12, 14, 15, 18, 20$. With $n = 6$ (even), the median is the average of the 3rd and 4th values:
+
+$$
+\text{Median} = \frac{14 + 15}{2} = 14.5
+$$
+
+</Solution>
 </div>
 
 ### The Mode
@@ -162,6 +226,18 @@ $$
 $$
 
 Find the mode.
+
+<Solution>
+
+Count how often each value appears:
+
+| Pets | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| Count | 2 | 3 | 4 | 1 |
+
+The mode is **3 pets**, which appears 4 times.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -174,6 +250,18 @@ $$
 $$
 
 Find the mode(s).
+
+<Solution>
+
+Count how often each code appears:
+
+| Flavor code | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| Count | 4 | 3 | 3 | 2 |
+
+The mode is **flavor 1**, chosen by 4 students. There is only one mode, since no other flavor ties it.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -184,6 +272,18 @@ A survey of 15 students' preferred study time produced these results:
 Morning, Evening, Evening, Afternoon, Morning, Evening, Morning, Morning, Afternoon, Evening, Morning, Evening, Morning, Evening, Evening
 
 Find the mode of preferred study time.
+
+<Solution>
+
+Count each category:
+
+- Morning: 6
+- Evening: 7
+- Afternoon: 2
+
+The mode is **Evening**. Notice that the mode is the only measure of center that works for categorical data like this, since we can't average "Morning" and "Evening."
+
+</Solution>
 </div>
 
 ### Key Points – Measures of Central Tendency

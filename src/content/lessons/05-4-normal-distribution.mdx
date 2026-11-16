@@ -44,6 +44,16 @@ The time users spend on a social media app per session is approximately normally
 1. Between what two values do about 68% of session times fall?
 2. Between what two values do about 95% of session times fall?
 3. About what percentage of sessions last longer than 34 minutes?
+
+<Solution>
+
+With $\mu = 22$ and $\sigma = 6$:
+
+1. **About 68%** fall within 1 SD: between $22 - 6 = 16$ and $22 + 6 = 28$ minutes.
+2. **About 95%** fall within 2 SDs: between $22 - 12 = 10$ and $22 + 12 = 34$ minutes.
+3. 34 minutes is exactly 2 SDs above the mean. About 95% of sessions are within 2 SDs, so 5% are outside, split evenly between the two tails. **About 2.5%** of sessions last longer than 34 minutes.
+
+</Solution>
 </div>
 
 ### The Standard Normal Distribution
@@ -56,7 +66,7 @@ $$
 z = \frac{x - \mu}{\sigma}
 $$
 
-The z-score tells us how many standard deviations $x$ is from the mean. Once a value has been converted to a z-score, we can find probabilities using a **z-table** (a table of areas under the standard normal curve) or using software. In R, the function `pnorm()` gives the area to the *left* of a value.
+The z-score tells us how many standard deviations $x$ is from the mean. Once a value has been converted to a z-score, we can find probabilities using a **z-table** (a table of areas under the standard normal curve) or using software. Both give the area to the *left* of a value.
 
 ### Finding Probabilities
 
@@ -66,7 +76,7 @@ To find a probability for a normal variable, follow three steps:
 2. Convert the value(s) to z-scores
 3. Use a z-table or software to find the shaded area
 
-Since the table and `pnorm()` both give the area to the left, the area to the right of a value is found with the complement rule from Section 5.1:
+Since z-tables and software both give the area to the left, the area to the right of a value is found with the complement rule from Section 5.1:
 
 $$
 P(Z > z) = 1 - P(Z < z)
@@ -86,6 +96,18 @@ SAT math scores are approximately normally distributed with a mean of 520 and a 
 1. What proportion of students score below 400?
 2. What proportion of students score above 700?
 3. What proportion of students score between 450 and 600?
+
+<Solution>
+
+With $\mu = 520$ and $\sigma = 115$:
+
+1. $z = \dfrac{400 - 520}{115} \approx -1.04$, so $P(X < 400) = P(Z < -1.04) \approx 0.148$. About **14.8%** of students score below 400.
+2. $z = \dfrac{700 - 520}{115} \approx 1.57$, so $P(X > 700) = 1 - P(Z < 1.57) \approx 0.059$. About **5.9%** of students score above 700.
+3. $z_1 = \dfrac{450 - 520}{115} \approx -0.61$ and $z_2 = \dfrac{600 - 520}{115} \approx 0.70$, so $P(450 < X < 600) = P(Z < 0.70) - P(Z < -0.61) \approx 0.485$. About **48.5%** of students score between 450 and 600.
+
+*Answers from a z-table may differ slightly in the third decimal place because the z-scores are rounded.*
+
+</Solution>
 </div>
 
 <div className="example">
@@ -95,6 +117,15 @@ An online retailer finds that delivery times for standard shipping are approxima
 
 1. What is the probability that a package arrives in under 3 days?
 2. The retailer advertises "delivery within 6 days." What percentage of packages fail to meet this promise?
+
+<Solution>
+
+With $\mu = 4.2$ and $\sigma = 0.9$:
+
+1. $z = \dfrac{3 - 4.2}{0.9} \approx -1.33$, so $P(X < 3) = P(Z < -1.33) \approx 0.091$. About **9.1%** of packages arrive in under 3 days.
+2. $z = \dfrac{6 - 4.2}{0.9} = 2$, so $P(X > 6) = 1 - P(Z < 2) \approx 0.023$. About **2.3%** of packages fail to meet the 6-day promise.
+
+</Solution>
 </div>
 
 ### Finding Percentiles
@@ -103,7 +134,7 @@ Sometimes we want to work in the opposite direction. Instead of starting with a 
 
 To find a percentile:
 
-1. Find the z-score that has the desired area to its left (using a z-table in reverse, or `qnorm()` in R)
+1. Find the z-score that has the desired area to its left (using a z-table in reverse, or software)
 2. Convert the z-score back to the original units by solving the z-score formula for $x$:
 
 $$
@@ -117,6 +148,24 @@ Using the SAT math scores from Example 5.4.2 (mean 520, standard deviation 115):
 
 1. What score marks the 90th percentile?
 2. A scholarship program accepts only students in the top 2.5%. What is the minimum score needed?
+
+<Solution>
+
+1. The 90th percentile has area 0.90 to its left, which corresponds to $z \approx 1.28$:
+
+$$
+x = \mu + z\sigma = 520 + 1.28(115) \approx 667
+$$
+
+2. The top 2.5% starts at the 97.5th percentile, $z \approx 1.96$:
+
+$$
+x = 520 + 1.96(115) \approx 745
+$$
+
+A student needs a score of about **745** to qualify for the scholarship.
+
+</Solution>
 </div>
 
 ### Is the Normal Model Appropriate?
@@ -137,6 +186,15 @@ For each variable, decide whether a normal model is likely to be reasonable, and
 2. The number of followers for a random sample of Instagram accounts.
 3. The weights of bags of chips filled by a factory machine.
 4. Household incomes in the United States.
+
+<Solution>
+
+1. **Reasonable.** Adult heights are roughly symmetric and bell-shaped.
+2. **Not reasonable.** Follower counts are strongly skewed right: most accounts have few followers, and a few have millions.
+3. **Reasonable.** A machine filling to a target weight produces small, symmetric errors around the target.
+4. **Not reasonable.** Household incomes are strongly skewed right, with a long tail of very high incomes.
+
+</Solution>
 </div>
 
 ### Key Points – The Normal Distribution
@@ -144,6 +202,6 @@ For each variable, decide whether a normal model is likely to be reasonable, and
 - For continuous variables, probability is the area under the curve; the total area is 1
 - The 68-95-99.7 Rule: about 68%, 95%, and 99.7% of values fall within 1, 2, and 3 standard deviations of the mean
 - Any normal variable can be standardized with $z = (x - \mu)/\sigma$, giving the standard normal distribution $N(0, 1)$
-- Tables and `pnorm()` give the area to the left; use the complement rule for right-tail areas
+- Z-tables and software give the area to the left; use the complement rule for right-tail areas
 - To find a percentile, find the z-score first and then convert back with $x = \mu + z\sigma$
 - Always check that a normal model is reasonable using a histogram or normal probability plot before using normal calculations

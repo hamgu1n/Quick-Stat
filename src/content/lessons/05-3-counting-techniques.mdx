@@ -25,6 +25,16 @@ For example, if a restaurant offers 4 appetizers, 6 main courses, and 3 desserts
 A student ID consists of 2 letters (A–Z, repeated letters allowed) followed by 3 digits (0–9, repeated digits allowed).
 
 How many unique student IDs are possible?
+
+<Solution>
+
+There are 26 choices for each letter and 10 choices for each digit:
+
+$$
+26 \times 26 \times 10 \times 10 \times 10 = 676{,}000 \text{ unique IDs}
+$$
+
+</Solution>
 </div>
 
 ### Permutations
@@ -45,12 +55,32 @@ where $n!$ (read "n factorial") means $n \times (n-1) \times (n-2) \times \cdots
 A photography club has 8 members. They want to choose a president, a secretary, and a treasurer (three different people, and these are distinct roles).
 
 How many ways can these three positions be filled?
+
+<Solution>
+
+Order matters (the roles are distinct), so this is a permutation:
+
+$$
+P(8, 3) = \frac{8!}{5!} = 8 \times 7 \times 6 = 336
+$$
+
+</Solution>
 </div>
 
 <div className="example">
 **Example 5.3.3 – Permutations of All Objects**
 
 How many ways can 5 books be arranged on a shelf?
+
+<Solution>
+
+All 5 books are arranged, so:
+
+$$
+5! = 5 \times 4 \times 3 \times 2 \times 1 = 120
+$$
+
+</Solution>
 </div>
 
 ### Combinations
@@ -73,6 +103,16 @@ The key distinction: use permutations when the arrangement or assignment of role
 A student council has 10 members. A committee of 4 is to be chosen (no special roles).
 
 How many different committees are possible?
+
+<Solution>
+
+Order doesn't matter (no special roles), so this is a combination:
+
+$$
+\binom{10}{4} = \frac{10!}{4!\,6!} = \frac{10 \times 9 \times 8 \times 7}{4 \times 3 \times 2 \times 1} = 210
+$$
+
+</Solution>
 </div>
 
 <div className="example">
@@ -84,6 +124,15 @@ For each scenario, decide whether to use a permutation or combination, then calc
 2. A teacher randomly selects 1st, 2nd, and 3rd place winners from a class science fair with 15 entries.
 3. A committee of 3 is chosen from 7 candidates to serve on a panel where all members have equal status.
 4. A security system requires a 4-digit PIN where no digit is repeated, and the order of digits matters.
+
+<Solution>
+
+1. **Combination.** Positions aren't assigned: $\binom{12}{5} = 792$
+2. **Permutation.** 1st, 2nd, and 3rd place are different: $P(15, 3) = 15 \times 14 \times 13 = 2{,}730$
+3. **Combination.** All members have equal status: $\binom{7}{3} = 35$
+4. **Permutation.** Order matters and digits can't repeat: $P(10, 4) = 10 \times 9 \times 8 \times 7 = 5{,}040$
+
+</Solution>
 </div>
 
 ### Key Points – Counting Techniques

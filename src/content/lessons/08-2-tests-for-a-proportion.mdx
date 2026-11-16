@@ -27,6 +27,14 @@ For each scenario, define the parameter $p$ in words and write $H_0$ and $H_a$:
 1. A company claims that 80% of its customers are satisfied. A consumer group suspects the true percentage is lower.
 2. Historically, 3% of visitors to a website make a purchase. After a redesign, the company wants to know whether the purchase rate has changed.
 3. A news article claims that more than half of teenagers use social media for more than 3 hours a day.
+
+<Solution>
+
+1. $p$ = the true proportion of the company's customers who are satisfied. $H_0: p = 0.80$ vs. $H_a: p < 0.80$
+2. $p$ = the true proportion of visitors who make a purchase after the redesign. $H_0: p = 0.03$ vs. $H_a: p \neq 0.03$
+3. $p$ = the true proportion of teenagers who use social media for more than 3 hours a day. $H_0: p = 0.50$ vs. $H_a: p > 0.50$
+
+</Solution>
 </div>
 
 ### Conditions for the Test
@@ -72,6 +80,21 @@ At $\alpha = 0.05$, is there evidence that the true proportion of daily users is
 3. Calculate $\hat{p}$ and the z-test statistic.
 4. Find the p-value.
 5. State your conclusion in context.
+
+<Solution>
+
+1. $p$ = the true proportion of all users who log in every day. $H_0: p = 0.40$ vs. $H_a: p \neq 0.40$
+2. **Independence:** random sample, and 500 is less than 10% of all users. **Success-failure (using $p_0$):** $500(0.40) = 200 \geq 10$ and $500(0.60) = 300 \geq 10$. Both conditions are met.
+3. $\hat{p} = \dfrac{182}{500} = 0.364$, and
+
+$$
+z = \frac{0.364 - 0.40}{\sqrt{\dfrac{0.40(0.60)}{500}}} = \frac{-0.036}{0.0219} \approx -1.64
+$$
+
+4. p-value $= 2 \times P(Z < -1.64) \approx 0.100$
+5. Since $0.100 > 0.05$, we **fail to reject $H_0$**. The sample proportion (36.4%) is below 40%, but not by enough to rule out chance. We don't have convincing evidence that the platform's 40% claim is wrong.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -85,6 +108,24 @@ At $\alpha = 0.05$, is there evidence that the banner *increased* the conversion
 2. Check the conditions.
 3. Calculate the test statistic and p-value.
 4. State your conclusion in context. Can the retailer conclude that the banner *caused* the change? What would they need to know about how the data were collected?
+
+<Solution>
+
+1. $H_0: p = 0.12$ vs. $H_a: p > 0.12$, where $p$ is the conversion rate with the banner.
+2. **Independence:** randomly selected visitors. **Success-failure:** $850(0.12) = 102 \geq 10$ and $850(0.88) = 748 \geq 10$.
+3. $\hat{p} = \dfrac{124}{850} \approx 0.1459$, and
+
+$$
+z = \frac{0.1459 - 0.12}{\sqrt{\dfrac{0.12(0.88)}{850}}} = \frac{0.0259}{0.0111} \approx 2.32
+$$
+
+   p-value $= P(Z > 2.32) \approx 0.010$.
+
+4. Since $0.010 \leq 0.05$, we **reject $H_0$**. There is evidence that the conversion rate is now higher than 12%.
+
+   However, **we can't conclude that the banner *caused* the increase** from these data alone. Comparing to a historical rate means something else could also have changed (season, a sale, different traffic sources). To show causation, the retailer would need a **randomized experiment** that shows some visitors the banner and others not at the same time, which is an A/B test (Section 8.3).
+
+</Solution>
 </div>
 
 ### Connecting Tests and Confidence Intervals
@@ -101,6 +142,14 @@ A poll of 1,200 randomly selected adults finds that 54% support a new data priva
 1. Based on the interval, would a two-tailed test at $\alpha = 0.05$ reject $H_0$: $p = 0.50$? Explain.
 2. Would it reject $H_0$: $p = 0.55$?
 3. What does the interval tell you that the test alone does not?
+
+<Solution>
+
+1. **Yes.** The value 0.50 is **outside** the interval (0.512, 0.568), so 50% is not a plausible value for $p$, and a two-tailed test at $\alpha = 0.05$ would reject $H_0: p = 0.50$.
+2. **No.** The value 0.55 is **inside** the interval, so it is a plausible value, and the test would fail to reject $H_0: p = 0.55$.
+3. The interval shows the **range of plausible values** and the size of the effect. Support is likely between about 51% and 57%, which is a narrow majority, not just "different from 50%."
+
+</Solution>
 </div>
 
 ### Choosing a Sample Size
@@ -127,6 +176,26 @@ A campus newspaper wants to estimate the proportion of students who use a smartp
 1. How many students should they survey if they have no prior estimate of $p$?
 2. A survey last year found that about 30% of students used such an app. How many students should they survey using this estimate?
 3. Why is the answer to part 2 smaller than the answer to part 1?
+
+<Solution>
+
+With $z^* = 1.96$ and $ME = 0.04$:
+
+1. No prior estimate, so use $p = 0.5$:
+
+$$
+n = \left(\frac{1.96}{0.04}\right)^2 (0.5)(0.5) = 2401 \times 0.25 = 600.25 \quad\Rightarrow\quad n = 601 \text{ students}
+$$
+
+2. With $p = 0.30$:
+
+$$
+n = 2401 \times (0.30)(0.70) = 504.21 \quad\Rightarrow\quad n = 505 \text{ students}
+$$
+
+3. $p(1-p)$ is largest at $p = 0.5$ (where it equals 0.25). At $p = 0.30$, it is only 0.21, so less variability is expected and fewer students are needed. Using $p = 0.5$ is the "safe" choice when we have no information.
+
+</Solution>
 </div>
 
 ### Statistical vs. Practical Significance
@@ -140,6 +209,17 @@ A large online study of 2,000,000 users finds that a redesigned sign-up page rai
 
 1. Is this result statistically significant at $\alpha = 0.05$?
 2. Is it practically significant? What other information would help a company decide whether the redesign is worth it?
+
+<Solution>
+
+1. **Yes.** $0.0001 < 0.05$, so the result is statistically significant. With 2 million users, even a tiny difference is very unlikely to be due to chance.
+2. **Probably not, by itself.** A 0.1 percentage point increase means about 1 extra sign-up per 1,000 visitors. Whether that matters depends on information such as:
+   - the cost of building and maintaining the redesign
+   - the value of each new sign-up (for example, revenue per user)
+   - how many visitors the page gets in total
+   - whether the redesign affects anything else (user satisfaction, later cancellations)
+
+</Solution>
 </div>
 
 ### Key Points – Hypothesis Tests for a Proportion

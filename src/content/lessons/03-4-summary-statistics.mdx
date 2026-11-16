@@ -37,6 +37,20 @@ $$
 $$
 
 Find the five-number summary.
+
+<Solution>
+
+The data are already sorted, with $n = 11$.
+
+- **Minimum** = 66
+- **Median** = 6th value = 74
+- **$Q_1$** = median of the lower half ($66, 68, 70, 71, 72$) = 70
+- **$Q_3$** = median of the upper half ($75, 76, 78, 80, 84$) = 78
+- **Maximum** = 84
+
+Five-number summary: **66, 70, 74, 78, 84**.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -51,6 +65,16 @@ A researcher reports the following five-number summary for the daily number of s
 - Maximum: 18,400
 
 What does this tell us about the distribution? Is the data symmetric or skewed?
+
+<Solution>
+
+- The middle 50% of workers walk between 4,500 and 9,800 steps, so IQR = 5,300 steps.
+- The median (7,100) sits close to the center of the box: it is 2,600 above $Q_1$ and 2,700 below $Q_3$.
+- However, the upper tail is much longer than the lower one. The maximum is 8,600 above $Q_3$, while the minimum is only 3,300 below $Q_1$.
+
+The middle of the data is fairly symmetric, but the long upper tail suggests the distribution is **skewed right**, with a few workers walking far more than everyone else.
+
+</Solution>
 </div>
 
 ### Combining Center and Spread
@@ -75,6 +99,14 @@ For each dataset, decide whether you would report the mean + standard deviation 
 1. The salaries of 200 employees at a tech company, including a handful of executives earning several million dollars per year.
 2. The quiz scores of a class of 25 students on a 10-point quiz, where most students scored between 7 and 9.
 3. The number of hours per week spent on social media by college students, with a few students reporting 60+ hours per week.
+
+<Solution>
+
+1. **Median + IQR.** The executives' salaries are extreme outliers that would pull the mean upward and inflate the standard deviation.
+2. **Mean + standard deviation.** The scores are tightly clustered with no extreme values, so the distribution is roughly symmetric.
+3. **Median + IQR.** The few students reporting 60+ hours create a long right tail that would distort the mean and standard deviation.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -85,6 +117,14 @@ Dataset A has the following five-number summary: Min = 40, $Q_1$ = 55, Median = 
 Dataset B has: Min = 10, $Q_1$ = 55, Median = 62, $Q_3$ = 68, Max = 200. The mean is 74.
 
 For each dataset, identify whether the distribution appears symmetric or skewed, and explain which pair of summary statistics you would report.
+
+<Solution>
+
+**Dataset A** is **roughly symmetric**. The median (60) is in the middle of the box (5 from each quartile), the whiskers are equal length (15 on each side), and the mean (59) is close to the median. Report the **mean and standard deviation**.
+
+**Dataset B** is **skewed right**. The maximum (200) is far above $Q_3$, and the mean (74) is pulled well above the median (62) by the high values. (The low minimum of 10 suggests a low outlier as well.) Report the **median and IQR**, since they are resistant to the extreme values.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -99,6 +139,25 @@ $$
 1. Calculate the mean and standard deviation.
 2. Find the five-number summary.
 3. Does an outlier appear to be present? If so, which measure of center and spread would you prefer to report?
+
+<Solution>
+
+1. **Mean and standard deviation:**
+
+$$
+\bar{x} = \frac{1328}{12} \approx 110.67 \text{ dollars} \qquad s \approx 32.98 \text{ dollars}
+$$
+
+2. **Five-number summary** ($n = 12$, so each half has 6 values):
+   - Min = 85
+   - $Q_1 = (92 + 95)/2 = 93.5$
+   - Median $= (100 + 105)/2 = 102.5$
+   - $Q_3 = (110 + 115)/2 = 112.5$
+   - Max = 210
+
+3. **Yes, 210 is an outlier.** IQR $= 112.5 - 93.5 = 19$, so the upper fence is $112.5 + 1.5(19) = 141$, and $210 > 141$. Because of this outlier, the **median and IQR** are the better summary. Notice how much the outlier inflates the standard deviation: without 210, $s$ drops from about 33 to about 11.
+
+</Solution>
 </div>
 
 ### Key Points – Summary Statistics

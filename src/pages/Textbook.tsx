@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import type { MDXComponents } from "mdx/types";
 import { COMPONENTS } from "@/lib/widgetRegistry";
 import { Advanced } from "@/components/Advanced";
+import { Solution } from "@/components/Solution";
 
 // Everything an MDX lesson can use as a tag: every registered widget, plus
-// the <Advanced> wrapper for beyond-the-course content. Built once at module
-// load so the object identity is stable across renders.
-const LESSON_COMPONENTS: MDXComponents = { ...COMPONENTS, Advanced };
+// the <Advanced> wrapper for beyond-the-course content and the <Solution>
+// answer toggle. Built once at module load so the object identity is stable
+// across renders.
+const LESSON_COMPONENTS: MDXComponents = { ...COMPONENTS, Advanced, Solution };
 
 type LessonModule = {
   default: React.ComponentType<{ components?: MDXComponents }>;

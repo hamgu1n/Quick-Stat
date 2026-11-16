@@ -30,6 +30,16 @@ A boxplot for the number of hours students studied last week shows:
 - Minimum: 0, $Q_1$: 3, Median: 6, $Q_3$: 9, Maximum: 14, with one outlier at 25
 
 Interpret this boxplot. What does the position of the median inside the box suggest about the shape of the distribution?
+
+<Solution>
+
+- The middle 50% of students studied between 3 and 9 hours (IQR = 6 hours), and the median is 6 hours.
+- Excluding the outlier, study time ranged from 0 to 14 hours.
+- One student studied 25 hours, far beyond the rest, and is plotted as a separate outlier point.
+
+The median sits **exactly in the middle of the box**, which suggests the middle half of the data is roughly symmetric. The high outlier, and the longer upper whisker (5 hours, vs. 3 hours for the lower whisker), point to some right skew in the tail.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -42,6 +52,22 @@ $$
 $$
 
 Find the five-number summary. Use the IQR rule to check whether 180 is a flagged outlier. Then describe how the boxplot would look.
+
+<Solution>
+
+With $n = 11$:
+
+- Min = 28
+- $Q_1$ = median of $28, 35, 42, 55, 60$ = 42
+- Median = 65
+- $Q_3$ = median of $70, 78, 85, 92, 180$ = 85
+- Max = 180
+
+**Outlier check:** IQR $= 85 - 42 = 43$, so the upper fence is $85 + 1.5(43) = 149.5$ (the lower fence is $42 - 64.5 = -22.5$). Since $180 > 149.5$, **180 is a flagged outlier**.
+
+**The boxplot:** the box runs from 42 to 85 with a line at 65. The lower whisker extends to 28, and the upper whisker stops at 92 (the largest value that isn't an outlier). The value 180 is plotted as a separate point far to the right.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -50,6 +76,12 @@ Find the five-number summary. Use the IQR rule to check whether 180 is a flagged
 Two coffee shops record their daily customer counts over 30 days. Shop A has a median of 120 customers, $Q_1 = 100$, and $Q_3 = 140$. Shop B has a median of 115 customers, $Q_1 = 80$, and $Q_3 = 160$.
 
 Both shops have roughly the same median. What does the IQR tell us about which shop is more consistent day to day?
+
+<Solution>
+
+**Shop A is more consistent.** Its IQR is $140 - 100 = 40$ customers, while Shop B's IQR is $160 - 80 = 80$ customers. The middle half of Shop B's days varies twice as much as Shop A's, even though their typical (median) day is about the same. Shop A can plan staffing more reliably.
+
+</Solution>
 </div>
 
 ### Stem-and-Leaf Plots
@@ -70,6 +102,23 @@ $$
 $$
 
 Organize these scores into a stem-and-leaf plot using stems 6, 7, 8, and 9. What does the plot reveal about the shape of the distribution?
+
+<Solution>
+
+Sorted scores: $62, 65, 66, 68, 71, 73, 75, 77, 79, 81, 83, 84, 88, 90, 92$
+
+| Stem | Leaves |
+|---|---|
+| 6 | 2 5 6 8 |
+| 7 | 1 3 5 7 9 |
+| 8 | 1 3 4 8 |
+| 9 | 0 2 |
+
+Key: 6 | 2 = 62
+
+The distribution is **roughly symmetric** (perhaps slightly skewed right). It is mound-shaped with a peak in the 70s, where 5 of the 15 scores fall, and the median is 77.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -81,6 +130,23 @@ Class 1: 18, 22, 25, 27, 30, 31, 33, 35, 38, 40
 Class 2: 20, 23, 24, 26, 28, 29, 32, 34, 36, 41
 
 Create a back-to-back stem-and-leaf plot. Which class appears to have a higher typical number of pushups?
+
+<Solution>
+
+Class 1's leaves go on the left (read right to left) and Class 2's leaves go on the right:
+
+| Class 1 | Stem | Class 2 |
+|---:|:---:|:---|
+| 8 | 1 | |
+| 7 5 2 | 2 | 0 3 4 6 8 9 |
+| 8 5 3 1 0 | 3 | 2 4 6 |
+| 0 | 4 | 1 |
+
+Key: 8 | 1 | means 18 for Class 1, and | 2 | 0 means 20 for Class 2.
+
+**Class 1** appears to have a slightly higher typical number of pushups. Most of its values sit in the 30s, while most of Class 2's are in the 20s. The medians confirm this: 30.5 for Class 1 vs. 28.5 for Class 2.
+
+</Solution>
 </div>
 
 ### Key Points – Boxplots and Stem-and-Leaf Plots

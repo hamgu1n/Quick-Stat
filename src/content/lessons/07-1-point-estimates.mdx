@@ -33,6 +33,14 @@ For each scenario, identify the population parameter being estimated and the poi
 1. A sample of 200 voters finds that 112 support a ballot measure. We estimate that 56% of all voters support it.
 2. A random sample of 30 coffee drinks from a chain shows a mean sugar content of 38 grams.
 3. A researcher surveys 50 employees and finds the standard deviation of their weekly hours is 6.2 hours.
+
+<Solution>
+
+1. **Parameter:** the proportion $p$ of all voters who support the measure. **Point estimate:** $\hat{p} = 112/200 = 0.56$.
+2. **Parameter:** the mean sugar content $\mu$ of all of the chain's coffee drinks. **Point estimate:** $\bar{x} = 38$ grams.
+3. **Parameter:** the standard deviation $\sigma$ of weekly hours for all employees. **Point estimate:** $s = 6.2$ hours.
+
+</Solution>
 </div>
 
 ### Properties of Good Estimators
@@ -57,6 +65,12 @@ An important limitation of any point estimate is that it comes with no indicatio
 A researcher is deciding whether to use the sample mean or the sample median to estimate the population mean of a symmetric distribution.
 
 Both are unbiased estimators of $\mu$ for a symmetric distribution. What other consideration might guide the choice?
+
+<Solution>
+
+**Efficiency (variability).** Both estimators are correct on average, so we prefer the one whose values vary *less* from sample to sample. For normal-shaped data, the sample mean has a smaller standard error than the median, so it is the more efficient choice. If the data might contain outliers, the median's resistance to extreme values could make it the safer choice.
+
+</Solution>
 </div>
 
 </Advanced>
@@ -69,6 +83,14 @@ In a survey of 500 college students, 320 report that they prefer online classes 
 1. Calculate the sample proportion $\hat{p}$.
 2. What population parameter is $\hat{p}$ estimating?
 3. If another survey of 500 different students were conducted, would you expect to get exactly the same $\hat{p}$? Why or why not?
+
+<Solution>
+
+1. $\hat{p} = \dfrac{320}{500} = 0.64$
+2. The proportion $p$ of **all college students** (in the population sampled) who prefer online classes.
+3. **No.** A different sample of 500 students would contain different people, so $\hat{p}$ would vary a little due to **sampling variability**, even though it estimates the same parameter.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -77,6 +99,14 @@ In a survey of 500 college students, 320 report that they prefer online classes 
 A political polling firm surveys 800 likely voters and reports that a candidate has 49% support. A rival poll of 1,200 voters reports 51% support.
 
 Both are point estimates of the true support level. Can both be "correct"? What does this tell us about the need for measures of precision alongside a point estimate?
+
+<Solution>
+
+**Yes, both could be reasonable.** Neither 49% nor 51% is likely to equal the true support level exactly. Each is a single best guess that comes with sampling error, and a difference of 2 percentage points is well within the normal sample-to-sample variation for polls of these sizes.
+
+This shows why a point estimate alone is incomplete. We need a **margin of error or confidence interval** to show how far the estimate might reasonably be from the truth. Then we can see that the two polls overlap and don't contradict each other.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -90,6 +120,17 @@ $$
 
 1. Calculate the sample mean as a point estimate of the population mean daily caloric intake.
 2. Calculate the sample standard deviation as a point estimate of the population standard deviation.
+
+<Solution>
+
+1. $\bar{x} = \dfrac{16{,}000}{8} = 2{,}000$ calories
+2. Using $s = \sqrt{\dfrac{\sum (x_i - \bar{x})^2}{n - 1}}$:
+
+$$
+s = \sqrt{\frac{472{,}400}{7}} \approx 259.8 \text{ calories}
+$$
+
+</Solution>
 </div>
 
 ### Key Points – Point Estimates

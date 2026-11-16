@@ -41,7 +41,17 @@ Match each description to the most likely value of $r$ from the list: $-0.95$, $
 2. Shoe size and score on a statistics test, essentially no relationship.
 3. Daily temperature and hot beverage sales at a café, moderate negative relationship.
 4. The exact distance between two cities in miles and in kilometers, perfect positive relationship.
-5. Age of a used car and its resale value, moderate negative relationship.
+5. Age of a used car and its resale value, strong negative relationship.
+
+<Solution>
+
+1. **0.75**: strong positive
+2. **0.02**: essentially no relationship
+3. **−0.30**: moderate negative
+4. **0.99**: (nearly) perfect positive. Miles and kilometers are exact conversions of each other.
+5. **−0.95**: strong negative
+
+</Solution>
 </div>
 
 <div className="example">
@@ -57,9 +67,31 @@ The following data show the number of hours five students studied and their quiz
 | 4 | 80 |
 | 5 | 85 |
 
-$\bar{x} = 3$, $\bar{y} = 71$, $s_x = 1.58$, $s_y = 11.40$.
+$\bar{x} = 3$, $\bar{y} = 71$, $s_x = 1.58$, $s_y = 11.94$.
 
 Calculate $r$ and interpret the result.
+
+<Solution>
+
+Compute the products of deviations, $(x - \bar{x})(y - \bar{y})$:
+
+| $x$ | $y$ | $x - \bar{x}$ | $y - \bar{y}$ | Product |
+|---|---|---|---|---|
+| 1 | 55 | −2 | −16 | 32 |
+| 2 | 65 | −1 | −6 | 6 |
+| 3 | 70 | 0 | −1 | 0 |
+| 4 | 80 | 1 | 9 | 9 |
+| 5 | 85 | 2 | 14 | 28 |
+
+The products add to 75, so
+
+$$
+r = \frac{\sum (x - \bar{x})(y - \bar{y})}{(n - 1)\, s_x s_y} = \frac{75}{4(1.58)(11.94)} \approx 0.993
+$$
+
+**Interpretation:** $r \approx 0.99$ is a **very strong positive linear relationship**. Students who studied more hours scored higher on the quiz, and the points fall almost exactly on a line.
+
+</Solution>
 </div>
 
 ### Spearman's Rank Correlation
@@ -85,6 +117,15 @@ For each scenario, decide whether Pearson's $r$ or Spearman's $r_s$ is more appr
 2. A professor ranks students by GPA and also records their ranking in a class participation survey.
 3. A dataset of house prices contains several extreme values (mansions worth several million dollars).
 4. A study records the number of hours slept and a continuous cognitive performance score for 100 participants, and a preliminary scatterplot suggests a roughly linear relationship.
+
+<Solution>
+
+1. **Pearson's $r$**: two numerical variables with a roughly linear relationship and no outliers.
+2. **Spearman's $r_s$**: the data are already ranks (ordinal).
+3. **Spearman's $r_s$**: extreme values would distort Pearson's $r$, but ranks are resistant to them.
+4. **Pearson's $r$**: both variables are numerical, the relationship looks linear, and the sample is large.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -101,6 +142,28 @@ Five runners finish a 5K race. Their times (in minutes) and their training hours
 | E | 16 | 18 |
 
 Rank each variable, compute the rank differences $d_i$, and calculate Spearman's $r_s$.
+
+<Solution>
+
+Rank each variable from smallest (1) to largest (5):
+
+| Runner | Time | Rank (time) | Training | Rank (training) | $d_i$ | $d_i^2$ |
+|---|---|---|---|---|---|---|
+| A | 22 | 4 | 10 | 2 | 2 | 4 |
+| B | 18 | 2 | 15 | 4 | −2 | 4 |
+| C | 25 | 5 | 8 | 1 | 4 | 16 |
+| D | 20 | 3 | 12 | 3 | 0 | 0 |
+| E | 16 | 1 | 18 | 5 | −4 | 16 |
+
+$\sum d_i^2 = 40$, so
+
+$$
+r_s = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)} = 1 - \frac{6(40)}{5(24)} = 1 - 2 = -1
+$$
+
+$r_s = -1$, a **perfect negative monotonic relationship**. The more a runner trained, the faster (lower) their time, with no exceptions in the ranking.
+
+</Solution>
 </div>
 
 ### Key Points – Pearson and Spearman Correlation

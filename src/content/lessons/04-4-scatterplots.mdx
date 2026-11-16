@@ -29,6 +29,16 @@ Use the slider below to move from a strong negative association all the way to a
 A scatterplot shows the number of hours employees work per week on the horizontal axis and their self-reported stress level (on a scale of 1 to 10) on the vertical axis. The points form an upward-sloping cloud.
 
 Describe the direction, form, and approximate strength of the relationship. What would you expect to happen to stress levels as work hours increase?
+
+<Solution>
+
+- **Direction:** positive, since stress tends to rise as work hours increase.
+- **Form:** roughly linear, based on the upward-sloping cloud.
+- **Strength:** a "cloud" suggests a **moderate** relationship. The points follow the trend but with noticeable scatter.
+
+We would expect stress levels to **increase, on average**, as work hours increase. Individual employees will vary, so not everyone who works more will report more stress.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -41,6 +51,16 @@ For each pair of variables, predict whether the scatterplot would show a positiv
 3. Shoe size and favorite color (coded as a number).
 4. Height and weight of adult men.
 5. Number of absences and final grade in a course.
+
+<Solution>
+
+1. **Negative**: on hot days, people buy less hot coffee.
+2. **Negative**: more sleep tends to mean fewer errors.
+3. **No clear association**: there's no reason shoe size would relate to favorite color, and coding colors as numbers doesn't make the numbers meaningful.
+4. **Positive**: taller men tend to weigh more.
+5. **Negative**: more absences tend to go with lower grades.
+
+</Solution>
 </div>
 
 ### Outliers in Scatterplots
@@ -55,6 +75,17 @@ It's important not to remove outliers automatically. Sometimes they represent da
 A researcher plots the number of hours students spent on a take-home project (x-axis) against the score they received (y-axis). Most points form an upward-sloping cloud between 2 and 10 hours. One student spent 1 hour and received a 95. Another spent 12 hours and received a 40.
 
 Are either of these points outliers? Could they be influential? How might they affect a line drawn through the data?
+
+<Solution>
+
+**Both points are outliers**, since each falls far from the upward trend of the other points.
+
+- The student who spent **1 hour and scored 95** has an unusually low $x$-value *and* an unusually high $y$-value for that $x$.
+- The student who spent **12 hours and scored 40** is beyond the range of the other $x$-values and far below the trend.
+
+Both could be **influential**, because they sit at the edges of the $x$-range where they have the most pull on a line. Each would flatten the line: the 1-hour point raises its left end, and the 12-hour point drags its right end down. Together they could make the relationship look much weaker than it really is for most students.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -73,6 +104,16 @@ The following data show the weekly advertising spend (in hundreds of dollars) an
 | 10 | 15.3 |
 
 Describe the direction, form, and strength of the relationship. What would you predict for sales if the bakery spent 600 dollars on advertising?
+
+<Solution>
+
+- **Direction:** positive, since sales increase as advertising increases.
+- **Form:** linear, as the points follow a nearly straight line.
+- **Strength:** very strong. The points lie close to a line (one small dip at 8, where sales are 11.8, a little below the 12.1 at 7).
+
+At an advertising spend of 600 dollars ($x = 6$ hundred), sales should fall between the values at $x = 5$ (9.4) and $x = 7$ (12.1), so we would predict about **10 to 11 thousand dollars** in weekly sales. (A least-squares line, from Chapter 11, gives about 10.2 thousand dollars.)
+
+</Solution>
 </div>
 
 <div className="example">
@@ -81,6 +122,14 @@ Describe the direction, form, and strength of the relationship. What would you p
 A scatterplot of ice cream sales (x-axis) and drowning rates (y-axis) across months of the year shows a strong positive association, months with high ice cream sales also tend to have more drownings.
 
 Does this mean eating ice cream causes drowning? What is a more reasonable explanation? What concept from Chapter 2 is at work here?
+
+<Solution>
+
+**No.** Association does not prove causation. A more reasonable explanation is a **lurking (confounding) variable**: **hot weather**. In summer, people buy more ice cream *and* swim more often, which leads to more drownings. The temperature drives both variables, so they rise and fall together even though neither causes the other.
+
+This is the distinction from Chapter 2 between **observational studies and experiments**. These data are observational, so we can't draw cause-and-effect conclusions from them.
+
+</Solution>
 </div>
 
 ### Key Points – Scatterplots

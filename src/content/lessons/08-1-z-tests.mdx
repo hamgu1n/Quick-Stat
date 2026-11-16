@@ -55,6 +55,14 @@ For each scenario, write the null and alternative hypotheses using proper notati
 1. A researcher believes the mean resting heart rate of athletes is less than 60 beats per minute.
 2. A company claims their product reduces average delivery time to under 3 days. A consumer group wants to test this claim.
 3. A new teaching method is tested to see if it changes (either direction) the mean test score from the historical mean of 72.
+
+<Solution>
+
+1. $H_0: \mu = 60$ vs. $H_a: \mu < 60$
+2. $H_0: \mu = 3$ vs. $H_a: \mu < 3$ (the claim being tested is "under 3 days," which is the alternative)
+3. $H_0: \mu = 72$ vs. $H_a: \mu \neq 72$
+
+</Solution>
 </div>
 
 <div className="example">
@@ -68,12 +76,35 @@ At the $\alpha = 0.05$ significance level, is there evidence that the mean fill 
 2. Calculate the z-test statistic.
 3. Find the p-value (two-tailed test).
 4. State your conclusion in context.
+
+<Solution>
+
+1. $H_0: \mu = 16$ vs. $H_a: \mu \neq 16$
+2. $z = \dfrac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \dfrac{15.8 - 16}{0.5 / \sqrt{36}} = \dfrac{-0.2}{0.0833} = -2.4$
+3. p-value $= 2 \times P(Z < -2.4) \approx 2(0.0082) = 0.0164$
+4. Since $0.0164 \leq 0.05$, we **reject $H_0$**. There is sufficient evidence that the mean fill differs from 16 ounces. The sample suggests the machine is underfilling.
+
+</Solution>
 </div>
 
 <div className="example">
 **Example 8.1.3 – One-Tailed vs. Two-Tailed Tests**
 
 Explain the difference between a one-tailed and a two-tailed test. In Example 8.1.2, what would change if the inspector only wanted to test whether the mean is *less than* 16 ounces?
+
+<Solution>
+
+A **two-tailed test** looks for a difference in *either* direction ($\neq$), so the p-value counts the area in both tails. A **one-tailed test** looks in only one direction ($<$ or $>$), so the p-value counts the area in one tail.
+
+If the inspector only tested whether the mean is *less than* 16:
+
+- The hypotheses would become $H_0: \mu = 16$ vs. $H_a: \mu < 16$.
+- The test statistic would stay the same ($z = -2.4$).
+- The p-value would be just the left tail, $P(Z < -2.4) \approx 0.0082$, half of the two-tailed value.
+
+The conclusion (reject $H_0$) wouldn't change here, but the evidence would look stronger. The direction must be chosen *before* looking at the data.
+
+</Solution>
 </div>
 
 ### Type I and Type II Errors
@@ -96,6 +127,14 @@ A pharmaceutical company tests a new drug for lowering blood pressure. $H_0$: th
 1. Describe what a Type I error would mean in this context. What are the real-world consequences?
 2. Describe what a Type II error would mean. What are the real-world consequences?
 3. Which error is more costly in this situation?
+
+<Solution>
+
+1. **Type I error:** concluding the drug lowers blood pressure when it actually doesn't. Patients could take an ineffective drug, possibly with side effects, instead of a treatment that works, and the company would waste money bringing it to market.
+2. **Type II error:** concluding the drug doesn't work when it actually does lower blood pressure. An effective treatment would be abandoned, and patients who could have benefited wouldn't get it.
+3. **The Type I error is usually considered more costly** here, since it puts an ineffective drug into patients' hands, which is why drug trials use small $\alpha$ values. A reasonable argument can also be made for Type II if few other treatments exist. What matters is weighing the real-world consequences.
+
+</Solution>
 </div>
 
 ### Key Points – z-Tests

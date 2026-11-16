@@ -26,6 +26,15 @@ For each scenario, identify whether the bolded value is a parameter or a statist
 2. A pollster surveys 1,000 voters and finds that **52% support a candidate**.
 3. A researcher calculates the **mean weight of 40 sampled newborns** in a hospital.
 4. The **true proportion of defective chips** produced by a factory this month.
+
+<Solution>
+
+1. **Parameter**: it describes the entire population of Americans.
+2. **Statistic**: it is calculated from a sample of 1,000 voters.
+3. **Statistic**: it is calculated from a sample of 40 newborns.
+4. **Parameter**: the *true* proportion describes everything the factory produced.
+
+</Solution>
 </div>
 
 ### The Sampling Distribution of the Mean
@@ -56,6 +65,16 @@ A population of exam scores has a mean of 75 and a standard deviation of 12.
 1. What is the standard error of the sample mean when $n = 4$?
 2. What is the standard error when $n = 36$?
 3. What does this tell us about the benefit of larger samples?
+
+<Solution>
+
+The standard error of the mean is $\sigma / \sqrt{n}$.
+
+1. $n = 4$: $\dfrac{12}{\sqrt{4}} = \dfrac{12}{2} = 6$
+2. $n = 36$: $\dfrac{12}{\sqrt{36}} = \dfrac{12}{6} = 2$
+3. **Larger samples give more precise estimates.** Sample means from larger samples cluster more tightly around $\mu$, so any single sample mean is likely to be closer to the truth.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -66,6 +85,16 @@ A factory produces light bulbs with a mean lifetime of 1,000 hours and a standar
 1. What is the expected value of the sample mean?
 2. What is the standard error of the sample mean?
 3. Would you be surprised if the sample mean was 985 hours? What about 940 hours?
+
+<Solution>
+
+1. The expected value of $\bar{x}$ equals the population mean: **1,000 hours**.
+2. $SE = \dfrac{80}{\sqrt{25}} = \dfrac{80}{5} = 16$ hours.
+3. **985 hours would not be surprising.** It is $\dfrac{985 - 1000}{16} \approx -0.94$ standard errors from the mean, a perfectly ordinary amount of sampling variation.
+
+   **940 hours would be very surprising.** It is $\dfrac{940 - 1000}{16} = -3.75$ standard errors below the mean. A result this extreme would suggest the bulbs' true mean lifetime is less than 1,000 hours.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -74,6 +103,18 @@ A factory produces light bulbs with a mean lifetime of 1,000 hours and a standar
 A university knows that student debt follows a distribution with mean \$28,000 and standard deviation \$6,000. Samples of sizes 9, 36, and 100 are drawn.
 
 Calculate the standard error for each sample size. What pattern do you notice? By what factor does the standard error decrease when the sample size quadruples?
+
+<Solution>
+
+| $n$ | $SE = 6{,}000 / \sqrt{n}$ |
+|---|---|
+| 9 | $6{,}000 / 3 = 2{,}000$ dollars |
+| 36 | $6{,}000 / 6 = 1{,}000$ dollars |
+| 100 | $6{,}000 / 10 = 600$ dollars |
+
+The standard error shrinks as $n$ grows, but not proportionally, because it depends on $\sqrt{n}$. **When the sample size quadruples (9 to 36), the standard error is cut in half**, since $\sqrt{4} = 2$.
+
+</Solution>
 </div>
 
 ### Key Points – Sampling Distributions

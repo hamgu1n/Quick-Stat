@@ -42,6 +42,14 @@ A **normal Q-Q plot** of the residuals checks the normality assumption. If the r
 A residual plot for a regression of house price on square footage shows the residuals spreading out noticeably as the fitted values increase, small houses have tightly clustered residuals, but large houses have very spread-out residuals.
 
 Which assumption is being violated? What does this mean for the reliability of the regression output?
+
+<Solution>
+
+The **equal variance (homoscedasticity)** assumption is violated. The "fanning out" pattern is called **heteroscedasticity**.
+
+Predictions for large houses are much less precise than for small houses, but the regression output assumes the same precision everywhere. Standard errors, p-values, and confidence intervals may be **misleading**, typically making estimates look more precise than they really are for large houses.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -50,6 +58,14 @@ Which assumption is being violated? What does this mean for the reliability of t
 A researcher fits a linear regression to data on plant growth (y, in cm) and days since planting (x). The residual plot shows a curved pattern: residuals are positive at low and high fitted values, but negative in the middle.
 
 What does this indicate? Would you trust predictions from this linear model?
+
+<Solution>
+
+A curved residual pattern means the **linearity assumption is violated**. The true relationship between days and growth is curved, but the straight line can't follow it, so it systematically misses in a predictable way (too low at the ends, too high in the middle).
+
+**No, we shouldn't trust its predictions.** They will be biased in different directions depending on $x$. A curved model, or a transformation of the variables, would fit better.
+
+</Solution>
 </div>
 
 <Advanced title="Influential points and leverage">
@@ -66,6 +82,21 @@ Not every high-leverage point is influential (it might happen to lie close to th
 In a study of advertising spend ($x$) and monthly sales ($y$) for 20 small businesses, all companies spend between 500 and 5,000 dollars per month on advertising. One company spends 25,000 dollars and has unusually high sales.
 
 Is this point likely to be high leverage? Is it likely to be influential? What should the researcher consider before including this point in the regression?
+
+<Solution>
+
+**Yes, it is high leverage.** Spending 25,000 dollars is five times the next-highest value, so its $x$-value is extremely far from $\bar{x}$.
+
+**It is likely influential.** Sitting so far from the other points, it can pull the regression line toward itself. Whether it actually changes the slope much depends on whether its sales fall in line with the trend of the other 19 companies.
+
+Before including it, the researcher should:
+
+- check that the data point is **correct**
+- **fit the model with and without it** to see how much the slope changes
+- consider whether a business spending 25,000 dollars is really part of the **same population** as the others
+- if it is kept, note that predictions above 5,000 dollars rely almost entirely on this single point
+
+</Solution>
 </div>
 
 </Advanced>
@@ -81,6 +112,17 @@ A regression model is built to predict a student's GPA (y) from hours spent stud
 - The standard deviations of the residuals at low, medium, and high fitted values are approximately 0.3, 0.31, and 0.29.
 
 Evaluate each of the four LINE assumptions for this model. Is the linear regression model appropriate?
+
+<Solution>
+
+- **Linearity: ✓** The residual plot shows random scatter with no curve.
+- **Independence: ✓** The students were randomly selected from the roster.
+- **Normality: ✓** The Q-Q plot points follow the diagonal line closely.
+- **Equal variance: ✓** The residual spread is nearly constant (0.3, 0.31, 0.29) across fitted values.
+
+All four assumptions appear to be satisfied, so the **linear regression model is appropriate** for these data.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -92,6 +134,15 @@ For each violation, describe a potential remedy:
 2. The residual plot shows a megaphone shape (heteroscedasticity).
 3. The Q-Q plot shows heavy tails in the residuals (non-normality with a small sample).
 4. Observations are clustered within classrooms, violating independence.
+
+<Solution>
+
+1. **Nonlinearity:** transform $x$ or $y$ (for example, take a log or square root), or fit a curved model such as a quadratic.
+2. **Heteroscedasticity:** transform $y$ (a log transformation often stabilizes a megaphone shape), or use methods that account for unequal variance, such as weighted least squares or robust standard errors.
+3. **Heavy-tailed residuals in a small sample:** collect more data so the CLT can help, check for outliers driving the tails, try a transformation, or use a robust or nonparametric method.
+4. **Clustered observations:** use a method that accounts for the grouping, such as including classroom as a variable or using a multilevel (mixed) model, or analyze classroom averages instead of individual students.
+
+</Solution>
 </div>
 
 ### Key Points – Assumptions and Diagnostics

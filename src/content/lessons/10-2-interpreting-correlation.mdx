@@ -32,6 +32,15 @@ For each correlation coefficient, describe the strength and direction of the rel
 2. $r = -0.43$ between daily screen time and academic GPA.
 3. $r = 0.12$ between a student's height and their statistics grade.
 4. $r = -0.91$ between the age of a car and its fuel efficiency.
+
+<Solution>
+
+1. $r = 0.87$: **strong positive**
+2. $r = -0.43$: **moderate negative**
+3. $r = 0.12$: **very weak positive** (essentially no association)
+4. $r = -0.91$: **very strong negative**
+
+</Solution>
 </div>
 
 ### Correlation Does Not Imply Causation
@@ -57,6 +66,15 @@ For each observed correlation, propose a possible lurking variable or alternativ
 2. Countries with more televisions per household tend to have longer life expectancies.
 3. Students who eat breakfast score higher on standardized tests than those who skip breakfast.
 4. The number of firefighters at a fire scene is positively correlated with the amount of damage done.
+
+<Solution>
+
+1. **Population size.** Bigger cities have more hospitals *and* more deaths. Also, sick people travel to cities with many hospitals for treatment.
+2. **Wealth.** Wealthier countries can afford more televisions *and* better healthcare, nutrition, and sanitation.
+3. **Family background or overall habits.** Students who eat breakfast may have more structured home lives, more family support, or better sleep, any of which could raise test scores.
+4. **Size of the fire.** Bigger fires bring more firefighters *and* cause more damage. The firefighters aren't causing the damage.
+
+</Solution>
 </div>
 
 ### The Effect of Outliers on Correlation
@@ -69,6 +87,18 @@ Pearson's $r$ is sensitive to outliers, as we noted in the previous section. A s
 A researcher computes $r = 0.82$ for a dataset of 20 points. Upon examining the scatterplot, she notices that removing a single outlier reduces $r$ to 0.31.
 
 What does this tell us about the reliability of the original correlation? What should be done before reporting the result?
+
+<Solution>
+
+The original correlation is **not reliable**. A single point was responsible for most of the apparent relationship, and without it, the remaining 19 points show only a weak association ($r = 0.31$).
+
+Before reporting, the researcher should:
+
+- **investigate the outlier**: is it a data-entry error, a measurement problem, or a genuine but unusual case?
+- **report results both with and without it** (or explain clearly why it was removed)
+- **always show the scatterplot** alongside $r$
+
+</Solution>
 </div>
 
 <OutlierCorrelationWidget />
@@ -102,12 +132,36 @@ A sample of $n = 20$ observations yields a Pearson correlation of $r = 0.45$.
 1. Calculate the t-test statistic.
 2. With $df = 18$ and $\alpha = 0.05$ (two-tailed), the critical value is approximately 2.101. Is the correlation statistically significant?
 3. What does "statistically significant" mean in this context?
+
+<Solution>
+
+1. Compute the test statistic:
+
+$$
+t = \frac{r\sqrt{n - 2}}{\sqrt{1 - r^2}} = \frac{0.45\sqrt{18}}{\sqrt{1 - 0.2025}} = \frac{1.909}{0.893} \approx 2.14
+$$
+
+2. **Yes.** Since $2.14 > 2.101$, we reject $H_0: \rho = 0$. (The exact p-value is about 0.046.)
+3. It means a correlation as strong as 0.45 would be **unlikely to occur by chance** in a sample of 20 if there were truly no linear relationship in the population. It does *not* mean the relationship is strong, or that one variable causes the other.
+
+</Solution>
 </div>
 
 <div className="example">
 **Example 10.2.5 – Sample Size and Significance**
 
 Explain why a correlation of $r = 0.30$ might be statistically significant with $n = 100$ but not with $n = 15$, even though the correlation coefficient is the same.
+
+<Solution>
+
+The test statistic $t = \dfrac{r\sqrt{n-2}}{\sqrt{1-r^2}}$ grows with $\sqrt{n - 2}$:
+
+- **$n = 100$:** $t = \dfrac{0.30\sqrt{98}}{\sqrt{0.91}} \approx 3.11$, so $p \approx 0.002$, which is significant.
+- **$n = 15$:** $t = \dfrac{0.30\sqrt{13}}{\sqrt{0.91}} \approx 1.13$, so $p \approx 0.28$, which is not significant.
+
+With a small sample, a correlation of 0.30 could easily happen by chance even when there is no real relationship. With 100 observations, the same correlation is much harder to explain away as luck. Larger samples give more evidence, so smaller effects can be detected.
+
+</Solution>
 </div>
 
 </Advanced>

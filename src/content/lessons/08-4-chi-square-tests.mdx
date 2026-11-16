@@ -48,6 +48,24 @@ At $\alpha = 0.05$, test whether the die is fair.
 2. Calculate the expected count for each face.
 3. Calculate the $\chi^2$ test statistic.
 4. Find the p-value and state your conclusion.
+
+<Solution>
+
+1. $H_0$: the die is fair (each face has probability $1/6$). $H_a$: at least one face has a probability different from $1/6$.
+2. Each expected count is $120 \times \frac{1}{6} = 20$.
+3. Compute $\dfrac{(O - E)^2}{E}$ for each face:
+
+| Face | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| $(O-E)^2/E$ | 0.20 | 0.20 | 0.45 | 1.25 | 0.05 | 0.05 |
+
+$$
+\chi^2 = 0.20 + 0.20 + 0.45 + 1.25 + 0.05 + 0.05 = 2.2
+$$
+
+4. With $df = 6 - 1 = 5$, the p-value is $P(\chi^2_5 > 2.2) \approx 0.82$. Since $0.82 > 0.05$, we **fail to reject $H_0$**. The observed counts are consistent with a fair die.
+
+</Solution>
 </div>
 
 ### Chi-Square Test for Independence
@@ -86,6 +104,22 @@ At $\alpha = 0.05$, is there a significant relationship between class year and t
 3. Calculate the $\chi^2$ test statistic.
 4. Find the degrees of freedom and p-value.
 5. State your conclusion in context.
+
+<Solution>
+
+1. $H_0$: class year and tutoring use are independent. $H_a$: class year and tutoring use are related.
+2. Expected count = (row total × column total) ÷ grand total:
+
+|  | Uses tutoring | Does not use |
+|---|---|---|
+| Freshman | $\frac{80 \times 90}{200} = 36$ | $\frac{80 \times 110}{200} = 44$ |
+| Upperclassman | $\frac{120 \times 90}{200} = 54$ | $\frac{120 \times 110}{200} = 66$ |
+
+3. $\chi^2 = \dfrac{(50-36)^2}{36} + \dfrac{(30-44)^2}{44} + \dfrac{(40-54)^2}{54} + \dfrac{(80-66)^2}{66} \approx 5.44 + 4.45 + 3.63 + 2.97 = 16.50$
+4. $df = (2-1)(2-1) = 1$. The p-value is $P(\chi^2_1 > 16.50) \approx 0.00005$.
+5. Since the p-value is far below 0.05, we **reject $H_0$**. There is strong evidence that class year and tutoring use are related. Freshmen use the tutoring center much more often (50 of 80, or 62.5%) than upperclassmen (40 of 120, or 33.3%).
+
+</Solution>
 </div>
 
 <div className="example">
@@ -94,6 +128,17 @@ At $\alpha = 0.05$, is there a significant relationship between class year and t
 The chi-square test requires that expected counts be sufficiently large, typically, each expected count should be at least 5. A survey of 30 students asks about their preferred social media platform, with 6 categories.
 
 Why might the chi-square test be unreliable here? What could be done to address this?
+
+<Solution>
+
+With 30 students spread across 6 categories, the expected count in each category is only about $30 / 6 = 5$ even if responses were spread evenly. With uneven popularity, several expected counts would fall **below 5**, and the chi-square distribution would no longer approximate the test statistic well.
+
+Possible fixes:
+
+- **Collect a larger sample.**
+- **Combine less popular platforms** into an "Other" category so that every expected count is at least 5.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -104,6 +149,14 @@ For each scenario, identify whether a goodness-of-fit test or a test for indepen
 1. A professor wants to know if the grade distribution in her class (A, B, C, D, F) matches the historical departmental distribution.
 2. A marketing firm wants to know if age group (18–25, 26–40, 40+) and preferred streaming service (Streaming A, B, C) are related.
 3. A bag of candy is tested to see if the color distribution matches the manufacturer's stated proportions.
+
+<Solution>
+
+1. **Goodness-of-fit**: one categorical variable (grade) compared to a known distribution.
+2. **Test for independence**: two categorical variables (age group and streaming service) from the same people.
+3. **Goodness-of-fit**: one categorical variable (color) compared to the manufacturer's stated proportions.
+
+</Solution>
 </div>
 
 ### Key Points – Chi-Square Tests

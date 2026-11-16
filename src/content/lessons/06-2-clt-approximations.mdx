@@ -33,6 +33,14 @@ The time (in minutes) that customers wait in line at a bank follows a right-skew
 1. What is the shape of the sampling distribution of $\bar{x}$? Why?
 2. What is the mean and standard error of $\bar{x}$?
 3. What is the probability that the sample mean wait time exceeds 9 minutes?
+
+<Solution>
+
+1. **Approximately normal.** The population is right-skewed, but $n = 64$ is large enough for the Central Limit Theorem to apply.
+2. $\mu_{\bar{x}} = 8$ minutes, and $SE = \dfrac{4}{\sqrt{64}} = 0.5$ minutes.
+3. $z = \dfrac{9 - 8}{0.5} = 2$, so $P(\bar{x} > 9) = 1 - P(Z < 2) \approx 0.023$. There is about a **2.3%** chance.
+
+</Solution>
 </div>
 
 ### Using the Normal Approximation
@@ -52,6 +60,15 @@ The heights of adult women in the United States are approximately normally distr
 
 1. What is the probability that the sample mean height exceeds 65 inches?
 2. What is the probability that the sample mean is between 64 and 65 inches?
+
+<Solution>
+
+$SE = \dfrac{2.8}{\sqrt{49}} = \dfrac{2.8}{7} = 0.4$ inches.
+
+1. $z = \dfrac{65 - 64.5}{0.4} = 1.25$, so $P(\bar{x} > 65) = 1 - P(Z < 1.25) \approx 0.106$.
+2. $z_1 = \dfrac{64 - 64.5}{0.4} = -1.25$ and $z_2 = 1.25$, so $P(64 < \bar{x} < 65) = P(Z < 1.25) - P(Z < -1.25) \approx 0.894 - 0.106 = 0.789$.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -63,6 +80,15 @@ For each scenario, state whether the CLT can be applied to justify using a norma
 2. A sample of 50 observations drawn from a uniform distribution on [0, 10].
 3. A sample of 25 observations drawn from a normal population.
 4. A sample of 100 observations drawn from a distribution with no finite variance.
+
+<Solution>
+
+1. **No.** $n = 5$ is far too small for the CLT to overcome heavy skew.
+2. **Yes.** A uniform distribution is symmetric, and $n = 50$ is plenty.
+3. **Yes, and you don't even need the CLT.** When the population itself is normal, $\bar{x}$ is exactly normal for any sample size.
+4. **No.** The CLT requires a finite variance. Without one, sample means don't settle into a normal shape no matter how large $n$ is.
+
+</Solution>
 </div>
 
 <div className="example">
@@ -73,6 +99,14 @@ A warehouse ships packages with a mean weight of 12 pounds and a standard deviat
 1. What is the expected total weight of the shipment? *(Hint: total = $n \times \bar{x}$)*
 2. What is the standard error of the sample mean weight?
 3. What is the probability the average package weight exceeds 13 pounds?
+
+<Solution>
+
+1. Expected total $= n \times \mu = 36 \times 12 = 432$ pounds.
+2. $SE = \dfrac{3}{\sqrt{36}} = 0.5$ pounds.
+3. $z = \dfrac{13 - 12}{0.5} = 2$, so $P(\bar{x} > 13) = 1 - P(Z < 2) \approx 0.023$. There is about a **2.3%** chance.
+
+</Solution>
 </div>
 
 ### Key Points – CLT Approximations
