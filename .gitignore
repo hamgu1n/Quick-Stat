@@ -11,7 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-CLAUDE.md
 
 
 # Editor directories and files
@@ -26,10 +25,10 @@ CLAUDE.md
 *.sw?
 
 # Local scratch / review files
-test.csv
 textbook-draft.md
 
 # Course reference docs (contain instructor contact info)
 *Syllabus*.pdf
 
 CLAUDE.md
+.claude/
